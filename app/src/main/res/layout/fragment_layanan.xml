@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/warna_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".features.home.fragment.LayananFragment">
 
@@ -65,6 +66,7 @@
                     android:id="@+id/ivLokasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:src="@drawable/ic_map"
                     android:gravity="center"
                     />
 
@@ -138,6 +140,7 @@
                     android:id="@+id/ivEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:src="@drawable/ic_mail"
                     android:gravity="center"/>
 
             </LinearLayout>
@@ -210,6 +213,7 @@
                     android:id="@+id/ivWa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:src="@drawable/ic_wa"
                     android:gravity="center" />
 
             </LinearLayout>
@@ -282,6 +286,7 @@
                     android:id="@+id/ivCallCenter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:src="@drawable/ic_phone"
                     android:gravity="center"/>
 
             </LinearLayout>

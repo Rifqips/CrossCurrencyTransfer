@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.lyCard.setOnClickListener {
+        binding.contraintAkunbank.setOnClickListener {
             startActivity(Intent(context, TransferActivity::class.java))
         }
     }

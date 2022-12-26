@@ -49,6 +49,10 @@ class ViewpagerActivity : AppCompatActivity() {
             }
         }
 
+        binding.btnLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
     }
 
     private fun castView() {

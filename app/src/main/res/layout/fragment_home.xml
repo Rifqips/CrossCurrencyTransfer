@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/warna_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".features.home.fragment.HomeFragment">
 
@@ -65,17 +66,19 @@
             app:layout_constraintTop_toBottomOf="@+id/tvGreeting"/>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="165dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             app:cardCornerRadius="10dp"
+            android:layout_marginVertical="15dp"
             android:layout_marginStart="24dp"
-            android:layout_marginVertical="8dp"
+            android:layout_marginEnd="24dp"
             android:outlineSpotShadowColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/constrainUserHome"
+            app:layout_constraintEnd_toEndOf="@id/constrainUserHome"
             app:layout_constraintTop_toBottomOf="@id/tvMetodeTf">
 
-            <LinearLayout
-                android:id="@+id/lyCard"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contraintAkunbank"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -85,52 +88,29 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/iccreditcard"/>
+                    android:layout_marginStart="85dp"
+                    app:layout_constraintTop_toTopOf="@+id/contraintAkunbank"
+                    app:layout_constraintStart_toStartOf="@+id/contraintAkunbank"
+                    app:layout_constraintBottom_toBottomOf="@+id/contraintAkunbank"
+                    android:src="@drawable/icbankaccount"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:layout_marginStart="21dp"
-                    android:fontFamily="@font/dm_sans_bold"
-                    android:textSize="12sp"
-                    android:text="Card"/>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="165dp"
-            android:layout_height="60dp"
-            app:cardCornerRadius="10dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginVertical="8dp"
-            android:outlineSpotShadowColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@id/constrainUserHome"
-            app:layout_constraintTop_toBottomOf="@id/tvMetodeTf">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:background="@color/warna_verifikasi_font"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icbankaccount"/>
-
-                <TextView
-                    android:layout_width="51dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:text="Bank Account"
                     android:layout_marginStart="21dp"
                     android:textAlignment="center"
                     android:fontFamily="@font/dm_sans_bold"
-                    android:textSize="12sp"
-                    android:text="Bank Account"/>
-            </LinearLayout>
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toTopOf="@+id/contraintAkunbank"
+                    app:layout_constraintEnd_toEndOf="@+id/contraintAkunbank"
+                    app:layout_constraintStart_toStartOf="@+id/contraintAkunbank"
+                    app:layout_constraintBottom_toBottomOf="@+id/contraintAkunbank"
+                    android:src="@drawable/icbankaccount"/>
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 

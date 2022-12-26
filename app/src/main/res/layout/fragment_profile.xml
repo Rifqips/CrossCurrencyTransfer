@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/warna_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".features.home.fragment.ProfileFragment">
 
@@ -37,7 +38,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constrainProfile"
             android:layout_width="342dp"
-            android:layout_height="94dp">
+            android:layout_height="94dp"
+            android:background="@color/warna_background">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivSetImage"
@@ -102,12 +104,13 @@
             android:id="@+id/swLanguange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
             android:checked="true"
-            android:layout_marginEnd="25dp"
             android:textColor="@color/warna_secondary_font"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/constrainBahasa"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--  Divider  -->
@@ -226,7 +229,8 @@
         <ImageView
             android:id="@+id/ivLogout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logout"/>
 
         <TextView
             android:id="@+id/tvLogout"

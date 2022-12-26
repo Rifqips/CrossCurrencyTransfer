@@ -19,37 +19,10 @@ class LupaPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLupaPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getBitmap()
+
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
-        }
-    }
-
-    private fun getBitmap() {
-
-        // Read an SVG from the assets folder
-        val svg = SVG.getFromResource(resources, R.raw.ic_lupapassword)
-
-        if (svg.getDocumentWidth() !== -1F) {
-
-            // set your custom height and width for the svg
-            svg.documentHeight = 850F
-            svg.documentWidth = 700F
-
-            // create a canvas to draw onto
-            val bitmap = Bitmap.createBitmap(700, 700, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(bitmap)
-
-            // canvas - white background
-            canvas.drawARGB(0, 255, 255, 255)
-
-            // Render our document onto our canvas
-            svg.renderToCanvas(canvas)
-
-            // set the bitmap to imageView
-            binding.ivLupaPW.background = BitmapDrawable(resources, bitmap)
-
         }
     }
 }

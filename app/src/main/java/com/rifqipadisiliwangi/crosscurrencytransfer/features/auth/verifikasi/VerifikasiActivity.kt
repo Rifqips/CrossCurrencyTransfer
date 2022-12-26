@@ -17,33 +17,6 @@ class VerifikasiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifikasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getBitmap()
-    }
 
-    private fun getBitmap(){
-
-        // Read an SVG from the assets folder
-        val svg = SVG.getFromResource(resources, R.raw.ic_delete_otp)
-
-        if (svg.getDocumentWidth() !== -1F) {
-
-            // set your custom height and width for the svg
-            svg.documentHeight = 100f
-            svg.documentWidth = 100f
-
-            // create a canvas to draw onto
-            val bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(bitmap)
-
-            // canvas - white background
-            canvas.drawARGB(0, 255, 255, 255)
-
-            // Render our document onto our canvas
-            svg.renderToCanvas(canvas)
-
-            // set the bitmap to imageView
-            binding.ivDeleteOtp.background = BitmapDrawable(resources, bitmap)
-
-        }
     }
 }

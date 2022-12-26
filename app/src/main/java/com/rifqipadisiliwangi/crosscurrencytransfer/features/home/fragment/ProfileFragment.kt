@@ -29,38 +29,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getBitmapLogout()
 
         binding.tvLogout.setOnClickListener {
             startActivity(Intent(context, LoginActivity::class.java))
         }
 
-    }
-
-    private fun getBitmapLogout(){
-
-        // Read an SVG from the assets folder
-        val svg = SVG.getFromResource(resources, R.raw.ic_logout)
-
-        if (svg.getDocumentWidth() !== -1F) {
-
-            // set your custom height and width for the svg
-            svg.documentHeight = 100f
-            svg.documentWidth = 100f
-
-            // create a canvas to draw onto
-            val bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(bitmap)
-
-            // canvas - white background
-            canvas.drawARGB(0, 255, 255, 255)
-
-            // Render our document onto our canvas
-            svg.renderToCanvas(canvas)
-
-            // set the bitmap to imageView
-            binding.ivLogout.background = BitmapDrawable(resources, bitmap)
-
-        }
     }
 }
