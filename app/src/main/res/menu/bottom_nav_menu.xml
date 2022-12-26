@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_outline_home_24"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/layananFragment"
+        android:icon="@drawable/icmessage"
+        android:title="@string/title_layanan" />
+
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/ichistory"
+        android:title="@string/title_riwayat" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/icprofile"
+        android:title="@string/title_profile" />
+
+</menu>

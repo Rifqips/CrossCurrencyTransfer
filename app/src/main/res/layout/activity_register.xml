@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.auth.register.RegisterActivity">
+
+    <TextView
+        android:id="@+id/tvHeadingSatu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="59dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/dm_sans_medium"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:text="Selamat Datang di TransEvilz"
+        android:textAlignment="center"
+        android:textColor="@color/warna_primary_font"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/lyLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadingSatu"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvDescSatu"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/dm_sans_medium"
+            android:text="Jika Anda ingin bergabung, lakukan register terlebih dahulu"
+            android:textAlignment="center"
+            android:textColor="@color/warna_secondary_font"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivRegist"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lyLogin" />
+
+    <TextView
+        android:id="@+id/tvNegara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Negara"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:layout_marginVertical="33dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivRegist"/>
+
+    <TextView
+        android:id="@+id/tvStarNegara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/warning_font"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:layout_marginVertical="33dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvNegara"
+        app:layout_constraintTop_toBottomOf="@+id/ivRegist"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainPilihNegara"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/transparent_bg_button"
+        app:layout_constraintTop_toBottomOf="@+id/tvNegara"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/etNegara"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih Negara"
+            android:fontFamily="@font/dm_sans_medium"
+            android:textSize="12sp"
+            android:layout_marginVertical="5dp"
+            app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
+            app:layout_constraintStart_toStartOf="@id/constrainPilihNegara"
+            app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"
+            android:layout_marginStart="10dp"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+            app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
+            app:layout_constraintEnd_toEndOf="@id/constrainPilihNegara"
+            app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvNoHp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Hp"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:layout_marginVertical="5dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constrainPilihNegara"/>
+
+    <TextView
+        android:id="@+id/tvStarNoHp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/warning_font"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:layout_marginVertical="5dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvNoHp"
+        app:layout_constraintTop_toBottomOf="@+id/constrainPilihNegara"/>
+
+    <EditText
+        android:id="@+id/etNoHp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Masukkan Nomor Handphone"
+        android:paddingStart="10dp"
+        android:inputType="numberPassword"
+        android:layout_marginEnd="24dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/dm_sans_medium"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/transparent_bg_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNoHp"
+        android:layout_marginStart="24dp"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/btnkirim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/firstbutton"
+        android:fontFamily="@font/dm_sans_medium"
+        android:layout_marginVertical="78dp"
+        android:paddingVertical="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Kirim"
+        app:layout_constraintTop_toBottomOf="@+id/etNoHp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

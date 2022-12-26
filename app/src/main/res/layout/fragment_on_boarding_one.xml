@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/warna_background"
+    tools:context=".features.onboarding.OnBoardingOneFragment">
+
+    <ImageView
+        android:id="@+id/ivOnboardSatu"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginVertical="100dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHeadingSatu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="59dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/dm_sans_medium"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:text="Teknologi terkini yang memberikan kemudahan bagi Anda"
+        android:textAlignment="center"
+        android:textColor="@color/warna_primary_font"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivOnboardSatu" />
+
+    <TextView
+        android:id="@+id/tvDescSatu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/dm_sans_medium"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        android:textAlignment="center"
+        android:textColor="@color/warna_secondary_font"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadingSatu" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

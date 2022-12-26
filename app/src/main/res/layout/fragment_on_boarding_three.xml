@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/warna_background"
+    tools:context=".features.onboarding.OnBoardingThreeFragment">
+
+    <ImageView
+        android:id="@+id/ivOnboardSatu"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginVertical="100dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHeadingSatu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lalu, Tunggu Apalagi, Gabung sekarang dengan TransEvilz"
+        android:textColor="@color/warna_primary_font"
+        app:layout_constraintTop_toBottomOf="@+id/ivOnboardSatu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:layout_marginVertical="59dp"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/dm_sans_medium"/>
+
+    <TextView
+        android:id="@+id/tvDescSatu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        android:textColor="@color/warna_secondary_font"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadingSatu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
+        android:layout_marginVertical="5dp"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/dm_sans_medium"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

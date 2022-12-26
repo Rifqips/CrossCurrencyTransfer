@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CrossCurrencyTransfer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_layanan">Layanan</string>
+    <string name="title_riwayat">Riwayat</string>
+    <string name="title_profile">Profile</string>
+    <string name="syarat_ketentuan"><![CDATA[Syarat & Ketentuan]]></string>
+    <string name="syarat_ketentuan_yang_berlaku"><![CDATA[Syarat & Ketentuan yang berlaku]]></string>
+</resources>

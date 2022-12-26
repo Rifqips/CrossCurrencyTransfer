@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".features.home.fragment.ProfileFragment">
+
+    <TextView
+        android:id="@+id/tvTittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Akun Saya"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:layout_marginVertical="17dp"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textColor="@color/warna_primary_font"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardIdentity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:outlineSpotShadowColor="@color/warna_button"
+        android:outlineAmbientShadowColor="@color/warna_button"
+        app:cardCornerRadius="10dp"
+        android:layout_marginVertical="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTittle"
+        tools:ignore="UnusedAttribute">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainProfile"
+            android:layout_width="342dp"
+            android:layout_height="94dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivSetImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="33dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainProfile"
+                app:layout_constraintStart_toStartOf="@+id/constrainProfile"
+                app:layout_constraintTop_toTopOf="@+id/constrainProfile" />
+
+            <TextView
+                android:id="@+id/tvNamaUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dinda Salsabila"
+                android:layout_marginStart="15dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textColor="@color/warna_auth_font"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivSetImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginVertical="10dp"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintEnd_toEndOf="@+id/constrainProfile"
+                app:layout_constraintTop_toTopOf="@+id/constrainProfile"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainBahasa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="57dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardIdentity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_medium"
+            android:text="Bahasa"
+            android:textColor="@color/warna_auth_font"
+            android:layout_marginStart="25dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constrainBahasa"
+            app:layout_constraintTop_toTopOf="@id/constrainBahasa" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swLanguange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_marginEnd="25dp"
+            android:textColor="@color/warna_secondary_font"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constrainBahasa"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--  Divider  -->
+    <View
+        android:id="@+id/dividerView"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/background_field"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginVertical="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constrainBahasa" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainIzin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_medium"
+            android:text="Izin Aplikasi"
+            android:textColor="@color/warna_auth_font"
+            android:layout_marginStart="25dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constrainIzin"
+            app:layout_constraintTop_toTopOf="@id/constrainIzin" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swIzin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:layout_marginEnd="25dp"
+            android:textColor="@color/warna_secondary_font"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constrainIzin"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--  Divider  -->
+    <View
+        android:id="@+id/dividerViewdua"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/background_field"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginVertical="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constrainIzin" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainSyarat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerViewdua">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dm_sans_medium"
+            android:text="@string/syarat_ketentuan"
+            android:textColor="@color/warna_auth_font"
+            android:layout_marginStart="25dp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/constrainSyarat"
+            app:layout_constraintTop_toTopOf="@id/constrainSyarat" />
+
+        <ImageView
+            android:id="@+id/swSyarat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constrainSyarat"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--  Divider  -->
+    <View
+        android:id="@+id/dividerViewTiga"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/background_field"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginVertical="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constrainSyarat" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginVertical="29dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerViewTiga">
+
+        <ImageView
+            android:id="@+id/ivLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:textColor="@color/warning_font"
+            android:textSize="16sp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/dm_sans_medium"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

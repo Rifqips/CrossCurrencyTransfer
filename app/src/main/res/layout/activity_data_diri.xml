@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/warna_background"
+    tools:context=".features.auth.datadiri.DataDiriActivity">
+
+    <ScrollView
+        android:id="@+id/svDataDiri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainDataDiri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/svDataDiri"
+            app:layout_constraintTop_toTopOf="@+id/svDataDiri">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_marginVertical="19dp"
+                android:layout_marginStart="27dp"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintTop_toTopOf="@+id/constrainDataDiri"/>
+
+            <TextView
+                android:id="@+id/tvTitleRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textSize="20sp"
+                android:paddingStart="5dp"
+                android:fontFamily="@font/dm_sans_bold"
+                android:gravity="center"
+                android:layout_marginVertical="23dp"
+                android:textColor="@color/warna_auth_font"
+                app:layout_constraintTop_toTopOf="@+id/constrainDataDiri"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardFotoUser"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:cardCornerRadius="30dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:foregroundGravity="center"
+                android:layout_marginVertical="27dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/contrainCircleImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background_field">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ivImageUser"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:elevation="100dp"
+                        android:layout_marginStart="5dp"
+                        app:layout_constraintTop_toTopOf="@+id/contrainCircleImage"
+                        app:layout_constraintBottom_toBottomOf="@+id/contrainCircleImage"
+                        app:layout_constraintEnd_toEndOf="@+id/contrainCircleImage"
+                        app:layout_constraintStart_toStartOf="@+id/contrainCircleImage"
+                        android:textColor="@color/warna_primary_font"
+                        android:textSize="16sp"
+                        tools:ignore="RtlSymmetry" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvTambahGambar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tambah gambar "
+                android:fontFamily="@font/dm_sans"
+                app:layout_constraintTop_toBottomOf="@+id/cardFotoUser"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"/>
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTambahGambar"/>
+
+            <TextView
+                android:id="@+id/tvStarEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="18dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvEmail"
+                app:layout_constraintTop_toBottomOf="@+id/tvTambahGambar"/>
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Email"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/transparent_bg_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+                android:layout_marginStart="24dp"/>
+
+            <TextView
+                android:id="@+id/tvWargaNegara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kewarganegaraan"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etEmail"/>
+
+            <TextView
+                android:id="@+id/tvStarWargaNegara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="18dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvWargaNegara"
+                app:layout_constraintTop_toBottomOf="@+id/etEmail"/>
+
+            <RadioButton
+                android:id="@+id/rbWni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WNI"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/warna_auth_font"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintTop_toBottomOf="@+id/tvWargaNegara"/>
+
+            <RadioButton
+                android:id="@+id/rbWna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WNA"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/warna_auth_font"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toEndOf="@+id/rbWni"
+                app:layout_constraintTop_toBottomOf="@+id/tvWargaNegara"/>
+
+            <TextView
+                android:id="@+id/tvDokumen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Negara"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rbWna"/>
+
+            <TextView
+                android:id="@+id/tvStarDokumen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvDokumen"
+                app:layout_constraintTop_toBottomOf="@+id/rbWni"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constrainPilihDokumen"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/transparent_bg_button"
+                app:layout_constraintTop_toBottomOf="@+id/tvDokumen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/etNegara"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih Negara"
+                    android:fontFamily="@font/dm_sans_medium"
+                    android:textSize="12sp"
+                    android:layout_marginVertical="5dp"
+                    app:layout_constraintTop_toTopOf="@id/constrainPilihDokumen"
+                    app:layout_constraintStart_toStartOf="@id/constrainPilihDokumen"
+                    app:layout_constraintBottom_toBottomOf="@id/constrainPilihDokumen"
+                    android:layout_marginStart="10dp"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                    app:layout_constraintTop_toTopOf="@id/constrainPilihDokumen"
+                    app:layout_constraintEnd_toEndOf="@id/constrainPilihDokumen"
+                    app:layout_constraintBottom_toBottomOf="@id/constrainPilihDokumen"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                android:id="@+id/etMasukkanDokumen"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="25dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:paddingStart="10dp"
+                android:hint="Masukkan No Dokumen"
+                android:fontFamily="@font/dm_sans"
+                android:background="@drawable/rounded_bg"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"
+                app:layout_constraintTop_toBottomOf="@id/constrainPilihDokumen"/>
+
+            <TextView
+                android:id="@+id/tvNamaDepan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Depan"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="25dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etMasukkanDokumen"/>
+
+            <TextView
+                android:id="@+id/tvStarNamaDepan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvNamaDepan"
+                app:layout_constraintTop_toBottomOf="@+id/etMasukkanDokumen"/>
+
+            <EditText
+                android:id="@+id/etNamaDepan"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nama Depan"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/transparent_bg_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNamaDepan"
+                android:layout_marginStart="24dp"/>
+
+            <TextView
+                android:id="@+id/tvNamaBelakang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Belakang"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="25dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNamaDepan"/>
+
+            <TextView
+                android:id="@+id/tvStarNamaBelakang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvNamaBelakang"
+                app:layout_constraintTop_toBottomOf="@+id/etNamaDepan"/>
+
+            <EditText
+                android:id="@+id/etNamaBelakang"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nama Belakang"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/transparent_bg_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNamaBelakang"
+                android:layout_marginStart="24dp"/>
+
+            <TextView
+                android:id="@+id/tvTglLahir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Lahir"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="25dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNamaBelakang"/>
+
+            <TextView
+                android:id="@+id/tvStarTglLahir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvTglLahir"
+                app:layout_constraintTop_toBottomOf="@+id/etNamaBelakang"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constDate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/rounded_bg_sechond"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"
+                app:layout_constraintTop_toBottomOf="@id/tvTglLahir">
+
+                <TextView
+                    android:id="@+id/tvTgllahir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="mm/dd/yyyy"
+                    android:textColor="@color/warna_secondary_font"
+                    android:textColorHint="@color/warna_primary_font"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivCalender"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_baseline_calendar_month_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alamat"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="25dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constDate"/>
+
+            <TextView
+                android:id="@+id/tvStarAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvAlamat"
+                app:layout_constraintTop_toBottomOf="@+id/constDate"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="94dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/rounded_bg_sechond"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintTop_toBottomOf="@id/tvAlamat">
+
+                <EditText
+                    android:id="@+id/etAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:hint="Alamat"
+                    android:background="@drawable/transparent_bg_button"
+                    app:layout_constraintTop_toTopOf="@+id/constAlamat"
+                    app:layout_constraintEnd_toEndOf="@+id/constAlamat"
+                    app:layout_constraintStart_toStartOf="@id/constAlamat"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvJenisKelamin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jenis Kelamin"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constAlamat"/>
+
+            <TextView
+                android:id="@+id/tvStarJenisKelamin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="18dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvJenisKelamin"
+                app:layout_constraintTop_toBottomOf="@+id/constAlamat"/>
+
+            <RadioButton
+                android:id="@+id/rbPria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pria"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/warna_auth_font"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintTop_toBottomOf="@+id/tvJenisKelamin"/>
+
+            <RadioButton
+                android:id="@+id/rbWanita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wanita"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/warna_auth_font"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toEndOf="@+id/rbWni"
+                app:layout_constraintTop_toBottomOf="@+id/tvJenisKelamin"/>
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kata Sandi"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rbPria"/>
+
+            <TextView
+                android:id="@+id/tvStarPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="18dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvPassword"
+                app:layout_constraintTop_toBottomOf="@+id/rbPria"/>
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Kata Sandi"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/transparent_bg_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPassword"
+                android:layout_marginStart="24dp"/>
+
+            <TextView
+                android:id="@+id/tvConfPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Konfirmasi Kata Sandi"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etPassword"/>
+
+            <TextView
+                android:id="@+id/tvStarConfPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="@color/warning_font"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textSize="16sp"
+                android:layout_marginVertical="18dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/tvConfPassword"
+                app:layout_constraintTop_toBottomOf="@+id/etPassword"/>
+
+            <EditText
+                android:id="@+id/etConfPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Konfirmasi Kata Sandi"
+                android:paddingStart="10dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/transparent_bg_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvConfPassword"
+                android:layout_marginStart="24dp"/>
+
+
+            <RadioButton
+                android:id="@+id/rbPrivacyPolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saya setuju dengan"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/warna_auth_font"
+                android:layout_marginStart="24dp"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
+                app:layout_constraintTop_toBottomOf="@+id/etConfPassword"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dm_sans"
+                android:textColor="@color/warna_primary_font"
+                android:layout_marginVertical="18dp"
+                android:textSize="12sp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@+id/rbPrivacyPolicy"
+                app:layout_constraintTop_toBottomOf="@+id/etConfPassword"
+                android:text="@string/syarat_ketentuan_yang_berlaku"/>
+
+            <Button
+                android:id="@+id/btnLanjut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/firstbutton"
+                android:text="Lanjut"
+                android:fontFamily="@font/dm_sans_medium"
+                android:paddingVertical="10dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginVertical="30dp"
+                app:layout_constraintTop_toBottomOf="@+id/rbPrivacyPolicy"
+                app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"
+                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

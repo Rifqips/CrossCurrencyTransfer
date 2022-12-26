@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/warna_background"
+    tools:context=".features.auth.verifikasi.VerifikasiActivity">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginVertical="19dp"
+        android:layout_marginStart="27dp"/>
+
+    <TextView
+        android:id="@+id/tvTittleOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verifikasi Kode OTP"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/dm_sans_bold"
+        app:layout_constraintTop_toBottomOf="@+id/ivBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvPerTittleOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Masukkan kode verifikasi yang telah dikirim pada No.Hp yang telah anda daftarkan sebelumnya"
+        android:textSize="9sp"
+        android:textAlignment="center"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:fontFamily="@font/dm_sans_bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvTittleOtp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="01:00"
+        android:textSize="12sp"
+        android:textColor="@color/warna_verifikasi_font"
+        android:textAlignment="center"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:fontFamily="@font/dm_sans_bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvPerTittleOtp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/tvKodeOtp"
+        android:layout_width="342dp"
+        android:layout_height="48dp"
+        android:layout_marginVertical="54dp"
+        android:background="@color/background_field"
+        android:gravity="center"
+        android:hint="Masukkan 6 digit Kode OTP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainSatu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginVertical="55dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvKodeOtp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toStartOf="@+id/constrainSatu"
+            app:layout_constraintTop_toTopOf="@+id/constrainSatu"
+            app:layout_constraintBottom_toBottomOf="@+id/constrainSatu"
+            tools:ignore="UnusedAttribute">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="1"
+                    android:gravity="center"
+                    android:background="@color/background_field"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toStartOf="@+id/constrainSatu"
+            app:layout_constraintTop_toTopOf="@+id/constrainSatu"
+            app:layout_constraintEnd_toEndOf="@+id/constrainSatu"
+            tools:ignore="UnusedAttribute">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="2"
+                    android:gravity="center"
+                    android:background="@color/background_field"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constrainSatu"
+            app:layout_constraintTop_toTopOf="@+id/constrainSatu"
+            app:layout_constraintEnd_toEndOf="@+id/constrainSatu"
+            tools:ignore="UnusedAttribute">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="3"
+                    android:gravity="center"
+                    android:background="@color/background_field"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainDua"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginVertical="55dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/constrainSatu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="@+id/constrainDua"
+            app:layout_constraintTop_toTopOf="@+id/constrainDua"
+            app:layout_constraintBottom_toBottomOf="@+id/constrainDua"
+            tools:ignore="UnusedAttribute">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="4"
+                    android:gravity="center"
+                    android:background="@color/background_field"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintStart_toStartOf="@+id/constrainDua"
+            app:layout_constraintTop_toTopOf="@+id/constrainDua"
+            app:layout_constraintEnd_toEndOf="@+id/constrainDua"
+            tools:ignore="UnusedAttribute">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="5"
+                    android:gravity="center"
+                    android:background="@color/background_field"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constrainDua"
+            app:layout_constraintTop_toTopOf="@+id/constrainDua"
+            app:layout_constraintEnd_toEndOf="@+id/constrainDua"
+            tools:ignore="UnusedAttribute">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="6"
+                    android:gravity="center"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainTiga"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginVertical="55dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/constrainDua"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="@+id/constrainTiga"
+            app:layout_constraintTop_toTopOf="@+id/constrainTiga"
+            app:layout_constraintBottom_toBottomOf="@+id/constrainTiga"
+            tools:ignore="UnusedAttribute">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="7"
+                    android:gravity="center"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="@+id/constrainTiga"
+            app:layout_constraintTop_toTopOf="@+id/constrainTiga"
+            app:layout_constraintEnd_toEndOf="@+id/constrainTiga"
+            tools:ignore="UnusedAttribute">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="8"
+                    android:gravity="center"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:elevation="3dp"
+            app:cardElevation="1dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constrainTiga"
+            app:layout_constraintTop_toTopOf="@+id/constrainTiga"
+            app:layout_constraintEnd_toEndOf="@+id/constrainTiga"
+            tools:ignore="UnusedAttribute">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="9"
+                    android:gravity="center"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainEmpat"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginVertical="55dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/constrainTiga"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:cardCornerRadius="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="@+id/constrainEmpat"
+            app:layout_constraintTop_toTopOf="@+id/constrainEmpat"
+            app:layout_constraintEnd_toEndOf="@+id/constrainEmpat"
+            tools:ignore="UnusedAttribute">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_field">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="0"
+                    android:gravity="center"
+                    android:elevation="100dp"
+                    android:textColor="@color/warna_primary_font"
+                    android:textSize="16sp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/ivDeleteOtp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintTop_toTopOf="@+id/constrainEmpat"
+            app:layout_constraintBottom_toBottomOf="@+id/constrainEmpat"
+            app:layout_constraintEnd_toEndOf="@+id/constrainEmpat"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/lyOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constrainEmpat">
+
+        <TextView
+            android:id="@+id/tvDescSatu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/dm_sans_medium"
+            android:text="Belum dapat Kode OTP ?"
+            android:textAlignment="center"
+            android:textColor="@color/warna_secondary_font"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPerDescSatu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/dm_sans_medium"
+            android:text="Kirim Ulang Kode OTP"
+            android:textAlignment="center"
+            android:textColor="@color/warna_verifikasi_font"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
