@@ -6,6 +6,11 @@ import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
 import com.caverock.androidsvg.SVG
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLoginBinding
@@ -15,7 +20,7 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActi
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +36,21 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.tvPerDescSatu.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
+        binding.etEmail.doOnTextChanged { text, start, before, count ->
+            if ( !isValidEmail(binding.etEmail.text.toString()) )
+                binding.tvWarningEmail.isVisible = true
+            else
+                binding.tvWarningEmail.isInvisible = true
+        }
+    }
+
+    fun isValidEmail(target: CharSequence?): Boolean {
+        return if (TextUtils.isEmpty(target)) {
+            false
+        } else {
+            Patterns.EMAIL_ADDRESS.matcher(target).matches()
         }
     }
 }

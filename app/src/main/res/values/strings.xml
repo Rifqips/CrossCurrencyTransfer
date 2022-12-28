@@ -8,4 +8,7 @@
     <string name="title_profile">Profile</string>
     <string name="syarat_ketentuan"><![CDATA[Syarat & Ketentuan]]></string>
     <string name="syarat_ketentuan_yang_berlaku"><![CDATA[Syarat & Ketentuan yang berlaku]]></string>
+    <string name="masukkan_email_anda_untuk">Masukkan email anda untuk membuat kata sandi baru</string>
+    <string name="permohonan_peru">Permohonan Perubahan kata sandi telah dikirim ke email anda</string>
+    <string name="buat_katasandi">Buat kata sandi baru anda</string>
 </resources>
