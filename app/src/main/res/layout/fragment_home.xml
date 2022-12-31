@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constrainUserHome"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="383dp"
         android:background="@drawable/bg_half_rounded_home"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,68 +53,119 @@
             app:layout_constraintTop_toTopOf="@+id/constrainUserHome" />
 
         <TextView
-            android:id="@+id/tvMetodeTf"
+            android:id="@+id/tvLastTransaksi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Metode Transfer"
-            android:textSize="24sp"
+            android:text="Transaksi Terakhir"
+            android:textSize="16sp"
             android:textColor="@color/white"
-            android:fontFamily="@font/dm_sans_bold"
-            android:layout_marginVertical="30dp"
+            android:fontFamily="@font/dm_sans_medium"
+            android:layout_marginVertical="60dp"
             android:layout_marginStart="25dp"
             app:layout_constraintStart_toStartOf="@+id/constrainUserHome"
             app:layout_constraintTop_toBottomOf="@+id/tvGreeting"/>
 
-        <androidx.cardview.widget.CardView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTransaksiTerakhir"
             android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvLastTransaksi"
+            app:layout_constraintStart_toStartOf="@+id/constrainUserHome"
+            app:layout_constraintEnd_toEndOf="@+id/constrainUserHome"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="320dp" />
+
+    <LinearLayout
+        android:id="@+id/lyMetodeTf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/guideline1">
+
+        <androidx.cardview.widget.CardView
+        android:layout_width="168dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:outlineSpotShadowColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/constrainUserHome"
+        app:layout_constraintEnd_toEndOf="@id/constrainUserHome">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contraintTfLokal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/warna_background_metode"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Transfer Lokal"
+                android:textAlignment="center"
+                android:fontFamily="@font/dm_sans_bold"
+                android:textSize="13sp"
+                app:layout_constraintTop_toTopOf="@+id/contraintTfLokal"
+                app:layout_constraintEnd_toEndOf="@+id/contraintTfLokal"
+                app:layout_constraintStart_toStartOf="@+id/contraintTfLokal"
+                app:layout_constraintBottom_toBottomOf="@+id/contraintTfLokal"
+                android:src="@drawable/icbankaccount"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="168dp"
             android:layout_height="60dp"
             app:cardCornerRadius="10dp"
             android:layout_marginVertical="15dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:outlineSpotShadowColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/constrainUserHome"
-            app:layout_constraintEnd_toEndOf="@id/constrainUserHome"
-            app:layout_constraintTop_toBottomOf="@id/tvMetodeTf">
+            app:layout_constraintEnd_toEndOf="@id/constrainUserHome">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/contraintAkunbank"
+                android:id="@+id/contraintTfInter"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:background="@color/warna_verifikasi_font"
+                android:background="@color/warna_background_metode"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="85dp"
-                    app:layout_constraintTop_toTopOf="@+id/contraintAkunbank"
-                    app:layout_constraintStart_toStartOf="@+id/contraintAkunbank"
-                    app:layout_constraintBottom_toBottomOf="@+id/contraintAkunbank"
-                    android:src="@drawable/icbankaccount"/>
-
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:text="Bank Account"
-                    android:layout_marginStart="21dp"
+                    android:text="Transfer Internasional"
                     android:textAlignment="center"
                     android:fontFamily="@font/dm_sans_bold"
-                    android:textSize="16sp"
-                    app:layout_constraintTop_toTopOf="@+id/contraintAkunbank"
-                    app:layout_constraintEnd_toEndOf="@+id/contraintAkunbank"
-                    app:layout_constraintStart_toStartOf="@+id/contraintAkunbank"
-                    app:layout_constraintBottom_toBottomOf="@+id/contraintAkunbank"
-                    android:src="@drawable/icbankaccount"/>
-                    />
+                    android:textSize="13sp"
+                    app:layout_constraintTop_toTopOf="@+id/contraintTfInter"
+                    app:layout_constraintEnd_toEndOf="@+id/contraintTfInter"
+                    app:layout_constraintStart_toStartOf="@+id/contraintTfInter"
+                    app:layout_constraintBottom_toBottomOf="@+id/contraintTfInter"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -126,18 +177,7 @@
         android:layout_marginVertical="13dp"
         android:layout_marginStart="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constrainUserHome"/>
+        app:layout_constraintTop_toBottomOf="@+id/lyMetodeTf"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kurs Mata Uang"
-        android:textSize="10sp"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textColor="@color/warna_font_hari"
-        android:layout_marginVertical="20dp"
-        android:layout_marginEnd="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constrainUserHome"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

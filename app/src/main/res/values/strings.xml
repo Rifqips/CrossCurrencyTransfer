@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">Home</string>
+    <string name="selected_item">Selected item:</string>
     <string name="title_layanan">Layanan</string>
     <string name="title_riwayat">Riwayat</string>
     <string name="title_profile">Profile</string>
@@ -11,4 +12,23 @@
     <string name="masukkan_email_anda_untuk">Masukkan email anda untuk membuat kata sandi baru</string>
     <string name="permohonan_peru">Permohonan Perubahan kata sandi telah dikirim ke email anda</string>
     <string name="buat_katasandi">Buat kata sandi baru anda</string>
+
+    <string-array name="currencies">
+
+        <item>Indo</item>
+        <item>Amrik</item>
+        <item>Ausi</item>
+        <item>Singapore</item>
+        <item>Japan</item>
+
+    </string-array>
+
+    <string-array name="currenciesResult">
+        <item>IDR</item>
+        <item>USD</item>
+        <item>AUD</item>
+        <item>SGD</item>
+        <item>JPY</item>
+
+    </string-array>
 </resources>
