@@ -44,6 +44,14 @@ class LoginActivity : AppCompatActivity() {
             else
                 binding.tvWarningEmail.isInvisible = true
         }
+
+        binding.etPassword.doOnTextChanged { text, start, before, count ->
+            binding.etPassword.text.toString().length < 8 && binding.etPassword.text.toString().length > 16 &&
+                    binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
+                binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
+                    binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
+                    binding.etPassword.text.toString().contains("[]".toRegex())
+        }
     }
 
     fun isValidEmail(target: CharSequence?): Boolean {
