@@ -1,26 +1,15 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import android.widget.*
-import com.google.android.material.snackbar.Snackbar
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.ListCodeAsal
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityInternationalTransferBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.codepicker.AdapterCodePickAsal
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import java.net.URL
 
 class InternationalTransferActivity : AppCompatActivity() {
 
@@ -47,12 +36,19 @@ class InternationalTransferActivity : AppCompatActivity() {
     private fun spinnerSetup() {
         binding.ivAsalTf?.setFactory({
             val imgView = ImageView(applicationContext)
-            imgView.scaleType = ImageView.ScaleType.CENTER_CROP
+            imgView.scaleType = ImageView.ScaleType.CENTER_INSIDE
+            imgView })
+
+        binding.ivTujuanTf?.setFactory({
+            val imgView = ImageView(applicationContext)
+            imgView.scaleType = ImageView.ScaleType.CENTER_INSIDE
             imgView })
 
         val spinner = binding.spinnerAsal
+        val spinnerTujuan = binding.spinnerTujuan
         val currencies = resources.getStringArray(R.array.currencies)
         val currenciesResult = resources.getStringArray(R.array.currenciesResult)
+
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, currencies,)
@@ -66,6 +62,27 @@ class InternationalTransferActivity : AppCompatActivity() {
                                             view: View, position: Int, id: Long) {
                     binding.ivAsalTf.setImageResource(images[position])
                     binding.etDropAsal.setText(currencies[position])
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
+        }
+
+        if (spinnerTujuan != null) {
+            val adapter = ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, currencies,)
+            val adapterResul = ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, currenciesResult,)
+            spinnerTujuan.adapter = adapter
+            spinnerTujuan.adapter = adapterResul
+            spinnerTujuan.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
+                    binding.ivTujuanTf.setImageResource(images[position])
+                    binding.etDropTujuan.setText(currencies[position])
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
