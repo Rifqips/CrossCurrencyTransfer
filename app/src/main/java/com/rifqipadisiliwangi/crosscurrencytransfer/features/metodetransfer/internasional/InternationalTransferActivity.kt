@@ -21,7 +21,6 @@ class InternationalTransferActivity : AppCompatActivity() {
         R.drawable.ic_jpn,
     )
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInternationalTransferBinding.inflate(layoutInflater)
@@ -29,6 +28,10 @@ class InternationalTransferActivity : AppCompatActivity() {
         spinnerSetup()
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, HomeBottomActivity::class.java))
+        }
+
+        binding.btnSelanjutnya.setOnClickListener {
+            startActivity(Intent(this, BankInternationalActivity::class.java))
         }
 
     }
