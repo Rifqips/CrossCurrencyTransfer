@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankInternationalBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityInternationalTransferBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 

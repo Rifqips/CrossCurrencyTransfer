@@ -16,5 +16,9 @@ class BankInternationalActivity : AppCompatActivity() {
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, InternationalTransferActivity::class.java))
         }
+
+        binding.btnSelanjutnya.setOnClickListener {
+            startActivity(Intent(this, PembayaranTransferActivity::class.java))
+        }
     }
 }

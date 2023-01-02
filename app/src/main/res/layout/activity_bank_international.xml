@@ -289,23 +289,26 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintBtnkirim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="41dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal"
-        android:gravity="center">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
+            android:id="@+id/btnAturUlang"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="166dp"
+            android:layout_width="180dp"
             android:layout_height="55dp"
-            android:layout_marginStart="15dp"
             android:fontFamily="@font/dm_sans_bold"
             android:padding="10dp"
             android:text="Atur Ulang"
+            android:textAllCaps="false"
             android:textColor="@color/warning_font"
             android:textSize="16sp"
             app:circularflow_radiusInDP="10dp"
@@ -314,20 +317,15 @@
             app:strokeColor="@color/warning_font" />
 
         <Button
-            android:id="@+id/btnkirim"
-            android:layout_width="166dp"
-            android:layout_height="55dp"
+            android:id="@+id/btnSelanjutnya"
             style="@style/firstbutton"
+            android:layout_width="180dp"
+            android:layout_height="55dp"
             android:fontFamily="@font/dm_sans_medium"
-            android:layout_marginVertical="78dp"
-            android:paddingVertical="10dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:text="Kirim"
-            app:layout_constraintTop_toBottomOf="@+id/etNoHp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="Selanjutnya"
+            app:layout_constraintEnd_toEndOf="@+id/constraintBtnkirim"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintBtnkirim"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
