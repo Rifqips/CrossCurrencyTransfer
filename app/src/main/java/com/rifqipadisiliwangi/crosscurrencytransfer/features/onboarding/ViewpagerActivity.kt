@@ -4,15 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityViewpagerBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.FragmentOnBoardingThreeBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.ViewPagerFragmentAdapter
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.onboarding.ViewPagerFragmentAdapter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login.LoginActivity
-import kotlinx.coroutines.flow.combineTransform
 import me.relex.circleindicator.CircleIndicator3
 
 class ViewpagerActivity : AppCompatActivity() {

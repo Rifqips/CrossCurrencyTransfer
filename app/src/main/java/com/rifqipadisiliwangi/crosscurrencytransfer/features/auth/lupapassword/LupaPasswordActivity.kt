@@ -30,17 +30,17 @@ class LupaPasswordActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
         }
 
-        binding.btnLogin.setOnClickListener {
+        binding.btnKirim.setOnClickListener {
             startActivity(Intent(this, LupaPasswordActivityPw::class.java))
         }
         binding.etEmail.doOnTextChanged { text, start, before, count ->
             if ( !isValidEmail(binding.etEmail.text.toString()) ) {
                 binding.tvWarningEmail.isVisible = true
-                binding.btnLogin.isEnabled = false
+                binding.btnKirim.isEnabled = false
             }
             else {
                 binding.tvWarningEmail.isInvisible = true
-                binding.btnLogin.isEnabled = true
+                binding.btnKirim.isEnabled = true
             }
 
         }

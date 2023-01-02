@@ -42,6 +42,13 @@
         <item name="cornerRadius">10dp</item>
         <item name="textAllCaps">false</item>
     </style>
+
+    <style name="outlinedButton">
+        <item name="android:textSize">18sp</item>
+        <item name="strokeColor">@color/warning_font</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="textAllCaps">false</item>
+    </style>
     <!--    <style name="background">-->
     <!--        <item name="backgroundTint">@color/warna_background</item>-->
     <!--    </style>-->

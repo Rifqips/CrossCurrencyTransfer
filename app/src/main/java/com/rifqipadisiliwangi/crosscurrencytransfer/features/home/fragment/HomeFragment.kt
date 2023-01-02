@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.FragmentHomeBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.transfer.TransferActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.InternationalTransferActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.lokal.LokalTransferActivity
 
 class HomeFragment : Fragment() {
 
@@ -31,8 +31,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.contraintAkunbank.setOnClickListener {
-            startActivity(Intent(context, TransferActivity::class.java))
+        binding.contraintTfInter.setOnClickListener {
+            startActivity(Intent(context, InternationalTransferActivity::class.java))
+        }
+        binding.contraintTfLokal.setOnClickListener {
+            startActivity(Intent(context, LokalTransferActivity::class.java))
         }
     }
 }

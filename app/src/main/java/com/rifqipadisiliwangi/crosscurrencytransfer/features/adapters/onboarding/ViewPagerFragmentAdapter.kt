@@ -1,4 +1,4 @@
-package com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters
+package com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.onboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
