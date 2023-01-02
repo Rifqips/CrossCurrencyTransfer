@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/warna_background"
+    tools:context=".features.metodetransfer.lokal.PengirimTransferLokalActivity">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:layout_marginVertical="19dp"
+        android:layout_marginStart="27dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvTitleAkunBank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Akun Bank"
+        android:textSize="20sp"
+        android:paddingStart="5dp"
+        android:fontFamily="@font/dm_sans_bold"
+        android:gravity="center"
+        android:layout_marginVertical="23dp"
+        android:textColor="@color/warna_primary_font"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvNamaPengirim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Pengirim"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:textColor="@color/warna_auth_font"
+        android:layout_marginStart="24dp"
+        android:layout_marginVertical="38dp"
+        app:layout_constraintTop_toBottomOf="@+id/ivBack"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvStarNamaPengirim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/warning_font"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:layout_marginVertical="33dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvNamaPengirim"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleAkunBank"/>
+
+
+    <EditText
+        android:id="@+id/etNamaPengirim"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingStart="10dp"
+        android:inputType="text"
+        android:layout_marginEnd="24dp"
+        android:textSize="12sp"
+        android:hint="Nama Pengirim"
+        android:textColorHint="@color/warna_auth_font"
+        android:textColor="@color/warna_auth_font"
+        android:fontFamily="@font/dm_sans_medium"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/transparent_bg_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamaPengirim"
+        android:layout_marginStart="24dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/tvPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pin Evilz"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:textColor="@color/warna_auth_font"
+        android:layout_marginStart="24dp"
+        android:layout_marginVertical="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/etNamaPengirim"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvStarPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/warning_font"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:layout_marginVertical="28dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvPin"
+        app:layout_constraintTop_toBottomOf="@+id/etNamaPengirim"/>
+
+
+    <EditText
+        android:id="@+id/etPinEvilz"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingStart="10dp"
+        android:inputType="text"
+        android:layout_marginEnd="24dp"
+        android:textSize="12sp"
+        android:hint="Pin Evilz"
+        android:textColorHint="@color/warna_auth_font"
+        android:textColor="@color/warna_auth_font"
+        android:fontFamily="@font/dm_sans_medium"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/transparent_bg_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPin"
+        android:layout_marginStart="24dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/tvLupaPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lupa Pin Evilz ?"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:textColor="@color/warna_button"
+        android:layout_marginVertical="5dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/etPinEvilz"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/btnBayarSekarang"
+        style="@style/firstbutton"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:fontFamily="@font/dm_sans_medium"
+        android:text="Bayar Sekarang"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

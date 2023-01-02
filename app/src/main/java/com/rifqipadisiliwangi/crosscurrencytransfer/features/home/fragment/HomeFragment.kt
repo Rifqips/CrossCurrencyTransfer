@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.FragmentHomeBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.InternationalTransferActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.lokal.LokalTransferActivity
 
 class HomeFragment : Fragment() {
 
@@ -32,6 +33,9 @@ class HomeFragment : Fragment() {
 
         binding.contraintTfInter.setOnClickListener {
             startActivity(Intent(context, InternationalTransferActivity::class.java))
+        }
+        binding.contraintTfLokal.setOnClickListener {
+            startActivity(Intent(context, LokalTransferActivity::class.java))
         }
     }
 }
