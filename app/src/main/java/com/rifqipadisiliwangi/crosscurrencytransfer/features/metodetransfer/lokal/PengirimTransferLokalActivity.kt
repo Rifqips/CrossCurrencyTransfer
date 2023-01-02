@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferLokalBinding
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.PembayaranTransferActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.SuksesTransferActivity
 
 class PengirimTransferLokalActivity : AppCompatActivity() {
@@ -18,6 +19,10 @@ class PengirimTransferLokalActivity : AppCompatActivity() {
 
         binding.btnBayarSekarang.setOnClickListener {
             startActivity(Intent(this, SuksesTransferLokalActivity::class.java))
+        }
+
+        binding.ivBack.setOnClickListener {
+            startActivity(Intent(this, PembayaranTransferLokalActivity::class.java))
         }
     }
 }

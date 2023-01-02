@@ -17,5 +17,9 @@ class PengirimTransferActivity : AppCompatActivity() {
         binding.btnBayarSekarang.setOnClickListener {
             startActivity(Intent(this, SuksesTransferActivity::class.java))
         }
+
+        binding.ivBack.setOnClickListener {
+            startActivity(Intent(this, PembayaranTransferActivity::class.java))
+        }
     }
 }
