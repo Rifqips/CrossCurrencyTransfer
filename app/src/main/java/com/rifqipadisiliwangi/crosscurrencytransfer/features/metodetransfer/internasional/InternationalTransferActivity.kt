@@ -65,7 +65,7 @@ class InternationalTransferActivity : AppCompatActivity() {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
                     binding.ivAsalTf.setImageResource(images[position])
-                    binding.etDropAsal.setText(currencies[position])
+                    binding.etDropAsal.setText(currenciesResult[position])
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {

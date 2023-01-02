@@ -74,13 +74,12 @@
 
         </FrameLayout>
 
-
         <Spinner
             android:id="@+id/spinner_asal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:spinnerMode="dialog"
-            android:backgroundTint="#000000"
+            android:spinnerMode="dropdown"
+            android:backgroundTint="@color/warna_primary_font"
             app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
             app:layout_constraintStart_toEndOf="@id/frameAsalTf"
             app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"/>
@@ -93,7 +92,7 @@
             android:layout_marginStart="21dp"
             android:textSize="16sp"
             android:fontFamily="@font/dm_sans_medium"
-            android:textColor="@color/warna_auth_font"
+            android:textColor="@color/background_field"
             android:background="@drawable/rounded_bg_sechond"
             android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
             app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
@@ -135,8 +134,8 @@
             android:id="@+id/spinner_tujuan"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:spinnerMode="dialog"
-            android:backgroundTint="#000000"
+            android:spinnerMode="dropdown"
+            android:backgroundTint="@color/warna_primary_font"
             app:layout_constraintTop_toTopOf="@id/constrainTujuanNegara"
             app:layout_constraintStart_toEndOf="@id/frameTujuanTf"
             app:layout_constraintBottom_toBottomOf="@id/constrainTujuanNegara"/>
@@ -150,7 +149,7 @@
             android:layout_marginStart="21dp"
             android:textSize="16sp"
             android:fontFamily="@font/dm_sans_medium"
-            android:textColor="@color/warna_auth_font"
+            android:textColor="@color/background_field"
             android:background="@drawable/rounded_bg_sechond"
             android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
             app:layout_constraintTop_toTopOf="@id/constrainTujuanNegara"
