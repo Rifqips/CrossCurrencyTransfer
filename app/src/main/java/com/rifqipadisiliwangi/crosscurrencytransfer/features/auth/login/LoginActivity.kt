@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, HomeBottomActivity::class.java))
+            startActivity(Intent(this, PinActivity::class.java))
         }
         binding.tvPerDescSatu.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
@@ -46,12 +46,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.etPassword.doOnTextChanged { text, start, before, count ->
-            binding.etPassword.text.toString().length < 8 && binding.etPassword.text.toString().length > 16 &&
+            binding.tvWarningKataSandi.isInvisible = binding.etPassword.text.toString().length > 8 &&
                     binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
-                binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
+                    binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
                     binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
-                    binding.etPassword.text.toString().contains("[]".toRegex())
+                    binding.etPassword.text.toString().contains("[@*#]".toRegex())
+
+            binding.btnLogin.isEnabled = (binding.tvWarningEmail.isInvisible && binding.tvWarningKataSandi.isInvisible)
         }
+
     }
 
     fun isValidEmail(target: CharSequence?): Boolean {

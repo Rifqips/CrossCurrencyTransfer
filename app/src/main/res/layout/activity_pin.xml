@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.auth.login.PinActivity"
+    android:background="@color/warna_background">
+
+    <ImageView
+        android:id="@+id/ivArrowBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="30dp"
+        android:minHeight="30dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:layout_marginTop="27dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Membuat Pin Evilz"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintStart_toEndOf="@+id/ivArrowBack"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/ivInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="24dp"
+        android:minHeight="24dp"
+        android:src="@drawable/ic_info"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivArrowBack"/>
+
+    <TextView
+        android:layout_width="313dp"
+        android:layout_height="wrap_content"
+        android:text="@string/pin_evilz_ini"
+        android:textColor="@color/warna_secondary_font"
+        android:layout_marginTop="44dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@id/ivInfo"
+        app:layout_constraintTop_toBottomOf="@+id/ivArrowBack"/>
+
+    <TextView
+        android:id="@+id/tvBuatPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buat Pin Evilz"
+        android:textColor="@color/black"
+        android:layout_marginTop="69dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivInfo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/warning_font"
+        android:layout_marginTop="69dp"
+        android:layout_marginStart="3dp"
+        app:layout_constraintStart_toEndOf="@+id/tvBuatPin"
+        app:layout_constraintTop_toBottomOf="@+id/ivInfo" />
+
+    <EditText
+        android:id="@+id/etPin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="Masukkan 6 digit Pin"
+        android:textColorHint="@color/warna_secondary_font"
+        android:inputType="number"
+        android:maxLength="6"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/transparent_bg_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBuatPin"/>
+
+    <TextView
+        android:id="@+id/tvKonfirmasiPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Konfirmasi Pin Evilz"
+        android:textColor="@color/black"
+        android:layout_marginTop="74dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBuatPin"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/warning_font"
+        android:layout_marginTop="74dp"
+        android:layout_marginStart="3dp"
+        app:layout_constraintStart_toEndOf="@id/tvKonfirmasiPin"
+        app:layout_constraintTop_toBottomOf="@+id/tvBuatPin"/>
+
+    <EditText
+        android:id="@+id/etKonfirmasiPin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="Masukkan 6 digit Pin yang telah dibuat"
+        android:textColorHint="@color/warna_secondary_font"
+        android:inputType="number"
+        android:maxLength="6"
+        android:background="@drawable/transparent_bg_button"
+        android:textColor="@color/black"
+        android:layout_marginTop="100dp"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBuatPin"/>
+
+    <Button
+        android:id="@+id/btnKirimPin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Kirim"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/warna_button"
+        android:layout_marginTop="300dp"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etKonfirmasiPin"
+        android:enabled="false"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,20 @@
         android:theme="@style/Theme.CrossCurrencyTransfer"
         tools:targetApi="31">
         <activity
+            android:name=".features.auth.login.PinActivity3"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".features.auth.login.PinActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".features.auth.lupapassword.LupaPasswordActivityPw"
             android:exported="false">
             <meta-data

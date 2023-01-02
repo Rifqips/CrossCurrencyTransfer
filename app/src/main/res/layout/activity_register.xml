@@ -87,10 +87,11 @@
         app:layout_constraintTop_toBottomOf="@+id/ivRegist"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:src=""
+        android:id="@+id/imgNegara"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/transparent_bg_button"
         app:layout_constraintEnd_toStartOf="@+id/frameNegara"
         app:layout_constraintTop_toBottomOf="@+id/tvNegara"/>
 
@@ -110,7 +111,8 @@
             android:id="@+id/spinnerNegara"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"/>
+            android:minHeight="48dp"
+            android:background="@color/background_field"/>
 
     </FrameLayout>
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
@@ -175,12 +177,23 @@
         app:layout_constraintStart_toEndOf="@+id/tvNoHp"
         app:layout_constraintTop_toBottomOf="@+id/frameNegara"/>
 
+    <TextView
+        android:id="@+id/tvKodeNegara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_marginTop="5dp"
+        android:textSize="25sp"
+        android:textColor="@color/warna_primary_font"
+        android:background="@drawable/transparent_bg_button"
+        app:layout_constraintEnd_toStartOf="@+id/etNoHp"
+        app:layout_constraintTop_toBottomOf="@+id/tvNoHp"/>
+
     <EditText
         android:id="@+id/etNoHp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Masukkan Nomor Handphone"
-        android:paddingStart="10dp"
+        android:hint="   Masukkan Nomor Handphone"
         android:inputType="numberPassword"
         android:layout_marginEnd="24dp"
         android:textSize="12sp"
@@ -191,7 +204,7 @@
         android:background="@drawable/transparent_bg_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNoHp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="80dp"
         tools:ignore="RtlSymmetry" />
 
     <Button
