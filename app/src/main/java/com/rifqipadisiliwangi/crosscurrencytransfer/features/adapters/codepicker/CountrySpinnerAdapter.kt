@@ -10,12 +10,7 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.Countr
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ItemCodepickerBinding
 
 class CountrySpinnerAdapter( context: Context, dataSource: List<CountryData>,
-<<<<<<< HEAD
-//                             private val clickListener: (CountryData?) -> Unit
-
-=======
                              private val clickListener: (CountryData?) -> Unit
->>>>>>> spinner-experimen
 ): ArrayAdapter<CountryData>(context, 0, dataSource) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View{
@@ -34,7 +29,7 @@ class CountrySpinnerAdapter( context: Context, dataSource: List<CountryData>,
         if (item != null){
             view.ivCodepicker.setImageResource(item.flagResource)
             view.ivCodepicker.setOnClickListener {
-//                clickListener.invoke(item)
+                clickListener.invoke(item)
             }
        }
         return view.root
