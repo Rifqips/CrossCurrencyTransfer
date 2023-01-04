@@ -23,13 +23,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <TextView
-        android:id="@+id/tvDefaultCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dummy Default Country"
-        app:layout_constraintStart_toEndOf="@+id/tvCodeCountry"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
