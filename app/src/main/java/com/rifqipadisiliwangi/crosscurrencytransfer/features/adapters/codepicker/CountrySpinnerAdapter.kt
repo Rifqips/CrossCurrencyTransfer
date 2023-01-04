@@ -10,7 +10,7 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ItemCodepickerBi
 import kotlinx.coroutines.flow.combine
 
 class CountrySpinnerAdapter( context: Context, dataSource: List<CountryData>,
-                             private val clickListener: (CountryData?) -> Unit
+//                             private val clickListener: (CountryData?) -> Unit
 
 ): ArrayAdapter<CountryData>(context, 0, dataSource) {
 
@@ -30,7 +30,7 @@ class CountrySpinnerAdapter( context: Context, dataSource: List<CountryData>,
         if (item != null){
             view.ivCodepicker.setImageResource(item.flagResource)
             view.ivCodepicker.setOnClickListener {
-                clickListener.invoke(item)
+//                clickListener.invoke(item)
             }
        }
         return parent

@@ -17,10 +17,7 @@ class InternationalTransferActivity : AppCompatActivity() {
     private var countryData : MutableList<CountryData> = mutableListOf()
     private lateinit var countryAdapter: CountrySpinnerAdapter
     private lateinit var countryList: List<CountryData>
-    private val clickListener: (CountryData?) -> Unit
-        get() {
-            TODO()
-        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,7 +101,7 @@ class InternationalTransferActivity : AppCompatActivity() {
         )
 
         binding.spinnerAsal.apply {
-            adapter = CountrySpinnerAdapter(applicationContext, countryData, clickListener)
+            adapter = CountrySpinnerAdapter(applicationContext, countryList)
             onItemSelectedListener = object : AdapterView.OnItemSelectedListener
             {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long)
