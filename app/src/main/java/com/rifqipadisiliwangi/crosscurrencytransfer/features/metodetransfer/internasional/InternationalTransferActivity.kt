@@ -11,16 +11,13 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityInternat
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.codepicker.CountrySpinnerAdapter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 
-class InternationalTransferActivity : AppCompatActivity() {
+class InternationalTransferActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding : ActivityInternationalTransferBinding
     private var countryData : MutableList<CountryData> = mutableListOf()
     private lateinit var countryAdapter: CountrySpinnerAdapter
     private lateinit var countryList: List<CountryData>
-    private val clickListener: (CountryData?) -> Unit
-        get() {
-            TODO()
-        }
+    private var listData: CountryData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +37,7 @@ class InternationalTransferActivity : AppCompatActivity() {
 
     }
 
-    private fun loadSpinner()    {
+    private fun loadSpinner() {
         countryList = listOf()
         countryData.addAll(
             listOf(
@@ -52,17 +49,32 @@ class InternationalTransferActivity : AppCompatActivity() {
             )
         )
 
-        binding.spinnerAsal.apply {
-            adapter = CountrySpinnerAdapter(applicationContext, countryData, clickListener)
-            onItemSelectedListener = object : AdapterView.OnItemSelectedListener
-            {
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long)
-                {
-                    countryData[position]
-                }
+        val spiner = binding.spinnerAsal
+        countryList = countryData
+        countryAdapter = CountrySpinnerAdapter(this, countryList)
+        spiner.adapter = countryAdapter
+        spiner.onItemSelectedListener = this
 
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-            }
-        }
+//        binding.spinnerAsal.apply {
+//            adapter = CountrySpinnerAdapter(applicationContext, countryList)
+//            onItemSelectedListener = object : AdapterView.OnItemSelectedListener
+//            {
+//                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long)
+//                {
+//                    countryList[position]
+//                }
+//
+//                override fun onNothingSelected(p0: AdapterView<*>?) {}
+//            }
+//        }
+
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        listData = parent?.getItemAtPosition(position) as CountryData
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }

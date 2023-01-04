@@ -14,8 +14,6 @@ class AdapterCodePickAsal (): RecyclerView.Adapter<AdapterCodePickAsal.ViewHolde
 
     }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = ItemCodepickerBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(view)
