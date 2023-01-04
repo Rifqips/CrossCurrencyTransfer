@@ -2,7 +2,13 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.int
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doBeforeTextChanged
+import androidx.core.widget.doOnTextChanged
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityInternationalTransferBinding
@@ -21,7 +27,7 @@ class InternationalTransferActivity : AppCompatActivity() {
         binding = ActivityInternationalTransferBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadSpinner()
-//        spinnerSetup()
+        exchangedSetup()
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, HomeBottomActivity::class.java))
@@ -32,6 +38,43 @@ class InternationalTransferActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun exchangedSetup(){
+
+            if (binding.tvTotal.text.toString() == null || binding.tvTotal.text.toString() ==" "){
+                Toast.makeText(this,"clicked on reset textView,\n output textView already reset",Toast.LENGTH_LONG).show()
+            }else{
+                binding.tvTotal.setText("").toString()
+            }
+               binding.etDropAsal.addTextChangedListener(object: TextWatcher {
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        val inputValue: String = binding.etDropAsal.text.toString()+ " " + "IDR"
+                        if (inputValue == null || inputValue ==" "){
+                            Toast.makeText(applicationContext,"please input data, edit text cannot be blank",Toast.LENGTH_LONG).show()
+                        }else{
+                            binding.tvTotal.setText(inputValue).toString()
+                        }
+                    }
+
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//                        Toast.makeText(applicationContext,"executed while making any change over EditText",Toast.LENGTH_SHORT).show()
+                    }
+                    override fun afterTextChanged(p0: Editable?) {
+                        //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        val inputValue: String = binding.etDropAsal.text.toString()+ " " + "IDR"
+                        if (inputValue == null || inputValue ==" "){
+                            Toast.makeText(applicationContext,"please input data, edit text cannot be blank",Toast.LENGTH_LONG).show()
+                        }else{
+                            binding.tvTotal.setText(inputValue).toString()
+                        }
+                    }
+                })
+
+
+        }
+
 
     private fun loadSpinner() {
         countryData.addAll(
@@ -44,9 +87,9 @@ class InternationalTransferActivity : AppCompatActivity() {
             )
         )
 
-        val spinner = binding.spinnerAsal
+        val spinner = binding.spinnerTujuan
         countryAdapter = CountrySpinnerAdapter(this, countryData){
-            binding.etDropAsal.hint = it?.currencyCode
+            binding.etDropTujuan.hint = it?.currencyCode
         }
         spinner.adapter = countryAdapter
 
