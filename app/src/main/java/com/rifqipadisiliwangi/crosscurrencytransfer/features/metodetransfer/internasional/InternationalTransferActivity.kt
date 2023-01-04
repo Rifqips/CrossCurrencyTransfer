@@ -40,57 +40,6 @@ class InternationalTransferActivity : AppCompatActivity() {
 
     }
 
-//    private fun spinnerSetup() {
-//    val spinner = binding.spinnerAsal
-//    countryAdapter = CountrySpinnerAdapter(this, countryList)
-//    spinner.adapter = countryAdapter
-//    countryData.addAll(
-//        listOf(
-//            CountryData( R.drawable.ic_ind ),
-//            CountryData( R.drawable.ic_us ),
-//            CountryData( R.drawable.ic_ausi ),
-//            CountryData( R.drawable.ic_sg ),
-//            CountryData( R.drawable.ic_jpn ),
-//        )
-//    )
-//    val adapter = CountrySpinnerAdapter(this, countryData){ data ->
-//        binding.ivAsalTf.setImageResource(0)
-//    }
-//
-//    binding.ivAsalTf?.setFactory({
-//        val imgView = ImageView(applicationContext)
-//        imgView.scaleType = ImageView.ScaleType.CENTER_INSIDE
-//        imgView })
-//
-//    binding.ivTujuanTf?.setFactory({
-//        val imgView = ImageView(applicationContext)
-//        imgView.scaleType = ImageView.ScaleType.CENTER_INSIDE
-//        imgView })
-//
-//
-//    val currenciesResult = resources.getStringArray(R.array.currenciesResult)
-//
-//    if (spinner != null) {
-//        spinner.adapter = adapter
-//
-//            spinner.onItemSelectedListener = object :
-//                AdapterView.OnItemSelectedListener {
-//                override fun onItemSelected(parent: AdapterView<*>,
-//                                            view: View, position: Int, id: Long) {
-//                        binding.ivTujuanTf.setImageResource(images[position])
-//                    binding.etDropAsal.setText(currenciesResult[position])
-//
-//                }
-//
-//                override fun onNothingSelected(parent: AdapterView<*>) {
-//                    // write code to perform some action
-//                }
-//            }
-//        }
-//
-//    }
-//}
-
     private fun loadSpinner()    {
         countryList = listOf()
         countryData.addAll(
