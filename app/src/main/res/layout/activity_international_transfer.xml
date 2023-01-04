@@ -57,22 +57,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <FrameLayout
-            android:id="@+id/frameAsalTf"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            app:layout_constraintStart_toStartOf="@+id/constrainPilihNegara"
-            app:layout_constraintTop_toTopOf="@+id/constrainPilihNegara"
-            app:layout_constraintBottom_toBottomOf="@+id/constrainPilihNegara">
-
-            <ImageSwitcher
-                android:id="@+id/ivAsalTf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="5dp"/>
-
-        </FrameLayout>
 
         <Spinner
             android:id="@+id/spinner_asal"
@@ -81,7 +65,7 @@
             android:spinnerMode="dropdown"
             android:backgroundTint="@color/warna_primary_font"
             app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
-            app:layout_constraintStart_toEndOf="@id/frameAsalTf"
+            app:layout_constraintStart_toStartOf="@id/constrainPilihNegara"
             app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"/>
 
         <EditText
@@ -112,23 +96,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <FrameLayout
-            android:id="@+id/frameTujuanTf"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            app:layout_constraintStart_toStartOf="@+id/constrainTujuanNegara"
-            app:layout_constraintTop_toTopOf="@+id/constrainTujuanNegara"
-            app:layout_constraintBottom_toBottomOf="@+id/constrainTujuanNegara">
-
-            <ImageSwitcher
-                android:id="@+id/ivTujuanTf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="5dp"/>
-
-        </FrameLayout>
-
         <Spinner
             android:id="@+id/spinner_tujuan"
             android:layout_width="wrap_content"
@@ -137,7 +104,7 @@
             app:layout_wrapBehaviorInParent="vertical_only"
             android:backgroundTint="@color/warna_primary_font"
             app:layout_constraintTop_toTopOf="@id/constrainTujuanNegara"
-            app:layout_constraintStart_toEndOf="@id/frameTujuanTf"
+            app:layout_constraintStart_toStartOf="@+id/constrainTujuanNegara"
             app:layout_constraintBottom_toBottomOf="@id/constrainTujuanNegara"/>
 
 

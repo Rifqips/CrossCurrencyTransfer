@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ItemCodepickerBinding
-import kotlinx.coroutines.flow.combine
 
 class CountrySpinnerAdapter( context: Context, dataSource: List<CountryData>,
+<<<<<<< HEAD
 //                             private val clickListener: (CountryData?) -> Unit
 
+=======
+                             private val clickListener: (CountryData?) -> Unit
+>>>>>>> spinner-experimen
 ): ArrayAdapter<CountryData>(context, 0, dataSource) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View{
@@ -33,6 +37,7 @@ class CountrySpinnerAdapter( context: Context, dataSource: List<CountryData>,
 //                clickListener.invoke(item)
             }
        }
-        return parent
+        return view.root
     }
+
 }

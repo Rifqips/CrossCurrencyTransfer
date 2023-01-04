@@ -2,10 +2,13 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.int
 
 import android.content.Intent
 import android.os.Bundle
+<<<<<<< HEAD
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+=======
+>>>>>>> spinner-experimen
 import androidx.appcompat.app.AppCompatActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankInternationalBinding
@@ -15,12 +18,17 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActi
 class InternationalTransferActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityInternationalTransferBinding
+<<<<<<< HEAD
     private val images = intArrayOf(R.drawable.ic_ind,
         R.drawable.ic_us,
         R.drawable.ic_ausi,
         R.drawable.ic_sg,
         R.drawable.ic_jpn,
     )
+=======
+    private var countryData : MutableList<CountryData> = mutableListOf()
+    private lateinit var countryAdapter: CountrySpinnerAdapter
+>>>>>>> spinner-experimen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +45,7 @@ class InternationalTransferActivity : AppCompatActivity() {
 
     }
 
+<<<<<<< HEAD
     private fun spinnerSetup() {
         binding.ivAsalTf?.setFactory({
             val imgView = ImageView(applicationContext)
@@ -94,6 +103,24 @@ class InternationalTransferActivity : AppCompatActivity() {
                 }
             }
         }
+=======
+    private fun loadSpinner() {
+        countryData.addAll(
+            listOf(
+                CountryData( R.drawable.ic_ind ,"IND"),
+                CountryData( R.drawable.ic_us,"USA" ),
+                CountryData( R.drawable.ic_ausi,"AUD" ),
+                CountryData( R.drawable.ic_sg,"SGP" ),
+                CountryData( R.drawable.ic_jpn, "JPN" ),
+            )
+        )
+
+        val spinner = binding.spinnerAsal
+        countryAdapter = CountrySpinnerAdapter(this, countryData){
+            binding.etDropAsal.hint = it?.currencyCode
+        }
+        spinner.adapter = countryAdapter
+>>>>>>> spinner-experimen
 
     }
 
