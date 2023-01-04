@@ -7,11 +7,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ItemCodepickerBinding
-import kotlinx.coroutines.flow.combine
 
 class CountrySpinnerAdapter( context: Context, dataSource: List<CountryData>,
-//                             private val clickListener: (CountryData?) -> Unit
-
+                             private val clickListener: (CountryData?) -> Unit
 ): ArrayAdapter<CountryData>(context, 0, dataSource) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View{
@@ -30,26 +28,10 @@ class CountrySpinnerAdapter( context: Context, dataSource: List<CountryData>,
         if (item != null){
             view.ivCodepicker.setImageResource(item.flagResource)
             view.ivCodepicker.setOnClickListener {
-//                clickListener.invoke(item)
+                clickListener.invoke(item)
             }
        }
-        return View(context)
+        return view.root
     }
 
-//    private fun createView(position: Int, itemView: View?, parent: ViewGroup): View {
-//        val country = getItem(position)
-//
-//        val view  = ItemCodepickerBinding.inflate(LayoutInflater.from(context),parent,false)
-//
-//        val imgId =
-//            context.resources.getIdentifier(country?.flagResource.toString(), "drawable", context.packageName)
-//        val item: CountryData? = getItem(position)
-//
-//        if (country != null) {
-//
-//            item?.let { view.ivCodepicker.setImageResource(it.flagResource) }
-//        }
-//
-//        return parent
-//    }
 }
