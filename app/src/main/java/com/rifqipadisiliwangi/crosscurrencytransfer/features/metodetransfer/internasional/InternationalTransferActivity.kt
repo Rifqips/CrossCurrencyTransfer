@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankInternationalBinding
@@ -83,9 +85,6 @@ class InternationalTransferActivity : AppCompatActivity() {
 
                     val currencyExchange = currencyAsal / currencyFrom
                     binding.etResultCurrencyTujuan.text = currencyExchange.toString()
-
-
-
                 }
             }
             override fun afterTextChanged(p0: Editable?) {
