@@ -21,12 +21,12 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnkirim.setOnClickListener {
+        binding.btnKirim.setOnClickListener {
             startActivity(Intent(this, VerifikasiActivity::class.java))
         }
         binding.etNoHp.doOnTextChanged { text, start, before, count ->
             binding.tvWarningNohp.isVisible = binding.etNoHp.text.toString().length < 10
-            binding.btnkirim.isEnabled = binding.etNoHp.text.toString().length >= 10
+            binding.btnKirim.isEnabled = binding.etNoHp.text.toString().length >= 10
 
         }
     }

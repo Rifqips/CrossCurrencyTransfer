@@ -88,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:paddingStart="10dp"
             android:hint="Masukkan 6 digit Pin"
             android:textColorHint="@color/warna_secondary_font"
             android:inputType="number"
@@ -151,12 +152,13 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:background="@drawable/transparent_bg_button"
             android:hint="Masukkan 6 digit Pin yang telah dibuat"
-            android:textColorHint="@color/warna_secondary_font"
             android:inputType="number"
             android:maxLength="6"
             android:textColor="@color/black"
-            android:background="@drawable/transparent_bg_button"/>
+            android:textColorHint="@color/warna_secondary_font" />
 
         <ImageButton
             android:id="@+id/ibShowKonfirmasiPin"
@@ -174,17 +176,20 @@
             android:textColor="@color/warning_font"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearlayoutKonfirmasiPin"/>
+    
     <Button
         android:id="@+id/btnKirimPin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:text="Kirim"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/warna_button"
-        android:layout_marginTop="300dp"
+        style="@style/firstbutton"
+        android:fontFamily="@font/dm_sans_medium"
+        android:paddingVertical="10dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginHorizontal="24dp"
+        android:text="Kirim"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearlayoutKonfirmasiPin"
         android:enabled="false"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

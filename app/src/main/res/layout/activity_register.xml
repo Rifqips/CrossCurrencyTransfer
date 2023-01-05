@@ -8,6 +8,16 @@
     android:background="@color/warna_background"
     tools:context=".features.auth.register.RegisterActivity">
 
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginVertical="19dp"
+        android:layout_marginStart="27dp"/>
+
     <TextView
         android:id="@+id/tvHeadingSatu"
         android:layout_width="match_parent"
@@ -100,9 +110,9 @@
         android:id="@+id/etNoHp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="   Masukkan Nomor Handphone"
+        android:hint="Masukkan Nomor Handphone"
         android:inputType="number"
-        android:enabled="false"
+        android:paddingStart="10dp"
         android:layout_marginEnd="24dp"
         android:textSize="12sp"
         android:maxLength="20"
@@ -128,17 +138,16 @@
         android:visibility="invisible"/>
 
     <Button
-        android:id="@+id/btnkirim"
+        android:id="@+id/btnKirim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/firstbutton"
         android:fontFamily="@font/dm_sans_medium"
-        android:layout_marginVertical="78dp"
         android:paddingVertical="10dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginHorizontal="24dp"
         android:text="Kirim"
-        app:layout_constraintTop_toBottomOf="@+id/etNoHp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:enabled="false"/>

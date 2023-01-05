@@ -2,14 +2,19 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.int
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankInternationalBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityInternationalTransferBinding
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.codepicker.CountrySpinnerAdapter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 
 class InternationalTransferActivity : AppCompatActivity() {
@@ -55,7 +60,7 @@ class InternationalTransferActivity : AppCompatActivity() {
 
     private fun exchangedSetup(){
 
-        binding.etDropAsal.addTextChangedListener(object: TextWatcher{
+        binding.etDropAsal.addTextChangedListener(object: TextWatcher {
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -65,7 +70,7 @@ class InternationalTransferActivity : AppCompatActivity() {
                 //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 val inputValue: String = binding.etDropAsal.text.toString()
                 if (inputValue == ""){
-                    Toast.makeText(applicationContext,"please input Field",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"please input Field", Toast.LENGTH_LONG).show()
                 }else{
                     binding.tvResultDropAsal.setText(inputValue).toString()
 
