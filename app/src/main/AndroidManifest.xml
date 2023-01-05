@@ -82,6 +82,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".features.auth.login.PinActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".features.onboarding.ViewpagerActivity"
             android:exported="true">
             <meta-data

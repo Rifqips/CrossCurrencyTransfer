@@ -50,51 +50,51 @@ class InternationalTransferActivity : AppCompatActivity() {
 
         val spinner = binding.spinnerAsal
         val spinnerTujuan = binding.spinnerTujuan
-        val currencies = resources.getStringArray(R.array.currencies)
-        val currenciesResult = resources.getStringArray(R.array.currenciesResult)
+//        val currencies = resources.getStringArray(R.array.currencies)
+//        val currenciesResult = resources.getStringArray(R.array.currenciesResult)
 
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, currencies,)
-            val adapterResul = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, currenciesResult,)
-            spinner.adapter = adapter
-            spinner.adapter = adapterResul
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
-                    binding.ivAsalTf.setImageResource(images[position])
-                    binding.etDropAsal.setText(currencies[position])
-                }
+//        if (spinner != null) {
+//            val adapter = ArrayAdapter(this,
+//                android.R.layout.simple_spinner_item, currencies,)
+//            val adapterResul = ArrayAdapter(this,
+//                android.R.layout.simple_spinner_item, currenciesResult,)
+//            spinner.adapter = adapter
+//            spinner.adapter = adapterResul
+//            spinner.onItemSelectedListener = object :
+//                AdapterView.OnItemSelectedListener {
+//                override fun onItemSelected(parent: AdapterView<*>,
+//                                            view: View, position: Int, id: Long) {
+//                    binding.ivAsalTf.setImageResource(images[position])
+//                    binding.etDropAsal.setText(currencies[position])
+//                }
+//
+//                override fun onNothingSelected(parent: AdapterView<*>) {
+//                    // write code to perform some action
+//                }
+//            }
+//        }
+//
+//        if (spinnerTujuan != null) {
+//            val adapter = ArrayAdapter(this,
+//                android.R.layout.simple_spinner_item, currencies,)
+//            val adapterResul = ArrayAdapter(this,
+//                android.R.layout.simple_spinner_item, currenciesResult,)
+//            spinnerTujuan.adapter = adapter
+//            spinnerTujuan.adapter = adapterResul
+//            spinnerTujuan.onItemSelectedListener = object :
+//                AdapterView.OnItemSelectedListener {
+//                override fun onItemSelected(parent: AdapterView<*>,
+//                                            view: View, position: Int, id: Long) {
+//                    binding.ivTujuanTf.setImageResource(images[position])
+//                    binding.etDropTujuan.setText(currencies[position])
+//                }
 
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
+//                override fun onNothingSelected(parent: AdapterView<*>) {
+//                    // write code to perform some action
+//                }
             }
         }
 
-        if (spinnerTujuan != null) {
-            val adapter = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, currencies,)
-            val adapterResul = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, currenciesResult,)
-            spinnerTujuan.adapter = adapter
-            spinnerTujuan.adapter = adapterResul
-            spinnerTujuan.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
-                    binding.ivTujuanTf.setImageResource(images[position])
-                    binding.etDropTujuan.setText(currencies[position])
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
-
-    }
-
-}
+//    }
+//
+//}

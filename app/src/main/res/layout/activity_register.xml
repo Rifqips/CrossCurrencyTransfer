@@ -61,97 +61,6 @@
         app:layout_constraintTop_toBottomOf="@id/lyLogin" />
 
     <TextView
-        android:id="@+id/tvNegara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Negara"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:textColor="@color/warna_auth_font"
-        android:layout_marginVertical="33dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivRegist"/>
-
-    <TextView
-        android:id="@+id/tvStarNegara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*"
-        android:textColor="@color/warning_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:layout_marginVertical="33dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@+id/tvNegara"
-        app:layout_constraintTop_toBottomOf="@+id/ivRegist"/>
-
-    <ImageView
-        android:id="@+id/imgNegara"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/transparent_bg_button"
-        app:layout_constraintEnd_toStartOf="@+id/frameNegara"
-        app:layout_constraintTop_toBottomOf="@+id/tvNegara"/>
-
-    <FrameLayout
-        android:id="@+id/frameNegara"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNegara"
-        android:background="@color/background_field">
-
-        <Spinner
-            android:id="@+id/spinnerNegara"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:background="@color/background_field"/>
-
-    </FrameLayout>
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/constrainPilihNegara"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginStart="24dp"-->
-<!--        android:layout_marginEnd="24dp"-->
-<!--        android:background="@drawable/transparent_bg_button"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tvNegara"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/etNegara"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Pilih Negara"-->
-<!--            android:fontFamily="@font/dm_sans_medium"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textColor="@color/warna_auth_font"-->
-<!--            android:layout_marginVertical="5dp"-->
-<!--            app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"-->
-<!--            app:layout_constraintStart_toStartOf="@id/constrainPilihNegara"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"-->
-<!--            android:layout_marginStart="10dp"/>-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_marginEnd="10dp"-->
-<!--            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"-->
-<!--            app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"-->
-<!--            app:layout_constraintEnd_toEndOf="@id/constrainPilihNegara"-->
-<!--            app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"/>-->
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-    <TextView
         android:id="@+id/tvNoHp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -162,28 +71,26 @@
         android:layout_marginVertical="5dp"
         android:layout_marginStart="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameNegara"/>
+        app:layout_constraintTop_toBottomOf="@+id/ivRegist"/>
 
     <TextView
-        android:id="@+id/tvStarNoHp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="*"
+        android:gravity="center"
+        android:layout_marginHorizontal="2dp"
         android:textColor="@color/warning_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:layout_marginVertical="5dp"
-        android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@+id/tvNoHp"
-        app:layout_constraintTop_toBottomOf="@+id/frameNegara"/>
+        app:layout_constraintTop_toBottomOf="@id/ivRegist"/>
 
     <TextView
         android:id="@+id/tvKodeNegara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="5dp"
-        android:textSize="25sp"
+        android:gravity="center"
+        android:text="+62"
+        android:textSize="16sp"
         android:textColor="@color/warna_primary_font"
         android:background="@drawable/transparent_bg_button"
         app:layout_constraintEnd_toStartOf="@+id/etNoHp"
@@ -194,9 +101,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="   Masukkan Nomor Handphone"
-        android:inputType="numberPassword"
+        android:inputType="number"
+        android:enabled="false"
         android:layout_marginEnd="24dp"
         android:textSize="12sp"
+        android:maxLength="20"
         android:textColorHint="@color/warna_auth_font"
         android:textColor="@color/warna_auth_font"
         android:fontFamily="@font/dm_sans_medium"
@@ -206,6 +115,17 @@
         app:layout_constraintTop_toBottomOf="@+id/tvNoHp"
         android:layout_marginStart="80dp"
         tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/tvWarningNohp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No. hp minimal 10 angka"
+        android:textColor="@color/warning_font"
+        android:layout_marginStart="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etNoHp"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/btnkirim"
@@ -220,6 +140,7 @@
         android:text="Kirim"
         app:layout_constraintTop_toBottomOf="@+id/etNoHp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:enabled="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

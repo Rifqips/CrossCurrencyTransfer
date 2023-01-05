@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <EditText
+    <TextView
         android:id="@+id/tvKodeOtp"
         android:layout_width="342dp"
         android:layout_height="48dp"
@@ -72,6 +72,7 @@
         android:background="@color/background_field"
         android:gravity="center"
         android:hint="Masukkan 6 digit Kode OTP"
+        android:maxLength="6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
@@ -88,6 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd1"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:cardCornerRadius="30dp"
@@ -102,6 +104,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/background_field">
                 <TextView
+                    android:id="@+id/tv1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="1"
@@ -117,6 +120,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd2"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:cardCornerRadius="30dp"
@@ -147,6 +151,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd3"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:cardCornerRadius="30dp"
@@ -192,6 +197,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd4"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:cardCornerRadius="30dp"
@@ -221,6 +227,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd5"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginStart="5dp"
@@ -251,6 +258,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd6"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginStart="5dp"
@@ -293,6 +301,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd7"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:cardCornerRadius="30dp"
@@ -322,6 +331,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd8"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:cardCornerRadius="30dp"
@@ -351,6 +361,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd9"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginStart="5dp"
@@ -395,6 +406,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cd0"
             android:layout_width="55dp"
             android:layout_height="55dp"
             app:cardCornerRadius="30dp"

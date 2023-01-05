@@ -7,6 +7,8 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -19,7 +21,9 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.Regis
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 
 class LoginActivity : AppCompatActivity() {
-
+    var password = "hidePassword"
+    var enableButtonPassword = ""
+    var enableButtonEmail = "l"
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,22 +43,66 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.etEmail.doOnTextChanged { text, start, before, count ->
-            if ( !isValidEmail(binding.etEmail.text.toString()) )
-                binding.tvWarningEmail.isVisible = true
-            else
-                binding.tvWarningEmail.isInvisible = true
+            binding.btnLogin.isEnabled = false
+
+                if (binding.etEmail.text.toString().isEmpty()) {
+                    binding.tvWarningEmail.text = "Anda harus mengisi bagian ini"
+                    binding.tvWarningEmail.isVisible = true
+                    enableButtonEmail = "v"
+                }else if (!isValidEmail(binding.etEmail.text.toString())) {
+                    binding.tvWarningEmail.text = "Format email salah"
+                    binding.tvWarningEmail.isVisible = true
+                    enableButtonEmail = "q"
+                }else if (isValidEmail(binding.etEmail.text.toString()) ) {
+                    binding.tvWarningEmail.isVisible = false
+                    enableButtonEmail = "berhasil"
+                }
+            if (enableButtonEmail == enableButtonPassword) {
+                binding.btnLogin.isEnabled = true
+                enableButtonEmail = "resetEmail"
+            }
+        }
+
+        binding.ibShowPassword.setOnClickListener {
+            if (password == "hidePassword")  {
+                binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                password = "showPassword"
+            }else {
+                binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                password = "hidePassword"
+            }
         }
 
         binding.etPassword.doOnTextChanged { text, start, before, count ->
-            binding.tvWarningKataSandi.isInvisible = binding.etPassword.text.toString().length > 8 &&
-                    binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
-                    binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
-                    binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
-                    binding.etPassword.text.toString().contains("[@*#]".toRegex())
+            binding.btnLogin.isEnabled = false
 
-            binding.btnLogin.isEnabled = (binding.tvWarningEmail.isInvisible && binding.tvWarningKataSandi.isInvisible)
+            if (binding.etPassword.text.toString().isEmpty()) {
+                    binding.tvWarningKataSandi.text = "Anda harus mengisi bagian ini"
+                binding.tvWarningKataSandi.isVisible = true
+                enableButtonPassword = "p"
+            }
+            else if ( !(binding.etPassword.text.toString().length >= 8 &&
+                        binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
+                        binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
+                        binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
+                        binding.etPassword.text.toString().contains("[@*#&]".toRegex()))
+            ){
+                binding.tvWarningKataSandi.text = "Kata sandi harus berisi huruf besar, angka dan simbol (@ * # &)"
+                binding.tvWarningKataSandi.isVisible = true
+            }
+            else if (binding.etPassword.text.toString().length >= 8 &&
+                binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
+                binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
+                binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
+                binding.etPassword.text.toString().contains("[@*#&]".toRegex()) ) {
+                    binding.tvWarningKataSandi.isVisible = false
+                    enableButtonPassword = "berhasil"
+            }
+            if (enableButtonEmail == enableButtonPassword){
+                binding.btnLogin.isEnabled = true
+                enableButtonPassword = "resetPassword"
+            }
         }
-
     }
 
     fun isValidEmail(target: CharSequence?): Boolean {

@@ -11,4 +11,20 @@
     <string name="masukkan_email_anda_untuk">Masukkan email anda untuk membuat kata sandi baru</string>
     <string name="permohonan_peru">Permohonan Perubahan kata sandi telah dikirim ke email anda</string>
     <string name="buat_katasandi">Buat kata sandi baru anda</string>
+
+    <string-array name="listNegara">
+        <item>Pilih Negara</item>
+        <item>Australia</item>
+        <item>Japan</item>
+        <item>Indonesia</item>
+        <item>Singapore</item>
+        <item>United States of America</item>
+    </string-array>
+
+    <string-array name="listDokumen">
+        <item>Pilih Tipe Dokumen</item>
+        <item>Passport</item>
+        <item>KTP</item>
+        <item>SIM</item>
+    </string-array>
 </resources>

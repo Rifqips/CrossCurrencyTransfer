@@ -8,213 +8,212 @@
     android:background="@color/warna_background"
     tools:context=".features.auth.login.LoginActivity">
 
-    <TextView
-        android:id="@+id/tvHeadingSatu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="59dp"
-        android:layout_marginTop="52dp"
-        android:fontFamily="@font/dm_sans_medium"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
-        android:text="Hallo !"
-        android:textAlignment="center"
-        android:textColor="@color/warna_primary_font"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:id="@+id/tvHeadingSatu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="59dp"
+            android:fontFamily="@font/dm_sans_medium"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
+            android:text="Hallo !"
+            android:textAlignment="center"
+            android:textColor="@color/warna_primary_font"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/lyLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeadingSatu"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tvDescSatu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:fontFamily="@font/dm_sans_medium"
+                android:text="Sudah punya akun ?"
+                android:textAlignment="center"
+                android:textColor="@color/warna_secondary_font"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPerDescSatu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/dm_sans_medium"
+                android:text="Lakukan Registrasi"
+                android:textAlignment="center"
+                android:textColor="@color/warna_verifikasi_font"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivLogin"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginVertical="20dp"
+            android:src="@drawable/ic_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lyLogin" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:fontFamily="@font/dm_sans_medium"
+            android:textColor="@color/warna_auth_font"
+            android:textSize="16sp"
+            android:layout_marginVertical="33dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivLogin"/>
+
+        <TextView
+            android:id="@+id/tvStarEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textColor="@color/warning_font"
+            android:fontFamily="@font/dm_sans_medium"
+            android:textSize="16sp"
+            android:layout_marginVertical="30dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@+id/tvEmail"
+            app:layout_constraintTop_toBottomOf="@+id/ivLogin"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Email"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="5dp"
+            android:textColorHint="@color/warna_auth_font"
+            android:textColor="@color/warna_auth_font"
+            android:background="@drawable/transparent_bg_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+            />
+
+        <TextView
+            android:id="@+id/tvWarningEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/warning_font"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etEmail"/>
+
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kata Sandi"
+            android:fontFamily="@font/dm_sans_medium"
+            android:textSize="16sp"
+            android:textColor="@color/warna_auth_font"
+            android:layout_marginStart="24dp"
+            android:layout_marginVertical="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWarningEmail"/>
+
+        <TextView
+            android:id="@+id/tvStarPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textColor="@color/warning_font"
+            android:fontFamily="@font/dm_sans_medium"
+            android:textSize="16sp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@+id/tvPassword"
+            app:layout_constraintTop_toBottomOf="@+id/tvWarningEmail"/>
 
     <LinearLayout
-        android:id="@+id/lyLogin"
+        android:id="@+id/linearlayoutKatasandi"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeadingSatu"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@drawable/transparent_bg_button"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassword">
 
-        <TextView
-            android:id="@+id/tvDescSatu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/dm_sans_medium"
-            android:text="Sudah punya akun ?"
-            android:textAlignment="center"
-            android:textColor="@color/warna_secondary_font"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="Kata Sandi"
+            android:paddingStart="10dp"
+            android:inputType="textPassword"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#*&amp;"
+            android:maxLength="16"
+            android:textColorHint="@color/warna_auth_font"
+            android:textColor="@color/warna_auth_font"
+            android:background="@drawable/transparent_bg_button"/>
 
-        <TextView
-            android:id="@+id/tvPerDescSatu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/dm_sans_medium"
-            android:text="Lakukan Registrasi"
-            android:textAlignment="center"
-            android:textColor="@color/warna_verifikasi_font"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+        <ImageButton
+            android:id="@+id/ibShowPassword"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/eye_off"
+            android:background="@drawable/transparent_bg_button"/>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivLogin"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginVertical="20dp"
-        android:src="@drawable/ic_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lyLogin" />
+        <TextView
+            android:id="@+id/tvWarningKataSandi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearlayoutKatasandi"
+            android:layout_marginHorizontal="24dp"
+            android:textColor="@color/warning_font"
+            android:visibility="invisible"/>
 
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textColor="@color/warna_auth_font"
-        android:textSize="16sp"
-        android:layout_marginVertical="33dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogin"/>
+        <TextView
+            android:id="@+id/tvLupaPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lupa Kata Sandi ?"
+            android:fontFamily="@font/dm_sans_medium"
+            android:textSize="16sp"
+            android:textColor="@color/warna_button"
+            android:layout_marginVertical="5dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvWarningKataSandi"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/tvStarEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*"
-        android:textColor="@color/warning_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:layout_marginVertical="30dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@+id/tvEmail"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogin"/>
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Email"
-        android:paddingStart="10dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginVertical="5dp"
-        android:textColorHint="@color/warna_auth_font"
-        android:textColor="@color/warna_auth_font"
-        android:background="@drawable/transparent_bg_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-        android:layout_marginStart="24dp"/>
-
-    <TextView
-        android:id="@+id/tvWarningEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email salah"
-        android:paddingStart="10dp"
-        android:layout_marginStart="24dp"
-        android:textColorHint="@color/warning_font"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail"/>
-
-    <TextView
-        android:id="@+id/tvPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kata Sandi"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:textColor="@color/warna_auth_font"
-        android:layout_marginStart="24dp"
-        android:layout_marginVertical="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWarningEmail"/>
-
-    <TextView
-        android:id="@+id/tvStarPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*"
-        android:textColor="@color/warning_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@+id/tvPassword"
-        app:layout_constraintTop_toBottomOf="@+id/tvWarningEmail"/>
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Kata Sandi"
-        android:paddingStart="10dp"
-        android:inputType="textPassword"
-        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#*"
-        android:maxLength="16"
-        android:layout_marginEnd="24dp"
-        android:layout_marginVertical="5dp"
-        android:textColorHint="@color/warna_auth_font"
-        android:textColor="@color/warna_auth_font"
-        android:background="@drawable/transparent_bg_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword"
-        android:layout_marginStart="24dp"/>
-
-    <TextView
-        android:id="@+id/tvWarningKataSandi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        android:paddingStart="10dp"
-        android:layout_marginStart="24dp"
-        android:hint="Kata sandi terdiri dari huruf besar, angka dan simbol (@ * #)"
-        android:textColorHint="@color/warning_font"
-        android:visibility="visible"/>
-
-    <TextView
-        android:id="@+id/tvLupaPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lupa Kata Sandi ?"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:textColor="@color/warna_button"
-        android:layout_marginVertical="5dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvWarningKataSandi"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/dm_sans_medium"
-        android:layout_marginVertical="55dp"
-        android:paddingVertical="10dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="Masuk"
-        android:backgroundTint="@color/warna_button"
-        app:layout_constraintTop_toBottomOf="@+id/tvLupaPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-<!--    android:enabled="false"-->
-<!--        dibwah untuk kasih warna button-->
-<!--    style="@style/firstbutton"-->
-
-
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/firstbutton"
+            android:fontFamily="@font/dm_sans_medium"
+            android:layout_marginVertical="40dp"
+            android:paddingVertical="10dp"
+            android:layout_marginHorizontal="24dp"
+            android:text="Masuk"
+            app:layout_constraintTop_toBottomOf="@+id/tvLupaPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:enabled="false"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
