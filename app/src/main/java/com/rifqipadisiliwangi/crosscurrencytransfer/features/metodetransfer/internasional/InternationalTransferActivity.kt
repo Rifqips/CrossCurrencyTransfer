@@ -2,13 +2,12 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.int
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doBeforeTextChanged
-import androidx.core.widget.doOnTextChanged
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityInternationalTransferBinding
@@ -23,7 +22,6 @@ class InternationalTransferActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityInternationalTransferBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadSpinner()
@@ -39,59 +37,56 @@ class InternationalTransferActivity : AppCompatActivity() {
 
     }
 
-    private fun exchangedSetup(){
-
-            if (binding.tvTotal.text.toString() == null || binding.tvTotal.text.toString() ==" "){
-                Toast.makeText(this,"clicked on reset textView,\n output textView already reset",Toast.LENGTH_LONG).show()
-            }else{
-                binding.tvTotal.setText("").toString()
-            }
-               binding.etDropAsal.addTextChangedListener(object: TextWatcher {
-                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                        //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                        val inputValue: String = binding.etDropAsal.text.toString()+ " " + "IDR"
-                        if (inputValue == null || inputValue ==" "){
-                            Toast.makeText(applicationContext,"please input data, edit text cannot be blank",Toast.LENGTH_LONG).show()
-                        }else{
-                            binding.tvTotal.setText(inputValue).toString()
-                        }
-                    }
-
-                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                        //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//                        Toast.makeText(applicationContext,"executed while making any change over EditText",Toast.LENGTH_SHORT).show()
-                    }
-                    override fun afterTextChanged(p0: Editable?) {
-                        //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                        val inputValue: String = binding.etDropAsal.text.toString()+ " " + "IDR"
-                        if (inputValue == null || inputValue ==" "){
-                            Toast.makeText(applicationContext,"please input data, edit text cannot be blank",Toast.LENGTH_LONG).show()
-                        }else{
-                            binding.tvTotal.setText(inputValue).toString()
-                        }
-                    }
-                })
-
-
-        }
-
-
     private fun loadSpinner() {
         countryData.addAll(
             listOf(
-                CountryData( R.drawable.ic_ind ,"IND"),
-                CountryData( R.drawable.ic_us,"USA" ),
-                CountryData( R.drawable.ic_ausi,"AUD" ),
-                CountryData( R.drawable.ic_sg,"SGP" ),
-                CountryData( R.drawable.ic_jpn, "JPN" ),
+                CountryData( R.drawable.ic_ind ,"IND", 100),
+                CountryData( R.drawable.ic_us,"USA",200 ),
+                CountryData( R.drawable.ic_ausi,"AUD", 300 ),
+                CountryData( R.drawable.ic_sg,"SGP", 400 ),
+                CountryData( R.drawable.ic_jpn, "JPN", 500 ),
             )
         )
 
         val spinner = binding.spinnerTujuan
         countryAdapter = CountrySpinnerAdapter(this, countryData){
-            binding.etDropTujuan.hint = it?.currencyCode
+
+            binding.etDropTujuan.text = it?.exchangedContract.toString()
+
         }
         spinner.adapter = countryAdapter
 
     }
+
+    private fun exchangedSetup(){
+
+        Snackbar.make(binding.swiperefresh, "Swipe to see the result", Snackbar.LENGTH_LONG).show()
+        binding.swiperefresh.isRefreshing = false
+
+        binding.btnSelanjutnya.isVisible = false
+        binding.btnInvisibleSelanjutnya.isVisible = true
+
+        binding.swiperefresh.setOnRefreshListener{
+
+            val currencyFrom = binding.etDropAsal.text.toString().toInt()
+            if (currencyFrom == null){
+                binding.btnSelanjutnya.isVisible = false
+                binding.btnInvisibleSelanjutnya.isVisible = true
+                binding.etDropAsal.text.toString()
+                Toast.makeText(this,"Field must be contained", Toast.LENGTH_LONG).show()
+                binding.swiperefresh.isRefreshing = true
+            }else{
+                val biayaAdmin = 100000
+                val currencySpinner = binding.etDropTujuan.text.toString().toInt()
+                val resultCurrency = (currencyFrom * currencySpinner) + biayaAdmin
+                binding.tvTotal.text = resultCurrency.toString() + " " + "IDR"
+                binding.btnSelanjutnya.isVisible = true
+                binding.btnInvisibleSelanjutnya.isVisible = false
+                binding.swiperefresh.isRefreshing = false
+            }
+        }
+
+    }
+
+
 }

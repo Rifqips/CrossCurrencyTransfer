@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 
 data class CountryData(
     @DrawableRes
-    val flagResource : Int,
-    val currencyCode : String
+    val flagResource: Int,
+    val currencyCode: String,
+    val exchangedContract: Int
 )

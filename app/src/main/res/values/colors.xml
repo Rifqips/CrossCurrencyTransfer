@@ -12,6 +12,7 @@
     <!--Color Pallete-->
     <color name="warna_button">#2F82FF</color>
     <color name="warna_second_button">#ADB1BC</color>
+    <color name="warna_button_invisible">#D8D8D8</color>
 
     <color name="warna_primary_font">#2075F3</color>
     <color name="warna_font_hari">#86B6FF</color>
