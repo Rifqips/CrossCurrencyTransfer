@@ -2,18 +2,14 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.int
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.Toast
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isGone
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
-import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
+import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankInternationalBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityInternationalTransferBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.codepicker.CountrySpinnerAdapter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 
 class InternationalTransferActivity : AppCompatActivity() {

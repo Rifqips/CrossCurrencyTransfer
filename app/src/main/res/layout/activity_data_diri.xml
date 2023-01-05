@@ -137,15 +137,26 @@
                 android:layout_marginStart="24dp"/>
 
             <TextView
-                android:id="@+id/tvWargaNegara"
+                android:id="@+id/tvWarningEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kewarganegaraan"
-                android:fontFamily="@font/dm_sans_medium"
+                android:text="Format email salah"
+                android:textColor="@color/warning_font"
+                android:layout_marginVertical="3dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etEmail"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/tvTipeDokumen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipe Dokumen"
                 android:textSize="16sp"
-                android:textColor="@color/warna_auth_font"
-                android:layout_marginVertical="20dp"
+                android:textColor="@color/black"
                 android:layout_marginStart="24dp"
+                android:layout_marginVertical="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etEmail"/>
 
@@ -159,93 +170,19 @@
                 android:textSize="16sp"
                 android:layout_marginVertical="18dp"
                 android:layout_marginStart="5dp"
-                app:layout_constraintStart_toEndOf="@+id/tvWargaNegara"
+                app:layout_constraintStart_toEndOf="@+id/tvTipeDokumen"
                 app:layout_constraintTop_toBottomOf="@+id/etEmail"/>
 
-            <RadioButton
-                android:id="@+id/rbWni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="WNI"
-                android:fontFamily="@font/dm_sans"
-                android:textColor="@color/warna_auth_font"
-                android:layout_marginStart="24dp"
-                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
-                app:layout_constraintTop_toBottomOf="@+id/tvWargaNegara"/>
-
-            <RadioButton
-                android:id="@+id/rbWna"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="WNA"
-                android:fontFamily="@font/dm_sans"
-                android:textColor="@color/warna_auth_font"
-                android:layout_marginStart="24dp"
-                app:layout_constraintStart_toEndOf="@+id/rbWni"
-                app:layout_constraintTop_toBottomOf="@+id/tvWargaNegara"/>
-
-            <TextView
-                android:id="@+id/tvDokumen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Negara"
-                android:fontFamily="@font/dm_sans_medium"
-                android:textSize="16sp"
-                android:textColor="@color/warna_auth_font"
-                android:layout_marginVertical="5dp"
-                android:layout_marginStart="24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rbWna"/>
-
-            <TextView
-                android:id="@+id/tvStarDokumen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="*"
-                android:textColor="@color/warning_font"
-                android:fontFamily="@font/dm_sans_medium"
-                android:textSize="16sp"
-                android:layout_marginVertical="5dp"
-                android:layout_marginStart="5dp"
-                app:layout_constraintStart_toEndOf="@+id/tvDokumen"
-                app:layout_constraintTop_toBottomOf="@+id/rbWni"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constrainPilihDokumen"
+            <Spinner
+                android:id="@+id/spinnerDokumen"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginVertical="5dp"
-                android:background="@drawable/transparent_bg_button"
-                app:layout_constraintTop_toBottomOf="@+id/tvDokumen"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginVertical="4dp"
+                android:layout_marginHorizontal="24dp"
+                android:backgroundTint="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <TextView
-                    android:id="@+id/etNegara"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pilih Negara"
-                    android:fontFamily="@font/dm_sans_medium"
-                    android:textSize="12sp"
-                    android:textColor="@color/warna_auth_font"
-                    android:layout_marginVertical="5dp"
-                    app:layout_constraintTop_toTopOf="@id/constrainPilihDokumen"
-                    app:layout_constraintStart_toStartOf="@id/constrainPilihDokumen"
-                    app:layout_constraintBottom_toBottomOf="@id/constrainPilihDokumen"
-                    android:layout_marginStart="10dp"/>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
-                    app:layout_constraintTop_toTopOf="@id/constrainPilihDokumen"
-                    app:layout_constraintEnd_toEndOf="@id/constrainPilihDokumen"
-                    app:layout_constraintBottom_toBottomOf="@id/constrainPilihDokumen"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@+id/tvTipeDokumen"/>
 
             <EditText
                 android:id="@+id/etMasukkanDokumen"
@@ -256,13 +193,26 @@
                 android:layout_marginEnd="24dp"
                 android:paddingStart="10dp"
                 android:hint="Masukkan No Dokumen"
+                android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:fontFamily="@font/dm_sans"
                 android:textColorHint="@color/warna_auth_font"
                 android:textColor="@color/warna_auth_font"
-                android:background="@drawable/rounded_bg"
+                android:background="@drawable/transparent_bg_button"
                 app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
                 app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"
-                app:layout_constraintTop_toBottomOf="@id/constrainPilihDokumen"/>
+                app:layout_constraintTop_toBottomOf="@id/spinnerDokumen"/>
+
+            <TextView
+                android:id="@+id/tvWarningDokumen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anda harus mengisi bagian ini"
+                android:textColor="@color/warning_font"
+                android:layout_marginVertical="3dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etMasukkanDokumen"
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/tvNamaDepan"
@@ -306,6 +256,18 @@
                 android:layout_marginStart="24dp"/>
 
             <TextView
+                android:id="@+id/tvWarningNamaDepan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anda harus mengisi bagian ini"
+                android:textColor="@color/warning_font"
+                android:layout_marginVertical="3dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNamaDepan"
+                android:visibility="invisible"/>
+
+            <TextView
                 android:id="@+id/tvNamaBelakang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -345,6 +307,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvNamaBelakang"
                 android:layout_marginStart="24dp"/>
+
+            <TextView
+                android:id="@+id/tvWarningNamaBelakang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anda harus mengisi bagian ini"
+                android:textColor="@color/warning_font"
+                android:layout_marginVertical="3dp"
+                android:layout_marginStart="35dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNamaBelakang"
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/tvTglLahir"
@@ -508,7 +482,7 @@
                 android:fontFamily="@font/dm_sans"
                 android:textColor="@color/warna_auth_font"
                 android:layout_marginStart="24dp"
-                app:layout_constraintStart_toEndOf="@+id/rbWni"
+                app:layout_constraintStart_toEndOf="@+id/rbPria"
                 app:layout_constraintTop_toBottomOf="@+id/tvJenisKelamin"/>
 
             <TextView
@@ -638,3 +612,108 @@
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--android:id="@+id/constrainPilihDokumen"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="50dp"-->
+<!--android:layout_marginStart="24dp"-->
+<!--android:layout_marginEnd="24dp"-->
+<!--android:layout_marginVertical="5dp"-->
+<!--android:background="@drawable/transparent_bg_button"-->
+<!--app:layout_constraintTop_toBottomOf="@+id/tvDokumen"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintEnd_toEndOf="parent">-->
+
+<!--<TextView-->
+<!--    android:id="@+id/etNegara"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="Pilih Negara"-->
+<!--    android:fontFamily="@font/dm_sans_medium"-->
+<!--    android:textSize="12sp"-->
+<!--    android:textColor="@color/warna_auth_font"-->
+<!--    android:layout_marginVertical="5dp"-->
+<!--    app:layout_constraintTop_toTopOf="@id/constrainPilihDokumen"-->
+<!--    app:layout_constraintStart_toStartOf="@id/constrainPilihDokumen"-->
+<!--    app:layout_constraintBottom_toBottomOf="@id/constrainPilihDokumen"-->
+<!--    android:layout_marginStart="10dp"/>-->
+
+<!--<ImageView-->
+<!--    android:layout_width="30dp"-->
+<!--    android:layout_height="30dp"-->
+<!--    android:layout_marginEnd="10dp"-->
+<!--    android:src="@drawable/ic_baseline_keyboard_arrow_down_24"-->
+<!--    app:layout_constraintTop_toTopOf="@id/constrainPilihDokumen"-->
+<!--    app:layout_constraintEnd_toEndOf="@id/constrainPilihDokumen"-->
+<!--    app:layout_constraintBottom_toBottomOf="@id/constrainPilihDokumen"/>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tvWargaNegara"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Kewarganegaraan"-->
+    <!--                android:fontFamily="@font/dm_sans_medium"-->
+    <!--                android:textSize="16sp"-->
+    <!--                android:textColor="@color/warna_auth_font"-->
+    <!--                android:layout_marginVertical="20dp"-->
+    <!--                android:layout_marginStart="24dp"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/etEmail"/>-->
+
+
+
+    <!--            <RadioGroup-->
+    <!--                android:id="@+id/radiogroupWNI"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/tvWargaNegara"-->
+    <!--                android:orientation="horizontal">-->
+
+    <!--                <RadioButton-->
+    <!--                    android:id="@+id/rbWni"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="WNI"-->
+    <!--                    android:fontFamily="@font/dm_sans"-->
+    <!--                    android:textColor="@color/warna_auth_font"-->
+    <!--                    android:layout_marginStart="24dp"/>-->
+
+    <!--                <RadioButton-->
+    <!--                    android:id="@+id/rbWna"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="WNA"-->
+    <!--                    android:fontFamily="@font/dm_sans"-->
+    <!--                    android:textColor="@color/warna_auth_font"-->
+    <!--                    android:layout_marginStart="24dp"/>-->
+    <!--            </RadioGroup>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tvDokumen"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Negara"-->
+    <!--                android:fontFamily="@font/dm_sans_medium"-->
+    <!--                android:textSize="16sp"-->
+    <!--                android:textColor="@color/warna_auth_font"-->
+    <!--                android:layout_marginVertical="5dp"-->
+    <!--                android:layout_marginStart="24dp"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/radiogroupWNI"/>-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/tvStarDokumen"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="*"-->
+    <!--                android:textColor="@color/warning_font"-->
+    <!--                android:fontFamily="@font/dm_sans_medium"-->
+    <!--                android:textSize="16sp"-->
+    <!--                android:layout_marginVertical="5dp"-->
+    <!--                android:layout_marginStart="5dp"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/tvDokumen"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/radiogroupWNI"/>-->

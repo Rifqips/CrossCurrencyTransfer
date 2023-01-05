@@ -13,76 +13,6 @@
         android:theme="@style/Theme.CrossCurrencyTransfer"
         tools:targetApi="31">
         <activity
-            android:name=".features.metodetransfer.lokal.SuksesTransferLokalActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.lokal.PengirimTransferLokalActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.lokal.PembayaranTransferLokalActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.lokal.LokalTransferActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.lokal.BankLokalActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.internasional.SuksesTransferActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.internasional.PengirimTransferActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.internasional.PembayaranTransferActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.internasional.BankInternationalActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".features.metodetransfer.internasional.InternationalTransferActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".features.auth.lupapassword.LupaPasswordActivityPw"
             android:exported="false">
             <meta-data
@@ -98,6 +28,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".features.transfer.TransferActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -139,6 +76,13 @@
         </activity>
         <activity
             android:name=".features.auth.login.LoginActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".features.auth.login.PinActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"

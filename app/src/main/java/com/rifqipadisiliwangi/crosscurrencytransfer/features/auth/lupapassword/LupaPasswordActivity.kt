@@ -34,7 +34,11 @@ class LupaPasswordActivity : AppCompatActivity() {
             startActivity(Intent(this, LupaPasswordActivityPw::class.java))
         }
         binding.etEmail.doOnTextChanged { text, start, before, count ->
-            if ( !isValidEmail(binding.etEmail.text.toString()) ) {
+            if (binding.etEmail.text.toString().isEmpty()){
+                binding.tvWarningEmail.text = "Anda harus mengisi bagian ini"
+                binding.tvWarningEmail.isVisible = true
+            }else if ( !isValidEmail(binding.etEmail.text.toString()) ) {
+                binding.tvWarningEmail.text = "Format email salah"
                 binding.tvWarningEmail.isVisible = true
                 binding.btnKirim.isEnabled = false
             }
