@@ -1,13 +1,8 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.caverock.androidsvg.SVG
-import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import androidx.appcompat.app.AppCompatActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityVerifikasiBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
 

@@ -60,7 +60,7 @@
                 android:layout_height="60dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:background="@color/warna_verifikasi_font">
+                android:background="@color/warna_background_metode">
 
                 <ImageView
                     android:id="@+id/ivLokasi"
@@ -134,7 +134,7 @@
                 android:layout_height="60dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:background="@color/warna_verifikasi_font">
+                android:background="@color/warna_background_metode">
 
                 <ImageView
                     android:id="@+id/ivEmail"
@@ -207,7 +207,7 @@
                 android:layout_height="60dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:background="@color/warna_verifikasi_font">
+                android:background="@color/warna_background_metode">
 
                 <ImageView
                     android:id="@+id/ivWa"
@@ -280,7 +280,7 @@
                 android:layout_height="60dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:background="@color/warna_verifikasi_font">
+                android:background="@color/warna_background_metode">
 
                 <ImageView
                     android:id="@+id/ivCallCenter"

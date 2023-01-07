@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "879281085290",
+    "project_id": "belajarfirebase-rifqipadi",
+    "storage_bucket": "belajarfirebase-rifqipadi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879281085290:android:f5cec58edcc1140a81e313",
+        "android_client_info": {
+          "package_name": "com.rifqipadisiliwangi.belajarfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879281085290-u4k87p7q992nep67jt45v28viauhkjui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxiBI-jQiAB3ItnskDteMHtGZVEhOQlOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879281085290-u4k87p7q992nep67jt45v28viauhkjui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879281085290:android:741bfab1a96490ef81e313",
+        "android_client_info": {
+          "package_name": "com.rifqipadisiliwangi.crosscurrencytransfer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879281085290-u4k87p7q992nep67jt45v28viauhkjui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxiBI-jQiAB3ItnskDteMHtGZVEhOQlOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879281085290-u4k87p7q992nep67jt45v28viauhkjui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

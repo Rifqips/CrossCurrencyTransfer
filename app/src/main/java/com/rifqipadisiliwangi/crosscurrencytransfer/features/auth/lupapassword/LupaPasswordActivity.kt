@@ -1,18 +1,13 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.lupapassword
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import com.caverock.androidsvg.SVG
-import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLupaPasswordBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login.LoginActivity
 

@@ -103,7 +103,7 @@
 
             <EditText
                 android:id="@+id/etDropAsal"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:hint=""
                 android:layout_marginStart="12dp"
@@ -263,7 +263,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="650dp" />
+            app:layout_constraintGuide_begin="550dp" />
 
         <View
             android:id="@+id/dividerViewSatu"
