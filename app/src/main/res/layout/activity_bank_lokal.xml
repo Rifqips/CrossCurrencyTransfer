@@ -53,8 +53,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_ind"
-                android:layout_marginEnd="10dp"
                 android:layout_marginVertical="15dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintTop_toTopOf="@+id/constTotalInter"
                 app:layout_constraintEnd_toStartOf="@id/tvCodeCountry"/>
 
@@ -62,15 +62,24 @@
                 android:id="@+id/tvCodeCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IDR ke IDR"
-                android:layout_marginStart="30dp"
+                android:text="IDR ke USD"
                 android:textSize="12sp"
-                android:textColor="@color/warna_auth_font"
+                android:textColor="@color/warna_background"
                 android:fontFamily="@font/dm_sans_bold"
                 android:layout_marginVertical="23dp"
                 app:layout_constraintEnd_toEndOf="@+id/constTotalInter"
                 app:layout_constraintStart_toStartOf="@+id/constTotalInter"
                 app:layout_constraintTop_toTopOf="@+id/constTotalInter"/>
+
+            <ImageView
+                android:id="@+id/ivUsd"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_us"
+                android:layout_marginVertical="15dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toTopOf="@+id/constTotalInter"
+                app:layout_constraintStart_toEndOf="@id/tvCodeCountry"/>
 
             <TextView
                 android:id="@+id/tvTotalTransaksi"
@@ -85,18 +94,36 @@
                 app:layout_constraintStart_toStartOf="@id/constTotalInter"
                 app:layout_constraintEnd_toEndOf="@id/constTotalInter"/>
 
-            <TextView
-                android:id="@+id/tvSaldoTotal"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1.000.000 IDR"
-                android:layout_marginVertical="5dp"
-                android:textSize="30sp"
-                android:textColor="@color/warna_background_rounded_dokumen"
-                android:fontFamily="@font/dm_sans_bold"
                 app:layout_constraintTop_toBottomOf="@+id/tvTotalTransaksi"
                 app:layout_constraintStart_toStartOf="@id/constTotalInter"
-                app:layout_constraintEnd_toEndOf="@id/constTotalInter"/>
+                app:layout_constraintEnd_toEndOf="@id/constTotalInter"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvSaldoTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginVertical="5dp"
+                    android:textSize="30sp"
+                    android:textColor="@color/warna_background_rounded_dokumen"
+                    android:fontFamily="@font/dm_sans_bold"/>
+
+                <TextView
+                    android:id="@+id/tvDefaultIdr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IDR"
+                    android:layout_marginVertical="5dp"
+                    android:textSize="30sp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/warna_background_rounded_dokumen"
+                    android:fontFamily="@font/dm_sans_bold"/>
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -128,103 +155,27 @@
         app:layout_constraintStart_toEndOf="@+id/tvBank"
         app:layout_constraintTop_toBottomOf="@+id/cardTotalInter"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constrainPilihNegara"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="5dp"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        android:gravity="center"
         android:background="@drawable/transparent_bg_button"
         app:layout_constraintTop_toBottomOf="@+id/tvBank"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/etNegara"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pilih Bank"
-            android:fontFamily="@font/dm_sans_medium"
-            android:textSize="12sp"
-            android:textColor="@color/warna_auth_font"
-            android:layout_marginVertical="5dp"
-            app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
-            app:layout_constraintStart_toStartOf="@id/constrainPilihNegara"
-            app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"
-            android:layout_marginStart="10dp"/>
+        <Spinner
+            android:id="@+id/mySpinner"
+            android:layout_width="match_parent"
+            android:spinnerMode="dialog"
+            android:backgroundTint="@color/warna_primary_font"
+            android:layout_height="wrap_content" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
-            app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
-            app:layout_constraintEnd_toEndOf="@id/constrainPilihNegara"
-            app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tvPenerima"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama Penerima"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:textColor="@color/warna_auth_font"
-        android:layout_marginVertical="30dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constrainPilihNegara"/>
-
-    <TextView
-        android:id="@+id/tvStarPenerima"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*"
-        android:textColor="@color/warning_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:layout_marginVertical="30dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@+id/tvPenerima"
-        app:layout_constraintTop_toBottomOf="@+id/constrainPilihNegara"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constrainPilihPenerima"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/transparent_bg_button"
-        app:layout_constraintTop_toBottomOf="@+id/tvPenerima"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:id="@+id/etPenerima"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama Penerima"
-            android:fontFamily="@font/dm_sans_medium"
-            android:textSize="12sp"
-            android:textColor="@color/warna_auth_font"
-            android:layout_marginVertical="5dp"
-            app:layout_constraintTop_toTopOf="@id/constrainPilihPenerima"
-            app:layout_constraintStart_toStartOf="@id/constrainPilihPenerima"
-            app:layout_constraintBottom_toBottomOf="@id/constrainPilihPenerima"
-            android:layout_marginStart="10dp"/>
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
-            app:layout_constraintTop_toTopOf="@id/constrainPilihPenerima"
-            app:layout_constraintEnd_toEndOf="@id/constrainPilihPenerima"
-            app:layout_constraintBottom_toBottomOf="@id/constrainPilihPenerima"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvRekening"
@@ -237,7 +188,7 @@
         android:layout_marginVertical="30dp"
         android:layout_marginStart="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constrainPilihPenerima"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
 
     <TextView
         android:id="@+id/tvStarRekening"
@@ -250,43 +201,65 @@
         android:layout_marginVertical="30dp"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@+id/tvRekening"
-        app:layout_constraintTop_toBottomOf="@+id/constrainPilihPenerima"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constrainPilihRekening"
+    <EditText
+        android:id="@+id/etNorekening"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="24dp"
         android:background="@drawable/transparent_bg_button"
-        app:layout_constraintTop_toBottomOf="@+id/tvRekening"
+        android:hint="No.Rekening"
+        android:paddingStart="10dp"
+        android:layout_marginVertical="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/warna_grey_font"
+        android:textColorHint="@color/warna_grey_font"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvRekening" />
 
-        <TextView
-            android:id="@+id/etRekening"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama Penerima"
-            android:fontFamily="@font/dm_sans_medium"
-            android:textSize="12sp"
-            android:textColor="@color/warna_auth_font"
-            android:layout_marginVertical="5dp"
-            app:layout_constraintTop_toTopOf="@id/constrainPilihRekening"
-            app:layout_constraintStart_toStartOf="@id/constrainPilihRekening"
-            app:layout_constraintBottom_toBottomOf="@id/constrainPilihRekening"
-            android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/tvNamaPenerima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Penerima"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:textColor="@color/warna_auth_font"
+        android:layout_marginVertical="30dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNorekening"/>
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
-            app:layout_constraintTop_toTopOf="@id/constrainPilihRekening"
-            app:layout_constraintEnd_toEndOf="@id/constrainPilihRekening"
-            app:layout_constraintBottom_toBottomOf="@id/constrainPilihRekening"/>
+    <TextView
+        android:id="@+id/tvStarSwift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/warning_font"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:layout_marginVertical="30dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvNamaPenerima"
+        app:layout_constraintTop_toBottomOf="@+id/etNorekening"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/etNamaPenerima"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="24dp"
+        android:background="@drawable/transparent_bg_button"
+        android:hint="Nama Penerima"
+        android:paddingStart="10dp"
+        android:inputType="number"
+        android:layout_marginVertical="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/warna_grey_font"
+        android:textColorHint="@color/warna_grey_font"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamaPenerima"
+        tools:ignore="RtlSymmetry" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintBtnkirim"
@@ -302,7 +275,7 @@
         <Button
             android:id="@+id/btnAturUlang"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="55dp"
             android:fontFamily="@font/dm_sans_bold"
             android:padding="10dp"
@@ -318,10 +291,22 @@
         <Button
             android:id="@+id/btnSelanjutnya"
             style="@style/firstbutton"
-            android:layout_width="180dp"
+            android:layout_width="150dp"
             android:layout_height="55dp"
             android:fontFamily="@font/dm_sans_medium"
             android:text="Selanjutnya"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/constraintBtnkirim"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintBtnkirim"/>
+
+        <Button
+            android:id="@+id/btnInvisibleSelanjutnya"
+            style="@style/invisiblebutton"
+            android:layout_width="150dp"
+            android:layout_height="55dp"
+            android:fontFamily="@font/dm_sans_medium"
+            android:text="Selanjutnya"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/constraintBtnkirim"
             app:layout_constraintBottom_toBottomOf="@+id/constraintBtnkirim"/>
 

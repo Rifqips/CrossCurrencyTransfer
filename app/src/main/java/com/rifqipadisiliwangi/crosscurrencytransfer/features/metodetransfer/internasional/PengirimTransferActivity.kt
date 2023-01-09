@@ -3,22 +3,11 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.int
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.room.pin.DataPin
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.room.pin.DatabaseTransEvils
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.sqlite.DB_class
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 
 class PengirimTransferActivity : AppCompatActivity() {
 
@@ -43,7 +32,7 @@ class PengirimTransferActivity : AppCompatActivity() {
         val dbhelp = DB_class(applicationContext)
         val db = dbhelp.readableDatabase
         binding.btnSend.setOnClickListener {
-            val pin = binding.resultIdInvisible.text.toString();
+            val pin = binding.resultId.text.toString();
             val query="SELECT * FROM pintrans WHERE pin='"+pin+"'"
             val rs=db.rawQuery(query,null)
             if(rs.moveToFirst()){

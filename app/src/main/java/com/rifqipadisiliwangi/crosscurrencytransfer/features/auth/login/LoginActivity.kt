@@ -73,7 +73,6 @@ class LoginActivity : AppCompatActivity() {
 
         binding.etEmail.doOnTextChanged { text, start, before, count ->
             binding.btnLogin.isEnabled = false
-
                 if (binding.etEmail.text.toString().isEmpty()) {
                     binding.tvWarningEmail.text = "Anda harus mengisi bagian ini"
                     binding.tvWarningEmail.isVisible = true

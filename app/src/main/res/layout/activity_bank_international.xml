@@ -276,7 +276,7 @@
         <Button
             android:id="@+id/btnAturUlang"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="55dp"
             android:fontFamily="@font/dm_sans_bold"
             android:padding="10dp"
@@ -292,7 +292,7 @@
         <Button
             android:id="@+id/btnSelanjutnya"
             style="@style/firstbutton"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="55dp"
             android:fontFamily="@font/dm_sans_medium"
             android:text="Selanjutnya"
@@ -303,7 +303,7 @@
         <Button
             android:id="@+id/btnInvisibleSelanjutnya"
             style="@style/invisiblebutton"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="55dp"
             android:fontFamily="@font/dm_sans_medium"
             android:text="Selanjutnya"

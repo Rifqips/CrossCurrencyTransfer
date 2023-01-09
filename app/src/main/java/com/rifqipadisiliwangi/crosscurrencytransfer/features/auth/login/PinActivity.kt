@@ -16,8 +16,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.room.pin.DataPin
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.room.pin.DatabaseTransEvils
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.sqlite.DB_class
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPinBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
@@ -28,7 +26,6 @@ class PinActivity : AppCompatActivity() {
 
     var pin = "hidePin"
     private lateinit var binding: ActivityPinBinding
-    var dbPin : DatabaseTransEvils? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
 
@@ -37,7 +34,6 @@ class PinActivity : AppCompatActivity() {
         binding = ActivityPinBinding.inflate(layoutInflater)
         setContentView(binding.root)
         formValidation()
-        dbPin = DatabaseTransEvils.getInstance(this)
         auth = Firebase.auth
         firestore = Firebase.firestore
         setPin()

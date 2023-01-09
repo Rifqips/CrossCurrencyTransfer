@@ -18,10 +18,10 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/tvTitleAkunBank"
+        android:id="@+id/tvTitlePembayaran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Akun Bank"
+        android:text="Masukkan Pin Evilz"
         android:textSize="20sp"
         android:paddingStart="5dp"
         android:fontFamily="@font/dm_sans_bold"
@@ -33,122 +33,253 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvNamaPengirim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama Pengirim"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:textColor="@color/warna_auth_font"
-        android:layout_marginStart="24dp"
-        android:layout_marginVertical="38dp"
-        app:layout_constraintTop_toBottomOf="@+id/ivBack"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvStarNamaPengirim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*"
-        android:textColor="@color/warning_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:layout_marginVertical="33dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@+id/tvNamaPengirim"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleAkunBank"/>
-
-
-    <EditText
-        android:id="@+id/etNamaPengirim"
+        android:id="@+id/result_id"
+        android:layout_height="39dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingStart="10dp"
-        android:inputType="text"
-        android:layout_marginEnd="24dp"
-        android:textSize="12sp"
-        android:hint="Nama Pengirim"
-        android:textColorHint="@color/warna_auth_font"
-        android:textColor="@color/warna_auth_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="136dp"
         android:background="@drawable/transparent_bg_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNamaPengirim"
-        android:layout_marginStart="24dp"
-        tools:ignore="RtlSymmetry" />
-
-    <TextView
-        android:id="@+id/tvPin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pin Evilz"
+        android:textColor="@color/warna_grey_font"
+        android:textColorHint="@color/warna_grey_font"
+        android:textAlignment="center"
         android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:textColor="@color/warna_auth_font"
-        android:layout_marginStart="24dp"
-        android:layout_marginVertical="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/etNamaPengirim"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvStarPin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*"
-        android:textColor="@color/warning_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:textSize="16sp"
-        android:layout_marginVertical="28dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toEndOf="@+id/tvPin"
-        app:layout_constraintTop_toBottomOf="@+id/etNamaPengirim"/>
-
-
-    <EditText
-        android:id="@+id/etPinEvilz"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingStart="10dp"
-        android:inputType="text"
-        android:layout_marginEnd="24dp"
+        android:gravity="center"
         android:textSize="12sp"
-        android:hint="Pin Evilz"
-        android:textColorHint="@color/warna_auth_font"
-        android:textColor="@color/warna_auth_font"
-        android:fontFamily="@font/dm_sans_medium"
-        android:layout_marginVertical="5dp"
-        android:background="@drawable/transparent_bg_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPin"
-        android:layout_marginStart="24dp"
-        tools:ignore="RtlSymmetry" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitlePembayaran"/>
 
     <TextView
-        android:id="@+id/tvLupaPassword"
+        android:id="@+id/tvLupaPin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lupa Pin Evilz ?"
+        android:text="Lupa Pin Evilz? ?"
         android:fontFamily="@font/dm_sans_medium"
         android:textSize="16sp"
         android:textColor="@color/warna_button"
         android:layout_marginVertical="5dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/etPinEvilz"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/result_id"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <Button
-        android:id="@+id/btnBayarSekarang"
-        style="@style/firstbutton"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:fontFamily="@font/dm_sans_medium"
-        android:text="Bayar Sekarang"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="41dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="14dp"
+        app:layout_constraintEnd_toEndOf="@id/result_id"
+        app:layout_constraintStart_toStartOf="@id/result_id"
+        app:layout_constraintTop_toBottomOf="@id/tvLupaPin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainFirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/nine_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/round_btn_bg"
+                android:textColor="@color/warna_button"
+                app:layout_constraintTop_toTopOf="@+id/constrainFirst"
+                app:layout_constraintStart_toStartOf="@+id/constrainFirst"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainFirst"
+                android:text="9" />
+
+            <Button
+                android:id="@+id/eight_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:background="@drawable/round_btn_bg"
+                android:textColor="@color/warna_button"
+                app:layout_constraintTop_toTopOf="@+id/constrainFirst"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainFirst"
+                app:layout_constraintStart_toStartOf="@id/constrainFirst"
+                app:layout_constraintEnd_toEndOf="@id/constrainFirst"
+                android:text="8" />
+
+            <Button
+                android:id="@+id/seven_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/round_btn_bg"
+                android:textColor="@color/warna_button"
+                app:layout_constraintTop_toTopOf="@+id/constrainFirst"
+                app:layout_constraintEnd_toEndOf="@+id/constrainFirst"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainFirst"
+                android:text="7"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/six_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/round_btn_bg"
+                app:layout_constraintTop_toTopOf="@+id/constrainSecond"
+                app:layout_constraintStart_toStartOf="@+id/constrainSecond"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainSecond"
+                android:textColor="@color/warna_button"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/five_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:background="@drawable/round_btn_bg"
+                android:textColor="@color/warna_button"
+                app:layout_constraintTop_toTopOf="@+id/constrainSecond"
+                app:layout_constraintStart_toStartOf="@+id/constrainSecond"
+                app:layout_constraintEnd_toEndOf="@+id/constrainSecond"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainSecond"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/four_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:background="@drawable/round_btn_bg"
+                android:textColor="@color/warna_button"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintTop_toTopOf="@+id/constrainSecond"
+                app:layout_constraintEnd_toEndOf="@+id/constrainSecond"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainSecond"
+                android:text="4"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/three_btn"
+                style="@style/roundedbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:background="@drawable/round_btn_bg"
+                android:text="3"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/warna_button"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainThree"
+                app:layout_constraintStart_toStartOf="@+id/constrainThree"
+                app:layout_constraintTop_toTopOf="@+id/constrainThree"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/two_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:background="@drawable/round_btn_bg"
+                android:textColor="@color/warna_button"
+                app:layout_constraintStart_toStartOf="@+id/constrainThree"
+                app:layout_constraintEnd_toEndOf="@+id/constrainThree"
+                app:layout_constraintTop_toTopOf="@+id/constrainThree"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainThree"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/one_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/round_btn_bg"
+                android:textColor="@color/warna_button"
+                app:layout_constraintEnd_toEndOf="@+id/constrainThree"
+                app:layout_constraintTop_toTopOf="@+id/constrainThree"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainThree"
+                android:text="1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainFourth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="50dp">
+
+            <Button
+                android:id="@+id/btnSend"
+                style="@style/roundedbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                android:background="@drawable/round_btn_bg"
+                android:text="add"
+                android:textColor="@color/warna_button"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainFourth"
+                app:layout_constraintStart_toStartOf="@+id/constrainFourth"
+                app:layout_constraintTop_toTopOf="@+id/constrainFourth"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/zero_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:background="@drawable/round_btn_bg"
+                android:textColor="@color/warna_button"
+                app:layout_constraintStart_toStartOf="@+id/constrainFourth"
+                app:layout_constraintTop_toTopOf="@+id/constrainFourth"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainFourth"
+                app:layout_constraintEnd_toEndOf="@+id/constrainFourth"
+                android:text="0" />
+
+            <ImageButton
+                android:id="@+id/backspace_btn"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                style="@style/roundedbutton"
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="@+id/constrainFourth"
+                app:layout_constraintBottom_toBottomOf="@+id/constrainFourth"
+                app:layout_constraintEnd_toEndOf="@+id/constrainFourth"
+                android:background="@drawable/round_btn_bg"
+                android:src="@drawable/ic_delete_verif"
+                android:focusable="true" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressBarPengirim"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

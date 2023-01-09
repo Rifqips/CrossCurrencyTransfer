@@ -50,24 +50,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/tvTitlePembayaran"/>
 
-  <EditText
-      android:id="@+id/result_id_invisible"
-      android:layout_height="39dp"
-      android:layout_width="match_parent"
-      android:hint="Masukkan 6 digit Pin Evilz"
-      android:layout_marginHorizontal="24dp"
-      android:background="@drawable/transparent_bg_button"
-      android:textColor="@color/warna_grey_font"
-      android:textColorHint="@color/warna_grey_font"
-      android:textAlignment="center"
-      android:fontFamily="@font/dm_sans_medium"
-      android:gravity="center"
-      android:textSize="12sp"
-      android:layout_marginBottom="10dp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintBottom_toTopOf="@+id/result_id"/>
-
   <TextView
       android:id="@+id/tvLupaPin"
       android:layout_width="wrap_content"

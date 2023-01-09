@@ -18,8 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-
-
     <TextView
         android:id="@+id/tvTitleAkunBank"
         android:layout_width="match_parent"
@@ -65,10 +63,10 @@
                 android:id="@+id/tvCodeCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IDR ke IDR"
-                android:layout_marginStart="30dp"
+                android:text="IDR"
                 android:textSize="12sp"
-                android:textColor="@color/warna_auth_font"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/warna_background"
                 android:fontFamily="@font/dm_sans_bold"
                 android:layout_marginVertical="23dp"
                 app:layout_constraintEnd_toEndOf="@+id/constTotalInter"
@@ -118,42 +116,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardTotalInter" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constrainPilihNegara"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginVertical="30dp"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout"
+        android:gravity="center"
         android:background="@drawable/transparent_bg_button"
         app:layout_constraintTop_toBottomOf="@+id/tvBank"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/etNegara"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pilih Bank"
-            android:fontFamily="@font/dm_sans_medium"
-            android:textSize="12sp"
-            android:textColor="@color/warna_auth_font"
-            android:layout_marginVertical="5dp"
-            app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
-            app:layout_constraintStart_toStartOf="@id/constrainPilihNegara"
-            app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"
-            android:layout_marginStart="10dp"/>
+        <Spinner
+            android:id="@+id/mySpinner"
+            android:layout_width="match_parent"
+            android:spinnerMode="dialog"
+            android:backgroundTint="@color/warna_primary_font"
+            android:layout_height="wrap_content" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
-            app:layout_constraintTop_toTopOf="@id/constrainPilihNegara"
-            app:layout_constraintEnd_toEndOf="@id/constrainPilihNegara"
-            app:layout_constraintBottom_toBottomOf="@id/constrainPilihNegara"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSelanjutnya"
@@ -162,6 +145,22 @@
         android:layout_height="55dp"
         android:fontFamily="@font/dm_sans_medium"
         android:text="Selanjutnya"
+        android:visibility="visible"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/btnInvisibleSelanjutnya"
+        style="@style/invisiblebutton"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:fontFamily="@font/dm_sans_medium"
+        android:text="Selanjutnya"
+        android:visibility="invisible"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="41dp"
