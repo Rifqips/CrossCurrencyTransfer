@@ -91,4 +91,16 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
 
+    //Okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    //Moshi
+    implementation "com.squareup.moshi:moshi:1.14.0"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
+
+    //viewmodel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+
 }
