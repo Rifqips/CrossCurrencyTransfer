@@ -2,11 +2,7 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
 import android.content.ContentValues
 import android.content.Intent
-<<<<<<< HEAD
-=======
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
->>>>>>> dev-roni
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -15,7 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -24,8 +19,6 @@ import com.google.firebase.ktx.Firebase
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.sqlite.DB_class
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPinBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 
 class PinActivity : AppCompatActivity() {
 
@@ -129,57 +122,4 @@ class PinActivity : AppCompatActivity() {
             }
         }
     }
-
-//    fun addPin(){
-//        GlobalScope.async {
-//            var pin = binding.etPin.text.toString()
-//            var konfirmPin = binding.etKonfirmasiPin.text.toString()
-//
-//            dbPin!!.PinDaoTransEvilz().addToPin(DataPin(0,pin,konfirmPin))
-//        }
-//    }
-
-//    private fun setAction() {
-//        // accomodate all user credential
-//        val pin = binding.etPin.text.toString()
-//        val pinConf = binding.etKonfirmasiPin.text.toString()
-//
-//
-//        val pinSet = DataTransEvilz(pin)
-//
-//        /**
-//         * Create user action using Firebase Auth
-//         * @param email is val user email
-//         * @param password is password user
-//         */
-//        auth.createUserWithEmailAndPassword(pin, pinConf).addOnCompleteListener { task ->
-//            if (task.isSuccessful) {
-//                binding.progressBar.visibility = View.GONE
-//                val currentUser = auth.currentUser
-//                val profile = userProfileChangeRequest {
-//                    displayName = pin
-//                }
-//                currentUser!!.updateProfile(profile)
-//                firestore.collection("Users").document(pin).set(pinSet)
-//                updateUI(currentUser)
-//            } else {
-//                binding.progressBar.visibility = View.GONE
-//                Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
-//            }
-//        }
-//
-//    }
-
-//    /**
-//     * Update UI when user registered
-//     * @param currentUser current user instance from create user action
-//     */
-//
-//    private fun updateUI(currentUser: FirebaseUser) {
-//        if (currentUser != null) {
-//            val intent = Intent(this@PinActivity, HomeBottomActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//    }
 }

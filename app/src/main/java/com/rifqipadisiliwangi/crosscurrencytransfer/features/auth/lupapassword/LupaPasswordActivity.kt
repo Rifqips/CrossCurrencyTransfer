@@ -1,7 +1,6 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.lupapassword
 
 import android.content.Intent
-<<<<<<< HEAD
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
@@ -9,19 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-=======
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.text.TextUtils
-import android.util.Patterns
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
->>>>>>> dev-roni
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLupaPasswordBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login.LoginActivity
 

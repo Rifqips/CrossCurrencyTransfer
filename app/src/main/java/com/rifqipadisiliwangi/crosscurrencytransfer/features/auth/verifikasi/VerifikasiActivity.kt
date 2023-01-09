@@ -1,20 +1,10 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi
 
 import android.content.Intent
-<<<<<<< HEAD
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-=======
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.os.CountDownTimer
-import com.caverock.androidsvg.SVG
-import com.rifqipadisiliwangi.crosscurrencytransfer.R
->>>>>>> dev-roni
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityVerifikasiBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
