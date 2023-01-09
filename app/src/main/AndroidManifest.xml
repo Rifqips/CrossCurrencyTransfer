@@ -15,32 +15,18 @@
         android:theme="@style/Theme.CrossCurrencyTransfer"
         tools:targetApi="31">
         <activity
-            android:name=".features.metodetransfer.internasional.PasscoddeActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".features.auth.lupapassword.LupaPasswordActivityPw"
             android:exported="false" />
         <activity
             android:name=".features.splashscreen.SplashActivity"
-<<<<<<< HEAD
             android:exported="true"/>
-
-=======
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
->>>>>>> dev-roni
+
+
         <activity
             android:name=".features.metodetransfer.lokal.LokalTransferActivity"
             android:exported="false" />
@@ -83,23 +69,9 @@
             android:exported="false" />
         <activity
             android:name=".features.home.HomeBottomActivity"
-<<<<<<< HEAD
-            android:exported="true" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-=======
-            android:exported="true">
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
->>>>>>> dev-roni
-        </activity>
         <activity
             android:name=".features.auth.lupapassword.LupaPasswordActivity"
             android:exported="false" />

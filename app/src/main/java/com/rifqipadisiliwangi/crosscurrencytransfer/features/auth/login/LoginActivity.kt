@@ -2,14 +2,12 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
 import android.app.Activity
 import android.content.Intent
-<<<<<<< HEAD
-=======
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
-import androidx.appcompat.app.AppCompatActivity
->>>>>>> dev-roni
+
+
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
@@ -82,11 +80,9 @@ class LoginActivity : AppCompatActivity() {
         binding.etEmail.doOnTextChanged { text, start, before, count ->
             enableButtonEmail = "resetBtn"
             binding.btnLogin.isEnabled = false
-<<<<<<< HEAD
-=======
             binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
 
->>>>>>> dev-roni
+
                 if (binding.etEmail.text.toString().isEmpty()) {
                     binding.tvWarningEmail.text = "Anda harus mengisi bagian ini"
                     binding.tvWarningEmail.isVisible = true
