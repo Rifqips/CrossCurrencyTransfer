@@ -8,11 +8,12 @@
     android:background="@color/warna_background"
     tools:context=".features.auth.register.RegisterActivity">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ivBack"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
+        android:background="@color/warna_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginVertical="19dp"
@@ -141,7 +142,7 @@
         android:id="@+id/btnKirim"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/firstbutton"
+        style="@style/invisiblebutton"
         android:fontFamily="@font/dm_sans_medium"
         android:paddingVertical="10dp"
         android:layout_marginBottom="40dp"

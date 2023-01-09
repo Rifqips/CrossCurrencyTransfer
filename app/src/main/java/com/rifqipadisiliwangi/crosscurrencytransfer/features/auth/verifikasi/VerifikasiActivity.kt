@@ -1,10 +1,23 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi
 
 import android.content.Intent
+<<<<<<< HEAD
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+=======
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.os.CountDownTimer
+import com.caverock.androidsvg.SVG
+import com.rifqipadisiliwangi.crosscurrencytransfer.R
+>>>>>>> dev-roni
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityVerifikasiBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
 
 class VerifikasiActivity : AppCompatActivity() {
 
@@ -14,6 +27,16 @@ class VerifikasiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifikasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.ibBack.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
+        }
+
+        timer()
+        binding.tvKirimUlangKode.setOnClickListener {
+            timer()
+        }
+
         binding.cd0.setOnClickListener {
             kodeOtp += "0"
             binding.tvKodeOtp.text = kodeOtp
@@ -69,5 +92,16 @@ class VerifikasiActivity : AppCompatActivity() {
             binding.tvKodeOtp.text = kodeOtp
         }
 
+    }
+    fun timer () {
+        object : CountDownTimer(60000,1000) {
+            override fun onTick(p0: Long) {
+                binding.tvTimer.text = "${p0 / 1000}"
+            }
+            override fun onFinish() {
+                binding.tvKirimUlangKode.setTextColor(Color.rgb(42,202,16))
+                binding.tvKirimUlangKode.isEnabled = true
+            }
+        }.start()
     }
 }

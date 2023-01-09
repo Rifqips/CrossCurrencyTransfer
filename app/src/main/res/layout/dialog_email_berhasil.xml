@@ -7,28 +7,28 @@
     android:background="@color/warna_background"
     tools:context=".features.auth.lupapassword.LupaPasswordActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="17dp"
-        android:minHeight="17dp"
-        android:src="@drawable/ic_x_kiri"
-        android:paddingTop="19.5dp"
-        android:paddingStart="295.5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minWidth="17dp"-->
+<!--        android:minHeight="17dp"-->
+<!--        android:src="@drawable/ic_x_kiri"-->
+<!--        android:paddingTop="19.5dp"-->
+<!--        android:paddingStart="295.5dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
 
-    <ImageView
-        android:id="@+id/ivcross"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="17dp"
-        android:minHeight="17dp"
-        android:src="@drawable/ic_x_kanan"
-        android:paddingTop="19.5dp"
-        android:paddingStart="295.5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/ivcross"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minWidth="17dp"-->
+<!--        android:minHeight="17dp"-->
+<!--        android:src="@drawable/ic_x_kanan"-->
+<!--        android:paddingTop="19.5dp"-->
+<!--        android:paddingStart="295.5dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
 
     <ImageView
         android:id="@+id/ivPesan"
@@ -39,7 +39,7 @@
         android:src="@drawable/ic_pesan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivcross"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="19.5dp"/>
 
     <TextView
@@ -47,6 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/permohonan_peru"
+        android:fontFamily="@font/dm_sans"
+        android:textColor="#3A3A3A"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPesan"
@@ -55,9 +57,14 @@
         android:layout_marginEnd="21dp"/>
 
     <Button
+        android:id="@+id/btnCekEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Cek Email Sekarang"
+        style="@style/firstbutton"
+        android:fontFamily="@font/dm_sans_medium"
+        android:text="Cek Email Sekarang"
+        android:layout_marginVertical="41dp"
+        android:layout_marginHorizontal="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPermohonan"/>
 
