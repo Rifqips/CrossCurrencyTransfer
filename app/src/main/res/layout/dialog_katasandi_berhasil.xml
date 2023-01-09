@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/transparent_bg_button">
+
+    <ImageView
+        android:id="@+id/ivIconKatasandi"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_katasandi_berhasil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
+
+    <TextView
+        android:id="@+id/tvKataSandiAnda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kata sandi anda berhasil diperbarui"
+        android:fontFamily="@font/dm_sans"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:textColor="#3A3A3A"
+        android:layout_marginVertical="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivIconKatasandi"/>
+    
+    <Button
+        android:id="@+id/btnMasukSekarang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/firstbutton"
+        android:fontFamily="@font/dm_sans_medium"
+        android:layout_marginVertical="41dp"
+        android:layout_marginHorizontal="24dp"
+        android:text="Masuk Sekarang"
+        app:layout_constraintTop_toBottomOf="@+id/tvKataSandiAnda"
+        app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

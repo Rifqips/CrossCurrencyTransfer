@@ -1,6 +1,7 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register
 
 import android.content.Intent
+import android.graphics.Color
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.core.widget.doOnTextChanged
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityRegisterBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login.LoginActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.VerifikasiActivity
 
 class RegisterActivity : AppCompatActivity() {
@@ -24,9 +26,22 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnKirim.setOnClickListener {
             startActivity(Intent(this, VerifikasiActivity::class.java))
         }
+
+        binding.ivBack.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
         binding.etNoHp.doOnTextChanged { text, start, before, count ->
-            binding.tvWarningNohp.isVisible = binding.etNoHp.text.toString().length < 10
-            binding.btnKirim.isEnabled = binding.etNoHp.text.toString().length >= 10
+            if (binding.etNoHp.text.toString().isEmpty() ) {
+                binding.tvWarningNohp.text = "Anda harus mengisi bagian ini"
+                binding.btnKirim.setBackgroundColor(Color.rgb(216,216,216))
+            }else if (binding.etNoHp.text.toString().length < 10) {
+                binding.tvWarningNohp.isVisible = true
+                binding.btnKirim.setBackgroundColor(Color.rgb(216,216,216))
+            }else {
+                binding.tvWarningNohp.isVisible = false
+                binding.btnKirim.setBackgroundColor(Color.rgb(32, 117, 243))
+                binding.btnKirim.isEnabled = true
+            }
 
         }
     }

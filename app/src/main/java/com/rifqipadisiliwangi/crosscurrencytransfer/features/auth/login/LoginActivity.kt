@@ -3,6 +3,7 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,8 +23,8 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActi
 
 class LoginActivity : AppCompatActivity() {
     var password = "hidePassword"
-    var enableButtonPassword = ""
-    var enableButtonEmail = "l"
+    var enableButtonPassword = "disablePw"
+    var enableButtonEmail = "disableEmail"
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,23 +44,23 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.etEmail.doOnTextChanged { text, start, before, count ->
+            enableButtonEmail = "resetBtn"
             binding.btnLogin.isEnabled = false
+            binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
 
                 if (binding.etEmail.text.toString().isEmpty()) {
                     binding.tvWarningEmail.text = "Anda harus mengisi bagian ini"
                     binding.tvWarningEmail.isVisible = true
-                    enableButtonEmail = "v"
                 }else if (!isValidEmail(binding.etEmail.text.toString())) {
                     binding.tvWarningEmail.text = "Format email salah"
                     binding.tvWarningEmail.isVisible = true
-                    enableButtonEmail = "q"
                 }else if (isValidEmail(binding.etEmail.text.toString()) ) {
                     binding.tvWarningEmail.isVisible = false
-                    enableButtonEmail = "berhasil"
+                    enableButtonEmail = "enabledEmail"
                 }
-            if (enableButtonEmail == enableButtonPassword) {
+            if ( enableButtonEmail == "enabledEmail" && enableButtonPassword == "enabledPwd" ) {
                 binding.btnLogin.isEnabled = true
-                enableButtonEmail = "resetEmail"
+                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
             }
         }
 
@@ -74,12 +75,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.etPassword.doOnTextChanged { text, start, before, count ->
+            enableButtonPassword = "resetBtn"
             binding.btnLogin.isEnabled = false
+            binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
 
             if (binding.etPassword.text.toString().isEmpty()) {
                     binding.tvWarningKataSandi.text = "Anda harus mengisi bagian ini"
                 binding.tvWarningKataSandi.isVisible = true
-                enableButtonPassword = "p"
             }
             else if ( !(binding.etPassword.text.toString().length >= 8 &&
                         binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
@@ -96,11 +98,11 @@ class LoginActivity : AppCompatActivity() {
                 binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
                 binding.etPassword.text.toString().contains("[@*#&]".toRegex()) ) {
                     binding.tvWarningKataSandi.isVisible = false
-                    enableButtonPassword = "berhasil"
+                    enableButtonPassword = "enabledPwd"
             }
-            if (enableButtonEmail == enableButtonPassword){
+            if (enableButtonEmail == "enabledEmail" && enableButtonPassword == "enabledPwd" ){
                 binding.btnLogin.isEnabled = true
-                enableButtonPassword = "resetPassword"
+                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
             }
         }
     }

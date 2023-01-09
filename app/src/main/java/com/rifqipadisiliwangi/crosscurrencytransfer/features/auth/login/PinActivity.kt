@@ -1,6 +1,7 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
@@ -39,13 +40,29 @@ class PinActivity : AppCompatActivity() {
             }
         }
         binding.etPin.doOnTextChanged { text, start, before, count ->
-            binding.tvWarningPin.isVisible = binding.etPin.text.toString().isEmpty()
+            binding.btnKirimPin.setBackgroundColor(Color.rgb(216,216,216) )
+
+            if (binding.etPin.text.toString().isEmpty() ) {
+                binding.tvWarningPin.isVisible = true
+            }
+            else if (binding.etPin.text.length < 6 ) {
+                binding.tvWarningPin.text = "Pin harus memuat 6 angka"
+                binding.tvWarningPin.isVisible = true
+            }
+            else if (binding.etPin.text.length == 6)
+                binding.tvWarningPin.isVisible = false
         }
+
         binding.etKonfirmasiPin.doOnTextChanged { text, start, before, count ->
+            binding.btnKirimPin.setBackgroundColor(Color.rgb(216,216,216) )
+
             if (binding.etKonfirmasiPin.text.toString().isEmpty()) {
                 binding.tvWarningKonfirmasiPin.text = "Anda harus mengisi bagian ini"
                 binding.tvWarningKonfirmasiPin.isVisible = true
-            } else if ( binding.etPin.text.toString() == binding.etKonfirmasiPin.text.toString() ) {
+            } else if ((binding.etPin.text.toString() == binding.etKonfirmasiPin.text.toString()) &&
+                (binding.etKonfirmasiPin.text.length == 6) )
+            {
+                binding.btnKirimPin.setBackgroundColor(Color.rgb(32,117,243))
                 binding.tvWarningKonfirmasiPin.isVisible = false
                 binding.btnKirimPin.isEnabled = true
             } else {
