@@ -1,24 +1,16 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
-import android.app.Activity
+
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-
-
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -101,9 +93,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.ibShowPassword.setOnClickListener {
             if (password == "hidePassword")  {
+                binding.ibShowPassword.setImageResource(R.drawable.eye_on)
                 binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
                 password = "showPassword"
             }else {
+                binding.ibShowPassword.setImageResource(R.drawable.eye_off)
                 binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 password = "hidePassword"
             }
