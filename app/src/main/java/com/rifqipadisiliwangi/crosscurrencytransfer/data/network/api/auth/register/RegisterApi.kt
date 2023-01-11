@@ -9,6 +9,7 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.serialized
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.io.IOException
+import kotlin.math.log
 
 class RegisterApi {
     fun registerUser(

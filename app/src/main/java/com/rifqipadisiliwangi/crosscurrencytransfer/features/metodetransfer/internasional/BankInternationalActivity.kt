@@ -17,7 +17,6 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankInte
 class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding : ActivityBankInternationalBinding
-
     var bankAmerika = arrayOf("Pilih Bank","Bank Of America", "JPMorgan Chase", "Wells Fargo", "Citigroup", "Goldman Sachs Group")
 
 
@@ -54,14 +53,22 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
                 when(binding.etNorekening.text.toString()){
                     "123" ->{
                         binding.etNamaPenerima.setText("Joko")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
                     }
                     "1234" ->{
                         binding.etNamaPenerima.setText("Paidi")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
                     }
                     "12345" ->{
                         binding.etNamaPenerima.setText("Sujatmiko")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
                     }else -> {
                     binding.etNamaPenerima.text.clear()
+                    binding.btnInvisibleSelanjutnya.isVisible = true
+                    binding.btnSelanjutnya.isVisible = false
                     Snackbar.make(binding.btnSelanjutnya, "Please Input Field", Snackbar.LENGTH_LONG).show()
                     }
                 }
@@ -74,9 +81,6 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
     }
 
     private fun loadSpiner(){
-
-        binding.btnSelanjutnya.isVisible = false
-        binding.btnInvisibleSelanjutnya.isVisible = true
         var aa = ArrayAdapter(this, R.layout.spinner_right_aligned, bankAmerika)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
@@ -111,8 +115,8 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             }
         }
 
-        binding.btnSelanjutnya.isVisible = true
-        binding.btnInvisibleSelanjutnya.isVisible = false
+        binding.btnSelanjutnya.isVisible = false
+        binding.btnInvisibleSelanjutnya.isVisible = true
     }
 
     private fun showToast(context: Context = applicationContext, message: String, duration: Int = Toast.LENGTH_LONG) {

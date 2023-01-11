@@ -13,7 +13,6 @@ import kotlin.coroutines.CoroutineContext
 
 class RegisterPresenter (
     private val registerApi: RegisterApi,
-
     private val uiContext: CoroutineContext = Dispatchers.Main
 ) {
     companion object {
@@ -35,7 +34,7 @@ class RegisterPresenter (
         this.view = null
     }
 
-    fun validateCredential(userName: String, password: String) {
+    fun validateCredential( password: String) {
         view?.onLoading()
         val isPasswordValid =
             password.contains("[a-z]".toRegex())
@@ -43,16 +42,23 @@ class RegisterPresenter (
                     && password.contains("[0-9]".toRegex())
                     && password.length >= 8
 
-        val isUsernameValid = userName.length > 5
-
-        if (isPasswordValid && isUsernameValid) { view?.onSuccessRegister() }
-
-        if (!isUsernameValid) { view?.onError(0,"invalid username") }
-        if (!isPasswordValid) { view?.onError(1,"invalid password") }
-        if (!isUsernameValid && !isPasswordValid) { view?.onError(2,"invalid username & password")}
+        if (!isPasswordValid) { view?.onError(1,"Kata sandi harus berisi huruf besar, angka, simbol \n" +"(@ * # &), dan 8 karakter") }
+        if (isPasswordValid) { view?.onError(2,"dah bener nih gaes") }
 
         view?.onFinishedLoading()
 
+    }
+
+    fun validateEmail(email: String) {
+        view?.onLoading()
+        val isEmailValid =
+            email.contains("[a-zA-Z0-9._-]+@[a-z]+[.]+com+".toRegex()) ||
+            email.contains("[a-zA-Z0-9._-]+@[a-z]+[.]+co+[.]+id".toRegex())
+
+        if (!isEmailValid) { view?.onErrorEmail(1,"Email sudah terdaftar") }
+        if (!isEmailValid) { view?.onErrorEmail(2,"Format email salah") }
+        if (isEmailValid) { view?.onErrorEmail(3,"Sudah benar ges") }
+        view?.onFinishedLoading()
     }
 
     fun register(

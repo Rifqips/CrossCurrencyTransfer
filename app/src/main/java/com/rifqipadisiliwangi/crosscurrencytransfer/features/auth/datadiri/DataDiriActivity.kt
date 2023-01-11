@@ -1,6 +1,7 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
@@ -10,19 +11,24 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.text.InputFilter
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
+import android.view.Gravity
+import android.view.MotionEvent
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
+import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.register.RegisterApi
@@ -30,30 +36,21 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityDataDiri
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login.LoginActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.VerifikasiActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.helper.makeClearableEditText
+import org.w3c.dom.Text
 import java.util.Calendar
 
-class DataDiriActivity : AppCompatActivity(),RegisterView {
+class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSelectedListener {
 
     private lateinit var binding : ActivityDataDiriBinding
 
+    var tipeDokumen = arrayOf("Passport", "KTP", "SIM")
     private val presenter = RegisterPresenter(RegisterApi())
     val calender = Calendar.getInstance()
     val year = calender.get(Calendar.YEAR)
     val month = calender.get(Calendar.MONTH)
     val day = calender.get(Calendar.DATE)
-    var validasiButton = false
-    var validasiEmail = ""
-    var validasiDokumen = ""
-    var validasiNamaDepan = ""
-    var validasiNamaBelakang = ""
     var validasiTglLahir = ""
-    var validasiAlamat = ""
-    var katasandi = "hidePassword"
-    var konfirmasiKatasandi = "hidePassword"
-    var validasiKatasandi = ""
-    var validasiKonfirmasiKatasandi = ""
-    var ceklisSyaratdanKetentuan = "benar"
-    internal val arrayDokumen = arrayOf("Pilih Tipe Dokumen", "Passport", "KTP", "SIM")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,32 +58,13 @@ class DataDiriActivity : AppCompatActivity(),RegisterView {
         setContentView(binding.root)
         presenter.onAttach(this)
         postRegister()
-
-        binding.spinnerDokumen.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val validasiTipeDokumen = arrayDokumen[position]
-                if (validasiTipeDokumen == "Passport" || validasiTipeDokumen == "KTP" ) {
-                    binding.etMasukkanDokumen.isEnabled = true
-                    binding.etMasukkanDokumen.text.clear()
-                    binding.etMasukkanDokumen.filters = arrayOf(InputFilter.LengthFilter(16))
-                }else if (validasiTipeDokumen == "SIM") {
-                    binding.etMasukkanDokumen.isEnabled = true
-                    binding.etMasukkanDokumen.text.clear()
-                    binding.etMasukkanDokumen.filters = arrayOf(InputFilter.LengthFilter(12))
-                }else if (validasiTipeDokumen == "Pilih Tipe Dokumen") {
-                    binding.etMasukkanDokumen.isEnabled = false
-                }
-            }
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-        }
-        val customAdapter = AdapterDokumen(applicationContext, arrayDokumen)
-        binding.spinnerDokumen.adapter = customAdapter
+        loadSpiner()
+        clearValidasi()
+        validasiEditText()
 
         binding.ibCalender.setOnClickListener {
             val dpd = DatePickerDialog(this, { view, year, monthOfYear, dayOfMonth ->
-                var bulan = monthOfYear + 1
+                val bulan = monthOfYear + 1
                 binding.tvIsiTgllahir.text = "$dayOfMonth/$bulan/$year"
                 validasiTglLahir = "benar"
             }, year,month,day )
@@ -101,11 +79,6 @@ class DataDiriActivity : AppCompatActivity(),RegisterView {
         }
     }
 
-    fun isValidEmail(target: CharSequence?): Boolean {
-        return if (TextUtils.isEmpty(target))   false
-        else    Patterns.EMAIL_ADDRESS.matcher(target).matches()
-    }
-
     override fun onLoading() {
         binding.progressBar.isVisible = true
     }
@@ -115,22 +88,41 @@ class DataDiriActivity : AppCompatActivity(),RegisterView {
     }
 
     override fun onError(code: Int, message: String) {
-        binding.progressBar.isVisible = true
-        Toast.makeText(this, "Error When Login", Toast.LENGTH_SHORT).show()
+        when(code){
+            1 -> {
+                binding.tvWarningKatasandiDatadiri.text = message
+            }
+            2 -> {
+                binding.tvWarningKatasandiDatadiri.text = message
+                binding.tvWarningKatasandiDatadiri.isVisible = false
+            }
+            else -> {binding.tvWarningKatasandiDatadiri.isVisible = false}
+        }
+
+    }
+
+    override fun onErrorEmail(code: Int, message: String) {
+        when (code){
+            2 -> {
+                binding.tvWarningEmail.text = message
+            }
+            3 -> {
+                binding.tvWarningEmail.text = message
+                binding.tvWarningEmail.isVisible = false
+            }else ->{
+                binding.tvWarningEmail.text = "Format email salah"
+
+            }
+        }
     }
 
     override fun onErrorPassword(visible: Boolean, message: String) {
         Toast.makeText(this, "Error Password When Login", Toast.LENGTH_SHORT).show()
     }
 
-    override fun resetPasswordError() {
-        TODO("Not yet implemented")
-    }
-
     override fun onSuccessRegister() {
         startActivity(Intent(this, LoginActivity::class.java))
         presenter.register("","",0,"","","","",0,"","",)
-
         Toast.makeText(this, "Success Register", Toast.LENGTH_SHORT).show()
     }
 
@@ -142,12 +134,73 @@ class DataDiriActivity : AppCompatActivity(),RegisterView {
             .create()
             .show()
     }
+    private fun clearValidasi(){
+
+        addRightCancelDrawable(binding.etEmail)
+        addRightCancelDrawable(binding.etMasukkanDokumen)
+        addRightCancelDrawable(binding.etNamaDepan)
+        addRightCancelDrawable(binding.etNamaBelakang)
+        addRightCancelDrawable(binding.etTempatlahir)
+        addRightCancelDrawable(binding.etAlamat)
+        binding.etEmail.makeClearableEditText(null, null)
+        binding.etMasukkanDokumen.makeClearableEditText(null, null)
+        binding.etNamaDepan.makeClearableEditText(null, null)
+        binding.etNamaBelakang.makeClearableEditText(null, null)
+        binding.etTempatlahir.makeClearableEditText(null, null)
+        binding.etAlamat.makeClearableEditText(null, null)
+
+    }
+
+    private fun validasiEditText(){
+
+        binding.etKatasandi.addTextChangedListener {
+            presenter.validateCredential(
+                it.toString()
+            )
+        }
+
+        binding.etEmail.addTextChangedListener {
+            presenter.validateEmail(
+                it.toString()
+            )
+        }
+
+        binding.etMasukkanDokumen.addTextChangedListener{ binding.tvWarningDokumen.isVisible = it == null }
+        binding.etNamaDepan.addTextChangedListener { binding.tvWarningNamaDepan.isVisible = it == null }
+        binding.etNamaBelakang.addTextChangedListener { binding.tvWarningNamaBelakang.isVisible = it == null }
+        binding.etTempatlahir.addTextChangedListener { binding.tvWarningTtl.isVisible = it == null }
+        binding.etAlamat.addTextChangedListener { binding.tvWarningAlamat.isVisible = it == null }
+    }
+
+    private fun loadSpiner(){
+        binding.btnLanjut.isVisible = false
+        binding.btnLanjutInvisible.isVisible = true
+        var aa = ArrayAdapter(this, R.layout.spinner_right_aligned, tipeDokumen)
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        with(binding.mySpinner)
+        {
+            adapter = aa
+            setSelection(0, false)
+            onItemSelectedListener = this@DataDiriActivity
+            prompt = "Pilih Dokumen"
+            gravity = Gravity.CENTER
+
+        }
+
+        val ll = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+
+        ll.setMargins(10, 40, 10, 10)
+
+        aa = ArrayAdapter(this, R.layout.spinner_right_aligned, tipeDokumen)
+        aa.setDropDownViewResource(R.layout.spinner_right_aligned)
+    }
 
     private fun postRegister(){
         binding.btnLanjut.setOnClickListener {
             presenter.register(
                 binding.etEmail.text.toString(),
-                binding.spinnerDokumen.toString(),
+                binding.mySpinner.toString(),
                 binding.etMasukkanDokumen.text.toString().toInt(),
                 binding.etNamaDepan.text.toString(),
                 binding.etNamaBelakang.text.toString(),
@@ -167,5 +220,32 @@ class DataDiriActivity : AppCompatActivity(),RegisterView {
             DialogInterface.BUTTON_POSITIVE -> {}
             DialogInterface.BUTTON_NEUTRAL -> {}
         }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        showToast(message = "Nothing selected")
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        when (view?.id) {
+            1 -> showToast(message = "")
+            else -> {
+                Snackbar.make(binding.btnLanjut, "Dokumen Yang dipilih : ${tipeDokumen[position]}", Snackbar.LENGTH_LONG).show()
+            }
+        }
+
+        binding.btnLanjut.isVisible = true
+        binding.btnLanjutInvisible.isVisible = false
+    }
+
+    private fun showToast(context: Context = applicationContext, message: String, duration: Int = Toast.LENGTH_LONG) {
+        Toast.makeText(context, message, duration).show()
+
+    }
+
+    private fun addRightCancelDrawable(editText: EditText) {
+        val cancel = ContextCompat.getDrawable(this, R.drawable.ic_baseline_cancel_24)
+        cancel?.setBounds(0,0, cancel.intrinsicWidth, cancel.intrinsicHeight)
+        editText.setCompoundDrawables(null, null, cancel, null)
     }
 }
