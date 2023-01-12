@@ -2,7 +2,6 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.register.RegisterApi
 import kotlinx.coroutines.CoroutineScope
@@ -27,6 +26,7 @@ class RegisterPresenter (
     private var view: RegisterView? = null
     private var job = SupervisorJob()
     private var scope = CoroutineScope(job + uiContext)
+
 
 
     fun onAttach(view: RegisterView) {

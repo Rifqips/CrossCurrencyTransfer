@@ -207,7 +207,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvWarningKataSandi"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
@@ -219,8 +218,7 @@
             android:text="Masuk"
             app:layout_constraintBottom_toTopOf="@+id/btnLoginGoogle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:enabled="false"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/btnLoginInvisible"

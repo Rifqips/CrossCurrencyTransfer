@@ -572,7 +572,7 @@
                 android:text="Phone Number"
                 android:fontFamily="@font/dm_sans_medium"
                 android:textSize="16sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:textColor="@color/warna_auth_font"
                 android:layout_marginVertical="20dp"
                 android:layout_marginStart="24dp"
@@ -587,7 +587,7 @@
                 android:textColor="@color/warning_font"
                 android:fontFamily="@font/dm_sans_medium"
                 android:textSize="16sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginVertical="18dp"
                 android:layout_marginStart="5dp"
                 app:layout_constraintStart_toEndOf="@+id/tvPhone"
@@ -601,7 +601,7 @@
                 android:layout_marginHorizontal="24dp"
                 android:orientation="horizontal"
                 android:layout_marginVertical="5dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@id/tvPhone"
                 android:background="@drawable/transparent_bg_button">
 
@@ -613,10 +613,47 @@
                     android:maxLength="16"
                     android:paddingStart="10dp"
                     android:textSize="12sp"
+                    android:inputType="number"
                     android:textColorHint="@color/warna_grey_font"
                     android:textColor="@color/warna_auth_font"
-                    android:background="@drawable/transparent_bg_button"/>
+                    android:background="@drawable/transparent_bg_button"
+                    tools:ignore="TextFields" />
             </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_current_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:background="@drawable/shape_text_input"
+                android:padding="16dp"
+                android:layout_marginVertical="25dp"
+                android:text="Lokasi Anda"
+                android:textAlignment="viewStart"
+                android:textColor="@color/warna_grey_font"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llphone" />
+
+            <Button
+                android:id="@+id/btn_cek_lokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/firstbutton"
+                android:visibility="visible"
+                android:text="Cek Lokasi Anda"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:fontFamily="@font/dm_sans_medium"
+                android:paddingVertical="10dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_current_location" />
 
             <TextView
                 android:id="@+id/tvPassword"
@@ -629,7 +666,7 @@
                 android:layout_marginVertical="20dp"
                 android:layout_marginStart="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llphone"/>
+                app:layout_constraintTop_toBottomOf="@+id/btn_cek_lokasi"/>
 
             <TextView
                 android:id="@+id/tvStarPassword"
@@ -642,7 +679,7 @@
                 android:layout_marginVertical="18dp"
                 android:layout_marginStart="5dp"
                 app:layout_constraintStart_toEndOf="@+id/tvPassword"
-                app:layout_constraintTop_toBottomOf="@+id/llphone"/>
+                app:layout_constraintTop_toBottomOf="@+id/btn_cek_lokasi"/>
 
             <LinearLayout
                 android:id="@+id/llKatasandi"
@@ -800,10 +837,10 @@
                 android:text="Lanjut"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
+                android:textSize="16sp"
                 android:fontFamily="@font/dm_sans_medium"
                 android:paddingVertical="10dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="30dp"
                 app:layout_constraintTop_toBottomOf="@+id/rgSyaratdanKetentuan"
                 app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"
@@ -819,6 +856,7 @@
                 android:text="Lanjut"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
+                android:textSize="16sp"
                 android:fontFamily="@font/dm_sans_medium"
                 android:paddingVertical="10dp"
                 android:layout_marginStart="24dp"
@@ -836,15 +874,14 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background = "@drawable/progress"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:layout_anchorGravity="center" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,6 +50,8 @@ class InternationalTransferActivity : AppCompatActivity() {
             )
         )
 
+
+
         val spinner = binding.spinnerTujuan
         countryAdapter = CountrySpinnerAdapter(this, countryData){
 
