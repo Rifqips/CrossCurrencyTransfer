@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.sqlite.DB_class
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
 
 class PengirimTransferActivity : AppCompatActivity() {
@@ -18,36 +17,12 @@ class PengirimTransferActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPengirimTransferBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getPin()
         initializeButtons()
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, PembayaranTransferActivity::class.java))
         }
 
-    }
-
-    @SuppressLint("Range")
-    private fun getPin(){
-        val dbhelp = DB_class(applicationContext)
-        val db = dbhelp.readableDatabase
-        binding.btnSend.setOnClickListener {
-            val pin = binding.resultId.text.toString();
-            val query="SELECT * FROM pintrans WHERE pin='"+pin+"'"
-            val rs=db.rawQuery(query,null)
-            if(rs.moveToFirst()){
-                val getPinpin = rs.getString(rs.getColumnIndex("pin"))
-                rs.close()
-                startActivity(Intent(this, SuksesTransferActivity::class.java))
-            }
-            else{
-                val ad = AlertDialog.Builder(this)
-                ad.setTitle("Message")
-                ad.setMessage("Pin is incorrect!")
-                ad.setPositiveButton("Ok", null)
-                ad.show()
-            }
-        }
     }
 
     private fun initializeButtons() {

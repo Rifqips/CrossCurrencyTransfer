@@ -1,49 +1,43 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri
 
 import android.app.DatePickerDialog
+import android.content.ContentResolver
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
-import android.text.Editable
-import android.text.InputFilter
-import android.text.TextUtils
-import android.text.TextWatcher
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
-import android.util.Patterns
 import android.view.Gravity
-import android.view.MotionEvent
 import android.view.View
 import android.widget.*
-import androidx.annotation.RequiresApi
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doOnTextChanged
 import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.register.RegisterApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityDataDiriBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login.LoginActivity
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.VerifikasiActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.helper.makeClearableEditText
-import org.w3c.dom.Text
-import java.util.Calendar
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
+import java.util.*
 
 class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSelectedListener {
 
     private lateinit var binding : ActivityDataDiriBinding
 
+
+    private var imageMultiPart: MultipartBody.Part? = null
+    private var imageFile: File? = null
+    private var imageUri: Uri? = Uri.EMPTY
     var tipeDokumen = arrayOf("Passport", "KTP", "SIM")
     private val presenter = RegisterPresenter(RegisterApi())
     val calender = Calendar.getInstance()
@@ -61,6 +55,10 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
         loadSpiner()
         clearValidasi()
         validasiEditText()
+
+        binding.ivImageUser.setOnClickListener {
+            openGallery()
+        }
 
         binding.ibCalender.setOnClickListener {
             val dpd = DatePickerDialog(this, { view, year, monthOfYear, dayOfMonth ->
@@ -153,6 +151,15 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
 
     private fun validasiEditText(){
 
+        binding.etkonfirmasiKatasandiDatadiri.addTextChangedListener { confirmPassword ->
+            if (confirmPassword.toString() != binding.etKatasandi.text.toString()) {
+                binding.tvWarningkonfirmasiKatasandiDatadiri.isVisible = true
+                binding.tvWarningkonfirmasiKatasandiDatadiri.text = "Kata Sandi harus Sama"
+            } else {
+                binding.tvWarningkonfirmasiKatasandiDatadiri.isVisible = false
+            }
+        }
+
         binding.etKatasandi.addTextChangedListener {
             presenter.validateCredential(
                 it.toString()
@@ -209,7 +216,6 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
                 binding.etPhone.text.toString().toInt(),
                 binding.etKatasandi.text.toString(),
                 binding.rbPria.text.toString()
-
             )
         }
     }
@@ -240,7 +246,6 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
 
     private fun showToast(context: Context = applicationContext, message: String, duration: Int = Toast.LENGTH_LONG) {
         Toast.makeText(context, message, duration).show()
-
     }
 
     private fun addRightCancelDrawable(editText: EditText) {
@@ -248,4 +253,29 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
         cancel?.setBounds(0,0, cancel.intrinsicWidth, cancel.intrinsicHeight)
         editText.setCompoundDrawables(null, null, cancel, null)
     }
+
+    fun openGallery(){
+        getContent.launch("image/*")
+    }
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                val contentResolver: ContentResolver = this!!.contentResolver
+                val type = contentResolver.getType(it)
+                imageUri = it
+
+                val fileNameimg = "${System.currentTimeMillis()}.png"
+                binding.ivImageUser.setImageURI(it)
+                Toast.makeText(this, "$imageUri", Toast.LENGTH_SHORT).show()
+
+                val tempFile = File.createTempFile("TransEvilz-", fileNameimg, null)
+                imageFile = tempFile
+                val inputstream = contentResolver.openInputStream(uri)
+                tempFile.outputStream().use    { result ->
+                    inputstream?.copyTo(result)
+                }
+                val requestBody: RequestBody = tempFile.asRequestBody(type?.toMediaType())
+                imageMultiPart = MultipartBody.Part.createFormData("image", tempFile.name, requestBody)
+            }
+        }
 }

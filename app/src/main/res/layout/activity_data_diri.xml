@@ -48,50 +48,31 @@
                 app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
                 app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardFotoUser"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:cardCornerRadius="30dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:foregroundGravity="center"
-                android:layout_marginVertical="27dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister"
-                app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
-                app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/contrainCircleImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/background_field">
-
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/ivImageUser"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:civ_border_color="@color/warna_background_button"
+                        app:civ_border_width="3dp"
                         android:gravity="center"
-                        android:elevation="100dp"
+                        android:layout_marginVertical="20dp"
                         android:src="@drawable/ic_register_icon"
-                        app:layout_constraintTop_toTopOf="@+id/contrainCircleImage"
-                        app:layout_constraintBottom_toBottomOf="@+id/contrainCircleImage"
-                        app:layout_constraintEnd_toEndOf="@+id/contrainCircleImage"
-                        app:layout_constraintStart_toStartOf="@+id/contrainCircleImage"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         tools:ignore="RtlSymmetry" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/tvTambahGambar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tambah gambar "
+                android:text="Tambah gambar"
+                android:textOn=""
+                android:textOff=""
                 android:textColor="@color/warna_secondary_font"
                 android:fontFamily="@font/dm_sans"
-                app:layout_constraintTop_toBottomOf="@+id/cardFotoUser"
+                app:layout_constraintTop_toBottomOf="@+id/ivImageUser"
                 app:layout_constraintStart_toStartOf="@+id/constrainDataDiri"
                 app:layout_constraintEnd_toEndOf="@+id/constrainDataDiri"/>
 
@@ -129,8 +110,8 @@
                 android:textColorHint="@color/warna_grey_font"
                 android:textColor="@color/warna_auth_font"
                 android:paddingHorizontal="10dp"
-                android:textSize="12sp"
                 android:layout_marginHorizontal="24dp"
+                android:textSize="12sp"
                 android:layout_marginVertical="5dp"
                 android:background="@drawable/transparent_bg_button"
                 app:layout_constraintStart_toStartOf="parent"
@@ -203,11 +184,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginVertical="15dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
+                android:paddingHorizontal="10dp"
+                android:layout_marginHorizontal="24dp"
                 android:paddingStart="10dp"
                 android:hint="Masukkan No Dokumen"
                 android:textSize="12sp"
+                android:inputType="number"
                 android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:fontFamily="@font/dm_sans"
                 android:textColorHint="@color/warna_grey_font"
@@ -260,17 +242,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Nama Depan"
-                android:maxLength="15"
-                android:paddingStart="10dp"
-                android:layout_marginEnd="24dp"
+                android:paddingHorizontal="10dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="5dp"
                 android:textSize="12sp"
+                android:inputType="text"
                 android:textColorHint="@color/warna_grey_font"
                 android:textColor="@color/warna_auth_font"
                 android:background="@drawable/transparent_bg_button"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNamaDepan"
-                android:layout_marginStart="24dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvNamaDepan"/>
 
             <TextView
                 android:id="@+id/tvWarningNamaDepan"
@@ -317,15 +298,17 @@
                 android:hint="Nama Belakang"
                 android:maxLength="15"
                 android:paddingStart="10dp"
-                android:layout_marginEnd="24dp"
+                android:paddingHorizontal="10dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="5dp"
                 android:textSize="12sp"
+                android:inputType="text"
                 android:textColorHint="@color/warna_grey_font"
                 android:textColor="@color/warna_auth_font"
                 android:background="@drawable/transparent_bg_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvNamaBelakang"
-                android:layout_marginStart="24dp"/>
+                />
 
             <TextView
                 android:id="@+id/tvWarningNamaBelakang"
@@ -371,14 +354,16 @@
                 android:maxLength="15"
                 android:paddingStart="10dp"
                 android:textSize="12sp"
-                android:layout_marginEnd="24dp"
+                android:inputType="text"
+                android:paddingHorizontal="10dp"
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="5dp"
                 android:textColorHint="@color/warna_grey_font"
                 android:textColor="@color/warna_auth_font"
                 android:background="@drawable/transparent_bg_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTempatlahir"
-                android:layout_marginStart="24dp"/>
+                />
 
 
             <TextView
