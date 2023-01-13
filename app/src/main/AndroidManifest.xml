@@ -82,15 +82,16 @@
         <activity
             android:name=".features.auth.datadiri.DataDiriActivity"
             android:exported="true">
+        </activity>
+        <activity
+            android:name=".features.auth.verifikasi.VerifikasiActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".features.auth.verifikasi.VerifikasiActivity"
-            android:exported="false" />
         <activity
             android:name=".features.auth.register.RegisterActivity"
             android:exported="false" />
