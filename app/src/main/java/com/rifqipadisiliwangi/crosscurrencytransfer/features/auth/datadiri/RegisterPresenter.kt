@@ -91,6 +91,4 @@ class RegisterPresenter (
             Log.d("error","$registerApi")
         }
     }
-
-
 }
