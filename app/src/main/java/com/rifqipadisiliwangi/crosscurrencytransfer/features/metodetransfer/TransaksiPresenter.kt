@@ -36,7 +36,6 @@ class TransaksiPresenter (
     }
 
     fun transaksi(
-        id: String,
         jenisBank: String,
         namaPenerima: String,
         noRekening: String,
@@ -46,7 +45,7 @@ class TransaksiPresenter (
         view?.onLoading()
         scope.launch {
             transaksiApi
-                .transaksiUser(id, jenisBank, namaPenerima, noRekening, tipeTransaksi, total)
+                .transaksiUser(jenisBank, namaPenerima, noRekening, tipeTransaksi, total)
                 .flowOn(Dispatchers.Default)
                 .collectLatest {
                     when (it) {

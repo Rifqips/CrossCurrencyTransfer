@@ -12,21 +12,20 @@ import java.io.IOException
 
 class TranskasiApi {
     fun transaksiUser(
-        id: String,
         jenisBank: String,
         namaPenerima: String,
         noRekening: String,
         tipeTransaksi: String,
         total: String
     ): Flow<ResponseStatus<TransaksiDataItem>> = flow {
-        val model = TransaksiDataItem(id, jenisBank, namaPenerima,noRekening, tipeTransaksi, total )
+        val model = TransaksiDataItem(jenisBank, namaPenerima,noRekening, tipeTransaksi, total )
 
         try {
             val result = NetworkTransaksiClient
                 .makeCallApi("/transaksi", NetworkTransaksiClient.METHOD.POST, model.serialized())
                 .execute()
             val response = if (result.isSuccessful) {
-                val data: TransaksiDataItem = deserializeJson<TransaksiDataItem>(result.body?.string() ?: "") ?: TransaksiDataItem(id, jenisBank, namaPenerima, noRekening, tipeTransaksi, total)
+                val data: TransaksiDataItem = deserializeJson<TransaksiDataItem>(result.body?.string() ?: "") ?: TransaksiDataItem(jenisBank, namaPenerima, noRekening, tipeTransaksi, total)
                 ResponseStatus.Success(data)
             } else {
                 mapFailedResponse(result)

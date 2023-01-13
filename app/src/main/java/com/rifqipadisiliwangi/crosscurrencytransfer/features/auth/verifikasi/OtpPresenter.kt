@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -14,6 +15,7 @@ import kotlin.coroutines.CoroutineContext
 
 class OtpPresenter (
     private val otpApi: OtpApi,
+    private val transaksiApi: TranskasiApi,
     private val uiContext: CoroutineContext = Dispatchers.Main
 ) {
     companion object {
@@ -49,6 +51,31 @@ class OtpPresenter (
                 }
             view?.onFinishedLoading()
             Log.d("error","$otpApi")
+        }
+    }
+
+
+
+    fun transaksi(
+        jenisBank: String,
+        namaPenerima: String,
+        noRekening: String,
+        tipeTransaksi: String,
+        total: String
+    ) {
+        view?.onLoading()
+        scope.launch {
+            transaksiApi
+                .transaksiUser(jenisBank, namaPenerima, noRekening, tipeTransaksi, total)
+                .flowOn(Dispatchers.Default)
+                .collectLatest {
+                    when (it) {
+                        is ResponseStatus.Success -> view?.onSuccessOtp(0)
+                        is ResponseStatus.Failed -> view?.onError(it.code, it.message)
+                    }
+                }
+            view?.onFinishedLoading()
+            Log.d("error","$transaksiApi")
         }
     }
 

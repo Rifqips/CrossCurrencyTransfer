@@ -7,4 +7,5 @@ interface OtpView {
     fun onFinishedLoading()
     fun onError(code: Int, message: String)
     fun onSuccessOtp(otp : Int)
+    fun onSuccessTransaksi()
 }

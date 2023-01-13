@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityVerifikasiBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
@@ -19,8 +20,7 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
 
     private lateinit var binding : ActivityVerifikasiBinding
     private var digit_on_screen = StringBuilder()
-    private val presenter = OtpPresenter(OtpApi())
-    lateinit var btnShowBottomSheet: Button
+    private val presenter = OtpPresenter(OtpApi(), TranskasiApi())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +69,10 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
 
     override fun onSuccessOtp(otp: Int) {
         startActivity(Intent(this, DataDiriActivity::class.java))
+    }
+
+    override fun onSuccessTransaksi() {
+        TODO("Not yet implemented")
     }
 
     private fun timer () {
@@ -185,4 +189,6 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
         }
 
     }
+
+
 }

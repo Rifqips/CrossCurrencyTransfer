@@ -96,18 +96,36 @@
                 app:layout_constraintStart_toStartOf="@id/constTotalInter"
                 app:layout_constraintEnd_toEndOf="@id/constTotalInter"/>
 
-            <TextView
-                android:id="@+id/tvSaldoTotal"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1.000.000 IDR"
-                android:layout_marginVertical="5dp"
-                android:textSize="30sp"
-                android:textColor="@color/warna_background_rounded_dokumen"
-                android:fontFamily="@font/dm_sans_bold"
                 app:layout_constraintTop_toBottomOf="@+id/tvTotalTransaksi"
                 app:layout_constraintStart_toStartOf="@id/constTotalInter"
-                app:layout_constraintEnd_toEndOf="@id/constTotalInter"/>
+                app:layout_constraintEnd_toEndOf="@id/constTotalInter"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvSaldoTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginVertical="5dp"
+                    android:textSize="30sp"
+                    android:textColor="@color/warna_background_rounded_dokumen"
+                    android:fontFamily="@font/dm_sans_bold"/>
+
+                <TextView
+                    android:id="@+id/tvDefaultIdr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IDR"
+                    android:layout_marginVertical="5dp"
+                    android:textSize="30sp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/warna_background_rounded_dokumen"
+                    android:fontFamily="@font/dm_sans_bold"/>
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

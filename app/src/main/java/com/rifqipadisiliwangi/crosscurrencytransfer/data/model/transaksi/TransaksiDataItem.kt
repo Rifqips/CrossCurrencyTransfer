@@ -5,8 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class TransaksiDataItem(
-    @Json(name = "id")
-    val id: String,
     @Json(name = "jenis_bank")
     val jenisBank: String,
     @Json(name = "nama_penerima")

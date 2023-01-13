@@ -8,5 +8,4 @@ interface TransaksiView {
     fun onError(code: Int, message: String)
     fun onErrorTransasksi(code: Int, message: String)
     fun onSuccessTransaksi(transaksi: TransaksiDataItem)
-    fun onSuccessRegister()
 }

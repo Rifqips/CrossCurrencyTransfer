@@ -1,28 +1,85 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.asLiveData
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpDataSingleton
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpPresenter
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpView
 
-class PengirimTransferActivity : AppCompatActivity() {
+class PengirimTransferActivity : AppCompatActivity(), OtpView {
 
     private lateinit var binding : ActivityPengirimTransferBinding
+    private lateinit var dataTransaksi : DataStoreTransaksi
     var digit_on_screen = StringBuilder()
+    var transaksiTotal = ""
+    var metodePembayaran = ""
+    var pilihBank = ""
+    var noRekeningTransaksi = ""
+    var namaPenerima = ""
+    private val presenter = OtpPresenter(OtpApi(), TranskasiApi())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPengirimTransferBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializeButtons()
+        postOtp()
+        getDataStore()
+        presenter.onAttach(this)
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, PembayaranTransferActivity::class.java))
         }
 
+    }
+
+
+    private fun postOtp(){
+        OtpDataSingleton.otp
+        binding.btnSend.setOnClickListener {
+            presenter.otp(
+                binding.resultId.text.toString().toInt()
+            )
+            presenter.transaksi(
+                pilihBank,namaPenerima,noRekeningTransaksi,metodePembayaran, transaksiTotal
+            )
+        }
+
+    }
+
+    private fun getDataStore(){
+        dataTransaksi = DataStoreTransaksi(this)
+        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
+            transaksiTotal = it
+            binding.tvGetTotal.text = it.toString()
+        }
+        dataTransaksi.transaksiJenisBank.asLiveData().observe(this) {
+            pilihBank = it
+            binding.tvGetJenisBank.text = it.toString()
+        }
+
+        dataTransaksi.transaksiNoRekening.asLiveData().observe(this) {
+            noRekeningTransaksi = it
+            binding.tvGetNoRekening.text = it.toString()
+        }
+
+        dataTransaksi.transaksiTipeTransaksi.asLiveData().observe(this) {
+            metodePembayaran = it
+            binding.tvGetTipeTransaksi.text = it.toString()
+        }
+
+        dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
+            namaPenerima = it
+            binding.tvGetNamaPenerima.text = it.toString()
+        }
     }
 
     private fun initializeButtons() {
@@ -126,5 +183,27 @@ class PengirimTransferActivity : AppCompatActivity() {
         binding.backspaceBtn.isVisible = length != 0
         binding.resultId.text = digit_on_screen.toString()
 
+    }
+
+
+    override fun onLoading() {
+        binding.progressBarPengirim.isVisible = true
+    }
+
+    override fun onFinishedLoading() {
+        binding.progressBarPengirim.isVisible = false
+    }
+
+    override fun onError(code: Int, message: String) {
+        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+        binding.progressBarPengirim.isVisible = true
+    }
+
+    override fun onSuccessOtp(otp: Int) {
+        startActivity(Intent(this, SuksesTransferActivity::class.java))
+    }
+
+    override fun onSuccessTransaksi() {
+        TODO("Not yet implemented")
     }
 }
