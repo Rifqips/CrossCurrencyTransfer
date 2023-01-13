@@ -98,8 +98,6 @@
         <activity
             android:name=".features.home.HomeBottomActivity"
             android:exported="true">
-
-
         </activity>
         <activity
             android:name=".features.auth.lupapassword.LupaPasswordActivity"

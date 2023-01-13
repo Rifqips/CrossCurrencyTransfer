@@ -27,8 +27,6 @@ class OtpPresenter (
     private var job = SupervisorJob()
     private var scope = CoroutineScope(job + uiContext)
 
-
-
     fun onAttach(view: OtpView) {
         this.view = view
     }
@@ -37,17 +35,15 @@ class OtpPresenter (
         this.view = null
     }
 
-    fun otp(
-        otp: Int,
-    ) {
-        view?.onLoading()
+    fun otp( otp: Int) {
+        view?.onFinishedLoading()
         scope.launch {
             otpApi
                 .otpUser(otp)
                 .flowOn(Dispatchers.Default)
                 .collectLatest {
                     when (it) {
-                        is ResponseStatus.Success -> view?.onSuccessOtp()
+                        is ResponseStatus.Success -> view?.onSuccessOtp(0)
                         is ResponseStatus.Failed -> view?.onError(it.code, it.message)
                     }
                 }

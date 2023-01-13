@@ -1,18 +1,18 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.graphics.Color
+import android.os.Bundle
 import android.os.CountDownTimer
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.register.RegisterApi
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityVerifikasiBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.RegisterPresenter
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.RegisterView
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
 
 class VerifikasiActivity : AppCompatActivity(), OtpView {
@@ -20,20 +20,33 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
     private lateinit var binding : ActivityVerifikasiBinding
     private var digit_on_screen = StringBuilder()
     private val presenter = OtpPresenter(OtpApi())
+    lateinit var btnShowBottomSheet: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifikasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializeButtons()
-//        postRegister()
+        postOtp()
+        timer()
         presenter.onAttach(this)
+        binding.tvBelumDapat.setOnClickListener {
+            val dialog = BottomSheetDialog(this)
+            val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+            val btnClose = view.findViewById<Button>(R.id.idBtnDismiss)
+            btnClose.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.setCancelable(false)
+            dialog.setContentView(view)
+            dialog.show()
+        }
 
         binding.ibBack.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
         }
 
-        timer()
+
         binding.tvKirimUlangKode.setOnClickListener {
             timer()
         }
@@ -54,13 +67,11 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
         binding.progressBarPengirim.isVisible = true
     }
 
-    override fun onSuccessOtp() {
-        presenter.otp(0)
-        Toast.makeText(this, "Success OTP", Toast.LENGTH_SHORT).show()
+    override fun onSuccessOtp(otp: Int) {
         startActivity(Intent(this, DataDiriActivity::class.java))
     }
 
-    fun timer () {
+    private fun timer () {
         object : CountDownTimer(60000,1000) {
             override fun onTick(p0: Long) {
                 binding.tvTimer.text = "${p0 / 1000}"
@@ -72,10 +83,8 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
         }.start()
     }
 
-
     private fun initializeButtons() {
         functionalButtons()
-        operationalButtons()
         numericalButtons()
     }
 
@@ -141,9 +150,6 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
      *  Initialize the operation keys in our calculator like the
      *  addition key, subtraction key and the likes
      */
-    private fun operationalButtons() {
-
-    }
 
     /**
      * Function to assign operational sign to our math calculations
@@ -161,24 +167,22 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
     }
 
     /**
-     *  This function performs our Math Operation which is then showed on the screen.
-     */
-
-    /**
      *  This function remove the last digit on the screen.
      */
     private fun clearDigit() {
-
         val length = digit_on_screen.length
         digit_on_screen.deleteCharAt(length - 1)
         binding.backspaceBtn.isVisible = length != 0
         binding.resultId.text = digit_on_screen.toString()
-
     }
-    private fun postRegister(){
 
-//        presenter.otp(
-//            binding.resultId.text.toString().toInt()
-//        )
+    private fun postOtp(){
+        OtpDataSingleton.otp
+        binding.btnSend.setOnClickListener {
+            presenter.otp(
+                binding.resultId.text.toString().toInt()
+            )
+        }
+
     }
 }

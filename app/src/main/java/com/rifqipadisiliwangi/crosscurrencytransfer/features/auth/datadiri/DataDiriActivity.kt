@@ -250,7 +250,7 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
     private fun postRegister(){
             presenter.register(
                 binding.etEmail.text.toString(),
-                binding.mySpinner.toString(),
+                binding.mySpinner.selectedItem.toString(),
                 binding.etMasukkanDokumen.text.toString().toInt(),
                 binding.etNamaDepan.text.toString(),
                 binding.etNamaBelakang.text.toString(),

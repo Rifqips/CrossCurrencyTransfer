@@ -23,6 +23,7 @@ class OtpApi {
             val response = if (result.isSuccessful) {
                 val data: OtpDataItem = deserializeJson<OtpDataItem>(result.body?.string() ?: "") ?: OtpDataItem()
                 ResponseStatus.Success(data)
+
             } else {
                 mapFailedResponse(result)
             }
