@@ -3,14 +3,12 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.home
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.service.controls.ControlsProviderService.TAG
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityHomeBottomBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.HistoryFragment
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.HomeFragment
 
 class HomeBottomActivity : AppCompatActivity(), OrderFragmentInterface {

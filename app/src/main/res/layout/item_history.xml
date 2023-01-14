@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/csUserHistoy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/warna_background"
+        android:paddingBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama User"
+            android:textSize="25sp"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginVertical="9dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/ivAvatar"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvCodeBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bank Of Amrika"
+            android:textSize="12sp"
+            android:fontFamily="@font/dm_sans_medium"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:layout_constraintStart_toStartOf="@id/tvName"/>
+
+        <TextView
+            android:id="@+id/tvNoRekening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10100110"
+            android:textSize="12sp"
+            android:fontFamily="@font/dm_sans_medium"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvCodeBank" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10100110"
+            android:textSize="16sp"
+            android:fontFamily="@font/dm_sans_medium"
+            app:layout_constraintEnd_toEndOf="@+id/csUserHistoy"
+            app:layout_constraintTop_toBottomOf="@id/tvCodeBank" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

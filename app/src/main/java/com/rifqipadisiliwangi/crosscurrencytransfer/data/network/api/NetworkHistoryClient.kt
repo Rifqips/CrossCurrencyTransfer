@@ -1,6 +1,6 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api
 
-import androidx.viewbinding.BuildConfig
+import com.rifqipadisiliwangi.crosscurrencytransfer.BuildConfig
 import okhttp3.Call
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -9,7 +9,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
-class NetworkTransaksiClient {
+class NetworkHistoryClient {
     companion object {
         const val BASE_URL = "https://63c16c9999c0a15d28e966cf.mockapi.io/transevilz/v1/"
         private val headerInterceptor: Interceptor = Interceptor {
@@ -23,7 +23,7 @@ class NetworkTransaksiClient {
         val client: OkHttpClient by lazy {
             OkHttpClient
                 .Builder()
-                .addInterceptor(NetworkTransaksiClient.headerInterceptor)
+                .addInterceptor(headerInterceptor)
                 .addInterceptor(
                     HttpLoggingInterceptor().apply {
                         level =
@@ -38,7 +38,7 @@ class NetworkTransaksiClient {
 
         fun requestBuilder(
             endpoint: String,
-            method: METHOD = METHOD.POST,
+            method: METHOD = METHOD.GET,
             jsonBody: String? = null
         ): Request {
             val request = Request
@@ -53,37 +53,12 @@ class NetworkTransaksiClient {
 
         fun makeCallApi(
             endpoint: String,
-            method: METHOD = METHOD.POST,
+            method: METHOD = METHOD.GET,
             jsonBody: String? = null
         ): Call {
             val request = requestBuilder(endpoint, method, jsonBody)
             return client.newCall(request)
         }
-
-
-//        fun requestBuilderHistory(
-//            endpoint: String,
-//            method: METHOD = METHOD.GET,
-//            jsonBody: String? = null
-//        ): Request {
-//            val request = Request
-//                .Builder()
-//                .url("$BASE_URL$endpoint")
-//
-//            if (jsonBody != null)
-//                request.method(method.name, null)
-//
-//            return request.build()
-//        }
-//
-//        fun makeCallApiHistory(
-//            endpoint: String,
-//            method: METHOD = METHOD.GET,
-//            jsonBody: String? = null
-//        ): Call {
-//            val request = requestBuilderHistory(endpoint, method, jsonBody)
-//            return client.newCall(request)
-//        }
     }
 
     enum class METHOD {

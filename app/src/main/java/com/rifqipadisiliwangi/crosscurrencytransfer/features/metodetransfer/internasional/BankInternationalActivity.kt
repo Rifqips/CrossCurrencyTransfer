@@ -48,7 +48,7 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             transaksiTotal = binding.tvSaldoTotal.text.toString()
             pilihBank = binding.mySpinner.selectedItem.toString()
             noRekeningTransaksi = binding.etNorekening.text.toString()
-            namaPenerima = binding.tvNamaPenerima.text.toString()
+            namaPenerima = binding.etNamaPenerima.text.toString()
             GlobalScope.launch {
                 dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, tipeTransaksi = "", transaksiTotal)
             }

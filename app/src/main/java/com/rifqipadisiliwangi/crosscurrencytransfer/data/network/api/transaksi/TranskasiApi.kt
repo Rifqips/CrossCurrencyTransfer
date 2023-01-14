@@ -25,7 +25,7 @@ class TranskasiApi {
                 .makeCallApi("/transaksi", NetworkTransaksiClient.METHOD.POST, model.serialized())
                 .execute()
             val response = if (result.isSuccessful) {
-                val data: TransaksiDataItem = deserializeJson<TransaksiDataItem>(result.body?.string() ?: "") ?: TransaksiDataItem(jenisBank, namaPenerima, noRekening, tipeTransaksi, total)
+                val data: TransaksiDataItem = deserializeJson<TransaksiDataItem>(result.body?.string() ?: "") ?: TransaksiDataItem()
                 ResponseStatus.Success(data)
             } else {
                 mapFailedResponse(result)

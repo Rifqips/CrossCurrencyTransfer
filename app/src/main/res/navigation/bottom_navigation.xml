@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.HistoryFragment"
+        android:name="com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action
