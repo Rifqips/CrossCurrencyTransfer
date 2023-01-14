@@ -19,12 +19,11 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.history.Hi
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.HistoryPresenter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpPresenter
 
-@Suppress("UNREACHABLE_CODE")
 class HistoryFragment : Fragment(), HistoryView.View {
 
     private lateinit var binding : FragmentHistoryBinding
     private val adapterUser: HistoryAdapter by lazy { HistoryAdapter() }
-    private val recipeLiveData = MutableLiveData<List<HistoryDataItem>>(listOf())
+    private val recipeLiveData = MutableLiveData<List<HistoryDataItem>>()
     private lateinit var presenter: HistoryPresenter
 
     override fun onCreateView(
@@ -45,15 +44,10 @@ class HistoryFragment : Fragment(), HistoryView.View {
 
         Toast.makeText(context,"Loading", Toast.LENGTH_LONG).show()
 
-//        binding.rvHistory.adapter = adapterUser
-//        binding.rvHistory.layoutManager =
-//            LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-
         binding.rvHistory.apply {
             adapter = this@HistoryFragment.adapterUser
-            layoutManager = LinearLayoutManager(requireActivity())
+            layoutManager = LinearLayoutManager(context)
             LinearLayoutManager.VERTICAL
-
         }
 
         recipeLiveData.observe(viewLifecycleOwner){
