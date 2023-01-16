@@ -80,16 +80,7 @@
         <activity
             android:name=".features.metodetransfer.internasional.SuksesTransferActivity"
             android:exported="true" />
-<<<<<<< HEAD
-        <activity
-            android:name=".features.auth.datadiri.DataDiriActivity"
-            android:exported="true"/>
-=======
-<!--        <activity-->
-<!--            android:name=".features.auth.datadiri.DataDiriActivity"-->
-<!--            android:exported="true">-->
-<!--        </activity>-->
->>>>>>> dev-roni
+
         <activity
             android:name=".features.auth.verifikasi.VerifikasiActivity"
             android:exported="true" />
