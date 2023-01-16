@@ -11,6 +11,14 @@
     <string name="masukkan_email_anda_untuk">Masukkan email anda untuk membuat kata sandi baru</string>
     <string name="permohonan_peru">Permohonan Perubahan kata sandi telah dikirim ke email anda</string>
     <string name="buat_katasandi">Buat kata sandi baru anda</string>
+    <string name="lihat_lokasi">Lihat Lokasi</string>
+    <string name="title_biometric_prompt">TransEvilz Project</string>
+    <string name="success">Otentikasi Berhasil</string>
+    <string name="error_no_hardware">Aplikasi Membutuhkan FingerPrint</string>
+    <string name="error_hw_unavailable">Finger Print Tidak Bekerja</string>
+    <string name="daftar_user">Daftar User Baru</string>
+    <string name="error_none_enrolled">Tidak Ada Sidik Jari yang Terdaftar</string>
+    <string name="description_biometric_prompt">Gunakan Sidik Jari Untuk Masuk</string>
     <string name="client_id" translatable="false">879281085290-u4k87p7q992nep67jt45v28viauhkjui.apps.googleusercontent.com</string>
 
     <string-array name="listNegara">

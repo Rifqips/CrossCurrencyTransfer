@@ -8,33 +8,42 @@ import android.text.TextWatcher
 import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankLokalBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLokalTransferBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.codepicker.CountrySpinnerAdapter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.BankInternationalActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class LokalTransferActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLokalTransferBinding
+    private lateinit var dataTransaksi : DataStoreTransaksi
+    private var countryData : MutableList<CountryData> = mutableListOf()
+    var transaksiTotal = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLokalTransferBinding.inflate(layoutInflater)
         setContentView(binding.root)
         exchangedSetup()
+        dataTransaksi = DataStoreTransaksi(this)
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, HomeBottomActivity::class.java))
         }
 
         binding.btnSelanjutnya.setOnClickListener {
-            val intent = Intent(this, BankLokalActivity::class.java)
-            val total = binding.tvTotal.text.toString()
-            intent.putExtra("total", total)
-            startActivity(intent)
+            transaksiTotal = binding.tvTotal.text.toString()
+            GlobalScope.launch {
+                dataTransaksi.saveData(id = "", jenisBank = "", namaPenerima = "", noRekening = "", tipeTransaksi = "",transaksiTotal)
+            }
+            startActivity(Intent(this, BankLokalActivity::class.java))
         }
+
     }
 
     private fun exchangedSetup(){

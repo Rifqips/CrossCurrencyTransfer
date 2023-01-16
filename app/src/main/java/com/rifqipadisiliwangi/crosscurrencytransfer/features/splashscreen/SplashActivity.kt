@@ -21,6 +21,7 @@ class SplashActivity : AppCompatActivity() {
                     Thread.sleep(2500)
                     val intent = Intent(baseContext, ViewpagerActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }catch (e : Exception){
                     e.printStackTrace()
                 }

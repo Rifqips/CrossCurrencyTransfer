@@ -7,18 +7,24 @@ import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.lifecycle.asLiveData
 import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.codepicker.CountryData
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityInternationalTransferBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.codepicker.CountrySpinnerAdapter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class InternationalTransferActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityInternationalTransferBinding
     private var countryData : MutableList<CountryData> = mutableListOf()
     private lateinit var countryAdapter: CountrySpinnerAdapter
+    private lateinit var dataTransaksi : DataStoreTransaksi
+    var transaksiTotal = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,16 +32,18 @@ class InternationalTransferActivity : AppCompatActivity() {
         setContentView(binding.root)
         loadSpinner()
         exchangedSetup()
+        dataTransaksi = DataStoreTransaksi(this)
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, HomeBottomActivity::class.java))
         }
 
         binding.btnSelanjutnya.setOnClickListener {
-            val intent = Intent(this, BankInternationalActivity::class.java)
-            val total = binding.tvTotal.text.toString()
-            intent.putExtra("total", total)
-            startActivity(intent)
+            transaksiTotal = binding.tvTotal.text.toString()
+            GlobalScope.launch {
+                dataTransaksi.saveData(id = "", jenisBank = "", namaPenerima = "", noRekening = "", tipeTransaksi = "",transaksiTotal)
+            }
+            startActivity(Intent(this, BankInternationalActivity::class.java))
         }
 
     }
@@ -49,6 +57,8 @@ class InternationalTransferActivity : AppCompatActivity() {
                 CountryData( R.drawable.ic_jpn, "JPN", 1150 ),
             )
         )
+
+
 
         val spinner = binding.spinnerTujuan
         countryAdapter = CountrySpinnerAdapter(this, countryData){

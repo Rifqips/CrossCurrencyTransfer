@@ -11,25 +11,34 @@ import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.lifecycle.asLiveData
 import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPembayaranTransferBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPembayaranTransferLokalBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.BankInternationalActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.PengirimTransferActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class PembayaranTransferLokalActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding : ActivityPembayaranTransferLokalBinding
     var bankIndonesia = arrayOf("Pilih Bank","Mandiri", "BCA", "Cimb Niaga", "BRI", "BNI")
+    private lateinit var dataTransaksi : DataStoreTransaksi
+    var transaksiTotal = ""
+    var metodePembayaran = ""
+    var pilihBank = ""
+    var noRekeningTransaksi = ""
+    var namaPenerima = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPembayaranTransferLokalBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadSpiner()
-        val myData = intent.getStringExtra("total")
-        binding.tvSaldoTotal.text = myData.toString()
+        loadDataStore()
 
         binding.btnSelanjutnya.setOnClickListener {
             startActivity(Intent(this, PengirimTransferLokalActivity::class.java))
@@ -40,6 +49,33 @@ class PembayaranTransferLokalActivity : AppCompatActivity(), AdapterView.OnItemS
         }
     }
 
+
+    private fun loadDataStore(){
+        dataTransaksi = DataStoreTransaksi(this)
+        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
+            transaksiTotal = it
+            binding.tvSaldoTotal.text = it.toString()
+        }
+        dataTransaksi.transaksiJenisBank.asLiveData().observe(this) {
+            pilihBank = it
+        }
+
+        dataTransaksi.transaksiNoRekening.asLiveData().observe(this) {
+            noRekeningTransaksi = it
+        }
+
+        dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
+            namaPenerima = it
+        }
+        binding.btnSelanjutnya.setOnClickListener {
+            transaksiTotal = binding.tvSaldoTotal.text.toString()
+            metodePembayaran = binding.mySpinner.selectedItem.toString()
+            GlobalScope.launch {
+                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, metodePembayaran, transaksiTotal)
+            }
+            startActivity(Intent(this, PengirimTransferLokalActivity::class.java))
+        }
+    }
 
     private fun loadSpiner(){
 

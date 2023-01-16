@@ -1,55 +1,83 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.lokal
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.sqlite.DB_class
-import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
+import androidx.lifecycle.asLiveData
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferLokalBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.PembayaranTransferActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpDataSingleton
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpPresenter
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpView
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.SuksesTransferActivity
 
-class PengirimTransferLokalActivity : AppCompatActivity() {
+class PengirimTransferLokalActivity : AppCompatActivity(), OtpView {
 
     private lateinit var binding : ActivityPengirimTransferLokalBinding
     var digit_on_screen = StringBuilder()
+    private lateinit var dataTransaksi : DataStoreTransaksi
+    var transaksiTotal = ""
+    var metodePembayaran = ""
+    var pilihBank = ""
+    var noRekeningTransaksi = ""
+    var namaPenerima = ""
+    private val presenter = OtpPresenter(OtpApi(), TranskasiApi())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPengirimTransferLokalBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getPin()
         initializeButtons()
+        postOtp()
+        getDataStore()
+        presenter.onAttach(this)
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, PembayaranTransferLokalActivity::class.java))
         }
     }
 
-
-    @SuppressLint("Range")
-    private fun getPin(){
-        val dbhelp = DB_class(applicationContext)
-        val db = dbhelp.readableDatabase
+    private fun postOtp(){
+        OtpDataSingleton.otp
         binding.btnSend.setOnClickListener {
-            val pin = binding.resultId.text.toString();
-            val query="SELECT * FROM pintrans WHERE pin='"+pin+"'"
-            val rs=db.rawQuery(query,null)
-            if(rs.moveToFirst()){
-                val getPinpin = rs.getString(rs.getColumnIndex("pin"))
-                rs.close()
-                startActivity(Intent(this, SuksesTransferLokalActivity::class.java))
-            }
-            else{
-                val ad = AlertDialog.Builder(this)
-                ad.setTitle("Message")
-                ad.setMessage("Pin is incorrect!")
-                ad.setPositiveButton("Ok", null)
-                ad.show()
-            }
+            presenter.otp(
+                binding.resultId.text.toString().toInt()
+            )
+            presenter.transaksi(
+                pilihBank,namaPenerima,noRekeningTransaksi,metodePembayaran, transaksiTotal
+            )
+        }
+
+    }
+
+    private fun getDataStore(){
+        dataTransaksi = DataStoreTransaksi(this)
+        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
+            transaksiTotal = it
+            binding.tvGetTotal.text = it.toString()
+        }
+        dataTransaksi.transaksiJenisBank.asLiveData().observe(this) {
+            pilihBank = it
+            binding.tvGetJenisBank.text = it.toString()
+        }
+
+        dataTransaksi.transaksiNoRekening.asLiveData().observe(this) {
+            noRekeningTransaksi = it
+            binding.tvGetNoRekening.text = it.toString()
+        }
+
+        dataTransaksi.transaksiTipeTransaksi.asLiveData().observe(this) {
+            metodePembayaran = it
+            binding.tvGetTipeTransaksi.text = it.toString()
+        }
+
+        dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
+            namaPenerima = it
+            binding.tvGetNamaPenerima.text = it.toString()
         }
     }
 
@@ -154,5 +182,27 @@ class PengirimTransferLokalActivity : AppCompatActivity() {
         binding.backspaceBtn.isVisible = length != 0
         binding.resultId.text = digit_on_screen.toString()
 
+    }
+
+
+    override fun onLoading() {
+        binding.progressBarPengirim.isVisible = true
+    }
+
+    override fun onFinishedLoading() {
+        binding.progressBarPengirim.isVisible = false
+    }
+
+    override fun onError(code: Int, message: String) {
+        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+        binding.progressBarPengirim.isVisible = true
+    }
+
+    override fun onSuccessOtp(otp: Int) {
+        startActivity(Intent(this, SuksesTransferLokalActivity::class.java))
+    }
+
+    override fun onSuccessTransaksi() {
+        Toast.makeText(this, "Thank u for trust Trans Evilz", Toast.LENGTH_SHORT).show()
     }
 }
