@@ -1,6 +1,5 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
-
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
