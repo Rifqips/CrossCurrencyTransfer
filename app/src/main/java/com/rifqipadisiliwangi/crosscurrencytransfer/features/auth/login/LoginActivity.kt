@@ -1,24 +1,16 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
-import android.app.Activity
+
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-
-
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -30,17 +22,22 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginDataItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterDataItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.LoginApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLoginBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.lupapassword.LupaPasswordActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LoginView {
+
 
     var password = "hidePassword"
     var enableButtonPassword = "disablePw"
     var enableButtonEmail = "disableEmail"
     private lateinit var binding: ActivityLoginBinding
+    private val presenterLogin = LoginPresenter(LoginApi())
     lateinit var mGoogleSignInClient: GoogleSignInClient
     val Req_Code:Int=123
     var firebaseAuth= FirebaseAuth.getInstance()
@@ -51,6 +48,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
+
+        presenterLogin.onAttach(this)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.client_id))
@@ -101,9 +100,11 @@ class LoginActivity : AppCompatActivity() {
 
         binding.ibShowPassword.setOnClickListener {
             if (password == "hidePassword")  {
+                binding.ibShowPassword.setImageResource(R.drawable.eye_on)
                 binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
                 password = "showPassword"
             }else {
+                binding.ibShowPassword.setImageResource(R.drawable.eye_off)
                 binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 password = "hidePassword"
             }
@@ -193,5 +194,40 @@ class LoginActivity : AppCompatActivity() {
         } else {
             Patterns.EMAIL_ADDRESS.matcher(target).matches()
         }
+    }
+
+    override fun onLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFinishedLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onError(code: Int, message: String) {
+        when (code) {
+            1 -> {
+                binding.tvWarningEmail.text = message
+            }
+            2 -> {
+                binding.tvWarningEmail.text = message
+            }
+        }
+    }
+
+    override fun onErrorEmail(code: Int, message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onErrorPassword(visible: Boolean, message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccessGetUser(user: List<RegisterDataItem>) {
+        binding.tvHeadingSatu.text = user.size.toString()
+    }
+
+    override fun onSuccessLogin() {
+        TODO("Not yet implemented")
     }
 }
