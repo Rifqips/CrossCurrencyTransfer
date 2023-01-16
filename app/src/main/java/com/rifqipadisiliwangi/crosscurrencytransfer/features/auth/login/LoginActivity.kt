@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
@@ -21,6 +22,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.LoginApi
@@ -46,6 +48,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        postLogin()
         auth = Firebase.auth
 
         presenterLogin.onAttach(this)
@@ -59,13 +62,13 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         firebaseAuth= FirebaseAuth.getInstance()
 
-        binding.tvLupaPassword.setOnClickListener {
-            startActivity(Intent(this, LupaPasswordActivity::class.java))
-        }
+//        binding.tvLupaPassword.setOnClickListener {
+//            startActivity(Intent(this, LupaPasswordActivity::class.java))
+//        }
 
-        binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, PinActivity::class.java))
-        }
+//        binding.btnLogin.setOnClickListener {
+//            startActivity(Intent(this, PinActivity::class.java))
+//        }
 
         binding.btnLoginGoogle.setOnClickListener {
             signInGoogle()
@@ -75,27 +78,27 @@ class LoginActivity : AppCompatActivity(), LoginView {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        binding.etEmail.doOnTextChanged { text, start, before, count ->
-            enableButtonEmail = "resetBtn"
-            binding.btnLogin.isEnabled = false
-            binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
-
-
-                if (binding.etEmail.text.toString().isEmpty()) {
-                    binding.tvWarningEmail.text = "Anda harus mengisi bagian ini"
-                    binding.tvWarningEmail.isVisible = true
-                }else if (!isValidEmail(binding.etEmail.text.toString())) {
-                    binding.tvWarningEmail.text = "Format email salah"
-                    binding.tvWarningEmail.isVisible = true
-                }else if (isValidEmail(binding.etEmail.text.toString()) ) {
-                    binding.tvWarningEmail.isVisible = false
-                    enableButtonEmail = "enabledEmail"
-                }
-            if ( enableButtonEmail == "enabledEmail" && enableButtonPassword == "enabledPwd" ) {
-                binding.btnLogin.isEnabled = true
-                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
-            }
-        }
+//        binding.etEmail.doOnTextChanged { text, start, before, count ->
+//            enableButtonEmail = "resetBtn"
+//            binding.btnLogin.isEnabled = false
+//            binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
+//
+//
+//                if (binding.etEmail.text.toString().isEmpty()) {
+//                    binding.tvWarningEmail.text = "Anda harus mengisi bagian ini"
+//                    binding.tvWarningEmail.isVisible = true
+//                }else if (!isValidEmail(binding.etEmail.text.toString())) {
+//                    binding.tvWarningEmail.text = "Format email salah"
+//                    binding.tvWarningEmail.isVisible = true
+//                }else if (isValidEmail(binding.etEmail.text.toString()) ) {
+//                    binding.tvWarningEmail.isVisible = false
+//                    enableButtonEmail = "enabledEmail"
+//                }
+//            if ( enableButtonEmail == "enabledEmail" && enableButtonPassword == "enabledPwd" ) {
+//                binding.btnLogin.isEnabled = true
+//                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
+//            }
+//        }
 
         binding.ibShowPassword.setOnClickListener {
             if (password == "hidePassword")  {
@@ -109,37 +112,37 @@ class LoginActivity : AppCompatActivity(), LoginView {
             }
         }
 
-        binding.etPassword.doOnTextChanged { text, start, before, count ->
-            enableButtonPassword = "resetBtn"
-            binding.btnLogin.isEnabled = false
-            binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
-
-            if (binding.etPassword.text.toString().isEmpty()) {
-                    binding.tvWarningKataSandi.text = "Anda harus mengisi bagian ini"
-                binding.tvWarningKataSandi.isVisible = true
-            }
-            else if ( !(binding.etPassword.text.toString().length >= 8 &&
-                        binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
-                        binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
-                        binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
-                        binding.etPassword.text.toString().contains("[@*#&]".toRegex()))
-            ){
-                binding.tvWarningKataSandi.text = "Kata sandi harus berisi huruf besar, angka dan simbol (@ * # &)"
-                binding.tvWarningKataSandi.isVisible = true
-            }
-            else if (binding.etPassword.text.toString().length >= 8 &&
-                binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
-                binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
-                binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
-                binding.etPassword.text.toString().contains("[@*#&]".toRegex()) ) {
-                    binding.tvWarningKataSandi.isVisible = false
-                    enableButtonPassword = "enabledPwd"
-            }
-            if (enableButtonEmail == "enabledEmail" && enableButtonPassword == "enabledPwd" ){
-                binding.btnLogin.isEnabled = true
-                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
-            }
-        }
+//        binding.etPassword.doOnTextChanged { text, start, before, count ->
+//            enableButtonPassword = "resetBtn"
+//            binding.btnLogin.isEnabled = false
+//            binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
+//
+//            if (binding.etPassword.text.toString().isEmpty()) {
+//                    binding.tvWarningKataSandi.text = "Anda harus mengisi bagian ini"
+//                binding.tvWarningKataSandi.isVisible = true
+//            }
+//            else if ( !(binding.etPassword.text.toString().length >= 8 &&
+//                        binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
+//                        binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
+//                        binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
+//                        binding.etPassword.text.toString().contains("[@*#&]".toRegex()))
+//            ){
+//                binding.tvWarningKataSandi.text = "Kata sandi harus berisi huruf besar, angka dan simbol (@ * # &)"
+//                binding.tvWarningKataSandi.isVisible = true
+//            }
+//            else if (binding.etPassword.text.toString().length >= 8 &&
+//                binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
+//                binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
+//                binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
+//                binding.etPassword.text.toString().contains("[@*#&]".toRegex()) ) {
+//                    binding.tvWarningKataSandi.isVisible = false
+//                    enableButtonPassword = "enabledPwd"
+//            }
+//            if (enableButtonEmail == "enabledEmail" && enableButtonPassword == "enabledPwd" ){
+//                binding.btnLogin.isEnabled = true
+//                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
+//            }
+//        }
     }
 
     private  fun signInGoogle(){
@@ -196,11 +199,11 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun onLoading() {
-        TODO("Not yet implemented")
+        Toast.makeText(this,"onLoading",Toast.LENGTH_SHORT).show()
     }
 
     override fun onFinishedLoading() {
-        TODO("Not yet implemented")
+        Toast.makeText(this,"onFinishedLoading",Toast.LENGTH_SHORT).show()
     }
 
     override fun onError(code: Int, message: String) {
@@ -214,19 +217,28 @@ class LoginActivity : AppCompatActivity(), LoginView {
         }
     }
 
+    private fun postLogin(){
+        binding.btnLogin.setOnClickListener {
+            presenterLogin.loginUser(
+                binding.etEmail.text.toString(),
+                binding.etPassword.text.toString()
+            )
+        }
+    }
     override fun onErrorEmail(code: Int, message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(this,"onErrorEmail",Toast.LENGTH_SHORT).show()
     }
 
     override fun onErrorPassword(visible: Boolean, message: String) {
-        TODO("Not yet implemented")
+        Toast.makeText(this,"onErrorPassword",Toast.LENGTH_SHORT).show()
     }
 
-    override fun onSuccessGetUser(user: List<RegisterDataItem>) {
-        binding.tvHeadingSatu.text = user.size.toString()
+    override fun onSuccessGetUser(user: LoginData.User) {
+        Toast.makeText(this,"onSuccessGetUser",Toast.LENGTH_SHORT).show()
     }
 
     override fun onSuccessLogin() {
-        TODO("Not yet implemented")
+        startActivity(Intent(this,HomeBottomActivity::class.java))
+        Toast.makeText(this,"onSuccessLogin",Toast.LENGTH_SHORT).show()
     }
 }

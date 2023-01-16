@@ -1,6 +1,6 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginDataItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterDataItem
 
 interface LoginView {
@@ -9,6 +9,6 @@ interface LoginView {
     fun onError(code: Int, message: String)
     fun onErrorEmail(code: Int, message: String)
     fun onErrorPassword(visible: Boolean, message: String)
-    fun onSuccessGetUser(user: List<RegisterDataItem>)
+    fun onSuccessGetUser(user: LoginData.User)
     fun onSuccessLogin()
 }

@@ -1,6 +1,8 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login
 
 import android.util.Log
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
@@ -48,6 +50,50 @@ class LoginApi {
                     response.body?.close()
                 }
             })
+    }
+
+//    fun loginUser(email: String, password: String): Flow<ResponseStatus<LoginData>> = flow {
+//        val model = LoginData.User(email, password)
+//        try {
+////            val result = NetworkClient
+////                .makeCallApi("/register?delay=2", NetworkClient.METHOD.POST, model.serialized())
+////                .execute()
+//            val result = NetworkClient
+//                .executeCall("/register?delay=2", NetworkClient.METHOD.POST, model.serialized())
+//            val response = if (result.isSuccessful) {
+//                val data: LoginData = <RegisterResult>(result.body?.string() ?: "") ?: RegisterResult()
+//                ResponseStatus.Success(data)
+//
+//            } else {
+//                mapFailedResponse(result)
+//            }
+//            emit(response)
+//            result.body?.close()
+//        } catch (e: IOException) {
+//            emit(ResponseStatus.Failed(-1, e.message.toString(), e))
+//        }
+//    }
+
+    fun loginUser(
+        email : String,
+        password : String
+    ): Flow<ResponseStatus<LoginData.User>> = flow {
+        val model = LoginData.User(email, password)
+
+        try {
+            val result = NetworkClient
+                .executeCall("/api/v1/login", NetworkClient.METHOD.POST, model.serialized())
+            val response = if (result.isSuccessful) {
+                val data: LoginData.User = deserializeJson<LoginData.User>(result.body?.string() ?: "") ?: LoginData.User("","",)
+                ResponseStatus.Success(data)
+            } else {
+                mapFailedResponse(result)
+            }
+            emit(response)
+            result.body?.close()
+        } catch (e: IOException) {
+            emit(ResponseStatus.Failed(-1, e.message.toString(), e))
+        }
     }
 
 //    fun loginUser (
@@ -99,5 +145,28 @@ class LoginApi {
 //            }
 //        }
 //    }
+
+
+//fun loginUser(email: String, password: String): Flow<ResponseStatus<LoginData>> = flow {
+//    val model = LoginRegisterModel(email, password)
+//    try {
+////            val result = NetworkClient
+////                .makeCallApi("/register?delay=2", NetworkClient.METHOD.POST, model.serialized())
+////                .execute()
+//        val result = NetworkClient
+//            .executeCall("/register?delay=2", NetworkClient.METHOD.POST, model.serialized())
+//        val response = if (result.isSuccessful) {
+//            val data: RegisterResult = deserializeJson<RegisterResult>(result.body?.string() ?: "") ?: RegisterResult()
+//            ResponseStatus.Success(data)
+//
+//        } else {
+//            mapFailedResponse(result)
+//        }
+//        emit(response)
+//        result.body?.close()
+//    } catch (e: IOException) {
+//        emit(ResponseStatus.Failed(-1, e.message.toString(), e))
+//    }
+//}
 
 

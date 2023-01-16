@@ -23,7 +23,7 @@ class LoginPresenter(
 
     fun onAttach(view: LoginView) {
         this.view = view
-        getUserList()
+        loginUser("","")
     }
 
     fun onDetach() {
@@ -75,14 +75,36 @@ class LoginPresenter(
 //            Log.d("error", "$loginApi")
 //        }
 //    }
-    fun getUserList() {
-        loginApi.getListApi {
-            scope.launch {
+fun loginUser(
+    email: String,
+    password: String,
+) {
+    view?.onLoading()
+    scope.launch {
+        loginApi
+            .loginUser(email, password)
+            .flowOn(Dispatchers.Default)
+            .collectLatest {
                 when (it) {
-                    is ResponseStatus.Success -> view?.onSuccessGetUser(it.data.toMutableList())
-                    is ResponseStatus.Failed -> view?.onError(1, it.message)
+                    is ResponseStatus.Success -> view?.onSuccessGetUser(it.data)
+                    is ResponseStatus.Failed -> view?.onError(it.code, it.message)
                 }
             }
-        }
+        view?.onFinishedLoading()
+        Log.d("error","$loginApi")
     }
+}
+//    fun getUserList() {
+//        loginApi.loginUser(
+//            email: String,
+//            password: Str
+//        ) {
+//            scope.launch {
+//                when (it) {
+//                    is ResponseStatus.Success -> view?.onSuccessGetUser(it.data.toMutableList())
+//                    is ResponseStatus.Failed -> view?.onError(1, it.message)
+//                }
+//            }
+//        }
+//    }
 }

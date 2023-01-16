@@ -1,23 +1,22 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api
 
 import androidx.viewbinding.BuildConfig
-import okhttp3.Call
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
+import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 class NetworkClient {
     companion object {
-        const val BASE_URL = "https://red-gifted-squid.cyclic.app/api/v1"
-        const val BASE_URL2 = "http://103.152.119.157:5555/api/backoffice/"
+        const val BASE_URL = "https://red-gifted-squid.cyclic.app"
+//        const val BASE_URL2 = "http://103.152.119.157:5555/api/backoffice/"
         private val headerInterceptor: Interceptor = Interceptor {
             val request = it.request().newBuilder()
             request
                 .addHeader("Content-Type", "application/json")
-
+                .addHeader("Bearer", PrivateData.accessToken)
+//                .addHeader(0.toString(), PrivateData.expiresIn.toString())
             return@Interceptor it.proceed(request.build())
         }
 
@@ -52,20 +51,36 @@ class NetworkClient {
             return request.build()
         }
 
-        fun requestBuilder2(
-            endpoint: String,
-            method: METHOD = METHOD.GET,
-            jsonBody: String? = null
-        ): Request {
-            val request = Request
-                .Builder()
-                .url("$BASE_URL2$endpoint")
-
-            if (jsonBody != null)
-                request.method(method.name, jsonBody.toRequestBody())
-
-            return request.build()
+        fun executeCall(endpoint: String, method: METHOD = METHOD.POST, jsonBody: String? = null): Response {
+            val request = requestBuilder(endpoint, method, jsonBody)
+            return try {
+                val response = client.newCall(request).execute()
+                interceptResponse(response)
+            } catch (e: Exception) {
+                throw e
+            }
         }
+
+        private fun interceptResponse(response: Response): Response {
+            PrivateData.accessToken = response.header("Bearer", "").toString()
+//            PrivateData.expiresIn = response.header(0, 0).toString()
+            return response
+        }
+
+//        fun requestBuilder2(
+//            endpoint: String,
+//            method: METHOD = METHOD.GET,
+//            jsonBody: String? = null
+//        ): Request {
+//            val request = Request
+//                .Builder()
+//                .url("$BASE_URL2$endpoint")
+//
+//            if (jsonBody != null)
+//                request.method(method.name, jsonBody.toRequestBody())
+//
+//            return request.build()
+//        }
 
         fun makeCallApi(
             endpoint: String,
