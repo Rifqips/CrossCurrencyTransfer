@@ -12,7 +12,6 @@ import java.io.IOException
 class HistoryApi {
     private val usersEndpoint ="/transaksi"
 
-
     fun getHistory(onResponse: (ResponseStatus<List<TransaksiDataItem>>) -> Unit){
         val endpoint = usersEndpoint
         val request = NetworkTransaksiClient.requestBuilder(endpoint)

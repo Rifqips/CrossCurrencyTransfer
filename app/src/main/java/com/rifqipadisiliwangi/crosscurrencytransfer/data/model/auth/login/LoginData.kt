@@ -1,6 +1,5 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login
 
-
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

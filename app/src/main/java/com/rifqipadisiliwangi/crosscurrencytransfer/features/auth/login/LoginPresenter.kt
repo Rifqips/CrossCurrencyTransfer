@@ -56,25 +56,6 @@ class LoginPresenter(
         view?.onFinishedLoading()
     }
 
-//    fun login (
-//        email : String,
-//        password : String
-//    ){
-//        view?.onLoading()
-//        scope.launch {
-//            loginApi
-//                .loginUser(email,password)
-//                .flowOn(Dispatchers.Default)
-//                .collectLatest {
-//                    when (it) {
-//                        is ResponseStatus.Success -> view?.onSuccessLogin()
-//                        is ResponseStatus.Failed -> view?.onError(it.code, it.message)
-//                    }
-//                }
-//            view?.onFinishedLoading()
-//            Log.d("error", "$loginApi")
-//        }
-//    }
 fun loginUser(
     email: String,
     password: String,
@@ -94,17 +75,5 @@ fun loginUser(
         Log.d("error","$loginApi")
     }
 }
-//    fun getUserList() {
-//        loginApi.loginUser(
-//            email: String,
-//            password: Str
-//        ) {
-//            scope.launch {
-//                when (it) {
-//                    is ResponseStatus.Success -> view?.onSuccessGetUser(it.data.toMutableList())
-//                    is ResponseStatus.Failed -> view?.onError(1, it.message)
-//                }
-//            }
-//        }
-//    }
+
 }

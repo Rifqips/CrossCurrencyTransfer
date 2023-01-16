@@ -1,7 +1,6 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
@@ -9,8 +8,6 @@ import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -22,12 +19,10 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.AuthDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginData
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginDataItem
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.LoginApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLoginBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.lupapassword.LupaPasswordActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 
@@ -233,7 +228,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         Toast.makeText(this,"onErrorPassword",Toast.LENGTH_SHORT).show()
     }
 
-    override fun onSuccessGetUser(user: LoginData.User) {
+    override fun onSuccessGetUser(user: AuthDataItem) {
         Toast.makeText(this,"onSuccessGetUser",Toast.LENGTH_SHORT).show()
     }
 

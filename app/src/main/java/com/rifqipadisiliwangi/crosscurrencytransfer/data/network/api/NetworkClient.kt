@@ -9,14 +9,12 @@ import java.util.concurrent.TimeUnit
 
 class NetworkClient {
     companion object {
-        const val BASE_URL = "https://red-gifted-squid.cyclic.app"
-//        const val BASE_URL2 = "http://103.152.119.157:5555/api/backoffice/"
+        const val BASE_URL = "https://red-gifted-squid.cyclic.app/api/v1"
         private val headerInterceptor: Interceptor = Interceptor {
             val request = it.request().newBuilder()
             request
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Bearer", PrivateData.accessToken)
-//                .addHeader(0.toString(), PrivateData.expiresIn.toString())
             return@Interceptor it.proceed(request.build())
         }
 
@@ -62,25 +60,9 @@ class NetworkClient {
         }
 
         private fun interceptResponse(response: Response): Response {
-            PrivateData.accessToken = response.header("Bearer", "").toString()
-//            PrivateData.expiresIn = response.header(0, 0).toString()
+            PrivateData.accessToken = response.header("Bearer", PrivateData.accessToken).toString()
             return response
         }
-
-//        fun requestBuilder2(
-//            endpoint: String,
-//            method: METHOD = METHOD.GET,
-//            jsonBody: String? = null
-//        ): Request {
-//            val request = Request
-//                .Builder()
-//                .url("$BASE_URL2$endpoint")
-//
-//            if (jsonBody != null)
-//                request.method(method.name, jsonBody.toRequestBody())
-//
-//            return request.build()
-//        }
 
         fun makeCallApi(
             endpoint: String,
