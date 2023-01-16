@@ -21,11 +21,13 @@ class DataStoreLogin(@ApplicationContext private val context : Context){
             it[tokenKey] = token
         }
     }
-    fun  getToken(): Flow<String> {
+
+    fun getToken(): Flow<String> {
         return context.userLoginAuth.data.map {
             it[tokenKey] ?: "undefined"
         }
     }
+
     suspend fun deleteToken(){
         context.userLoginAuth.edit {
             it.clear()
