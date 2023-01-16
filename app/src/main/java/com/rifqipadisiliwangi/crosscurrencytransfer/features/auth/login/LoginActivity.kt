@@ -22,17 +22,22 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginDataItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterDataItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.LoginApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLoginBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.lupapassword.LupaPasswordActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LoginView {
+
 
     var password = "hidePassword"
     var enableButtonPassword = "disablePw"
     var enableButtonEmail = "disableEmail"
     private lateinit var binding: ActivityLoginBinding
+    private val presenterLogin = LoginPresenter(LoginApi())
     lateinit var mGoogleSignInClient: GoogleSignInClient
     val Req_Code:Int=123
     var firebaseAuth= FirebaseAuth.getInstance()
@@ -43,6 +48,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
+
+        presenterLogin.onAttach(this)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.client_id))
@@ -187,5 +194,40 @@ class LoginActivity : AppCompatActivity() {
         } else {
             Patterns.EMAIL_ADDRESS.matcher(target).matches()
         }
+    }
+
+    override fun onLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFinishedLoading() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onError(code: Int, message: String) {
+        when (code) {
+            1 -> {
+                binding.tvWarningEmail.text = message
+            }
+            2 -> {
+                binding.tvWarningEmail.text = message
+            }
+        }
+    }
+
+    override fun onErrorEmail(code: Int, message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onErrorPassword(visible: Boolean, message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccessGetUser(user: List<RegisterDataItem>) {
+        binding.tvHeadingSatu.text = user.size.toString()
+    }
+
+    override fun onSuccessLogin() {
+        TODO("Not yet implemented")
     }
 }
