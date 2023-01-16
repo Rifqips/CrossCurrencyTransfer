@@ -24,14 +24,46 @@ class HistoryPresenter(
 
     fun getUsers(page: Int = 1){
         view.onLoading()
-        api.getUserPagination {
+        api.getHistory {
             scope.launch {
                 when (it){
                     is ResponseStatus.Success -> view.onSuccessGetUser(it.data)
                     is ResponseStatus.Failed -> view.onError(it.message)
+                    else -> {}
                 }
                 view.onFinishedLoading()
             }
         }
     }
+
+
+//    fun historyTransaksi() {
+//        view?.onLoading()
+//        scope.launch {
+//            api
+//                .getUserPagination()
+//                .flowOn(Dispatchers.Default)
+//                .collectLatest {
+//                    when (it) {
+//                        is ResponseStatus.Success<*> -> view?.onSuccessGetUser(it.data)
+//                        is ResponseStatus.Failed -> view?.onError( it.message)
+//                    }
+//                }
+//            view?.onFinishedLoading()
+//            Log.d("error","$api")
+//        }
+//    }
+
+//    fun getUsers(){
+//        view.onLoading()
+//        api.getUserPagination (HistoryDataItem(id = null)) {
+//            scope.launch {
+//                when (it){
+//                    is ResponseStatusHistory.Success -> view.onSuccessGetUser(it.data)
+//                    is ResponseStatusHistory.Failed -> view.onError(it.message)
+//                }
+//                view.onFinishedLoading()
+//            }
+//        }
+//    }
 }

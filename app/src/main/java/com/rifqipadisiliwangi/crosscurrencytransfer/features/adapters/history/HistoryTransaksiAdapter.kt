@@ -7,29 +7,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransaksiDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ItemHistoryBinding
 
-class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
+class HistoryTransaksiAdapter : RecyclerView.Adapter<HistoryTransaksiAdapter.ViewHolder>() {
 
-    private val data = mutableListOf<TransaksiDataItem>()
+    private val historyData = mutableListOf<TransaksiDataItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemHistoryBinding.inflate(LayoutInflater.from(parent.context),
+            ItemHistoryBinding.inflate(
+                LayoutInflater.from(parent.context),
                 parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.setData(data[position])
+        holder.setData(historyData[position])
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = historyData.size
 
     fun submitList(list: List<TransaksiDataItem>){
         val initSize = itemCount
-        data.clear()
+        historyData.clear()
         notifyItemRangeRemoved(0, initSize)
-        data.addAll(list)
-        notifyItemRangeInserted(0, data.size)
+        historyData.addAll(list)
+        notifyItemRangeInserted(0, historyData.size)
     }
 
     inner class ViewHolder(private val binding: ItemHistoryBinding): RecyclerView.ViewHolder(binding.root){
@@ -43,4 +44,5 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
             }
         }
     }
+
 }

@@ -1,10 +1,9 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.history
 
 import android.util.Log
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.HistoryData
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.HistoryDataItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransaksiDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.*
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.NetworkHistoryClient
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.NetworkTransaksiClient
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
@@ -13,37 +12,11 @@ import java.io.IOException
 class HistoryApi {
     private val usersEndpoint ="/transaksi"
 
-//    fun transaksiHistoryUser(
-//        id: String,
-//        jenisBank: String,
-//        namaPenerima: String,
-//        noRekening: String,
-//        tipeTransaksi: String,
-//        total: String
-//    ): Flow<ResponseStatus<ArrayList<HistoryDataItem>>> = flow {
-//        val model = TransaksiDataItem(id, jenisBank, namaPenerima,noRekening, tipeTransaksi, total )
-//
-//        try {
-//            val result = NetworkTransaksiClient
-//                .makeCallApiHistory("/transaksi", NetworkTransaksiClient.METHOD.GET, model.serialized())
-//                .execute()
-//            val response = if (result.isSuccessful) {
-//                val data: HistoryDataItem = deserializeJson<HistoryDataItem>(result.body?.string() ?: "") ?: HistoryDataItem()
-//                ResponseStatus.Success(data)
-//            } else {
-//                mapFailedResponse(result)
-//            }
-//            result.body?.close()
-//        } catch (e: IOException) {
-//            emit(ResponseStatus.Failed(-1, e.message.toString(), e))
-//        }
-//    }
 
-
-    fun getUserPagination(onResponse: (ResponseStatus<List<HistoryDataItem>>) -> Unit){
+    fun getHistory(onResponse: (ResponseStatus<List<TransaksiDataItem>>) -> Unit){
         val endpoint = usersEndpoint
-        val request = NetworkHistoryClient.requestBuilder(endpoint)
-        NetworkHistoryClient
+        val request = NetworkTransaksiClient.requestBuilder(endpoint)
+        NetworkTransaksiClient
             .client
             .newCall(request)
             .enqueue(object : Callback {
@@ -56,12 +29,19 @@ class HistoryApi {
                         )
                     )
                 }
-
+                // ketika on respon dia memerlukan tipe data yang ingin diperoleh (HistoryDataItem)
                 override fun onResponse(call: Call, response: Response) {
                     if (response.isSuccessful) {
+                        // deserializeJson untuk mengubah string json to object
+                        val userPagination : List<TransaksiDataItem> =
+                            deserializeJson<List<TransaksiDataItem>>(response.body?.string() ?: "")
+                            // deserializeJson kembaliannya bisa null, jika null mengembbalikan list of
+                                ?: listOf()
+                            //val users : HistoryDataItem =
+                            //deserializeJson<HistoryDataItem>(response.body?.string() ?:"") ?: HistoryDataItem()
                         onResponse.invoke(
                             ResponseStatus.Success(
-                                data = listOf(),
+                                data = userPagination,
                                 method = "GET",
                                 status = true
                             )
@@ -76,4 +56,5 @@ class HistoryApi {
                 }
             })
     }
+
 }

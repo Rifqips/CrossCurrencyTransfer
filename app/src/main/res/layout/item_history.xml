@@ -63,6 +63,16 @@
             app:layout_constraintTop_toBottomOf="@id/tvCodeBank" />
 
         <TextView
+            android:id="@+id/tvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Id"
+            android:textSize="12sp"
+            android:fontFamily="@font/dm_sans_medium"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvNoRekening" />
+
+        <TextView
             android:id="@+id/tvTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,6 +81,16 @@
             android:fontFamily="@font/dm_sans_medium"
             app:layout_constraintEnd_toEndOf="@+id/csUserHistoy"
             app:layout_constraintTop_toBottomOf="@id/tvCodeBank" />
+
+        <TextView
+            android:id="@+id/tvTipeTransaksi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10100110"
+            android:textSize="16sp"
+            android:fontFamily="@font/dm_sans_medium"
+            app:layout_constraintEnd_toEndOf="@+id/csUserHistoy"
+            app:layout_constraintTop_toBottomOf="@id/tvTotal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

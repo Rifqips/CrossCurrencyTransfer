@@ -13,17 +13,25 @@ import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.lifecycle.asLiveData
 import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankLokalBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.InternationalTransferActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.PembayaranTransferActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class BankLokalActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding : ActivityBankLokalBinding
-
     var bankAmerika = arrayOf("Pilih Bank","Mandiri", "BCA", "Cimb Niaga", "BRI", "BNI")
+    private lateinit var dataTransaksi : DataStoreTransaksi
+    var transaksiTotal = ""
+    var pilihBank = ""
+    var noRekeningTransaksi = ""
+    var namaPenerima = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,18 +39,26 @@ class BankLokalActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
         setContentView(binding.root)
         loadSpiner()
         userTranser()
-        val myData = intent.getStringExtra("total")
-        binding.tvSaldoTotal.text = myData.toString()
-        binding.ivBack.setOnClickListener {
-            startActivity(Intent(this, LokalTransferActivity::class.java))
+        dataTransaksi = DataStoreTransaksi(this)
+
+        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
+            transaksiTotal = it
+            binding.tvSaldoTotal.text = it.toString()
         }
 
         binding.btnSelanjutnya.setOnClickListener {
+            transaksiTotal = binding.tvSaldoTotal.text.toString()
+            pilihBank = binding.mySpinner.selectedItem.toString()
+            noRekeningTransaksi = binding.etNorekening.text.toString()
+            namaPenerima = binding.etNamaPenerima.text.toString()
+            GlobalScope.launch {
+                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, tipeTransaksi = "", transaksiTotal)
+            }
+            startActivity(Intent(this, PembayaranTransferLokalActivity::class.java))
+        }
 
-            val intent = Intent(this, PembayaranTransferLokalActivity::class.java)
-            val total = binding.tvSaldoTotal.text.toString()
-            intent.putExtra("total", total)
-            startActivity(intent)
+        binding.ivBack.setOnClickListener {
+            startActivity(Intent(this, LokalTransferActivity::class.java))
         }
     }
 

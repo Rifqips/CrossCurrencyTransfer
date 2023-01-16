@@ -7,12 +7,13 @@ object MoshiExtension {
     val moshi: Moshi = Moshi.Builder()
         .build()
 }
-
-inline fun<reified T> deserializeJson(string: String): T? {
+// fungsinya mengubah string json ke object T (kata kunci untuk object yang kita panggil)
+inline fun<reified T> deserializeJson(jsonString: String): T? {
     val adapter: JsonAdapter<T> = MoshiExtension.moshi.adapter(T::class.java)
-    return adapter.fromJson(string)
+    return adapter.fromJson(jsonString)
 }
 
+// fungsinya mengubah object ke string T (Bisa apa saja/kata kunci untuk object yang kita panggil)
 inline fun<reified T> T.serialized(): String {
     return MoshiExtension.moshi.adapter(T::class.java).toJson(this)
 }
