@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/warna_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".features.home.fragment.HistoryFragment">
+    tools:context=".features.home.fragment.history.HistoryFragment">
     
     <TextView
         android:id="@+id/tvTitleRiwayat"
@@ -26,7 +26,7 @@
         android:id="@+id/tvDari"
         android:layout_width="164dp"
         android:layout_height="wrap_content"
-        android:text="Dari :"
+        android:text="Awal :"
         android:textSize="18sp"
         android:layout_marginTop="37dp"
         android:layout_marginStart="24dp"
@@ -75,7 +75,7 @@
         android:id="@+id/tvTujuan"
         android:layout_width="164dp"
         android:layout_height="wrap_content"
-        android:text="Sampai :"
+        android:text="Akhir :"
         android:textSize="18sp"
         android:layout_marginTop="37dp"
         android:textColor="@color/warna_auth_font"
@@ -117,5 +117,45 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/btnCari"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/firstbutton"
+        android:fontFamily="@font/dm_sans_medium"
+        android:paddingVertical="10dp"
+        android:layout_marginVertical="40dp"
+        android:layout_marginHorizontal="24dp"
+        android:text="Cari"
+        app:layout_constraintTop_toBottomOf="@+id/constDateTujuan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:enabled="false"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="25dp"
+        android:layout_marginHorizontal="24dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/btnCari"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarPengirim"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="visible"
+        android:background="@drawable/progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

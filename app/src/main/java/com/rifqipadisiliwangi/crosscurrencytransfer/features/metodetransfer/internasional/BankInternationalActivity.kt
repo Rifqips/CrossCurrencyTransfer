@@ -10,13 +10,22 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.asLiveData
 import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityBankInternationalBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding : ActivityBankInternationalBinding
+    private lateinit var dataTransaksi : DataStoreTransaksi
+    var transaksiTotal = ""
+    var pilihBank = ""
+    var noRekeningTransaksi = ""
+    var namaPenerima = ""
 
     var bankAmerika = arrayOf("Pilih Bank","Bank Of America", "JPMorgan Chase", "Wells Fargo", "Citigroup", "Goldman Sachs Group")
 
@@ -27,19 +36,27 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
         setContentView(binding.root)
         loadSpiner()
         userTranser()
-        val myData = intent.getStringExtra("total")
-        binding.tvSaldoTotal.text = myData.toString()
+        dataTransaksi = DataStoreTransaksi(this)
 
-        binding.ivBack.setOnClickListener {
-            startActivity(Intent(this, InternationalTransferActivity::class.java))
+
+        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
+            transaksiTotal = it
+            binding.tvSaldoTotal.text = it.toString()
         }
 
         binding.btnSelanjutnya.setOnClickListener {
+            transaksiTotal = binding.tvSaldoTotal.text.toString()
+            pilihBank = binding.mySpinner.selectedItem.toString()
+            noRekeningTransaksi = binding.etNorekening.text.toString()
+            namaPenerima = binding.etNamaPenerima.text.toString()
+            GlobalScope.launch {
+                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, tipeTransaksi = "", transaksiTotal)
+            }
+            startActivity(Intent(this, PembayaranTransferActivity::class.java))
+        }
 
-            val intent = Intent(this, PembayaranTransferActivity::class.java)
-            val total = binding.tvSaldoTotal.text.toString()
-            intent.putExtra("total", total)
-            startActivity(intent)
+        binding.ivBack.setOnClickListener {
+            startActivity(Intent(this, InternationalTransferActivity::class.java))
         }
 
     }
@@ -54,14 +71,22 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
                 when(binding.etNorekening.text.toString()){
                     "123" ->{
                         binding.etNamaPenerima.setText("Joko")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
                     }
                     "1234" ->{
                         binding.etNamaPenerima.setText("Paidi")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
                     }
                     "12345" ->{
                         binding.etNamaPenerima.setText("Sujatmiko")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
                     }else -> {
                     binding.etNamaPenerima.text.clear()
+                    binding.btnInvisibleSelanjutnya.isVisible = true
+                    binding.btnSelanjutnya.isVisible = false
                     Snackbar.make(binding.btnSelanjutnya, "Please Input Field", Snackbar.LENGTH_LONG).show()
                     }
                 }
@@ -74,9 +99,6 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
     }
 
     private fun loadSpiner(){
-
-        binding.btnSelanjutnya.isVisible = false
-        binding.btnInvisibleSelanjutnya.isVisible = true
         var aa = ArrayAdapter(this, R.layout.spinner_right_aligned, bankAmerika)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
@@ -111,8 +133,8 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             }
         }
 
-        binding.btnSelanjutnya.isVisible = true
-        binding.btnInvisibleSelanjutnya.isVisible = false
+        binding.btnSelanjutnya.isVisible = false
+        binding.btnInvisibleSelanjutnya.isVisible = true
     }
 
     private fun showToast(context: Context = applicationContext, message: String, duration: Int = Toast.LENGTH_LONG) {

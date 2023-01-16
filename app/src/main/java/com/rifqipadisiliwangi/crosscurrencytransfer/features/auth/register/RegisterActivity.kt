@@ -46,7 +46,3 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 }
-
-//val adapter = ArrayAdapter.createFromResource(this, R.array.listNegara, android.R.layout.simple_spinner_item)
-//adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//binding.spinnerNegara.adapter = adapter
