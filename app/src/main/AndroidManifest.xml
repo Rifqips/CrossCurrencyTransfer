@@ -81,6 +81,9 @@
             android:name=".features.auth.verifikasi.VerifikasiActivity"
             android:exported="true" />
         <activity
+            android:name=".features.auth.datadiri.DataDiriActivity"
+            android:exported="true" />
+        <activity
             android:name=".features.auth.register.RegisterActivity"
             android:exported="false" />
         <activity

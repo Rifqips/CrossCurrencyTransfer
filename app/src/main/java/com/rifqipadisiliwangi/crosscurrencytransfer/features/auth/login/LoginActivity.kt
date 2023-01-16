@@ -228,8 +228,10 @@ class LoginActivity : AppCompatActivity(), LoginView {
         Toast.makeText(this,"onErrorPassword",Toast.LENGTH_SHORT).show()
     }
 
-    override fun onSuccessGetUser(user: AuthDataItem) {
-        Toast.makeText(this,"onSuccessGetUser",Toast.LENGTH_SHORT).show()
+    override fun onSuccessGetUser(username: String, password: String) {
+        startActivity(Intent(this, HomeBottomActivity::class.java))
+        Toast.makeText(this, "Success Login", Toast.LENGTH_SHORT).show()
+        finish()
     }
 
     override fun onSuccessLogin() {

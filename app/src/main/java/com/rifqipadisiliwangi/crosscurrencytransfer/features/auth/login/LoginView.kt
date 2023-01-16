@@ -10,6 +10,6 @@ interface LoginView {
     fun onError(code: Int, message: String)
     fun onErrorEmail(code: Int, message: String)
     fun onErrorPassword(visible: Boolean, message: String)
-    fun onSuccessGetUser(user: AuthDataItem)
+    fun onSuccessGetUser(username: String, password: String)
     fun onSuccessLogin()
 }
