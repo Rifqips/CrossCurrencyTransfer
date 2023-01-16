@@ -294,9 +294,10 @@
             style="@style/firstbutton"
             android:layout_width="150dp"
             android:layout_height="55dp"
+            android:clickable="true"
             android:fontFamily="@font/dm_sans_medium"
             android:text="Selanjutnya"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/constraintBtnkirim"
             app:layout_constraintBottom_toBottomOf="@+id/constraintBtnkirim"/>
 
@@ -307,7 +308,7 @@
             android:layout_height="55dp"
             android:fontFamily="@font/dm_sans_medium"
             android:text="Selanjutnya"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="@+id/constraintBtnkirim"
             app:layout_constraintBottom_toBottomOf="@+id/constraintBtnkirim"/>
 

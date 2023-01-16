@@ -1,23 +1,32 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.UiThread
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.register.RegisterModel
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.FragmentHomeBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.InternationalTransferActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.lokal.LokalTransferActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.profile.DetailProfileActivity
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 class HomeFragment : Fragment() {
 
     companion object {
         const val TAG = "HomeFragment"
-
     }
 
     private lateinit var binding : FragmentHomeBinding
+    private lateinit var registerModel: RegisterModel
+    private val uiContext: CoroutineContext = Dispatchers.Main
+    private val job = SupervisorJob()
+    private val scope = CoroutineScope(job + uiContext)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +39,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        GlobalScope.launch(Dispatchers.IO) {
+//            val registerImage: ByteArray = registerModel.image!!
+//            val bitmap = BitmapFactory.decodeByteArray(registerImage, 0, registerImage.size)
+//            binding.ivSetImage.setImageBitmap(bitmap)
+//        }
+
+        binding.ivSetImage.setOnClickListener {
+            startActivity(Intent(requireActivity(), DetailProfileActivity::class.java))
+        }
 
         binding.contraintTfInter.setOnClickListener {
             startActivity(Intent(context, InternationalTransferActivity::class.java))

@@ -1,16 +1,10 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.lokal
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.sqlite.DB_class
-import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferLokalBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.PembayaranTransferActivity
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.internasional.SuksesTransferActivity
 
 class PengirimTransferLokalActivity : AppCompatActivity() {
 
@@ -21,35 +15,10 @@ class PengirimTransferLokalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPengirimTransferLokalBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getPin()
         initializeButtons()
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, PembayaranTransferLokalActivity::class.java))
-        }
-    }
-
-
-    @SuppressLint("Range")
-    private fun getPin(){
-        val dbhelp = DB_class(applicationContext)
-        val db = dbhelp.readableDatabase
-        binding.btnSend.setOnClickListener {
-            val pin = binding.resultId.text.toString();
-            val query="SELECT * FROM pintrans WHERE pin='"+pin+"'"
-            val rs=db.rawQuery(query,null)
-            if(rs.moveToFirst()){
-                val getPinpin = rs.getString(rs.getColumnIndex("pin"))
-                rs.close()
-                startActivity(Intent(this, SuksesTransferLokalActivity::class.java))
-            }
-            else{
-                val ad = AlertDialog.Builder(this)
-                ad.setTitle("Message")
-                ad.setMessage("Pin is incorrect!")
-                ad.setPositiveButton("Ok", null)
-                ad.show()
-            }
         }
     }
 
