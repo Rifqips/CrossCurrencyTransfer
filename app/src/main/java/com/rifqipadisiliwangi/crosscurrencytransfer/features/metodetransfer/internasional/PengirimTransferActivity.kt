@@ -39,24 +39,29 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
         setContentView(binding.root)
         initializeButtons()
         getDataStore()
+        postRegister()
         presenter.onAttach(this)
 
-        binding.btnSend.setOnClickListener {
-            postRegister()
-        }
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, PembayaranTransferActivity::class.java))
         }
 
     }
     private fun postRegister(){
-        val pin = "123456"
-        presenter.transaksiUser(
-            pilihBank,
-            noRekeningTransaksi,
-            transaksiTotal,
-            pin
-        )
+        val bank = "Bank Of Amerika"
+        val nama = "Monalisa"
+        val rekening = "9000877724254"
+        val fromBank = "Mandiri"
+        val codeBank = "111"
+        val pin = "101010"
+        binding.btnSend.setOnClickListener {
+            presenter.transaksiUser(
+                codeBank,
+                noRekeningTransaksi,
+                transaksiTotal,
+                pin
+            )
+        }
     }
 
     override fun onLoading() {
@@ -75,7 +80,7 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
         Toast.makeText(this, "onErrorTransasksi", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onSuccessTransaction(transaksi: TransactionSchemeItem) {
+    override fun onSuccessTransaction(transaksi: TransactionSchemeResponse) {
         startActivity(Intent(this, SuksesTransferActivity::class.java))
         Toast.makeText(this,"onSuccessTransaksi",Toast.LENGTH_SHORT).show()
     }

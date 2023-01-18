@@ -9,5 +9,5 @@ interface TransaksiView {
     fun onFinishedLoading()
     fun onError(code: Int, message: String)
     fun onErrorTransasksi(code: Int, message: String)
-    fun onSuccessTransaction(transaksi: TransactionSchemeItem)
+    fun onSuccessTransaction(transaksi: TransactionSchemeResponse)
 }

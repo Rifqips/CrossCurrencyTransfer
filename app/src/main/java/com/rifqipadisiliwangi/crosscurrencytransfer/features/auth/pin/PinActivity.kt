@@ -18,15 +18,14 @@ class PinActivity : AppCompatActivity(), PinView {
 
     var pin = "hidePin"
     private lateinit var binding: ActivityPinBinding
-
     private val presenter = PinPresenter(PinApi())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPinBinding.inflate(layoutInflater)
+        presenter.onAttach(this)
         setContentView(binding.root)
         formValidation()
-        presenter.onAttach(this)
         binding.btnKirimPin.setOnClickListener {
             presenter.pin(
                 binding.etPin.text.toString()

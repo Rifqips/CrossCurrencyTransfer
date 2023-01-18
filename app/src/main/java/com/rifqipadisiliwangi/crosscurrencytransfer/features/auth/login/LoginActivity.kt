@@ -19,6 +19,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.AuthDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.LoginApi
@@ -230,7 +231,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun onSuccessGetUser(username: String, password: String) {
-        startActivity(Intent(this, PinActivity::class.java))
+//        PrivateData.accessToken
+        startActivity(Intent(
+            this, PinActivity::class.java))
         Toast.makeText(this, "Success Login", Toast.LENGTH_SHORT).show()
         finish()
     }

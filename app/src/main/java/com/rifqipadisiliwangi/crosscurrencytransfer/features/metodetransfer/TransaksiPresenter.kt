@@ -15,8 +15,14 @@ import kotlin.coroutines.CoroutineContext
 
 class TransaksiPresenter (
     private val transaksiApi: TranskasiApi,
-    uiContext: CoroutineContext = Dispatchers.Main
+    private val uiContext:CoroutineContext = Dispatchers.Main
 ) {
+    companion object {
+        const val PASSWORD_NOT_CONTAIN_LOWERCASE = 0
+        const val PASSWORD_NOT_CONTAIN_NUMBER = 2
+        const val PASSWORD_ERROR = 9
+        const val USERNAME_ERROR = 10
+    }
 
     lateinit var application: Application
     private var view: TransaksiView? = null
@@ -25,7 +31,6 @@ class TransaksiPresenter (
 
     fun onAttach(view: TransaksiView) {
         this.view = view
-        transaksiUser("","","","")
     }
 
     fun onDetach() {

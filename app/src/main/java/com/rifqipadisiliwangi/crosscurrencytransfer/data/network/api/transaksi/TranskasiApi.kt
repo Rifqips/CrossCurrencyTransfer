@@ -1,6 +1,7 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi
 
 import android.util.Log
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeResponse
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
@@ -10,9 +11,6 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.mapFailedRespon
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.serialized
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.Response
 import java.io.IOException
 
 class TranskasiApi {
@@ -22,14 +20,15 @@ class TranskasiApi {
         noRekening: String,
         nominal: String,
         pin: String
-    ): Flow<ResponseStatus<TransactionSchemeItem>> = flow {
+    ): Flow<ResponseStatus<TransactionSchemeResponse>> = flow {
         val model = TransactionSchemeItem(bankCode, noRekening, nominal, pin)
         try {
             val result = NetworkClient
                 .executeCall("/transactions", NetworkClient.METHOD.POST, model.serialized())
             val response = if (result.isSuccessful) {
-                val transaksi : TransactionSchemeItem =
-                    deserializeJson<TransactionSchemeItem>(result.body?.string() ?: "") ?: TransactionSchemeItem()
+                val transaksi : TransactionSchemeResponse =
+                    deserializeJson<TransactionSchemeResponse>(result.body?.string() ?: "") ?: TransactionSchemeResponse()
+                Log.d("requestservice", "token-pin $result ${PrivateData.accessToken}")
                 ResponseStatus.Success(transaksi)
             } else {
                 mapFailedResponse(result)
