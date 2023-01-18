@@ -40,12 +40,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        GlobalScope.launch(Dispatchers.IO) {
-//            val registerImage: ByteArray = registerModel.image!!
-//            val bitmap = BitmapFactory.decodeByteArray(registerImage, 0, registerImage.size)
-//            binding.ivSetImage.setImageBitmap(bitmap)
-//        }
-
         binding.ivSetImage.setOnClickListener {
             startActivity(Intent(requireActivity(), DetailProfileActivity::class.java))
         }

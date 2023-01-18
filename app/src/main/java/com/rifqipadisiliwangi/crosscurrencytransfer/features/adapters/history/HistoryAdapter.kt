@@ -4,17 +4,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransaksiDataItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.history.HistorySchemeItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ItemHistoryBinding
 
 class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
-    private val data = mutableListOf<TransaksiDataItem>()
+    private val data = mutableListOf<HistorySchemeItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemHistoryBinding.inflate(LayoutInflater.from(parent.context),
-                parent, false)
+            ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -24,7 +23,7 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = data.size
 
-    fun submitList(list: List<TransaksiDataItem>){
+    fun submitList(list: List<HistorySchemeItem>){
         val initSize = itemCount
         data.clear()
         notifyItemRangeRemoved(0, initSize)
@@ -33,11 +32,11 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(private val binding: ItemHistoryBinding): RecyclerView.ViewHolder(binding.root){
-        fun setData(item : TransaksiDataItem){
+        fun setData(item : HistorySchemeItem){
             with(binding){
-                tvName.text = item.namaPenerima
-                tvCodeBank.text = item.jenisBank
-                tvNoRekening.text = item.noRekening
+                tvName.text = item.receipentName
+                tvCodeBank.text = item.virtualAccount
+                tvNoRekening.text = item.receipentNorek
                 tvTotal.text = item.total
                 Log.e("Data Muncul Dong", tvName.toString())
             }

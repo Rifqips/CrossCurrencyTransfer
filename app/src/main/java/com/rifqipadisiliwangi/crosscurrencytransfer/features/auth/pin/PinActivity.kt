@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeResponse
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.getpin.PinSchemeResponse
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.pin.PinApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPinBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
@@ -23,7 +23,6 @@ class PinActivity : AppCompatActivity(), PinView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPinBinding.inflate(layoutInflater)
-        presenter.onAttach(this)
         setContentView(binding.root)
         formValidation()
         binding.btnKirimPin.setOnClickListener {
@@ -31,6 +30,8 @@ class PinActivity : AppCompatActivity(), PinView {
                 binding.etPin.text.toString()
             )
         }
+
+        presenter.onAttach(this)
     }
 
 

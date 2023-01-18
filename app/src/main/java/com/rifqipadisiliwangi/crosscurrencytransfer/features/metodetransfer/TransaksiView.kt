@@ -1,8 +1,6 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer
 
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeResponse
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransaksiDataItem
 
 interface TransaksiView {
     fun onLoading()

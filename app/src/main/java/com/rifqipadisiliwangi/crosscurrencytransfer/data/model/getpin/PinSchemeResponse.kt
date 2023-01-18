@@ -1,4 +1,4 @@
-package com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin
+package com.rifqipadisiliwangi.crosscurrencytransfer.data.model.getpin
 
 
 import com.google.gson.annotations.SerializedName

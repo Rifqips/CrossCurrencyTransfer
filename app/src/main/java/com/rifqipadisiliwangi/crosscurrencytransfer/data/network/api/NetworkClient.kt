@@ -39,21 +39,23 @@ class NetworkClient {
                 .build()
         }
 
+        // digunakan response post
         fun requestBuilder(
             endpoint: String,
             method: METHOD = METHOD.POST,
             jsonBody: String? = null
         ): Request {
+
             val request = Request
                 .Builder()
                 .url("$BASE_URL$endpoint")
-
             if (jsonBody != null)
                 request.method(method.name, jsonBody.toRequestBody())
 
             return request.build()
         }
 
+        // dipake request post (Pin, Login)
         fun executeCall(endpoint: String, method: METHOD = METHOD.POST, jsonBody: String? = null): Response {
             //request builder base url
             val request = requestBuilder(endpoint, method, jsonBody)
@@ -66,11 +68,13 @@ class NetworkClient {
             Log.d("requestservice", "save ${PrivateData.accessToken}")
         }
 
+
         private fun interceptResponse(response: Response): Response {
             PrivateData.accessToken = response.header("Bearer", PrivateData.accessToken).toString()
             return response
         }
 
+        // dipake request register (karena tidak membutuhkan token)
         fun makeCallApi(
             endpoint: String,
             method: METHOD = METHOD.POST,

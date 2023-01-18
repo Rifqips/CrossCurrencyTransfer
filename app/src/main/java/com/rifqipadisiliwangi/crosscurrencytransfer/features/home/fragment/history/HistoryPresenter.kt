@@ -1,69 +1,69 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi
 
+import android.app.Application
+import android.util.Log
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.history.HistoryApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin.PinView
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.history.HistoryView
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOn
 import kotlin.coroutines.CoroutineContext
 
 class HistoryPresenter(
-    private val view: HistoryView.View,
-    private val api: HistoryApi,
-    uiContext: CoroutineContext = Dispatchers.Main
-): HistoryView.Presenter{
-    private val supervisorJob: Job = SupervisorJob()
-    private val scope = CoroutineScope(supervisorJob + uiContext)
+    private val historyApi: HistoryApi,
+    private val uiContext: CoroutineContext = Dispatchers.Main
 
-    override fun onAttach() {
-        getUsers()
+){
+    companion object {
+        const val PASSWORD_NOT_CONTAIN_LOWERCASE = 0
+        const val PASSWORD_NOT_CONTAIN_NUMBER = 2
+        const val PASSWORD_ERROR = 9
+        const val USERNAME_ERROR = 10
     }
 
-    override fun onDetach() {
-        scope.cancel()
+    lateinit var application: Application
+    private var view: HistoryView? = null
+    private var job = SupervisorJob()
+    private var scope = CoroutineScope(job + uiContext)
+
+    fun onAttach(view: HistoryView) {
+        this.view = view
+        getHistories()
     }
 
-    fun getUsers(page: Int = 1){
-        view.onLoading()
-        api.getHistory {
-            scope.launch {
-                when (it){
-                    is ResponseStatus.Success -> view.onSuccessGetUser(it.data)
-                    is ResponseStatus.Failed -> view.onError(it.message)
-                    else -> {}
-                }
-                view.onFinishedLoading()
-            }
-        }
+    fun onDetach() {
+        this.view = null
     }
 
-
-//    fun historyTransaksi() {
-//        view?.onLoading()
+//    fun getHistory() {
+//        view?.onFinishedLoading()
 //        scope.launch {
-//            api
-//                .getUserPagination()
+//            historyApi
+//                .getHistoryResponse()
 //                .flowOn(Dispatchers.Default)
 //                .collectLatest {
 //                    when (it) {
-//                        is ResponseStatus.Success<*> -> view?.onSuccessGetUser(it.data)
-//                        is ResponseStatus.Failed -> view?.onError( it.message)
+//                        is ResponseStatus.Success -> view?.onSuccessHistory(it.data)
+//                        is ResponseStatus.Failed -> view?.onError(it.code, it.message)
 //                    }
 //                }
 //            view?.onFinishedLoading()
-//            Log.d("error","$api")
+//            Log.d("error","$historyApi")
 //        }
 //    }
 
-//    fun getUsers(){
-//        view.onLoading()
-//        api.getUserPagination (HistoryDataItem(id = null)) {
-//            scope.launch {
-//                when (it){
-//                    is ResponseStatusHistory.Success -> view.onSuccessGetUser(it.data)
-//                    is ResponseStatusHistory.Failed -> view.onError(it.message)
-//                }
-//                view.onFinishedLoading()
-//            }
-//        }
-//    }
+    fun getHistories(){
+        view?.onLoading()
+        historyApi.getHistoryResponse {
+            scope.launch {
+                when (it){
+                    is ResponseStatus.Success -> view?.onSuccessHistory(it.data)
+                    is ResponseStatus.Failed -> view?.onError(it.code, it.message)
+                }
+                view?.onFinishedLoading()
+            }
+        }
+    }
 }

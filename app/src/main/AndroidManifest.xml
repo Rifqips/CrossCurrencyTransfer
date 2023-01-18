@@ -72,11 +72,7 @@
             android:exported="true" />
         <activity
             android:name=".features.metodetransfer.internasional.PengirimTransferActivity"
-            android:exported="true" >
-
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".features.metodetransfer.internasional.SuksesTransferActivity"
             android:exported="true" />

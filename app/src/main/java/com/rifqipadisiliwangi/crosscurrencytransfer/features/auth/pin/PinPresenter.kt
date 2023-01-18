@@ -28,6 +28,7 @@ class PinPresenter (
     private var scope = CoroutineScope(job + uiContext)
 
     fun onAttach(view: PinView) {
+        pin("")
         this.view = view
     }
 

@@ -7,15 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.asLiveData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeResponse
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransaksiDataItem
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpDataSingleton
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpPresenter
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpView
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiPresenter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiView
 
@@ -53,13 +47,13 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
         val rekening = "9000877724254"
         val fromBank = "Mandiri"
         val codeBank = "111"
-        val pin = "101010"
+        val pin = "123456"
         binding.btnSend.setOnClickListener {
             presenter.transaksiUser(
                 codeBank,
                 noRekeningTransaksi,
                 transaksiTotal,
-                pin
+                binding.resultId.text.toString()
             )
         }
     }

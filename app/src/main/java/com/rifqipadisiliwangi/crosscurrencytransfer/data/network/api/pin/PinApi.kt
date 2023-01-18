@@ -2,8 +2,8 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.pin
 
 import android.util.Log
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeItem
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeResponse
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.getpin.PinSchemeItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.getpin.PinSchemeResponse
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.NetworkClient
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.deserializeJson
