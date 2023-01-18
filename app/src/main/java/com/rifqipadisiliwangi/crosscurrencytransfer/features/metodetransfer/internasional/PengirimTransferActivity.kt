@@ -50,8 +50,12 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
 
     }
     private fun postRegister(){
+        val pin = "123456"
         presenter.transaksiUser(
-            pilihBank,noRekeningTransaksi,transaksiTotal,binding.resultId.text.toString()
+            pilihBank,
+            noRekeningTransaksi,
+            transaksiTotal,
+            pin
         )
     }
 
