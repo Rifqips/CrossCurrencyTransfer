@@ -47,6 +47,7 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.regist
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.utility.DatabaseRegsiter
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.utility.RegisterHelper
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityDataDiriBinding
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login.LoginActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.profile.DetailProfileActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.helper.makeClearableEditText
@@ -608,7 +609,7 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
             values.put(DatabaseRegsiter.RegisterColumns.LATITUDE, register?.latitude)
             values.put(DatabaseRegsiter.RegisterColumns.LONGITUDE, register?.longitude)
             values.put(DatabaseRegsiter.RegisterColumns.IMAGE, register?.image)
-            startActivity(Intent(this, HomeBottomActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
 
             if(isEdit) {
                 val result = registerHelper.update(

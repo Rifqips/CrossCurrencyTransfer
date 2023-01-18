@@ -7,14 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.asLiveData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeResponse
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransaksiDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpDataSingleton
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpPresenter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.OtpView
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiPresenter
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiView
 
-class PengirimTransferActivity : AppCompatActivity(), OtpView {
+class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
 
     private lateinit var binding : ActivityPengirimTransferBinding
     private lateinit var dataTransaksi : DataStoreTransaksi
@@ -26,21 +31,49 @@ class PengirimTransferActivity : AppCompatActivity(), OtpView {
     var noRekeningTransaksi = ""
     var namaPenerima = ""
 
-    private val presenter = OtpPresenter(OtpApi(), TranskasiApi())
+    private val presenter = TransaksiPresenter(TranskasiApi())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPengirimTransferBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initializeButtons()
-        postOtp()
         getDataStore()
         presenter.onAttach(this)
 
+        binding.btnSend.setOnClickListener {
+            postRegister()
+        }
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, PembayaranTransferActivity::class.java))
         }
 
+    }
+    private fun postRegister(){
+        presenter.transaksiUser(
+            pilihBank,noRekeningTransaksi,transaksiTotal,binding.resultId.text.toString()
+        )
+    }
+
+    override fun onLoading() {
+        Toast.makeText(this,"onLoading",Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onFinishedLoading() {
+        Toast.makeText(this,"onFinishedLoading",Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onError(code: Int, message: String) {
+        Toast.makeText(this,"onError $message",Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onErrorTransasksi(code: Int, message: String) {
+        Toast.makeText(this, "onErrorTransasksi", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSuccessTransaction(transaksi: TransactionSchemeItem) {
+        startActivity(Intent(this, SuksesTransferActivity::class.java))
+        Toast.makeText(this,"onSuccessTransaksi",Toast.LENGTH_SHORT).show()
     }
 
     private fun getDataStore(){
@@ -67,18 +100,6 @@ class PengirimTransferActivity : AppCompatActivity(), OtpView {
         dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
             namaPenerima = it
             binding.tvGetNamaPenerima.text = it.toString()
-        }
-    }
-
-    private fun postOtp(){
-        OtpDataSingleton.otp
-        binding.btnSend.setOnClickListener {
-            presenter.otp(
-                binding.resultId.text.toString().toInt()
-            )
-            presenter.transaksi(
-                pilihBank,namaPenerima,noRekeningTransaksi,metodePembayaran, transaksiTotal
-            )
         }
     }
 
@@ -183,27 +204,5 @@ class PengirimTransferActivity : AppCompatActivity(), OtpView {
         binding.backspaceBtn.isVisible = length != 0
         binding.resultId.text = digit_on_screen.toString()
 
-    }
-
-
-    override fun onLoading() {
-        binding.progressBarPengirim.isVisible = true
-    }
-
-    override fun onFinishedLoading() {
-        binding.progressBarPengirim.isVisible = false
-    }
-
-    override fun onError(code: Int, message: String) {
-        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-        binding.progressBarPengirim.isVisible = true
-    }
-
-    override fun onSuccessOtp(otp: Int) {
-        startActivity(Intent(this, SuksesTransferActivity::class.java))
-    }
-
-    override fun onSuccessTransaksi() {
-        TODO("Not yet implemented")
     }
 }

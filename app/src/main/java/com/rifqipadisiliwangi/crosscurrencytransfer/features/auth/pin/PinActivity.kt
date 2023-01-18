@@ -1,27 +1,44 @@
-package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
+package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeResponse
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.PinApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPinBinding
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiPresenter
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiView
 
-class PinActivity : AppCompatActivity() {
+class PinActivity : AppCompatActivity(), PinView {
 
     var pin = "hidePin"
     private lateinit var binding: ActivityPinBinding
+
+    private val presenter = PinPresenter(PinApi())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPinBinding.inflate(layoutInflater)
         setContentView(binding.root)
         formValidation()
+        presenter.onAttach(this)
+        binding.btnKirimPin.setOnClickListener {
+            presenter.pin(
+                binding.etPin.text.toString()
+            )
+        }
     }
+
+
 
     private fun formValidation() {
 
@@ -76,6 +93,23 @@ class PinActivity : AppCompatActivity() {
                 binding.tvWarningKonfirmasiPin.isVisible = true
             }
         }
+    }
+
+    override fun onLoading() {
+        Toast.makeText(this,"onLoading", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onFinishedLoading() {
+        Toast.makeText(this,"onFinishedLoading", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onError(code: Int, message: String) {
+        Toast.makeText(this,"onError $message", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSuccessPin(otp: PinSchemeResponse) {
+        Toast.makeText(this,"onSuccessPin", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, HomeBottomActivity::class.java))
     }
 
 

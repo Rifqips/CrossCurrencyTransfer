@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.auth.login.PinActivity"
+    tools:context=".features.auth.pin.PinActivity"
     android:background="@color/warna_background">
 
     <ImageView

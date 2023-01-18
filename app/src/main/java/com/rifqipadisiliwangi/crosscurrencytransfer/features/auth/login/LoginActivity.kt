@@ -23,6 +23,7 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.AuthDa
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.LoginApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLoginBinding
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin.PinActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
 
@@ -198,7 +199,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun onFinishedLoading() {
-        Toast.makeText(this,"onFinishedLoading",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Password atau Email salah",Toast.LENGTH_SHORT).show()
     }
 
     override fun onError(code: Int, message: String) {
@@ -229,13 +230,12 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun onSuccessGetUser(username: String, password: String) {
-        startActivity(Intent(this, HomeBottomActivity::class.java))
+        startActivity(Intent(this, PinActivity::class.java))
         Toast.makeText(this, "Success Login", Toast.LENGTH_SHORT).show()
         finish()
     }
 
     override fun onSuccessLogin() {
-        startActivity(Intent(this,HomeBottomActivity::class.java))
         Toast.makeText(this,"onSuccessLogin",Toast.LENGTH_SHORT).show()
     }
 }

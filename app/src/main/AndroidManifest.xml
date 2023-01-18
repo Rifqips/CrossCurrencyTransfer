@@ -72,7 +72,11 @@
             android:exported="true" />
         <activity
             android:name=".features.metodetransfer.internasional.PengirimTransferActivity"
-            android:exported="true" />
+            android:exported="true" >
+
+
+
+        </activity>
         <activity
             android:name=".features.metodetransfer.internasional.SuksesTransferActivity"
             android:exported="true" />
@@ -103,7 +107,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".features.auth.login.PinActivity"
+            android:name=".features.auth.pin.PinActivity"
             android:exported="true" />
         <activity
             android:name=".features.onboarding.ViewpagerActivity"

@@ -55,29 +55,4 @@ class OtpPresenter (
     }
 
 
-
-    fun transaksi(
-        jenisBank: String,
-        namaPenerima: String,
-        noRekening: String,
-        tipeTransaksi: String,
-        total: String
-    ) {
-        view?.onLoading()
-        scope.launch {
-            transaksiApi
-                .transaksiUser(jenisBank, namaPenerima, noRekening, tipeTransaksi, total)
-                .flowOn(Dispatchers.Default)
-                .collectLatest {
-                    when (it) {
-                        is ResponseStatus.Success -> view?.onSuccessOtp(0)
-                        is ResponseStatus.Failed -> view?.onError(it.code, it.message)
-                    }
-                }
-            view?.onFinishedLoading()
-            Log.d("error","$transaksiApi")
-        }
-    }
-
-
 }

@@ -1,11 +1,14 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api
 
+import android.util.Log
 import androidx.viewbinding.BuildConfig
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreLogin
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
+import kotlin.math.log
 
 class NetworkClient {
     companion object {
@@ -14,7 +17,9 @@ class NetworkClient {
             val request = it.request().newBuilder()
             request
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Bearer", PrivateData.accessToken)
+                // Digunakan sebagai get akses token   Value diset menyesuaikan dengan headers response yang ada di service/api
+                .addHeader("Authorization","Bearer ${PrivateData.accessToken}")
+            Log.d("requestservice", "get ${PrivateData.accessToken}")
             return@Interceptor it.proceed(request.build())
         }
 
@@ -50,6 +55,7 @@ class NetworkClient {
         }
 
         fun executeCall(endpoint: String, method: METHOD = METHOD.POST, jsonBody: String? = null): Response {
+            //request builder base url
             val request = requestBuilder(endpoint, method, jsonBody)
             return try {
                 val response = client.newCall(request).execute()
@@ -57,6 +63,7 @@ class NetworkClient {
             } catch (e: Exception) {
                 throw e
             }
+            Log.d("requestservice", "save ${PrivateData.accessToken}")
         }
 
         private fun interceptResponse(response: Response): Response {

@@ -1,8 +1,9 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi
 
 import android.util.Log
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeItem
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeResponse
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeItem
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeResponse
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.NetworkClient
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.deserializeJson
@@ -10,26 +11,21 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.mapFailedRespon
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.serialized
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.Response
 import java.io.IOException
 
-class TranskasiApi {
+class PinApi {
 
-    fun transaksiUser(
-        bankCode: String,
-        noRekening: String,
-        nominal: String,
-        pin: String
-    ): Flow<ResponseStatus<TransactionSchemeItem>> = flow {
-        val model = TransactionSchemeItem(bankCode, noRekening, nominal, pin)
+    fun getPin(
+        pin : String
+    ): Flow<ResponseStatus<PinSchemeResponse>> = flow {
+        val model = PinSchemeItem(pin)
         try {
             val result = NetworkClient
-                .executeCall("/transactions", NetworkClient.METHOD.POST, model.serialized())
+                .executeCall("/pin", NetworkClient.METHOD.POST, model.serialized())
             val response = if (result.isSuccessful) {
-                val transaksi : TransactionSchemeItem =
-                    deserializeJson<TransactionSchemeItem>(result.body?.string() ?: "") ?: TransactionSchemeItem()
+                val transaksi : PinSchemeResponse =
+                    deserializeJson<PinSchemeResponse>(result.body?.string() ?: "") ?: PinSchemeResponse()
+                Log.d("requestservice", "token-pin $result ${PrivateData.accessToken}")
                 ResponseStatus.Success(transaksi)
             } else {
                 mapFailedResponse(result)
@@ -42,8 +38,4 @@ class TranskasiApi {
 
         Log.d("error", "${model}")
     }
-
-
-
-
 }

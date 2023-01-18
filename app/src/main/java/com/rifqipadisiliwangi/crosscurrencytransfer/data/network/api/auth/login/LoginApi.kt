@@ -1,6 +1,7 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login
 
 import android.util.Log
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.AuthDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
@@ -21,6 +22,10 @@ class LoginApi {
                 .executeCall("/login", NetworkClient.METHOD.POST, model.serialized())
             val response = if (result.isSuccessful) {
                 val data: LoginData = deserializeJson<LoginData>(result.body?.string() ?: "") ?: LoginData()
+                //Digunakan sebagain simpan response token
+                PrivateData.accessToken = data.accessToken.toString()
+                Log.d("requestservice", "get-token ${PrivateData.accessToken}")
+                // Sebetulnya ini return body dari respon tipe data yang dibutuhkan
                 ResponseStatus.Success(data)
             } else {
                 mapFailedResponse(result)
@@ -33,28 +38,6 @@ class LoginApi {
 
         Log.d("error","${model}")
     }
-
-//    fun loginUser(
-//        email: String,
-//        password: String
-//    ): Flow<ResponseStatus<AuthDataItem>> = flow {
-//        val model = AuthDataItem(email, password)
-//        try {
-//            val result = NetworkClient
-//                .executeCall("/login", NetworkClient.METHOD.POST, model.serialized())
-//            val response = if (result.isSuccessful) {
-//                val data: AuthDataItem = deserializeJson<AuthDataItem>(result.body?.string() ?: "")
-//                    ?: AuthDataItem("", "",)
-//                ResponseStatus.Success(data)
-//            } else {
-//                mapFailedResponse(result)
-//            }
-//            emit(response)
-//            result.body?.close()
-//        } catch (e: IOException) {
-//            emit(ResponseStatus.Failed(-1, e.message.toString(), e))
-//        }
-//    }
 }
 
 

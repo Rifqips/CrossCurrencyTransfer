@@ -19,12 +19,12 @@ class PengirimTransferLokalActivity : AppCompatActivity(), OtpView {
 
     private lateinit var binding : ActivityPengirimTransferLokalBinding
     var digit_on_screen = StringBuilder()
-    private lateinit var dataTransaksi : DataStoreTransaksi
-    var transaksiTotal = ""
-    var metodePembayaran = ""
-    var pilihBank = ""
-    var noRekeningTransaksi = ""
-    var namaPenerima = ""
+//    private lateinit var dataTransaksi : DataStoreTransaksi
+//    var transaksiTotal = ""
+//    var metodePembayaran = ""
+//    var pilihBank = ""
+//    var noRekeningTransaksi = ""
+//    var namaPenerima = ""
     private val presenter = OtpPresenter(OtpApi(), TranskasiApi())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ class PengirimTransferLokalActivity : AppCompatActivity(), OtpView {
         setContentView(binding.root)
         initializeButtons()
         postOtp()
-        getDataStore()
+//        getDataStore()
         presenter.onAttach(this)
 
         binding.ivBack.setOnClickListener {
@@ -47,39 +47,36 @@ class PengirimTransferLokalActivity : AppCompatActivity(), OtpView {
             presenter.otp(
                 binding.resultId.text.toString().toInt()
             )
-            presenter.transaksi(
-                pilihBank,namaPenerima,noRekeningTransaksi,metodePembayaran, transaksiTotal
-            )
         }
 
     }
 
-    private fun getDataStore(){
-        dataTransaksi = DataStoreTransaksi(this)
-        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
-            transaksiTotal = it
-            binding.tvGetTotal.text = it.toString()
-        }
-        dataTransaksi.transaksiJenisBank.asLiveData().observe(this) {
-            pilihBank = it
-            binding.tvGetJenisBank.text = it.toString()
-        }
-
-        dataTransaksi.transaksiNoRekening.asLiveData().observe(this) {
-            noRekeningTransaksi = it
-            binding.tvGetNoRekening.text = it.toString()
-        }
-
-        dataTransaksi.transaksiTipeTransaksi.asLiveData().observe(this) {
-            metodePembayaran = it
-            binding.tvGetTipeTransaksi.text = it.toString()
-        }
-
-        dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
-            namaPenerima = it
-            binding.tvGetNamaPenerima.text = it.toString()
-        }
-    }
+//    private fun getDataStore(){
+//        dataTransaksi = DataStoreTransaksi(this)
+//        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
+//            transaksiTotal = it
+//            binding.tvGetTotal.text = it.toString()
+//        }
+//        dataTransaksi.transaksiJenisBank.asLiveData().observe(this) {
+//            pilihBank = it
+//            binding.tvGetJenisBank.text = it.toString()
+//        }
+//
+//        dataTransaksi.transaksiNoRekening.asLiveData().observe(this) {
+//            noRekeningTransaksi = it
+//            binding.tvGetNoRekening.text = it.toString()
+//        }
+//
+//        dataTransaksi.transaksiTipeTransaksi.asLiveData().observe(this) {
+//            metodePembayaran = it
+//            binding.tvGetTipeTransaksi.text = it.toString()
+//        }
+//
+//        dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
+//            namaPenerima = it
+//            binding.tvGetNamaPenerima.text = it.toString()
+//        }
+//    }
 
     private fun initializeButtons() {
         functionalButtons()

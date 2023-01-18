@@ -83,6 +83,21 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
                         binding.etNamaPenerima.setText("Sujatmiko")
                         binding.btnInvisibleSelanjutnya.isVisible = false
                         binding.btnSelanjutnya.isVisible = true
+                    }
+                    "9000877724254" ->{
+                        binding.etNamaPenerima.setText("Monalisa")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "9000877724253" ->{
+                        binding.etNamaPenerima.setText("Rina")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "047 1541 337" ->{
+                        binding.etNamaPenerima.setText("Carmilla")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
                     }else -> {
                     binding.etNamaPenerima.text.clear()
                     binding.btnInvisibleSelanjutnya.isVisible = true
