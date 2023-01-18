@@ -8,6 +8,8 @@ import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -19,6 +21,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.AuthDataItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.auth.login.LoginData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.LoginApi
@@ -28,10 +31,10 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActi
 
 class LoginActivity : AppCompatActivity(), LoginView {
 
-
     var password = "hidePassword"
     var enableButtonPassword = "disablePw"
     var enableButtonEmail = "disableEmail"
+//    val token : PrivateData = ""
     private lateinit var binding: ActivityLoginBinding
     private val presenterLogin = LoginPresenter(LoginApi())
     lateinit var mGoogleSignInClient: GoogleSignInClient
@@ -57,44 +60,17 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
         firebaseAuth= FirebaseAuth.getInstance()
 
-//        binding.tvLupaPassword.setOnClickListener {
-//            startActivity(Intent(this, LupaPasswordActivity::class.java))
-//        }
-
-//        binding.btnLogin.setOnClickListener {
-//            startActivity(Intent(this, PinActivity::class.java))
-//        }
-
-        binding.btnLoginGoogle.setOnClickListener {
-            signInGoogle()
+//        presenterLogin.validateEmail(binding.etEmail.text.toString())
+        binding.etEmail.doOnTextChanged { text, start, before, count ->
+            presenterLogin.validateEmail(binding.etEmail.text.toString())
         }
 
+        binding.etPassword.doOnTextChanged { text, start, before, count ->
+            presenterLogin.validasiPassword(binding.etPassword.text.toString())
+        }
         binding.tvPerDescSatu.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
-
-//        binding.etEmail.doOnTextChanged { text, start, before, count ->
-//            enableButtonEmail = "resetBtn"
-//            binding.btnLogin.isEnabled = false
-//            binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
-//
-//
-//                if (binding.etEmail.text.toString().isEmpty()) {
-//                    binding.tvWarningEmail.text = "Anda harus mengisi bagian ini"
-//                    binding.tvWarningEmail.isVisible = true
-//                }else if (!isValidEmail(binding.etEmail.text.toString())) {
-//                    binding.tvWarningEmail.text = "Format email salah"
-//                    binding.tvWarningEmail.isVisible = true
-//                }else if (isValidEmail(binding.etEmail.text.toString()) ) {
-//                    binding.tvWarningEmail.isVisible = false
-//                    enableButtonEmail = "enabledEmail"
-//                }
-//            if ( enableButtonEmail == "enabledEmail" && enableButtonPassword == "enabledPwd" ) {
-//                binding.btnLogin.isEnabled = true
-//                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
-//            }
-//        }
-
         binding.ibShowPassword.setOnClickListener {
             if (password == "hidePassword")  {
                 binding.ibShowPassword.setImageResource(R.drawable.eye_on)
@@ -138,12 +114,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
 //                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
 //            }
 //        }
-    }
-
-    private  fun signInGoogle(){
-
-        val signInIntent:Intent=mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent,Req_Code)
     }
 
     // onActivityResult() function : this is where we provide the task and data for the Google Account
@@ -194,20 +164,22 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     override fun onLoading() {
-        Toast.makeText(this,"onLoading",Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this,"onLoading",Toast.LENGTH_SHORT).show()
     }
 
     override fun onFinishedLoading() {
-        Toast.makeText(this,"onFinishedLoading",Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this,"onFinishedLoading",Toast.LENGTH_SHORT).show()
     }
 
     override fun onError(code: Int, message: String) {
         when (code) {
             1 -> {
-                binding.tvWarningEmail.text = message
+                binding.tvWarningKataSandi.text = message
+                binding.tvWarningKataSandi.isVisible = true
             }
             2 -> {
-                binding.tvWarningEmail.text = message
+                binding.tvWarningKataSandi.text = message
+                binding.tvWarningKataSandi.isVisible = true
             }
         }
     }
@@ -221,7 +193,20 @@ class LoginActivity : AppCompatActivity(), LoginView {
         }
     }
     override fun onErrorEmail(code: Int, message: String) {
-        Toast.makeText(this,"onErrorEmail",Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this,"onErrorEmail",Toast.LENGTH_SHORT).show()
+        when (code) {
+            1 -> {
+                binding.tvWarningEmail.text = message
+                binding.tvWarningEmail.isVisible = true
+            }
+            2 -> {
+                binding.tvWarningEmail.text = message
+                binding.tvWarningEmail.isVisible = true
+            }
+            3 -> {
+                binding.tvWarningEmail.isVisible = false
+            }
+        }
     }
 
     override fun onErrorPassword(visible: Boolean, message: String) {

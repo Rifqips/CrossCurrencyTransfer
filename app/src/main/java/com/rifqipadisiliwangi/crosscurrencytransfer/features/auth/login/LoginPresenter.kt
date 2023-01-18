@@ -31,29 +31,37 @@ class LoginPresenter(
     }
 
     fun validasiPassword (password : String) {
-        view?.onLoading()
+//        view?.onLoading()
         val isPasswordValid =
             password.contains("[a-z]".toRegex())
                     && password.contains("[A-Z]".toRegex())
                     && password.contains("[0-9]".toRegex())
+                    && password.contains("[@*#&]".toRegex())
                     && password.length >= 8
 
-        if (!isPasswordValid)   { view?.onError(1,"Kata sandi harus berisi huruf besar, angka, simbol \n" +"(@ * # &), dan 8 karakter")}
-        if (isPasswordValid)    { view?.onError(2, "Password sukses")}
+        val isPasswordEmpty = password.isBlank()
 
-        view?.onFinishedLoading()
+        if (!isPasswordValid)   { view?.onError(1,"Kata sandi harus berisi huruf besar, angka, simbol \n" +"(@ * # &), dan 8 karakter")}
+        if (isPasswordEmpty)    { view?.onError(2, "Anda harus mengisi bagian ini")}
+
+//        view?.onFinishedLoading()
     }
 
     fun validateEmail(email: String) {
-        view?.onLoading()
+//        view?.onLoading()
         val isEmailValid =
             email.contains("[a-zA-Z0-9._-]+@[a-z]+[.]+com+".toRegex()) ||
                     email.contains("[a-zA-Z0-9._-]+@[a-z]+[.]+co+[.]+id".toRegex())
 
-        if (!isEmailValid) { view?.onErrorEmail(1,"Email sudah terdaftar") }
-        if (!isEmailValid) { view?.onErrorEmail(2,"Format email salah") }
-        if (isEmailValid) { view?.onErrorEmail(3,"Email sudah benar") }
-        view?.onFinishedLoading()
+        val isEmailEmpty = email.isBlank()
+
+        if (isEmailEmpty) { view?.onErrorEmail(1, "Anda harus mengisi bagian ini")}
+        else if (!isEmailValid) { view?.onErrorEmail(2, "Format email salah")}
+        else if (isEmailValid) { view?.onErrorEmail(3,"")}
+//        if (!isEmailValid) { view?.onErrorEmail(1,"Email sudah terdaftar") }
+//        if (!isEmailValid) { view?.onErrorEmail(2,"Format email salah") }
+//        if (isEmailValid) { view?.onErrorEmail(3,"Email sudah benar") }
+//        view?.onFinishedLoading()
     }
 
     fun loginUser(email: String, password: String,)
