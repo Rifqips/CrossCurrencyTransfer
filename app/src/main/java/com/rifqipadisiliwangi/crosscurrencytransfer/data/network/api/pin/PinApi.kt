@@ -1,4 +1,4 @@
-package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi
+package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.pin
 
 import android.util.Log
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData

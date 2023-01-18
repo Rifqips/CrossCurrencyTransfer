@@ -9,14 +9,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.getpin.PinSchemeResponse
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.PinApi
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.pin.PinApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPinBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiPresenter
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiView
 
 class PinActivity : AppCompatActivity(), PinView {
 

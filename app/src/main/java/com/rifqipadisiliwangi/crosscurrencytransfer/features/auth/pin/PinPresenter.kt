@@ -3,7 +3,7 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin
 import android.app.Application
 import android.util.Log
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.PinApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.pin.PinApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
