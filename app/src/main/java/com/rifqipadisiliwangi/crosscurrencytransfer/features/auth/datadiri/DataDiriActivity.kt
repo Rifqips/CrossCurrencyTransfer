@@ -319,12 +319,12 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
 
                 //Handle Jenis Kelamin
 
-                if (it.jk.equals("Laki-Laki")){
+                if (it.jk.equals("Male")){
                     binding.rbPria.isChecked = true
-                    jenisKelamin = "Laki Laki"
+                    jenisKelamin = "Male"
                 } else {
                     binding.rbWanita.isChecked = true
-                    jenisKelamin = "Perempuan"
+                    jenisKelamin = "Female"
                 }
 
                 //handle location

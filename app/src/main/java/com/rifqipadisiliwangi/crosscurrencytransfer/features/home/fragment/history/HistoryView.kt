@@ -3,10 +3,17 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.hist
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.history.HistorySchemeItem
 
 interface HistoryView {
-        fun onLoading()
-        fun onFinishedLoading()
-        fun onError(code: Int, message: String)
-        fun onSuccessHistory(user: List<HistorySchemeItem>)
-        fun onSuccessAddUser(){}
+        interface Presenter{
+                fun onAttach()
+                fun onDetach()
+        }
+
+        interface View{
+                fun onLoading()
+                fun onFinishedLoading()
+                fun onError(message: String)
+                fun onSuccessGetHistory(user: List<HistorySchemeItem>){}
+                fun onSuccessAddUser(){}
+        }
 
 }
