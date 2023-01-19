@@ -8,13 +8,13 @@ object MoshiExtension {
         .build()
 }
 
-// fungsinya mengubah string json ke object T (kata kunci untuk object yang kita panggil)
+// fungsinya mengubah string json ke object T (kata kunci untuk object yang kita panggil)biasanya digunakan pada saat method get
 inline fun<reified T> deserializeJson(jsonString: String): T? {
     val adapter: JsonAdapter<T> = MoshiExtension.moshi.adapter(T::class.java)
     return adapter.fromJson(jsonString)
 }
 
-// fungsinya mengubah object ke string json T (Bisa apa saja/kata kunci untuk object yang kita panggil)
+// fungsinya mengubah object ke string json T (Bisa apa saja/kata kunci untuk object yang kita panggil) biasanya digunakan pada saat method post
 inline fun<reified T> T.serialized(): String {
     return MoshiExtension.moshi.adapter(T::class.java).toJson(this)
 }

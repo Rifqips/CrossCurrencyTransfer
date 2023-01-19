@@ -1,6 +1,5 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.history
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -38,7 +37,6 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
                 tvCodeBank.text = item.virtualAccount
                 tvNoRekening.text = item.receipentNorek
                 tvTotal.text = item.total
-                Log.e("Data Muncul Dong", tvName.toString())
             }
         }
     }

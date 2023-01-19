@@ -17,7 +17,7 @@ class NetworkTransaksiClient {
                 .addHeader("Content-Type", "application/json")
                 // Digunakan sebagai get akses token   Value diset menyesuaikan dengan headers response yang ada di service/api
                 .addHeader("Authorization","Bearer ${PrivateData.accessToken}")
-            Log.d("requestservice", "get ${PrivateData.accessToken}")
+            Log.d("requestservice", "get token history ${PrivateData.accessToken}")
             return@Interceptor it.proceed(request.build())
         }
 
@@ -37,23 +37,38 @@ class NetworkTransaksiClient {
                 .build()
         }
 
-        // digunakan response
+        // digunakan request body
         fun requestResponse(
             endpoint: String,
-            method: METHOD = METHOD.GET,
+            method: METHOD = METHOD.POST,
             jsonBody: String? = null,
         ): Request {
             val request = Request
                 .Builder()
                 .url("$BASE_URL$endpoint")
-                .removeHeader("Bearer ${PrivateData.accessToken}")
-//                .header("Authorization","Bearer ${PrivateData.accessToken}")
             if (jsonBody != null)
                 request.method(method.name, jsonBody.toRequestBody())
             return request.build()
+
         }
 
-        private fun interceptRequest(request: Request): Request {
+        fun executeCallHistory(
+            endpoint: String,
+            method: METHOD = METHOD.POST,
+            jsonBody: String? = null
+        ): Response {
+            //request builder(body json) base url
+            val request = requestResponse(endpoint, method, jsonBody)
+            return try {
+                val response = client.newCall(request).execute()
+                interceptRequest(response)
+            } catch (e: Exception) {
+                throw e
+            }
+        }
+
+        //  ada ketika hit api, jadi semua api ditangkap kemudian ambil data yang diperlukan(request body json), mengintercept sebelum datanya digunakan untuk keperluannya
+        private fun interceptRequest(request: Response): Response {
             PrivateData.accessToken = request.header("Bearer ${PrivateData.accessToken}").toString()
             return request
         }

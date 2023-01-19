@@ -1,6 +1,7 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.history
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,12 +19,12 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin.PinPresent
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin.PinView
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.HistoryPresenter
 
-class HistoryFragment : Fragment(), HistoryView {
+class HistoryFragment : Fragment(), HistoryView.View {
 
     private lateinit var binding : FragmentHistoryBinding
     private val adapter: HistoryAdapter by lazy { HistoryAdapter() }
     private val recipeLiveData = MutableLiveData<List<HistorySchemeItem>>()
-    private val presenter = HistoryPresenter(HistoryApi())
+    private lateinit var presenter: HistoryPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,23 +37,23 @@ class HistoryFragment : Fragment(), HistoryView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.onAttach(this)
+
+
+        presenter = HistoryPresenter(this@HistoryFragment, HistoryApi()).apply {
+            onAttach()
+        }
+
         binding.rvHistory.apply {
             adapter = this@HistoryFragment.adapter
             layoutManager = LinearLayoutManager(requireActivity())
-
         }
+
+        Log.e("Data Ditemukan:", adapter.toString())
 
         recipeLiveData.observe(viewLifecycleOwner){
             adapter.submitList(it)
         }
-
     }
-
-    override fun onSuccessHistory(user: List<HistorySchemeItem>) {
-        adapter.submitList(user)
-    }
-
     override fun onLoading() {
         Toast.makeText(context, "onLoading", Toast.LENGTH_SHORT).show()
     }
@@ -61,7 +62,11 @@ class HistoryFragment : Fragment(), HistoryView {
         Toast.makeText(context, "onFinishedLoading", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onError(code: Int, message: String) {
-        Toast.makeText(context, "$message", Toast.LENGTH_SHORT).show()
+    override fun onError(message: String) {
+        Toast.makeText(context, "onError", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onSuccessGetHistory(history: List<HistorySchemeItem>) {
+        adapter.submitList(history)
     }
 }

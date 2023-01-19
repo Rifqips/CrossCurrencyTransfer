@@ -549,7 +549,7 @@
                     android:id="@+id/rbPria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Laki - laki"
+                    android:text="Male"
                     android:textSize="12sp"
                     android:fontFamily="@font/dm_sans"
                     android:textColor="@color/warna_auth_font"/>
@@ -559,7 +559,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
-                    android:text="Perempuan"
+                    android:text="Female"
                     android:textSize="12sp"
                     android:fontFamily="@font/dm_sans"
                     android:textColor="@color/warna_auth_font"/>
