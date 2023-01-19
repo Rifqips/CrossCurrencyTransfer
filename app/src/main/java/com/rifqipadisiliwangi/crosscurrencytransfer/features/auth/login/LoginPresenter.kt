@@ -30,6 +30,8 @@ class LoginPresenter(
         this.view = null
     }
 
+
+
     fun validasiPassword (password : String) {
 //        view?.onLoading()
         val isPasswordValid =

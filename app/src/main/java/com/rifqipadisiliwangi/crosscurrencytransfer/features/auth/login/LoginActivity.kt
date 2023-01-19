@@ -46,21 +46,17 @@ class LoginActivity : AppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         postLogin()
         auth = Firebase.auth
 
         presenterLogin.onAttach(this)
-
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.client_id))
             .requestEmail()
             .build()
-
         mGoogleSignInClient= GoogleSignIn.getClient(this,gso)
-
         firebaseAuth= FirebaseAuth.getInstance()
-
-//        presenterLogin.validateEmail(binding.etEmail.text.toString())
         binding.etEmail.doOnTextChanged { text, start, before, count ->
             presenterLogin.validateEmail(binding.etEmail.text.toString())
         }
@@ -71,6 +67,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         binding.tvPerDescSatu.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+
         binding.ibShowPassword.setOnClickListener {
             if (password == "hidePassword")  {
                 binding.ibShowPassword.setImageResource(R.drawable.eye_on)
@@ -82,38 +79,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
                 password = "hidePassword"
             }
         }
-
-//        binding.etPassword.doOnTextChanged { text, start, before, count ->
-//            enableButtonPassword = "resetBtn"
-//            binding.btnLogin.isEnabled = false
-//            binding.btnLogin.setBackgroundColor(Color.rgb(216,216,216))
-//
-//            if (binding.etPassword.text.toString().isEmpty()) {
-//                    binding.tvWarningKataSandi.text = "Anda harus mengisi bagian ini"
-//                binding.tvWarningKataSandi.isVisible = true
-//            }
-//            else if ( !(binding.etPassword.text.toString().length >= 8 &&
-//                        binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
-//                        binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
-//                        binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
-//                        binding.etPassword.text.toString().contains("[@*#&]".toRegex()))
-//            ){
-//                binding.tvWarningKataSandi.text = "Kata sandi harus berisi huruf besar, angka dan simbol (@ * # &)"
-//                binding.tvWarningKataSandi.isVisible = true
-//            }
-//            else if (binding.etPassword.text.toString().length >= 8 &&
-//                binding.etPassword.text.toString().contains("[A-Z]".toRegex()) &&
-//                binding.etPassword.text.toString().contains("[a-z]".toRegex()) &&
-//                binding.etPassword.text.toString().contains("[0-9]".toRegex()) &&
-//                binding.etPassword.text.toString().contains("[@*#&]".toRegex()) ) {
-//                    binding.tvWarningKataSandi.isVisible = false
-//                    enableButtonPassword = "enabledPwd"
-//            }
-//            if (enableButtonEmail == "enabledEmail" && enableButtonPassword == "enabledPwd" ){
-//                binding.btnLogin.isEnabled = true
-//                binding.btnLogin.setBackgroundColor(Color.rgb(32,117,243))
-//            }
-//        }
     }
 
     // onActivityResult() function : this is where we provide the task and data for the Google Account
