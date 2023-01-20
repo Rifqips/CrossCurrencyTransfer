@@ -24,6 +24,7 @@
     <color name="warna_background">#ffffff</color>
     <color name="warna_background_rounded_dokumen">#EFEFEF</color>
     <color name="warna_background_button">#F1F7FF</color>
+    <color name="warna_background_edittext">#EAF3FF</color>
     <color name="warna_background_metode">#FFAD0E</color>
     <color name="background_field">#F1F7FF</color>
     <color name="warning_font">#DC3328</color>

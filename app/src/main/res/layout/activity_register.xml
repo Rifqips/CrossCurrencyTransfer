@@ -102,29 +102,28 @@
         android:gravity="center"
         android:text="+62"
         android:textSize="16sp"
+        android:layout_marginStart="24dp"
         android:textColor="@color/warna_primary_font"
-        android:background="@drawable/transparent_bg_button"
-        app:layout_constraintEnd_toStartOf="@+id/etNoHp"
+        android:background="@drawable/transparent_bg_edittext_first"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNoHp"/>
 
     <EditText
         android:id="@+id/etNoHp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="316dp"
+        android:layout_height="48dp"
         android:hint="Masukkan Nomor Handphone"
         android:inputType="number"
         android:paddingStart="10dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginVertical="5dp"
         android:textSize="12sp"
-        android:maxLength="20"
         android:textColorHint="@color/warna_auth_font"
         android:textColor="@color/warna_auth_font"
         android:fontFamily="@font/dm_sans_medium"
-        android:layout_marginVertical="5dp"
-        android:background="@drawable/transparent_bg_button"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/transparent_bg_edittext"
         app:layout_constraintTop_toBottomOf="@+id/tvNoHp"
-        android:layout_marginStart="80dp"
         tools:ignore="RtlSymmetry" />
 
     <TextView

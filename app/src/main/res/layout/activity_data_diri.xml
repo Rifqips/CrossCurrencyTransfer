@@ -57,7 +57,7 @@
                         app:civ_border_width="3dp"
                         android:gravity="center"
                         android:layout_marginVertical="20dp"
-                        android:src="@drawable/ic_register_icon"
+                        android:src="@drawable/ic_pic_empty"
                         app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -593,32 +593,34 @@
                 app:layout_constraintStart_toEndOf="@+id/tvPhone"
                 app:layout_constraintTop_toBottomOf="@+id/rgJenisKelamin"/>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llphone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="50dp"
                 android:layout_marginHorizontal="24dp"
-                android:orientation="horizontal"
                 android:layout_marginVertical="5dp"
+                android:background="@drawable/transparent_bg_button"
+                android:orientation="horizontal"
                 android:visibility="visible"
-                app:layout_constraintTop_toBottomOf="@id/tvPhone"
-                android:background="@drawable/transparent_bg_button">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPhone">
 
-                <EditText
+                <TextView
                     android:id="@+id/etPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="Nomor Handphone"
-                    android:maxLength="16"
-                    android:paddingStart="10dp"
-                    android:textSize="12sp"
-                    android:inputType="number"
-                    android:textColorHint="@color/warna_grey_font"
-                    android:textColor="@color/warna_auth_font"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/transparent_bg_button"
-                    tools:ignore="TextFields" />
-            </LinearLayout>
+                    android:hint="Nomor Handphone"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toStartOf="@+id/llphone"
+                    app:layout_constraintTop_toTopOf="@+id/llphone"
+                    app:layout_constraintBottom_toBottomOf="@+id/llphone"
+                    android:textColor="@color/warna_auth_font"
+                    android:textColorHint="@color/warna_grey_font"
+                    android:textSize="12sp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <TextView

@@ -5,5 +5,5 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ListScheme(
-    var historySchemeItem: List<HistorySchemeItem> = listOf(),
+    val historySchemeItem: List<HistorySchemeItem> = listOf(),
 )

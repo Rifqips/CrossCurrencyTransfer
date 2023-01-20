@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.history.HistorySchemeItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ItemHistoryBinding
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.history.HistorySingleton
 
 class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
@@ -18,6 +19,7 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.setData(data[position])
+
     }
 
     override fun getItemCount(): Int = data.size
@@ -31,12 +33,14 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(private val binding: ItemHistoryBinding): RecyclerView.ViewHolder(binding.root){
-        fun setData(item : HistorySchemeItem){
+        fun setData(list: HistorySchemeItem){
             with(binding){
-                tvName.text = item.receipentName
-                tvCodeBank.text = item.virtualAccount
-                tvNoRekening.text = item.receipentNorek
-                tvTotal.text = item.total
+                tvName.text = list.receipentName
+                tvCodeBank.text = list.virtualAccount
+                tvNoRekening.text = list.receipentNorek
+                tvTotal.text = list.total
+                tvId.text = list.id
+                tvTipeTransaksi.text = list.typeTransaction
             }
         }
     }

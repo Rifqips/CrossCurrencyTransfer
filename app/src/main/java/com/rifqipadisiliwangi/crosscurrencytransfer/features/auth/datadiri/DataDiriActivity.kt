@@ -3,10 +3,7 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.content.ContentValues
-import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
+import android.content.*
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -23,6 +20,7 @@ import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -30,10 +28,13 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.asLiveData
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreUser
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.helper.helper.ALERT_DIALOG_CLOSE
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.helper.helper.ALERT_DIALOG_DELETE
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.helper.helper.EXTRA_POSITION
@@ -48,12 +49,19 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.data.utility.DatabaseRegsite
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.utility.RegisterHelper
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityDataDiriBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login.LoginActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.VerifikasiActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.HomeBottomActivity
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.profile.DetailProfileActivity
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.HomeFragment
 import com.rifqipadisiliwangi.crosscurrencytransfer.helper.makeClearableEditText
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.io.FileNotFoundException
 import java.util.*
 
@@ -63,7 +71,7 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
     private lateinit var binding : ActivityDataDiriBinding
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var registerHelper: RegisterHelper
-    private var imageView: ImageView? = null
+
 
     private val permissionId = 55
     private val RESULT_LOAD_IMAGE = 123
@@ -86,16 +94,36 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
     val day = calender.get(Calendar.DATE)
     var validasiTglLahir = ""
 
+    private var imageView: ImageView? = null
+    private var imageMultiPart: MultipartBody.Part? = null
+    private var imageFile: File? = null
+    private var imageUri: Uri? = Uri.EMPTY
+
+    lateinit var dataStoreUser : DataStoreUser
+    var namaUser = ""
+    var namaDepan = ""
+    var namaBelakang = ""
+    var phoneNumber = ""
+    var imageUser = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDataDiriBinding.inflate(layoutInflater)
         setContentView(binding.root)
         presenter.onAttach(this)
+        dataStoreUser = DataStoreUser(this)
 
         loadSpiner()
         clearValidasi()
         validasiEditText()
         addSqliteUser()
+        dataStore()
+        calender()
+
+        binding.ivImageUser.setOnClickListener {
+            openGallery()
+        }
 
         val actionBar: ActionBar? = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
@@ -104,6 +132,41 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
 
         registerHelper = RegisterHelper.getInstance(applicationContext)
         registerHelper.open()
+
+
+        binding.ivBack.setOnClickListener {
+            startActivity(Intent(this, VerifikasiActivity::class.java))
+        }
+
+
+    }
+
+    fun openGallery(){
+        getContent.launch("image/*")
+    }
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                val contentResolver: ContentResolver = this!!.contentResolver
+                val type = contentResolver.getType(it)
+                imageUri = it
+
+                val fileNameimg = "${System.currentTimeMillis()}.png"
+                binding.ivImageUser.setImageURI(it)
+                Toast.makeText(this, "$imageUri", Toast.LENGTH_SHORT).show()
+
+                val tempFile = File.createTempFile("transevils", fileNameimg, null)
+                imageFile = tempFile
+                val inputstream = contentResolver.openInputStream(uri)
+                tempFile.outputStream().use    { result ->
+                    inputstream?.copyTo(result)
+                }
+                val requestBody: RequestBody = tempFile.asRequestBody(type?.toMediaType())
+                imageMultiPart = MultipartBody.Part.createFormData("image", tempFile.name, requestBody)
+            }
+        }
+
+    private fun calender(){
 
         binding.ibCalender.setOnClickListener {
             val dpd = DatePickerDialog(this, { view, year, monthOfYear, dayOfMonth ->
@@ -120,6 +183,25 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
             dpd.datePicker.minDate = calender.timeInMillis
             dpd.show()
         }
+    }
+
+    private fun dataStore(){
+        dataStoreUser.namaUser.asLiveData().observe(this){
+            namaUser = it
+            binding.etNamaDepan.hint = it.toString()
+        }
+
+        dataStoreUser.noPhone.asLiveData().observe(this){
+            phoneNumber = it
+            binding.etPhone.text = it.toString()
+        }
+//        binding.btnLanjut.setOnClickListener {
+//            GlobalScope.launch {
+//                dataStoreUser.saveData("",namaUser, "")
+//            }
+//
+//        }
+
     }
 
     override fun onLoading() {
@@ -165,7 +247,7 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
 
     override fun onSuccessRegister() {
 //        startActivity(Intent(this, LoginActivity::class.java))
-        presenter.register("","",0,"","","","",0,"","",)
+        presenter.register("","",0,"","","","","","","",)
         Toast.makeText(this, "Success Register", Toast.LENGTH_SHORT).show()
     }
 
@@ -195,6 +277,8 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
     }
 
     private fun validasiEditText(){
+        val intent = intent.getStringExtra("number")
+        binding.etPhone.text = intent
 
         binding.etkonfirmasiKatasandiDatadiri.addTextChangedListener { confirmPassword ->
             if (confirmPassword.toString() != binding.etKatasandi.text.toString()) {
@@ -257,7 +341,7 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
                 binding.etNamaBelakang.text.toString(),
                 binding.etTempatlahir.text.toString(),
                 binding.etAlamat.text.toString(),
-                binding.etPhone.text.toString().toInt(),
+                phoneNumber,
                 binding.etKatasandi.text.toString(),
                 binding.rbPria.text.toString()
             )
@@ -577,8 +661,16 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
 
 
     override fun onClick(view: View?) {
+
+//        val data = intent.extras
+//        val graph = data!!.get("res").toString()
+        namaUser = binding.etNamaDepan.hint.toString()
+//        imageUser = binding.ivImageUser.setImageBitmap(BitmapFactory.decodeFile(graph)).toString()
+
         if(view?.id == R.id.btnLanjut) {
             postRegister()
+
+
             val name = binding.etEmail.text.toString().trim()
             val alamat = binding.etAlamat.text.toString().trim()
             val phone = binding.etPhone.text.toString().trim()
@@ -597,6 +689,8 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
             register?.longitude = longitude
             register?.image = imageViewToByte(imageView!!)
 
+
+
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.putExtra(EXTRA_REGISTRATION, register)
             intent.putExtra(EXTRA_POSITION, position)
@@ -609,6 +703,7 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
             values.put(DatabaseRegsiter.RegisterColumns.LATITUDE, register?.latitude)
             values.put(DatabaseRegsiter.RegisterColumns.LONGITUDE, register?.longitude)
             values.put(DatabaseRegsiter.RegisterColumns.IMAGE, register?.image)
+
             startActivity(Intent(this, LoginActivity::class.java))
 
             if(isEdit) {

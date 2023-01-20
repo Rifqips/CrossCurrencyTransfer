@@ -45,7 +45,14 @@
             android:exported="false" />
         <activity
             android:name=".features.splashscreen.SplashActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".features.metodetransfer.lokal.LokalTransferActivity"
             android:exported="false" />
@@ -95,13 +102,7 @@
             android:exported="false" />
         <activity
             android:name=".features.auth.login.LoginActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".features.auth.pin.PinActivity"
             android:exported="true" />

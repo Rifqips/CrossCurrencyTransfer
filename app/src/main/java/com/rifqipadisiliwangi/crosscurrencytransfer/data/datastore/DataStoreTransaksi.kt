@@ -18,7 +18,6 @@ class DataStoreTransaksi(private val context: Context){
     private val NoRekening = stringPreferencesKey("norekening")
     private val TipeTransaksi = stringPreferencesKey("tipetransaksi")
     private val Total = stringPreferencesKey("total")
-
     suspend fun saveData(
         id: String,
         jenisBank: String,
@@ -36,6 +35,7 @@ class DataStoreTransaksi(private val context: Context){
             it[Total] = total
         }
     }
+
     fun getId() : Flow<String>{
         return context.dataStore.data.map {
             it[Id] ?: ""

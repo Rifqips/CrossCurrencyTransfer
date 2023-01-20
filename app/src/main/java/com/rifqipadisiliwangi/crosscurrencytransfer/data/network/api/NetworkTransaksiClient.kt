@@ -37,7 +37,7 @@ class NetworkTransaksiClient {
                 .build()
         }
 
-        // digunakan request body
+        // digunakan build body yang akan di ambil
         fun requestResponse(
             endpoint: String,
             method: METHOD = METHOD.POST,
@@ -49,9 +49,9 @@ class NetworkTransaksiClient {
             if (jsonBody != null)
                 request.method(method.name, jsonBody.toRequestBody())
             return request.build()
-
         }
 
+        // digunakan mengolah build body yang terambil
         fun executeCallHistory(
             endpoint: String,
             method: METHOD = METHOD.POST,

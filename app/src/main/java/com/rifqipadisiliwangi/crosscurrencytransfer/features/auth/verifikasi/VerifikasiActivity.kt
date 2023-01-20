@@ -8,13 +8,17 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.asLiveData
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreUser
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityVerifikasiBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class VerifikasiActivity : AppCompatActivity(), OtpView {
 
@@ -22,14 +26,26 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
     private var digit_on_screen = StringBuilder()
     private val presenter = OtpPresenter(OtpApi(), TranskasiApi())
 
+    lateinit var dataStoreUser : DataStoreUser
+    var phoneNumber = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifikasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        dataStoreUser = DataStoreUser(this)
+        presenter.onAttach(this)
         initializeButtons()
         postOtp()
         timer()
-        presenter.onAttach(this)
+        validate()
+        dataStore()
+
+
+    }
+
+
+    private fun validate(){
         binding.tvBelumDapat.setOnClickListener {
             val dialog = BottomSheetDialog(this)
             val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
@@ -50,7 +66,13 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
         binding.tvKirimUlangKode.setOnClickListener {
             timer()
         }
+    }
 
+    private fun dataStore(){
+        dataStoreUser.noPhone.asLiveData().observe(this){
+            phoneNumber = it
+            binding.dummyPhone.text = it.toString()
+        }
     }
 
 
@@ -186,6 +208,10 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
             presenter.otp(
                 binding.resultId.text.toString().toInt()
             )
+            phoneNumber = binding.dummyPhone.text.toString()
+            GlobalScope.launch {
+                dataStoreUser.saveData(phoneNumber,"","")
+            }
         }
 
     }

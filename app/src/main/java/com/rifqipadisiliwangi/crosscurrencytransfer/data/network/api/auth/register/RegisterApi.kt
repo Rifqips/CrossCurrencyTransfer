@@ -20,7 +20,7 @@ class RegisterApi {
         lastName: String,
         birthPlace: String,
         address: String,
-        phoneNumber: Int,
+        phoneNumber: String,
         password: String,
         sex: String,
     ): Flow<ResponseStatus<RegisterDataItem>> = flow {

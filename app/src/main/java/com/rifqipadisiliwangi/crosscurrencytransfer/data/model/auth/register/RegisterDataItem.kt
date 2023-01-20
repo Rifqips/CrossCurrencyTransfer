@@ -20,7 +20,7 @@ data class RegisterDataItem(
     @Json(name = "address")
     val address: String? = null,
     @Json(name = "phone_number")
-    val phoneNumber: Int? = null,
+    val phoneNumber: String? = null,
     @Json(name = "password")
     val password: String? = null,
     @Json(name = "sex")

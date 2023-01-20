@@ -4,7 +4,6 @@ import android.util.Log
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.history.HistorySchemeItem
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.NetworkClient
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.NetworkTransaksiClient
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.deserializeJson
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.mapFailedResponse
@@ -19,9 +18,8 @@ import java.io.IOException
 class HistoryApi {
 
     private val usersEndpoint ="/myTransaction"
-
     fun getHistoryResponse(onResponse: (ResponseStatus<List<HistorySchemeItem>>) -> Unit){
-        val endpoint = usersEndpoint
+        val endpoint = "$usersEndpoint"
         val request = NetworkTransaksiClient.requestResponse(endpoint)
         NetworkTransaksiClient
             .client
@@ -62,33 +60,19 @@ class HistoryApi {
         Log.d("requestservice", "baseurl-history $request ${PrivateData.accessToken}")
     }
 
-
-    fun callHistory(
-        adminFee: String? = null,
-        bank: String? = null,
-        expiredAt: String? = null,
-        id: String? = null,
-        isExpired: String? = null,
-        nominal: String? = null,
-        receipentName: String? = null,
-        receipentNorek: String? = null,
-        status: String? = null,
-        total: String? = null,
-        transactionDate: String? = null,
-        typeCurrency: String? = null,
-        typeTransaction: String? = null,
-        virtualAccount: String? = null
-    ): Flow<ResponseStatus<ListScheme>> = flow {
-        val model = HistorySchemeItem(adminFee, bank, expiredAt, id, isExpired, nominal, receipentName, receipentNorek, status, total, transactionDate,typeCurrency, typeTransaction, virtualAccount)
+    fun callHistory(): Flow<ResponseStatus<List<HistorySchemeItem>>> = flow {
+        val model = HistorySchemeItem()
         try {
             val result = NetworkTransaksiClient
                 .executeCallHistory("/myTransaction", NetworkTransaksiClient.METHOD.POST, model.serialized())
             val response = if (result.isSuccessful) {
-                val history : ListScheme =
-                    deserializeJson<ListScheme>(result.body?.string() ?: "") ?: ListScheme()
+                val history : List<HistorySchemeItem> =
+                    deserializeJson<List<HistorySchemeItem>>(result.body?.string() ?: "") ?: listOf()
+                val mappingHistory = history.toList()
                 Log.d("requestservice", "cek-history $result ${PrivateData.accessToken}")
-                ResponseStatus.Success(history)
+                ResponseStatus.Success(history.toList())
             } else {
+
                 mapFailedResponse(result)
             }
             emit(response)
