@@ -34,7 +34,8 @@ class RegisterActivity : AppCompatActivity() {
             if (binding.etNoHp.text.toString().isEmpty() ) {
                 binding.tvWarningNohp.text = "Anda harus mengisi bagian ini"
                 binding.btnKirim.setBackgroundColor(Color.rgb(216,216,216))
-            }else if (binding.etNoHp.text.toString().length < 10) {
+            }else if (binding.etNoHp.text.toString().length < 9 || binding.etNoHp.text.toString().length > 13) {
+                binding.tvWarningNohp.text = "Format No.HP tidak sesuai"
                 binding.tvWarningNohp.isVisible = true
                 binding.btnKirim.setBackgroundColor(Color.rgb(216,216,216))
             }else {
@@ -42,6 +43,9 @@ class RegisterActivity : AppCompatActivity() {
                 binding.btnKirim.setBackgroundColor(Color.rgb(32, 117, 243))
                 binding.btnKirim.isEnabled = true
             }
+
+            val intentNoHp = Intent(this@RegisterActivity,DataDiriActivity::class.java)
+            intentNoHp.putExtra("noHp",binding.etNoHp.text.toString())
 
         }
     }

@@ -23,8 +23,9 @@ class RegisterApi {
         phoneNumber: Int,
         password: String,
         sex: String,
+        birthDate : String
     ): Flow<ResponseStatus<RegisterDataItem>> = flow {
-        val model = RegisterDataItem(email, docType, docNumber, firstName, lastName, birthPlace,  address, phoneNumber, password, sex)
+        val model = RegisterDataItem(email, docType, docNumber, firstName, lastName, birthPlace,  address, phoneNumber, password, sex, birthDate)
 
         try {
             val result = NetworkClient

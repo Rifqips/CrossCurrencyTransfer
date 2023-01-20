@@ -44,7 +44,7 @@ class HistoryApi {
 
     fun getHistoryResponse(onResponse: (ResponseStatus<List<HistorySchemeItem>>) -> Unit){
         val endpoint = usersEndpoint
-        val request = NetworkTransaksiClient.requestResponse(endpoint)
+        val request = NetworkTransaksiClient.executeCallHistory(endpoint)
         NetworkTransaksiClient
             .client
             .newCall(request)
@@ -77,6 +77,7 @@ class HistoryApi {
                         onResponse.invoke(
                             ResponseStatus.Failed(response.code, "Failed")
                         )
+                        Log.d("cek-history", "history $onResponse")
                     }
                     response.body?.close()
                 }

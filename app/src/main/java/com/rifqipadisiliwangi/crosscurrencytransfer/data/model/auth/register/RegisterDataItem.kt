@@ -25,4 +25,6 @@ data class RegisterDataItem(
     val password: String? = null,
     @Json(name = "sex")
     val sex: String? = null,
+    @Json(name = "birth_date")
+    val birthDate: String? = null
 )

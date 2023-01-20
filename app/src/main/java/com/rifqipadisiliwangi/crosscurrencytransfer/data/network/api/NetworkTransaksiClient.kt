@@ -53,6 +53,22 @@ class NetworkTransaksiClient {
             return request.build()
         }
 
+        fun executeCallHistory(
+            endpoint: String,
+            method: METHOD = METHOD.GET,
+            jsonBody: String? = null
+        ): Request {
+            //request builder(body json) base url
+            val request = requestResponse(endpoint, method, jsonBody)
+            return try {
+                val response = client.newCall(request).request()
+                interceptRequest(response)
+            } catch (e: Exception) {
+                throw e
+            }
+            Log.d("requestservice", "save ${PrivateData.accessToken}")
+        }
+
         private fun interceptRequest(request: Request): Request {
             PrivateData.accessToken = request.header("Bearer ${PrivateData.accessToken}").toString()
             return request

@@ -22,7 +22,7 @@ class LoginApi {
                 .executeCall("/login", NetworkClient.METHOD.POST, model.serialized())
             val response = if (result.isSuccessful) {
                 val data: LoginData = deserializeJson<LoginData>(result.body?.string() ?: "") ?: LoginData()
-                //Digunakan sebagain simpan response token
+                //Digunakan sebagai simpan response token
                 PrivateData.accessToken = data.accessToken.toString()
                 Log.d("requestservice", "get-token ${PrivateData.accessToken}")
                 // Sebetulnya ini return body dari respon tipe data yang dibutuhkan

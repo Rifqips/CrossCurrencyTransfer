@@ -55,16 +55,16 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
 
 
     override fun onLoading() {
-        binding.progressBarPengirim.isVisible = true
+//        binding.progressBarPengirim.isVisible = true
     }
 
     override fun onFinishedLoading() {
-        binding.progressBarPengirim.isVisible = false
+//        binding.progressBarPengirim.isVisible = false
     }
 
     override fun onError(code: Int, message: String) {
         Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-        binding.progressBarPengirim.isVisible = true
+//        binding.progressBarPengirim.isVisible = true
     }
 
     override fun onSuccessOtp(otp: Int) {
