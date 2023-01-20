@@ -56,8 +56,7 @@ class LoginPresenter(
         view?.onFinishedLoading()
     }
 
-    fun loginUser(email: String, password: String,)
-        {
+    fun loginUser(email: String, password: String,){
         view?.onLoading()
         scope.launch {
             loginApi

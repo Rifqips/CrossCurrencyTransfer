@@ -26,31 +26,29 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
     var pilihBank = ""
     var noRekeningTransaksi = ""
     var namaPenerima = ""
+    var codeSwift = ""
 
-    var bankAmerika = arrayOf("Pilih Bank","Bank Of America", "JPMorgan Chase", "Wells Fargo", "Citigroup", "Goldman Sachs Group")
+    var bankAmerika = arrayOf("Pilih Bank","Mandiri", "BCA", "Cimb Niaga", "BRI", "BNI")
+    var bankSwift = arrayOf("Kode Swift","111", "222", "333", "444", "555")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBankInternationalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        dataTransaksi = DataStoreTransaksi(this)
         loadSpiner()
         userTranser()
-        dataTransaksi = DataStoreTransaksi(this)
-
-
-        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
-            transaksiTotal = it
-            binding.tvSaldoTotal.text = it.toString()
-        }
+        datastore()
 
         binding.btnSelanjutnya.setOnClickListener {
             transaksiTotal = binding.tvSaldoTotal.text.toString()
             pilihBank = binding.mySpinner.selectedItem.toString()
             noRekeningTransaksi = binding.etNorekening.text.toString()
             namaPenerima = binding.etNamaPenerima.text.toString()
+            codeSwift = binding.etKodeSwift.text.toString()
             GlobalScope.launch {
-                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, tipeTransaksi = "", transaksiTotal)
+                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, tipeTransaksi = "", transaksiTotal,codeSwift)
             }
             startActivity(Intent(this, PembayaranTransferActivity::class.java))
         }
@@ -61,7 +59,29 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
     }
 
+    private fun datastore(){
+        dataTransaksi.transaksiTotal.asLiveData().observe(this) {
+            transaksiTotal = it
+            binding.tvSaldoTotal.text = it.toString()
+        }
+        dataTransaksi.transaksiNoRekening.asLiveData().observe(this) {
+            noRekeningTransaksi = it
+            binding.etNorekening.hint = it.toString()
+        }
+        dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
+            namaPenerima = it
+            binding.etNamaPenerima.hint = it.toString()
+        }
+        dataTransaksi.codeSwift.asLiveData().observe(this) {
+            codeSwift = it
+            binding.etKodeSwift.hint = it.toString()
+        }
+    }
+
     private fun userTranser(){
+
+
+
         binding.etNorekening.addTextChangedListener(object  : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -70,17 +90,7 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 when(binding.etNorekening.text.toString()){
                     "123" ->{
-                        binding.etNamaPenerima.setText("Joko")
-                        binding.btnInvisibleSelanjutnya.isVisible = false
-                        binding.btnSelanjutnya.isVisible = true
-                    }
-                    "1234" ->{
-                        binding.etNamaPenerima.setText("Paidi")
-                        binding.btnInvisibleSelanjutnya.isVisible = false
-                        binding.btnSelanjutnya.isVisible = true
-                    }
-                    "12345" ->{
-                        binding.etNamaPenerima.setText("Sujatmiko")
+                        binding.etNamaPenerima.setText("Padi")
                         binding.btnInvisibleSelanjutnya.isVisible = false
                         binding.btnSelanjutnya.isVisible = true
                     }
@@ -96,6 +106,41 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
                     }
                     "047 1541 337" ->{
                         binding.etNamaPenerima.setText("Carmilla")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "048 1541 334" ->{
+                        binding.etNamaPenerima.setText("Arnold")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "761900009304254" ->{
+                        binding.etNamaPenerima.setText("Cythia")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "720200009304145" ->{
+                        binding.etNamaPenerima.setText("Kemal")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "483101014580340" ->{
+                        binding.etNamaPenerima.setText("ALI")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "483101014690440" ->{
+                        binding.etNamaPenerima.setText("Yusuf")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "690 822 007" ->{
+                        binding.etNamaPenerima.setText("Alex")
+                        binding.btnInvisibleSelanjutnya.isVisible = false
+                        binding.btnSelanjutnya.isVisible = true
+                    }
+                    "691 822 008" ->{
+                        binding.etNamaPenerima.setText("SYTI")
                         binding.btnInvisibleSelanjutnya.isVisible = false
                         binding.btnSelanjutnya.isVisible = true
                     }else -> {
@@ -114,6 +159,7 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
     }
 
     private fun loadSpiner(){
+
         var aa = ArrayAdapter(this, R.layout.spinner_right_aligned, bankAmerika)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
@@ -124,8 +170,8 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             onItemSelectedListener = this@BankInternationalActivity
             prompt = "Bank Amerika"
             gravity = Gravity.CENTER
-
         }
+
 
         val ll = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
 
@@ -145,6 +191,8 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             1 -> showToast(message = "")
             else -> {
                 Snackbar.make(binding.btnSelanjutnya, "Bank Tujuan ${bankAmerika[position]}", Snackbar.LENGTH_LONG).show()
+                binding.etKodeSwift.text = bankSwift[position]
+
             }
         }
 

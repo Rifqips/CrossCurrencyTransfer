@@ -46,11 +46,6 @@
         <activity
             android:name=".features.splashscreen.SplashActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -96,6 +91,11 @@
         <activity
             android:name=".features.home.HomeBottomActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".features.auth.lupapassword.LupaPasswordActivity"
@@ -105,7 +105,7 @@
             android:exported="true"/>
         <activity
             android:name=".features.auth.pin.PinActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".features.onboarding.ViewpagerActivity"
             android:exported="true" />

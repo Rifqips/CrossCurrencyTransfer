@@ -48,9 +48,10 @@ class PinPresenter (
                         is ResponseStatus.Failed -> view?.onError(it.code, it.message)
                     }
                 }
-            view?.onFinishedLoading()
+            view?.onLoading()
             Log.d("error","$pinApi")
         }
+        view?.onFinishedLoading()
     }
 
 

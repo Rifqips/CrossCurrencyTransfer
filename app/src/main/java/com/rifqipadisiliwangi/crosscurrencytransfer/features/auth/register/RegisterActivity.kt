@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var dataStoreUser : DataStoreUser
-    var phoneNumber = "62"
+    var phoneNumber = ""
 
     private lateinit var binding: ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.btnKirim.setOnClickListener {
-            phoneNumber = binding.etNoHp.text.toString()
+            phoneNumber = "62${binding.etNoHp.text.toString()}"
             GlobalScope.launch {
                 dataStoreUser.saveData(phoneNumber,"","")
             }

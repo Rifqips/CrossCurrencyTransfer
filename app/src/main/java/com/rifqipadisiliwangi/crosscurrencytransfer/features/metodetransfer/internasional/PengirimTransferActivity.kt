@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.asLiveData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
@@ -24,6 +25,7 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
     var pilihBank = ""
     var noRekeningTransaksi = ""
     var namaPenerima = ""
+    var codeSwift = ""
 
     private val presenter = TransaksiPresenter(TranskasiApi())
 
@@ -42,15 +44,9 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
 
     }
     private fun postRegister(){
-        val bank = "Bank Of Amerika"
-        val nama = "Monalisa"
-        val rekening = "9000877724254"
-        val fromBank = "Mandiri"
-        val codeBank = "111"
-        val pin = "123456"
         binding.btnSend.setOnClickListener {
             presenter.transaksiUser(
-                codeBank,
+                codeSwift,
                 noRekeningTransaksi,
                 transaksiTotal,
                 binding.resultId.text.toString()
@@ -59,11 +55,11 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
     }
 
     override fun onLoading() {
-        Toast.makeText(this,"onLoading",Toast.LENGTH_SHORT).show()
+        binding.progressBarPengirim.isVisible
     }
 
     override fun onFinishedLoading() {
-        Toast.makeText(this,"onFinishedLoading",Toast.LENGTH_SHORT).show()
+        binding.progressBarPengirim.isInvisible
     }
 
     override fun onError(code: Int, message: String) {
@@ -103,6 +99,11 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
         dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
             namaPenerima = it
             binding.tvGetNamaPenerima.text = it.toString()
+        }
+
+        dataTransaksi.codeSwift.asLiveData().observe(this) {
+            codeSwift = it
+            binding.tvGetSwift.text = it.toString()
         }
     }
 

@@ -39,7 +39,7 @@ class LokalTransferActivity : AppCompatActivity() {
         binding.btnSelanjutnya.setOnClickListener {
             transaksiTotal = binding.tvTotal.text.toString()
             GlobalScope.launch {
-                dataTransaksi.saveData(id = "", jenisBank = "", namaPenerima = "", noRekening = "", tipeTransaksi = "",transaksiTotal)
+                dataTransaksi.saveData(id = "", jenisBank = "", namaPenerima = "", noRekening = "", tipeTransaksi = "",transaksiTotal,"")
             }
             startActivity(Intent(this, BankLokalActivity::class.java))
         }

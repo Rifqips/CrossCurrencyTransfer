@@ -26,6 +26,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.asLiveData
@@ -195,21 +197,15 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
             phoneNumber = it
             binding.etPhone.text = it.toString()
         }
-//        binding.btnLanjut.setOnClickListener {
-//            GlobalScope.launch {
-//                dataStoreUser.saveData("",namaUser, "")
-//            }
-//
-//        }
 
     }
 
     override fun onLoading() {
-        binding.progressBar.isVisible = true
+        binding.progressBar.isVisible
     }
 
     override fun onFinishedLoading() {
-        binding.progressBar.isVisible = false
+        binding.progressBar.isInvisible
     }
 
     override fun onError(code: Int, message: String) {
@@ -246,6 +242,7 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
     }
 
     override fun onSuccessRegister() {
+        binding.progressBar.isVisible
 //        startActivity(Intent(this, LoginActivity::class.java))
         presenter.register("","",0,"","","","","","","",)
         Toast.makeText(this, "Success Register", Toast.LENGTH_SHORT).show()
@@ -333,18 +330,18 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
     }
 
     private fun postRegister(){
-            presenter.register(
-                binding.etEmail.text.toString(),
-                binding.mySpinner.selectedItem.toString(),
-                binding.etMasukkanDokumen.text.toString().toInt(),
-                binding.etNamaDepan.text.toString(),
-                binding.etNamaBelakang.text.toString(),
-                binding.etTempatlahir.text.toString(),
-                binding.etAlamat.text.toString(),
-                phoneNumber,
-                binding.etKatasandi.text.toString(),
-                binding.rbPria.text.toString()
-            )
+//            presenter.register(
+//                binding.etEmail.text.toString(),
+//                binding.mySpinner.selectedItem.toString(),
+//                binding.etMasukkanDokumen.text.toString().toInt(),
+//                binding.etNamaDepan.text.toString(),
+//                binding.etNamaBelakang.text.toString(),
+//                binding.etTempatlahir.text.toString(),
+//                binding.etAlamat.text.toString(),
+//                phoneNumber,
+//                binding.etKatasandi.text.toString(),
+//                binding.rbPria.text.toString()
+//            )
     }
 
     private fun dialogClickListener(dialogInterface: DialogInterface, button: Int) {

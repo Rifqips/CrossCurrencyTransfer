@@ -52,7 +52,7 @@ class BankLokalActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
             noRekeningTransaksi = binding.etNorekening.text.toString()
             namaPenerima = binding.etNamaPenerima.text.toString()
             GlobalScope.launch {
-                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, tipeTransaksi = "", transaksiTotal)
+                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, tipeTransaksi = "", transaksiTotal,"")
             }
             startActivity(Intent(this, PembayaranTransferLokalActivity::class.java))
         }

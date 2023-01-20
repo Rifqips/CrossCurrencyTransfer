@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.google.rpc.Code
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -18,13 +19,17 @@ class DataStoreTransaksi(private val context: Context){
     private val NoRekening = stringPreferencesKey("norekening")
     private val TipeTransaksi = stringPreferencesKey("tipetransaksi")
     private val Total = stringPreferencesKey("total")
+    private val CodeSwift = stringPreferencesKey("codeswift")
+
     suspend fun saveData(
         id: String,
         jenisBank: String,
         namaPenerima: String,
         noRekening: String,
         tipeTransaksi: String,
-        total: String){
+        total: String,
+        codeSwift: String
+    ){
         context.dataStore.edit {
 
             it[Id] = id
@@ -33,6 +38,7 @@ class DataStoreTransaksi(private val context: Context){
             it[NoRekening] = noRekening
             it[TipeTransaksi] = tipeTransaksi
             it[Total] = total
+            it[CodeSwift] = codeSwift
         }
     }
 
@@ -67,6 +73,11 @@ class DataStoreTransaksi(private val context: Context){
             it[Total] ?: "undefined"
         }
     }
+    fun getSwift() : Flow<String>{
+        return context.dataStore.data.map {
+            it[CodeSwift] ?: "undefined"
+        }
+    }
 
     suspend fun clearData(){
         context.dataStore.edit { it.clear() }
@@ -78,4 +89,5 @@ class DataStoreTransaksi(private val context: Context){
     val transaksiNoRekening: Flow<String> = context.dataStore.data.map { it[NoRekening] ?: "" }
     val transaksiTipeTransaksi: Flow<String> = context.dataStore.data.map { it[TipeTransaksi] ?: "" }
     val transaksiTotal: Flow<String> = context.dataStore.data.map { it[Total] ?: "" }
+    val codeSwift: Flow<String> = context.dataStore.data.map { it[CodeSwift] ?: "" }
 }

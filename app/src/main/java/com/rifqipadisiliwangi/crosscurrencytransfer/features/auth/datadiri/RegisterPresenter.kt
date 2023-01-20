@@ -76,8 +76,9 @@ class RegisterPresenter (
         password: String,
         sex: String,
     ) {
-        view?.onLoading()
+        view?.onFinishedLoading()
         scope.launch {
+            view?.onFinishedLoading()
             registerApi
                 .registerUser(email, docType, docNumber, firstName, lastName, birthPlace, address, phoneNumber, password, sex)
                 .flowOn(Dispatchers.Default)
@@ -90,5 +91,6 @@ class RegisterPresenter (
             view?.onFinishedLoading()
             Log.d("error","$registerApi")
         }
+
     }
 }

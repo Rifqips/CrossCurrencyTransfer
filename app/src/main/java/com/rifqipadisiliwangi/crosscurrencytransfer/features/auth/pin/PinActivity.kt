@@ -7,6 +7,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.getpin.PinSchemeResponse
@@ -92,11 +93,11 @@ class PinActivity : AppCompatActivity(), PinView {
     }
 
     override fun onLoading() {
-        Toast.makeText(this,"onLoading", Toast.LENGTH_SHORT).show()
+        binding.progressBar.isVisible
     }
 
     override fun onFinishedLoading() {
-        Toast.makeText(this,"onFinishedLoading", Toast.LENGTH_SHORT).show()
+        binding.progressBar.isInvisible
     }
 
     override fun onError(code: Int, message: String) {

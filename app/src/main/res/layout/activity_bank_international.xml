@@ -179,6 +179,49 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tvKodeSwif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kode Swift"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:textColor="@color/warna_auth_font"
+        android:layout_marginVertical="30dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+
+    <TextView
+        android:id="@+id/tvSwiftStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/warning_font"
+        android:fontFamily="@font/dm_sans_medium"
+        android:textSize="16sp"
+        android:layout_marginVertical="30dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvRekening"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+
+    <TextView
+        android:id="@+id/etKodeSwift"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="24dp"
+        android:background="@drawable/transparent_bg_button"
+        android:hint="Swift"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:layout_marginVertical="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/warna_grey_font"
+        android:textColorHint="@color/warna_grey_font"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSwiftStar" />
+
+
+    <TextView
         android:id="@+id/tvRekening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -189,7 +232,7 @@
         android:layout_marginVertical="30dp"
         android:layout_marginStart="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+        app:layout_constraintTop_toBottomOf="@+id/etKodeSwift"/>
 
     <TextView
         android:id="@+id/tvStarRekening"
@@ -202,7 +245,7 @@
         android:layout_marginVertical="30dp"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@+id/tvRekening"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+        app:layout_constraintTop_toBottomOf="@+id/etKodeSwift"/>
 
     <EditText
         android:id="@+id/etNorekening"

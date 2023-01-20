@@ -28,6 +28,7 @@ class PembayaranTransferActivity : AppCompatActivity(), AdapterView.OnItemSelect
     var pilihBank = ""
     var noRekeningTransaksi = ""
     var namaPenerima = ""
+    var codeSwift = ""
     var bankIndonesia = arrayOf("Pilih Bank","Mandiri", "BCA", "Cimb Niaga", "BRI", "BNI")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,11 +61,16 @@ class PembayaranTransferActivity : AppCompatActivity(), AdapterView.OnItemSelect
         dataTransaksi.transaksiNamaPenerima.asLiveData().observe(this) {
             namaPenerima = it
         }
+
+        dataTransaksi.codeSwift.asLiveData().observe(this) {
+            codeSwift = it
+        }
+
         binding.btnSelanjutnya.setOnClickListener {
             transaksiTotal = binding.tvSaldoTotal.text.toString()
             metodePembayaran = binding.mySpinner.selectedItem.toString()
             GlobalScope.launch {
-                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, metodePembayaran, transaksiTotal)
+                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, metodePembayaran, transaksiTotal,codeSwift)
             }
             startActivity(Intent(this, PengirimTransferActivity::class.java))
         }

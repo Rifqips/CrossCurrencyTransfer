@@ -71,7 +71,7 @@ class PembayaranTransferLokalActivity : AppCompatActivity(), AdapterView.OnItemS
             transaksiTotal = binding.tvSaldoTotal.text.toString()
             metodePembayaran = binding.mySpinner.selectedItem.toString()
             GlobalScope.launch {
-                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, metodePembayaran, transaksiTotal)
+                dataTransaksi.saveData(id = "", pilihBank, namaPenerima, noRekeningTransaksi, metodePembayaran, transaksiTotal,"")
             }
             startActivity(Intent(this, PengirimTransferLokalActivity::class.java))
         }
