@@ -4,43 +4,32 @@
     android:layout_height="match_parent"
     android:paddingBottom="30dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/warna_background">
+    android:background="@drawable/round_corner">
 
     <ImageView
         android:id="@+id/ivCross"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/crosss_icon"
+        android:src="@drawable/ic_succsestf"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tvKataSandi"
         android:layout_width="300dp"
         android:layout_height="43dp"
-        android:text="Email or password invalid"
+        android:text="Berhasil login"
         android:textAlignment="center"
         android:textSize="15sp"
-        android:textColor="@color/warning_font"
-        android:layout_marginTop="35dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
         android:layout_marginHorizontal="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toBottomOf="@+id/ivCross"/>
 
-    <Button
-        android:id="@+id/btnCobaNanti"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Coba Lagi"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:layout_marginVertical="35dp"
-        android:layout_marginHorizontal="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvKataSandi"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
