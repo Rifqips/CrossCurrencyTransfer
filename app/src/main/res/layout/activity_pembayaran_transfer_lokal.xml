@@ -50,7 +50,6 @@
             android:background="@drawable/bg_gradient">
 
             <ImageView
-                android:id="@+id/ivCountry"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_ind"
@@ -87,7 +86,6 @@
                 app:layout_constraintEnd_toEndOf="@id/constTotalInter"/>
 
             <TextView
-                android:id="@+id/tvSaldoTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1.000.000 IDR"
@@ -130,7 +128,6 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <Spinner
-            android:id="@+id/mySpinner"
             android:layout_width="match_parent"
             android:spinnerMode="dialog"
             android:backgroundTint="@color/warna_primary_font"
@@ -139,7 +136,6 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnSelanjutnya"
         style="@style/firstbutton"
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -154,7 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
-        android:id="@+id/btnInvisibleSelanjutnya"
         style="@style/invisiblebutton"
         android:layout_width="match_parent"
         android:layout_height="55dp"

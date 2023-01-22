@@ -90,7 +90,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvTambahGambar"/>
 
             <TextView
-                android:id="@+id/tvStarEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -144,7 +143,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvWarningEmail"/>
 
             <TextView
-                android:id="@+id/tvStarWargaNegara"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -171,7 +169,6 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <Spinner
-                    android:id="@+id/mySpinner"
                     android:layout_width="match_parent"
                     android:spinnerMode="dialog"
                     android:backgroundTint="@color/warna_primary_font"
@@ -225,7 +222,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvWarningDokumen"/>
 
             <TextView
-                android:id="@+id/tvStarNamaDepan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -279,7 +275,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvWarningNamaDepan"/>
 
             <TextView
-                android:id="@+id/tvStarNamaBelakang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -335,7 +330,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tvWarningNamaBelakang"/>
 
             <TextView
-                android:id="@+id/tvStarTempatlahir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -392,7 +386,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvWarningTtl"/>
 
             <TextView
-                android:id="@+id/tvStarTglLahir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -419,7 +412,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tvTglLahir">
 
                 <TextView
-                    android:id="@+id/tvIsiTgllahir"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -432,7 +424,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/ibCalender"
                     android:layout_width="20dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_baseline_calendar_month_24"
@@ -457,7 +448,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/constDate"/>
 
             <TextView
-                android:id="@+id/tvStarAlamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -483,7 +473,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tvAlamat">
 
                 <EditText
-                    android:id="@+id/etAlamat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
@@ -524,7 +513,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvWarningAlamat"/>
 
             <TextView
-                android:id="@+id/tvStarJenisKelamin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -546,7 +534,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvJenisKelamin">
 
                 <RadioButton
-                    android:id="@+id/rbPria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
@@ -555,7 +542,6 @@
                     android:textColor="@color/warna_auth_font"/>
 
                 <RadioButton
-                    android:id="@+id/rbWanita"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
@@ -580,7 +566,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/rgJenisKelamin"/>
 
             <TextView
-                android:id="@+id/tvStarPhonNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -607,7 +592,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tvPhone">
 
                 <TextView
-                    android:id="@+id/etPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/transparent_bg_button"
@@ -671,7 +655,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_cek_lokasi"/>
 
             <TextView
-                android:id="@+id/tvStarPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -695,7 +678,6 @@
                 android:background="@drawable/transparent_bg_button">
 
                 <EditText
-                    android:id="@+id/etKatasandi"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:hint="Kata Sandi"
@@ -709,7 +691,6 @@
                     android:background="@drawable/transparent_bg_button"/>
 
                 <ImageButton
-                    android:id="@+id/ibShowPassword"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/eye_off"
@@ -743,7 +724,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvWarningKatasandiDatadiri"/>
 
             <TextView
-                android:id="@+id/tvStarConfPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
@@ -767,7 +747,6 @@
                 android:background="@drawable/transparent_bg_button">
 
             <EditText
-                android:id="@+id/etkonfirmasiKatasandiDatadiri"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="Konfirmasi kata Sandi"
@@ -780,7 +759,6 @@
                 android:background="@drawable/transparent_bg_button"/>
 
             <ImageButton
-                android:id="@+id/ibShowKonfirmasiKatasandiDatadiri"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/eye_off"
@@ -811,7 +789,6 @@
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/rbPrivacyPolicy"
                     android:text="Saya setuju dengan"
                     android:fontFamily="@font/dm_sans"
                     android:textColor="@color/warna_auth_font"
@@ -850,7 +827,6 @@
                 />
 
             <Button
-                android:id="@+id/btnLanjutInvisible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/invisiblebutton"
@@ -875,7 +851,6 @@
     </ScrollView>
 
     <ProgressBar
-        android:id="@+id/progressBar"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background = "@drawable/progress"

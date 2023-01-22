@@ -35,7 +35,6 @@
         android:fontFamily="@font/dm_sans_medium"/>
 
     <TextView
-        android:id="@+id/tvDescSatu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."

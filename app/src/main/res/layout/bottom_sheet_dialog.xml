@@ -51,7 +51,6 @@
 
         <!--text view for displaying course duration-->
         <TextView
-            android:id="@+id/idTVCourseDuration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/idTVCourseTracks"

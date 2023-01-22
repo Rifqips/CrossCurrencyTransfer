@@ -48,7 +48,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView">
 
                 <EditText
-                    android:id="@+id/name_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
@@ -80,7 +79,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_text_input">
 
                 <EditText
-                    android:id="@+id/alamat_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
@@ -112,7 +110,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/alamat_text_input">
 
                 <EditText
-                    android:id="@+id/phone_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
@@ -152,7 +149,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_jenis_kelamin">
 
                 <RadioButton
-                    android:id="@+id/radio_laki"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
@@ -161,7 +157,6 @@
                     android:textSize="14sp" />
 
                 <RadioButton
-                    android:id="@+id/radio_perempuan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
@@ -217,7 +212,6 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tv_foto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -230,7 +224,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/radio_group" />
 
             <ImageView
-                android:id="@+id/iv_foto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"

@@ -49,7 +49,6 @@
             android:background="@drawable/bg_gradient">
 
             <ImageView
-                android:id="@+id/ivCountry"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_ind"
@@ -72,7 +71,6 @@
                 app:layout_constraintTop_toTopOf="@+id/constTotalInter"/>
 
             <ImageView
-                android:id="@+id/ivUsd"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_us"
@@ -104,7 +102,6 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/tvSaldoTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
@@ -114,7 +111,6 @@
                     android:fontFamily="@font/dm_sans_bold"/>
 
                 <TextView
-                    android:id="@+id/tvDefaultIdr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="IDR"
@@ -143,7 +139,6 @@
         app:layout_constraintTop_toBottomOf="@+id/cardTotalInter"/>
 
     <TextView
-        android:id="@+id/tvStarNegara"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="*"
@@ -169,7 +164,6 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <Spinner
-            android:id="@+id/mySpinner"
             android:layout_width="match_parent"
             android:spinnerMode="dialog"
             android:backgroundTint="@color/warna_primary_font"
@@ -191,7 +185,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
 
     <TextView
-        android:id="@+id/tvStarRekening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="*"
@@ -232,7 +225,6 @@
         app:layout_constraintTop_toBottomOf="@+id/etNorekening"/>
 
     <TextView
-        android:id="@+id/tvStarSwift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="*"
@@ -245,7 +237,6 @@
         app:layout_constraintTop_toBottomOf="@+id/etNorekening"/>
 
     <EditText
-        android:id="@+id/etNamaPenerima"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginHorizontal="24dp"
@@ -273,7 +264,6 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <Button
-            android:id="@+id/btnAturUlang"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="150dp"
             android:layout_height="55dp"
@@ -289,7 +279,6 @@
             app:strokeColor="@color/warning_font" />
 
         <Button
-            android:id="@+id/btnSelanjutnya"
             style="@style/firstbutton"
             android:layout_width="150dp"
             android:layout_height="55dp"
@@ -300,7 +289,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/constraintBtnkirim"/>
 
         <Button
-            android:id="@+id/btnInvisibleSelanjutnya"
             style="@style/invisiblebutton"
             android:layout_width="150dp"
             android:layout_height="55dp"

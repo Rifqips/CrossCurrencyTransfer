@@ -34,8 +34,7 @@
       app:layout_constraintEnd_toEndOf="parent"/>
 
   <LinearLayout
-    android:id="@+id/dummyDataStore"
-    android:layout_width="match_parent"
+      android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="24dp"
     android:orientation="vertical"
@@ -45,27 +44,22 @@
     app:layout_constraintEnd_toEndOf="parent">
 
     <TextView
-        android:id="@+id/tvGetJenisBank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dummy"/>
     <TextView
-        android:id="@+id/tvGetNamaPenerima"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dummy"/>
     <TextView
-        android:id="@+id/tvGetNoRekening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dummy"/>
     <TextView
-        android:id="@+id/tvGetTipeTransaksi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dummy"/>
     <TextView
-        android:id="@+id/tvGetTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dummy"/>
@@ -121,7 +115,6 @@
         android:orientation="horizontal">
 
       <Button
-          android:id="@+id/nine_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -134,7 +127,6 @@
           android:text="9" />
 
       <Button
-          android:id="@+id/eight_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -147,7 +139,6 @@
           android:text="8" />
 
       <Button
-          android:id="@+id/seven_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -170,7 +161,6 @@
         android:orientation="horizontal">
 
       <Button
-          android:id="@+id/six_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -183,7 +173,6 @@
           android:text="6" />
 
       <Button
-          android:id="@+id/five_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -196,7 +185,6 @@
           android:text="5" />
 
       <Button
-          android:id="@+id/four_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -218,7 +206,6 @@
         android:orientation="horizontal">
 
       <Button
-          android:id="@+id/three_btn"
           style="@style/roundedbutton"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
@@ -232,7 +219,6 @@
           app:layout_constraintVertical_bias="0.0" />
 
       <Button
-          android:id="@+id/two_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -245,7 +231,6 @@
           android:text="2" />
 
       <Button
-          android:id="@+id/one_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -266,7 +251,6 @@
         android:layout_marginVertical="50dp">
 
       <Button
-          android:id="@+id/btnSend"
           style="@style/roundedbutton"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
@@ -279,7 +263,6 @@
           app:layout_constraintVertical_bias="0.0" />
 
       <Button
-          android:id="@+id/zero_btn"
           android:layout_width="wrap_content"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -292,7 +275,6 @@
           android:text="0" />
 
       <ImageButton
-          android:id="@+id/backspace_btn"
           android:layout_width="90dp"
           android:layout_height="90dp"
           style="@style/roundedbutton"
@@ -310,7 +292,6 @@
 
 
   <ProgressBar
-      android:id="@+id/progressBarPengirim"
       style="?android:attr/progressBarStyle"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

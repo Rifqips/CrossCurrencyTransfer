@@ -211,7 +211,6 @@
             app:layout_constraintEnd_toEndOf="@+id/constraintNota"/>
 
         <ImageView
-            android:id="@+id/ivCopy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_copy"
@@ -250,7 +249,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/btnBack"
         style="@style/firstbutton"
         android:layout_width="match_parent"
         android:layout_height="55dp"

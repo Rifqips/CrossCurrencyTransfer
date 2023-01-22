@@ -116,7 +116,6 @@
             app:layout_constraintTop_toTopOf="@id/constrainBahasa" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/swLanguange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
@@ -163,7 +162,6 @@
             app:layout_constraintTop_toTopOf="@id/constrainIzin" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/swIzin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
@@ -209,7 +207,6 @@
             app:layout_constraintTop_toTopOf="@id/constrainSyarat" />
 
         <ImageView
-            android:id="@+id/swSyarat"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="25dp"
@@ -242,13 +239,11 @@
         app:layout_constraintTop_toBottomOf="@+id/dividerViewTiga">
 
         <ImageView
-            android:id="@+id/ivLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_logout"/>
 
         <TextView
-            android:id="@+id/tvLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Logout"
