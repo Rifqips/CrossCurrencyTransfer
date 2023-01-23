@@ -10,7 +10,8 @@
         android:layout_height="match_parent"
         android:background="@color/warna_background"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".features.home.fragment.HomeFragment">
+        tools:context=".features.home.fragment.HomeFragment"
+        tools:ignore="ScrollViewSize">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constrainUserHome"
@@ -26,7 +27,7 @@
                 android:id="@+id/tvGreating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hai,"
+                android:text="@string/string_hai"
                 android:textSize="24sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/dm_sans_bold"
@@ -52,14 +53,14 @@
                 android:id="@+id/tvGreeting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Selamat Datang di TransEvilz"
+                android:text="@string/string_selamat_datang_di_transevilz"
                 android:textSize="10sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/dm_sans_medium"
                 android:layout_marginStart="25dp"
                 app:layout_constraintStart_toStartOf="@+id/constrainUserHome"
-                app:layout_constraintTop_toBottomOf="@+id/tvUsername"/>
-
+                app:layout_constraintTop_toBottomOf="@+id/tvUsername"
+                tools:ignore="SmallSp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivSetImage"
@@ -75,7 +76,7 @@
                 android:id="@+id/tvLastTransaksi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Transaksi Terakhir"
+                android:text="@string/string_transaksi_terakhir"
                 android:textSize="16sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/dm_sans_medium"
@@ -119,7 +120,8 @@
                 android:layout_marginEnd="24dp"
                 android:outlineSpotShadowColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/constrainUserHome"
-                app:layout_constraintEnd_toEndOf="@id/constrainUserHome">
+                app:layout_constraintEnd_toEndOf="@id/constrainUserHome"
+                tools:ignore="UnusedAttribute">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/contraintTfLokal"
@@ -133,7 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
-                        android:text="Transfer Lokal"
+                        android:text="@string/string_transfer_lokal"
                         android:textAlignment="center"
                         android:fontFamily="@font/dm_sans_bold"
                         android:textSize="13sp"
@@ -170,7 +172,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
-                        android:text="Transfer Internasional"
+                        android:text="@string/string_transfer_internasional"
                         android:textAlignment="center"
                         android:fontFamily="@font/dm_sans_bold"
                         android:textSize="13sp"
@@ -190,7 +192,7 @@
             android:id="@+id/tvKursMatauang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kurs Mata Uang"
+            android:text="@string/string_kurs_mata_uang"
             android:textSize="18sp"
             android:fontFamily="@font/dm_sans_bold"
             android:textColor="@color/warna_primary_font"
@@ -206,7 +208,8 @@
             android:src="@drawable/dummy_analytic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvKursMatauang"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvKursMatauang"
+            tools:ignore="ContentDescription" />
 
 
         <androidx.recyclerview.widget.RecyclerView

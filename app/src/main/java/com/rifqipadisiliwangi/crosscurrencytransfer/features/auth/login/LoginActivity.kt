@@ -2,6 +2,7 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -15,6 +16,7 @@ import androidx.core.widget.doOnTextChanged
 import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.LoginApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLoginBinding
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin.PinActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -112,6 +114,10 @@ class LoginActivity : AppCompatActivity(), LoginView {
         binding.tvWarningKataSandi.text = message
     }
 
+    override fun onPause() {
+        super.onPause()
+    }
+
     override fun onSuccessGetUser(username: String, password: String) {
 //        PrivateData.accessToken
         val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog).create()
@@ -120,7 +126,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         builder.setView(viewPopup)
         builder.setCanceledOnTouchOutside(false)
         builder.show()
-//        Handler().postDelayed({startActivity(Intent(this, PinActivity::class.java))}, 3000)
+        Handler().postDelayed({startActivity(Intent(this, PinActivity::class.java))}, 2000)
 //        lanjut.setOnClickListener {
 //            builder.dismiss()
 //            startActivity(Intent(this, PinActivity::class.java))

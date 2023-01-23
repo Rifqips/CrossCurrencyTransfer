@@ -16,13 +16,14 @@
         android:layout_marginVertical="19dp"
         android:layout_marginStart="27dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvTitleAkunBank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Akun Bank"
+        android:text="@string/string_akun_bank"
         android:textSize="20sp"
         android:paddingStart="5dp"
         android:fontFamily="@font/dm_sans_bold"
@@ -31,7 +32,8 @@
         android:textColor="@color/warna_primary_font"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RtlSymmetry" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTotalInter"
@@ -63,9 +65,8 @@
                 android:id="@+id/tvCodeCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IDR"
+                android:text="@string/string_idr"
                 android:textSize="12sp"
-                android:layout_marginStart="20dp"
                 android:textColor="@color/warna_background"
                 android:fontFamily="@font/dm_sans_bold"
                 android:layout_marginVertical="23dp"
@@ -77,7 +78,7 @@
                 android:id="@+id/tvTotalTransaksi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Transaksi"
+                android:text="@string/string_total_transaksi"
                 android:layout_marginVertical="16dp"
                 android:textSize="14sp"
                 android:textColor="@color/warna_secondary_font"
@@ -86,18 +87,36 @@
                 app:layout_constraintStart_toStartOf="@id/constTotalInter"
                 app:layout_constraintEnd_toEndOf="@id/constTotalInter"/>
 
-            <TextView
-                android:id="@+id/tvSaldoTotal"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1.000.000 IDR"
-                android:layout_marginVertical="5dp"
-                android:textSize="30sp"
-                android:textColor="@color/warna_background_rounded_dokumen"
-                android:fontFamily="@font/dm_sans_bold"
                 app:layout_constraintTop_toBottomOf="@+id/tvTotalTransaksi"
                 app:layout_constraintStart_toStartOf="@id/constTotalInter"
-                app:layout_constraintEnd_toEndOf="@id/constTotalInter"/>
+                app:layout_constraintEnd_toEndOf="@id/constTotalInter"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvSaldoTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginVertical="5dp"
+                    android:textSize="30sp"
+                    android:textColor="@color/warna_background_rounded_dokumen"
+                    android:fontFamily="@font/dm_sans_bold"/>
+
+                <TextView
+                    android:id="@+id/tvDefaultIdr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/string_idr"
+                    android:layout_marginVertical="5dp"
+                    android:textSize="30sp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/warna_background_rounded_dokumen"
+                    android:fontFamily="@font/dm_sans_bold"/>
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -108,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/dm_sans_bold"
-        android:text="Metode Pembayaran"
+        android:text="@string/string_metode_pembayaran"
         android:textColor="@color/warna_auth_font"
         android:textSize="16sp"
         android:layout_marginVertical="30dp"
@@ -144,7 +163,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:fontFamily="@font/dm_sans_medium"
-        android:text="Selanjutnya"
+        android:text="@string/string_selanjutnya"
         android:visibility="visible"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
@@ -159,7 +178,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:fontFamily="@font/dm_sans_medium"
-        android:text="Selanjutnya"
+        android:text="@string/string_selanjutnya"
         android:visibility="invisible"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"

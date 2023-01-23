@@ -17,12 +17,13 @@
         android:layout_marginTop="27dp"
         android:layout_marginStart="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Membuat Pin Evilz"
+        android:text="@string/string_membuat_pin_evilz"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:fontFamily="@font/dm_sans"
@@ -41,12 +42,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="44dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivArrowBack"/>
+        app:layout_constraintTop_toBottomOf="@+id/ivArrowBack"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:layout_width="313dp"
         android:layout_height="wrap_content"
-        android:text="Pin Evilz ini digunakan untuk proses pembayaran/transfer pada TransEvilz. Gunakan kombinasi 6 angka tanpa huruf dan simbol"
+        android:text="@string/sttring_pin_evilz_ini_digunakan_untuk_proses_pembayaran_transfer_pada_transevilz_gunakan_kombinasi_6_angka_tanpa_huruf_dan_simbol"
         android:textColor="@color/warna_secondary_font"
         android:fontFamily="@font/dm_sans"
         android:layout_marginTop="44dp"
@@ -58,7 +60,7 @@
         android:id="@+id/tvBuatPin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buat Pin Evilz"
+        android:text="@string/string_buat_pin_evilz"
         android:textColor="@color/black"
         android:fontFamily="@font/dm_sans"
         android:layout_marginTop="69dp"
@@ -69,7 +71,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="*"
+        android:text="@string/string_star"
         android:textColor="@color/warning_font"
         android:layout_marginTop="69dp"
         android:layout_marginStart="3dp"
@@ -92,27 +94,30 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:paddingStart="10dp"
-            android:hint="Masukkan 6 digit Pin"
+            android:hint="@string/string_masukkan_6_digit_pin"
             android:fontFamily="@font/dm_sans"
             android:textColorHint="@color/warna_secondary_font"
             android:inputType="numberPassword"
             android:maxLength="6"
             android:textColor="@color/black"
-            android:background="@drawable/transparent_bg_button"/>
+            android:background="@drawable/transparent_bg_button"
+            tools:ignore="Autofill,InefficientWeight,RtlSymmetry" />
 
         <ImageButton
             android:id="@+id/ibShowPin"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/eye_off"
-            android:background="@drawable/transparent_bg_button"/>
+            android:background="@drawable/transparent_bg_button"
+            tools:ignore="ContentDescription" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvWarningPin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Anda harus mengisi bagian ini"
+        android:text="@string/string_anda_harus_mengisi_bagian_ini"
         android:textColor="@color/warning_font"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayoutPin"
@@ -123,7 +128,7 @@
         android:id="@+id/tvKonfirmasiPin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Konfirmasi Pin Evilz"
+        android:text="@string/string_konfirmasi_pin_evilz"
         android:textColor="@color/black"
         android:fontFamily="@font/dm_sans"
         android:layout_marginTop="74dp"
@@ -134,7 +139,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="*"
+        android:text="@string/string_star"
         android:textColor="@color/warning_font"
         android:layout_marginTop="74dp"
         android:layout_marginStart="3dp"
@@ -159,19 +164,21 @@
             android:layout_weight="1"
             android:paddingStart="10dp"
             android:background="@drawable/transparent_bg_button"
-            android:hint="Masukkan 6 digit Pin yang telah dibuat"
+            android:hint="@string/string_masukkan_6_digit_pin_yang_telah_dibuat"
             android:fontFamily="@font/dm_sans"
             android:inputType="numberPassword"
             android:maxLength="6"
             android:textColor="@color/black"
-            android:textColorHint="@color/warna_secondary_font" />
+            android:textColorHint="@color/warna_secondary_font"
+            tools:ignore="Autofill,InefficientWeight,RtlSymmetry" />
 
         <ImageButton
             android:id="@+id/ibShowKonfirmasiPin"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/eye_off"
-            android:background="@drawable/transparent_bg_button"/>
+            android:background="@drawable/transparent_bg_button"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 
@@ -193,7 +200,7 @@
         android:paddingVertical="10dp"
         android:layout_marginBottom="40dp"
         android:layout_marginHorizontal="24dp"
-        android:text="Kirim"
+        android:text="@string/string_kirim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

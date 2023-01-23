@@ -17,7 +17,8 @@
         android:src="@drawable/onboarding_satu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvHeadingSatu"
@@ -28,7 +29,7 @@
         android:fontFamily="@font/dm_sans_medium"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
-        android:text="Teknologi terkini yang memberikan kemudahan bagi Anda"
+        android:text="@string/string_teknologi_terkini_yang_memberikan_kemudahan_bagi_anda"
         android:textAlignment="center"
         android:textColor="@color/warna_primary_font"
         android:textSize="24sp"
@@ -46,7 +47,7 @@
         android:fontFamily="@font/dm_sans_medium"
         android:paddingStart="60dp"
         android:paddingEnd="60dp"
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        android:text="@string/string_lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry"
         android:textAlignment="center"
         android:textColor="@color/warna_secondary_font"
         android:textSize="12sp"

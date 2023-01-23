@@ -16,7 +16,7 @@
         android:fontFamily="@font/dm_sans_medium"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
-        android:text="Hallo !"
+        android:text="@string/string_hallo"
         android:textAlignment="center"
         android:textColor="@color/warna_primary_font"
         android:textSize="24sp"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:fontFamily="@font/dm_sans_medium"
-            android:text="Belum punya akun ?"
+            android:text="@string/string_belum_punya_akun"
             android:textAlignment="center"
             android:textColor="@color/warna_secondary_font"
             android:textSize="12sp"
@@ -52,7 +52,7 @@
             android:layout_marginVertical="5dp"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/dm_sans_medium"
-            android:text="Lakukan Registrasi"
+            android:text="@string/string_lakukan_registrasi"
             android:textAlignment="center"
             android:textColor="@color/warna_verifikasi_font"
             android:textSize="12sp"
@@ -69,13 +69,14 @@
         android:src="@drawable/ic_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lyLogin" />
+        app:layout_constraintTop_toBottomOf="@id/lyLogin"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
+        android:text="@string/string_email"
         android:fontFamily="@font/dm_sans_medium"
         android:textColor="@color/warna_auth_font"
         android:textSize="16sp"
@@ -88,7 +89,7 @@
         android:id="@+id/tvStarEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="*"
+        android:text="@string/string_star"
         android:textColor="@color/warning_font"
         android:fontFamily="@font/dm_sans_medium"
         android:textSize="16sp"
@@ -101,7 +102,7 @@
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:hint="Email"
+        android:hint="@string/string_email"
         android:fontFamily="@font/dm_sans"
         android:layout_marginHorizontal="24dp"
         android:layout_marginVertical="5dp"
@@ -128,7 +129,7 @@
         android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kata Sandi"
+        android:text="@string/string_kata_sandi"
         android:fontFamily="@font/dm_sans_medium"
         android:textSize="16sp"
         android:textColor="@color/warna_auth_font"
@@ -141,7 +142,7 @@
         android:id="@+id/tvStarPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="*"
+        android:text="@string/string_star"
         android:textColor="@color/warning_font"
         android:fontFamily="@font/dm_sans_medium"
         android:textSize="16sp"
@@ -165,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="Kata Sandi"
+            android:hint="@string/string_kata_sandi"
             android:paddingStart="10dp"
             android:inputType="textPassword"
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#*&amp;"
@@ -173,14 +174,17 @@
             android:textColorHint="@color/warna_auth_font"
             android:textColor="@color/warna_auth_font"
             android:fontFamily="@font/dm_sans"
-            android:background="@drawable/transparent_bg_button"/>
+            android:background="@drawable/transparent_bg_button"
+            tools:ignore="Autofill,InefficientWeight,RtlSymmetry" />
 
         <ImageButton
             android:id="@+id/ibShowPassword"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/eye_off"
-            android:background="@drawable/transparent_bg_button"/>
+            android:background="@drawable/transparent_bg_button"
+            tools:ignore="ContentDescription" />
+
     </LinearLayout>
 
     <TextView
@@ -198,7 +202,7 @@
         android:id="@+id/tvLupaPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lupa Kata Sandi ?"
+        android:text="@string/string_lupa_kata_sandi"
         android:fontFamily="@font/dm_sans_medium"
         android:textSize="16sp"
         android:textColor="@color/warna_button"
@@ -216,8 +220,7 @@
             android:paddingVertical="10dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="41dp"
-            android:text="Masuk"
-            app:layout_constraintTop_toBottomOf="@+id/tvLupaPassword"
+            android:text="@string/string_masuk"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>

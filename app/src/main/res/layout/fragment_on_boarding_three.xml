@@ -16,13 +16,14 @@
         android:src="@drawable/onboarding_tiga"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvHeadingSatu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lalu, Tunggu Apalagi, Gabung sekarang dengan TransEvilz"
+        android:text="@string/string_lalu_tunggu_apalagi_gabung_sekarang_dengan_transevilz"
         android:textColor="@color/warna_primary_font"
         app:layout_constraintTop_toBottomOf="@+id/ivOnboardSatu"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +39,7 @@
         android:id="@+id/tvDescSatu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        android:text="@string/string_lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry"
         android:textColor="@color/warna_secondary_font"
         app:layout_constraintTop_toBottomOf="@+id/tvHeadingSatu"
         app:layout_constraintStart_toStartOf="parent"

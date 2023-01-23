@@ -37,13 +37,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginVertical="19dp"
-        android:layout_marginStart="27dp"/>
+        android:layout_marginStart="27dp"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvTittleOtp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Verifikasi Kode OTP"
+        android:text="@string/string_verifikasi_kode_otp"
         android:textSize="22sp"
         android:textAlignment="center"
         android:textColor="@color/warna_auth_font"
@@ -57,7 +58,7 @@
         android:id="@+id/tvPerTittleOtp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Masukkan kode verifikasi yang telah dikirim pada No.Hp yang telah anda daftarkan sebelumnya"
+        android:text="@string/string_masukkan_kode_verifikasi_yang_telah_dikirim_pada_no_hp_yang_telah_anda_daftarkan_sebelumnya"
         android:textSize="9sp"
         android:textAlignment="center"
         android:layout_marginStart="42dp"
@@ -66,13 +67,14 @@
         android:fontFamily="@font/dm_sans_bold"
         app:layout_constraintTop_toBottomOf="@+id/tvTittleOtp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SmallSp" />
 
     <TextView
         android:id="@+id/tvTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="01:00"
+        android:text="@string/string_01_00"
         android:textSize="12sp"
         android:textColor="@color/warna_verifikasi_font"
         android:textAlignment="center"
@@ -105,9 +107,9 @@
         android:id="@+id/tvBelumDapat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Belum dapat kode OTP ?"
+        android:text="@string/string_belum_dapat_kode_otp"
         android:textColor="@color/warna_auth_font"
-        android:textSize="12dp"
+        android:textSize="12sp"
         android:fontFamily="@font/dm_sans"
         android:layout_marginVertical="10dp"
         android:layout_marginStart="30dp"
@@ -118,9 +120,9 @@
         android:id="@+id/tvKirimUlangKode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kirim ulang kode OTP"
+        android:text="@string/string_kirim_ulang_kode_otp"
         android:textColor="@color/warna_button_invisible"
-        android:textSize="12dp"
+        android:textSize="12sp"
         android:fontFamily="@font/dm_sans"
         android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="5dp"
@@ -333,20 +335,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-
-
-    <ProgressBar
-        android:id="@+id/progressBarPengirim"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:visibility="visible"
-        android:background="@drawable/progress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@
         android:id="@+id/tvKataSandi"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Berhasil login"
+        android:text="@string/string_berhasil_login"
         android:textAlignment="center"
         android:textSize="25sp"
         android:paddingBottom="60dp"

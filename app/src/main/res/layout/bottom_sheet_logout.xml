@@ -31,7 +31,7 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/idIVCourse"
             android:layout_toRightOf="@id/idIVCourse"
-            android:text="@string/string_ini_ya_otp_nya"
+            android:text="@string/string_anda_yakin_ingin_keluar"
             android:textColor="@color/warna_primary_font"
             android:fontFamily="@font/dm_sans_bold"
             android:textSize="18sp"
@@ -46,29 +46,16 @@
             android:layout_below="@id/idTVCourseName"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/idIVCourse"
-            android:text="@string/string_kode_ini_bersifat_rahasia"
+            android:text="@string/string_jika_anda_keluar_kemungkinan_harus_login_kembali"
             android:fontFamily="@font/dm_sans_medium"
             android:textColor="@color/warna_auth_font"
             android:textSize="15sp" />
 
         <!--text view for displaying course duration-->
-        <TextView
-            android:id="@+id/idTVCourseDuration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/idTVCourseTracks"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/idIVCourse"
-            android:layout_toRightOf="@id/idIVCourse"
-            android:text="@string/string_102030"
-            android:fontFamily="@font/poppins_bold"
-            android:textColor="@color/warna_auth_font"
-            android:textSize="12sp"
-            tools:ignore="RtlHardcoded" />
 
         <!--button for dismissing our dialog-->
         <Button
-            android:id="@+id/idBtnDismiss"
+            android:id="@+id/idBtnAgree"
             style="@style/firstbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,6 +67,20 @@
             android:text="@string/string_oke_gaes"
             android:textColor="@color/white"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/idBtnDismiss"
+            style="@style/cancelbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idIVCourse"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/string_gajadi_deh"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

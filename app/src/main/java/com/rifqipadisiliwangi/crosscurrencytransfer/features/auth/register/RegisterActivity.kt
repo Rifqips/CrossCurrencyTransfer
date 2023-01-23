@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
             GlobalScope.launch {
                 dataStoreUser.saveData(phoneNumber,"","")
             }
-            startActivity(Intent(this, DataDiriActivity::class.java))
+            startActivity(Intent(this, VerifikasiActivity::class.java))
         }
 
     }

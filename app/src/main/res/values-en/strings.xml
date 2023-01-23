@@ -1,0 +1,184 @@
+<resources>
+    <string name="app_name">CrossCurrencyTransfer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_layanan">Service</string>
+    <string name="title_riwayat">History</string>
+    <string name="title_profile">Profile</string>
+    <string name="syarat_ketentuan"><![CDATA[Terms & Conditions]]></string>
+    <string name="syarat_ketentuan_yang_berlaku"><![CDATA[Terms & Conditions]]></string>
+    <string name="masukkan_email_anda_untuk">Enter your email to create a new passphrase</string>
+    <string name="permohonan_peru">A password change request has been sent to your email</string>
+    <string name="buat_katasandi">Create your new passphrase</string>
+    <string name="lihat_lokasi">Show Loacation</string>
+    <string name="title_biometric_prompt">TransEvilz Project</string>
+    <string name="success">Successful Authentication</string>
+    <string name="error_no_hardware">App Requires FingerPrint</string>
+    <string name="error_hw_unavailable">Finger Print Not Working</string>
+    <string name="daftar_user">Create New Account</string>
+    <string name="error_none_enrolled">No Fingerprints Registered</string>
+    <string name="description_biometric_prompt">Use fingerprint to sign in</string>
+    <string name="client_id" translatable="false">879281085290-u4k87p7q992nep67jt45v28viauhkjui.apps.googleusercontent.com</string>
+    <string name="string_akun_bank">Bank Accunt</string>
+    <string name="string_idr_ke_usd">IDR to USD</string>
+    <string name="string_total_transaksi">Total Transactions</string>
+    <string name="string_idr">IDR</string>
+    <string name="string_pilih_bank">Select Bank</string>
+    <string name="string_star">*</string>
+    <string name="string_kode_swift">Swift Code</string>
+    <string name="string_swift">Swift</string>
+    <string name="string_no_rekening">No. Account Bank</string>
+    <string name="string_nama_penerima">Beneficiary Name</string>
+    <string name="string_atur_ulang">reset</string>
+    <string name="string_selanjutnya">Submit</string>
+    <string name="string_buat_akun">Creeat an Account</string>
+    <string name="string_tambah_gambar">Choose Picture</string>
+    <string name="string_email">Email</string>
+    <string name="string_anda_harus_mengisi_bagian_ini">You have to fill in this section</string>
+    <string name="string_tipe_dokumen">Document Type</string>
+    <string name="string_masukkan_no_dokumen">fill Document Number</string>
+    <string name="string_nama_depan">First Name</string>
+    <string name="string_nama_belakang">Last Name</string>
+    <string name="string_tempat_lahir">Place of Birth</string>
+    <string name="string_tanggal_lahir">Date of Birth</string>
+    <string name="string_alamat">Address</string>
+    <string name="string_jenis_kelamin">Gender</string>
+    <string name="string_pria">Male</string>
+    <string name="string_wanita">Female</string>
+    <string name="string_nomor_handphone">Phone Number</string>
+    <string name="string_lokasi_anda">Your Location</string>
+    <string name="string_cek_lokasi_anda">Check Your Location</string>
+    <string name="string_kata_sandi">Password</string>
+    <string name="string_konfirmasi_kata_sandi">Confirm Password</string>
+    <string name="string_saya_setuju_dengan">I agree with</string>
+    <string name="string_masukkan_nominal">Enter Nominal</string>
+    <string name="string_masukkan_jumlah">Enter Amount :</string>
+    <string name="string_nilai_kurs_saat_ini">Current Exchange Rate</string>
+    <string name="string_15_000_idr">15.000 IDR</string>
+    <string name="string_biaya_admin">Admin Fee</string>
+    <string name="string_100_000_idr">100.000 IDR</string>
+    <string name="string_uang_akan_terkirim_satu_hari_setelah_proses_berhasil_jika_dibayar_sebelum_pukul_23_00">Money will be sent one day after the successful process if paid before 23:00</string>
+    <string name="string_hallo">Hello !</string>
+    <string name="string_belum_punya_akun">Dont Have an Account ?</string>
+    <string name="string_lakukan_registrasi">Start Register</string>
+    <string name="string_lupa_kata_sandi">Forgot Password ?</string>
+    <string name="string_masuk">Submit</string>
+    <string name="string_kirim">Send</string>
+    <string name="string_kata_sandi_baru">New Password</string>
+    <string name="string_konfirmasi_kata_sandi_baru">Confirm New Password</string>
+    <string name="string_kata_sandi_harus_sama">Passwords must be the same</string>
+    <string name="string_metode_pembayaran">Payment Methods</string>
+    <string name="string_masukkan_pin_evilz">Enter Pin Evilz</string>
+    <string name="string_lupa_pin_evilz">Forgot Pin Evilz ?</string>
+    <string name="string_membuat_pin_evilz">Create Pin Evilz</string>
+    <string name="sttring_pin_evilz_ini_digunakan_untuk_proses_pembayaran_transfer_pada_transevilz_gunakan_kombinasi_6_angka_tanpa_huruf_dan_simbol">This Evilz pin is used for payment/transfer processing on TransEvilz. Use a combination of 6 numbers without letters and symbols</string>
+    <string name="string_buat_pin_evilz">Create an Evilz Pin</string>
+    <string name="string_masukkan_6_digit_pin">Enter 6 digit Pin</string>
+    <string name="string_konfirmasi_pin_evilz">Confirm Pin Evilz</string>
+    <string name="string_masukkan_6_digit_pin_yang_telah_dibuat">Enter the 6 digit Pin you have created</string>
+    <string name="string_selamat_datang_di_transevilz">Welcome to TransEvilz</string>
+    <string name="string_jika_anda_ingin_bergabung_lakukan_register_terlebih_dahulu">If you want to join, register first</string>
+    <string name="string_62">+62</string>
+    <string name="string_masukkan_nomor_handphone">Enter Phone Number</string>
+    <string name="string_no_hp_minimal_10_angka">Minimum Phone number of 10 numbers</string>
+    <string name="string_selamat_username_proses_anda_berhasil">Yeay! Username, Your process is successful</string>
+    <string name="string_selesaikan_pembayaran_sebelum">Complete Payment before</string>
+    <string name="string_23_jam_30_menit_10_detik">23 hours 30 minutes 10 seconds</string>
+    <string name="string_jenis_bank">Types of Banks</string>
+    <string name="string_bcc_bank">BCC BANK</string>
+    <string name="string_tipe_transaksi">Transactions Type</string>
+    <string name="string_1234_5678_9101_1121_314">1234-5678-9101-1121-314</string>
+    <string name="string_virtual_akun">Virtual Account</string>
+    <string name="string_9999_5678_0033_1121_314">9999-5678-0033-1121-314</string>
+    <string name="string_total">Total</string>
+    <string name="string_1_000_000_idr">1.000.000 IDR</string>
+    <string name="string_kembali_ke_beranda">Back to Home</string>
+    <string name="string_verifikasi_kode_otp">OTP Code Verification</string>
+    <string name="string_masukkan_kode_verifikasi_yang_telah_dikirim_pada_no_hp_yang_telah_anda_daftarkan_sebelumnya">Enter the verification code that has been sent to the Mobile Number that you have previously registered</string>
+    <string name="string_01_00">01:00</string>
+    <string name="string_belum_dapat_kode_otp">Have not got the OTP code yet?</string>
+    <string name="string_kirim_ulang_kode_otp">Resend OTP code</string>
+    <string name="string_sebelumnya">See Before</string>
+    <string name="string_ini_ya_otp_nya">This is The OTP Code</string>
+    <string name="string_kode_ini_bersifat_rahasia">This code is confidential!</string>
+    <string name="string_keluar">Logout</string>
+    <string name="string_102030">102030</string>
+    <string name="string_oke_gaes">Oke Bruh</string>
+    <string name="string_cek_email_sekarang">Check Email Now</string>
+    <string name="string_kata_sandi_anda_berhasil_diperbarui">Your password was successfully updated</string>
+    <string name="string_masuk_sekarang">Sign In Now</string>
+    <string name="string_riwayat_transaksi">Transaction History</string>
+    <string name="string_awal">Beginning :</string>
+    <string name="string_mm_dd_yyyy">mm/dd/yyyy</string>
+    <string name="string_akhir">End :</string>
+    <string name="mm_dd_yyyy">mm/dd/yyyy</string>
+    <string name="string_cari">Find</string>
+    <string name="string_hai">Heyy</string>
+    <string name="string_transaksi_terakhir">Last Transaction</string>
+    <string name="string_transfer_lokal">Local Transfer</string>
+    <string name="string_transfer_internasional">International Transfer</string>
+    <string name="string_kurs_mata_uang">Currency Exchange Rate</string>
+    <string name="string_layanan_pengaduan">Complaints Service</string>
+    <string name="string_transevilz">TransEvilz</string>
+    <string name="string_lokasi_kantor">Office Location</string>
+    <string name="string_jl_raya_pegangsaan_timur_no_123_jakarta_timur_55990">Jl Raya Pegangsaan Timur No 123, Jakarta Timur, 55990</string>
+    <string name="string_transevilz_evil_id">transevilz@evil.id</string>
+    <string name="string_whatsapp">WhatsApp</string>
+    <string name="string_wa_bisnis">WA Business</string>
+    <string name="string_kontak_admin">Call Center</string>
+    <string name="string_62_1234_5678_9101">+62 1234 5678 9101</string>
+    <string name="string_untuk_keperluan_yang_lebih_lanjut_silakan_datang_langsung_ke_kantor">For further purposes please come directly to the office</string>
+    <string name="string_teknologi_terkini_yang_memberikan_kemudahan_bagi_anda">The latest technology that makes it easy for you</string>
+    <string name="string_lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="string_lalu_tunggu_apalagi_gabung_sekarang_dengan_transevilz">Then, What are you waiting for, Join now with TransEvilz</string>
+    <string name="string_anda_dapat_melakukan_transfer_antar_negara_dengan_mudah">You can make transfers between countries easily</string>
+    <string name="string_akun_saya">My Account</string>
+    <string name="string_username">Username</string>
+    <string name="string_bahasa">Language</string>
+    <string name="string_izin_aplikasi">App Permissions</string>
+    <string name="string_dummy_code">Dummy Code</string>
+    <string name="string_nama_user">Nama User</string>
+    <string name="string_rp_1000_000">Rp. 1000.000</string>
+    <string name="string_0_20">+0,20%</string>
+    <string name="string_bcc_12341234">BCC-12341234</string>
+    <string name="string_bank_amerika">America Bank</string>
+    <string name="string_10100110">10100110</string>
+    <string name="string_id">Id</string>
+    <string name="string_loading">Loading...!!</string>
+    <string name="string_email_atau_password_salah">Incorrect email or password</string>
+    <string name="string_coba_lagi">Try Again</string>
+    <string name="string_berhasil_login">Success Login</string>
+    <string name="string_ketuk">Click</string>
+    <string name="string_edit_profile">Edit Profile</string>
+    <string name="string_masukkan_nama_anda">Enter Your Name</string>
+    <string name="string_masukkan_alamat_anda">Enter Your Address</string>
+    <string name="string_masukkan_nomor_anda">Enter Your Phone Number</string>
+    <string name="string_lokasi_pendaftaran">Registration Location</string>
+    <string name="string_cek_lokasi">Check Location</string>
+    <string name="string_unggah_foto">Upload Photos</string>
+    <string name="string_foto">Picture</string>
+    <string name="string_detail_user">User Detail</string>
+    <string name="string_tambahkan">Add</string>
+    <string name="string_data_user_tidak_ditemukan">User Data Not Found</string>
+    <string name="string_anda_yakin_ingin_keluar">Are you sure want to logout ?</string>
+    <string name="string_jika_anda_keluar_kemungkinan_harus_login_kembali">You must Re-login after.</string>
+    <string name="string_gajadi_deh">Cancel</string>
+
+    <string-array name="listNegara">
+        <item>Choose Country</item>
+        <item>Australia</item>
+        <item>Japan</item>
+        <item>Indonesia</item>
+        <item>Singapore</item>
+        <item>United States of America</item>
+    </string-array>
+
+    <string-array name="listDokumen">
+        <item>Choose Document Type</item>
+        <item>Passport</item>
+        <item>KTP</item>
+        <item>SIM</item>
+    </string-array>
+
+</resources>

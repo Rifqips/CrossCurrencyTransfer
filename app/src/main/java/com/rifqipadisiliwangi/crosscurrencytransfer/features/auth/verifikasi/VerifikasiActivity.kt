@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.R
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreUser
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.otp.OtpApi
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.utility.LoadingDialog
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityVerifikasiBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.datadiri.DataDiriActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
@@ -77,16 +79,33 @@ class VerifikasiActivity : AppCompatActivity(), OtpView {
 
 
     override fun onLoading() {
-        binding.progressBarPengirim.isVisible = true
+        val loading = LoadingDialog(this)
+        loading.startLoading()
+        val handler = Handler()
+        handler.postDelayed(object : java.lang.Runnable {
+            override fun run() {
+                loading.isDismiss()
+            }
+
+        },1000)
     }
 
     override fun onFinishedLoading() {
-        binding.progressBarPengirim.isVisible = false
+
     }
 
     override fun onError(code: Int, message: String) {
+        val loading = LoadingDialog(this)
+        loading.startLoading()
+        val handler = Handler()
+        handler.postDelayed(object : java.lang.Runnable {
+            override fun run() {
+                loading.isDismiss()
+            }
+
+        },1000)
         Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-        binding.progressBarPengirim.isVisible = true
+
     }
 
     override fun onSuccessOtp(otp: Int) {

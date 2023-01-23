@@ -38,7 +38,7 @@ class OtpPresenter (
     }
 
     fun otp( otp: Int) {
-        view?.onFinishedLoading()
+        view?.onLoading()
         scope.launch {
             otpApi
                 .otpUser(otp)
@@ -49,7 +49,7 @@ class OtpPresenter (
                         is ResponseStatus.Failed -> view?.onError(it.code, it.message)
                     }
                 }
-            view?.onFinishedLoading()
+            view?.onLoading()
             Log.d("error","$otpApi")
         }
     }

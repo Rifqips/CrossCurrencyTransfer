@@ -24,7 +24,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Edit Profile"
+                android:text="@string/string_edit_profile"
                 android:textColor="@color/warna_auth_font"
                 android:textSize="24sp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:hint="Masukkan Nama Anda"
+                    android:hint="@string/string_masukkan_nama_anda"
                     android:imeActionId="0"
                     android:importantForAutofill="no"
                     android:inputType="text"
@@ -84,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:hint="Masukkan Alamat Anda"
+                    android:hint="@string/string_masukkan_alamat_anda"
                     android:imeActionId="1"
                     android:inputType="text"
                     android:textColor="@color/warna_grey_font"
@@ -116,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:hint="Masukkan Nomor Anda"
+                    android:hint="@string/string_masukkan_nomor_anda"
                     android:imeOptions="actionDone"
                     android:singleLine="true"
                     android:imeActionId="2"
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Jenis Kelamin"
+                android:text="@string/string_jenis_kelamin"
                 android:textColor="@color/warna_grey_font"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:minHeight="48dp"
-                    android:text="Pria"
+                    android:text="@string/string_pria"
                     android:textSize="14sp" />
 
                 <RadioButton
@@ -166,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:minHeight="48dp"
-                    android:text="Wanita"
+                    android:text="@string/string_wanita"
                     android:textSize="14sp" />
 
             </RadioGroup>
@@ -178,7 +178,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Lokasi Pendaftaran"
+                android:text="@string/string_lokasi_pendaftaran"
                 android:textColor="@color/warna_grey_font"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -193,7 +193,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/shape_text_input"
                 android:padding="16dp"
-                android:text="Lokasi Anda"
+                android:text="@string/lihat_lokasi"
                 android:textAlignment="viewStart"
                 android:textColor="@color/warna_grey_font"
                 android:textSize="14sp"
@@ -211,7 +211,7 @@
                 android:layout_marginRight="16dp"
                 android:background="@drawable/shape_black"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Cek Lokasi"
+                android:text="@string/string_cek_lokasi"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -223,7 +223,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Upload Foto"
+                android:text="@string/string_unggah_foto"
                 android:textColor="@color/warna_grey_font"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -237,7 +237,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@color/white"
-                android:contentDescription="Foto"
+                android:contentDescription="@string/string_foto"
                 app:srcCompat="@drawable/ic_baseline_add_24" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -250,7 +250,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="24dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Submit"
+                android:text="@string/string_kirim"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp" />

@@ -74,7 +74,6 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var registerHelper: RegisterHelper
 
-
     private val permissionId = 55
     private val RESULT_LOAD_IMAGE = 123
     private val REQUEST_CODE_GALLERY = 999
@@ -330,18 +329,18 @@ class DataDiriActivity : AppCompatActivity(),RegisterView, AdapterView.OnItemSel
     }
 
     private fun postRegister(){
-//            presenter.register(
-//                binding.etEmail.text.toString(),
-//                binding.mySpinner.selectedItem.toString(),
-//                binding.etMasukkanDokumen.text.toString().toInt(),
-//                binding.etNamaDepan.text.toString(),
-//                binding.etNamaBelakang.text.toString(),
-//                binding.etTempatlahir.text.toString(),
-//                binding.etAlamat.text.toString(),
-//                phoneNumber,
-//                binding.etKatasandi.text.toString(),
-//                binding.rbPria.text.toString()
-//            )
+            presenter.register(
+                binding.etEmail.text.toString(),
+                binding.mySpinner.selectedItem.toString(),
+                binding.etMasukkanDokumen.text.toString().toInt(),
+                binding.etNamaDepan.text.toString(),
+                binding.etNamaBelakang.text.toString(),
+                binding.etTempatlahir.text.toString(),
+                binding.etAlamat.text.toString(),
+                phoneNumber,
+                binding.etKatasandi.text.toString(),
+                binding.rbPria.text.toString()
+            )
     }
 
     private fun dialogClickListener(dialogInterface: DialogInterface, button: Int) {

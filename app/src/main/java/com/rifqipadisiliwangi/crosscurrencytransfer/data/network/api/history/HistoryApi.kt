@@ -68,7 +68,6 @@ class HistoryApi {
             val response = if (result.isSuccessful) {
                 val history : List<HistorySchemeItem> =
                     deserializeJson<List<HistorySchemeItem>>(result.body?.string() ?: "") ?: listOf()
-                val mappingHistory = history.toList()
                 Log.d("requestservice", "cek-history $result ${PrivateData.accessToken}")
                 ResponseStatus.Success(history.toList())
             } else {

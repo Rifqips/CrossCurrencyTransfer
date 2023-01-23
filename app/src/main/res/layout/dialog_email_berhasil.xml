@@ -40,7 +40,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="19.5dp"/>
+        android:layout_marginTop="19.5dp"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tvPermohonan"
@@ -62,7 +63,7 @@
         android:layout_height="wrap_content"
         style="@style/firstbutton"
         android:fontFamily="@font/dm_sans_medium"
-        android:text="Cek Email Sekarang"
+        android:text="@string/string_cek_email_sekarang"
         android:layout_marginVertical="41dp"
         android:layout_marginHorizontal="24dp"
         app:layout_constraintStart_toStartOf="parent"

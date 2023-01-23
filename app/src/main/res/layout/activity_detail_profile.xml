@@ -22,10 +22,11 @@
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/dm_sans_bold"
-            android:text="Detail User"
+            android:text="@string/string_detail_user"
             android:paddingStart="20dp"
             android:textColor="@color/white"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            tools:ignore="RtlSymmetry" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -56,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:contentDescription="Add"
+        android:contentDescription="@string/string_tambahkan"
         android:foregroundGravity="bottom"
         android:tint="@color/warna_button"
         app:backgroundTint="@color/background_field"
@@ -75,7 +76,7 @@
         android:layout_margin="16dp"
         android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
-        android:text="Data User Tidak Ditemukan"
+        android:text="@string/string_data_user_tidak_ditemukan"
         android:textColor="@color/warna_grey_font"
         android:textSize="24sp"
         android:visibility="invisible"
