@@ -31,7 +31,6 @@ class LoginPresenter(
     }
 
     fun validasiPassword (password : String) {
-//        view?.onLoading()
         val isPasswordValid =
             password.contains("[a-z]".toRegex())
                     && password.contains("[A-Z]".toRegex())
@@ -48,7 +47,6 @@ class LoginPresenter(
     }
 
     fun validateEmail(email: String) {
-        view?.onLoading()
         val isEmailValid =
             email.contains("[a-zA-Z0-9._-]+@[a-z]+[.]+com+".toRegex()) ||
                     email.contains("[a-zA-Z0-9._-]+@[a-z]+[.]+co+[.]+id".toRegex())
@@ -67,14 +65,15 @@ class LoginPresenter(
             loginApi
                 .loginUser(email, password)
                 .flowOn(Dispatchers.Default)
+                //  pindah thread (tanda panah itu)
                 .collectLatest {
+                    view?.onFinishedLoading()
                     when (it) {
                         is ResponseStatus.Success -> view?.onSuccessGetUser("","")
                         is ResponseStatus.Failed -> view?.onError(it.code, it.message)
                     }
                 }
             Log.d("error","$loginApi")
-            view?.onFinishedLoading()
         }
     }
 

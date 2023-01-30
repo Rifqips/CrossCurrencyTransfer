@@ -15,12 +15,17 @@ import java.io.IOException
 
 class LoginApi {
 
+    //    excute service / hit service / menerima response khususnya dari body
+    //    dari 22 execute hit service
     fun loginUser(email: String, password: String): Flow<ResponseStatus<LoginData>> = flow {
         val model = AuthDataItem(email, password)
         try {
+            //    nangkap response dari service
             val result = NetworkClient
                 .executeCall("/login", NetworkClient.METHOD.POST, model.serialized())
+            //    ngecek status code jika 200 oke
             val response = if (result.isSuccessful) {
+                //    dg deserializeJson karena kita request body
                 val data: LoginData = deserializeJson<LoginData>(result.body?.string() ?: "") ?: LoginData()
                 //Digunakan sebagain simpan response token
                 PrivateData.accessToken = data.accessToken.toString()

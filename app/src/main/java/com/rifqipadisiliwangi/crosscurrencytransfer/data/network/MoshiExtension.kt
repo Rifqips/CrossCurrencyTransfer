@@ -15,9 +15,12 @@ inline fun<reified T> deserializeJson(jsonString: String): T? {
     return adapter.fromJson(jsonString)
 }
 
-inline fun <reified T> Moshi.parseList(jsonString: String): List<T>{
-    return adapter<List<T>>(Types.newParameterizedType(List::class.java, T::class.java)).fromJson(jsonString)!!
-}
+//inline fun <reified T> parseList(jsonString: String): List<T>{
+//    val adapter: JsonAdapter<List<T>> = MoshiExtension.moshi.adapter(List::class.java, T::class.java)
+//    return adapter.fromJson(jsonString.toList())
+//    return adapter<List<T>>(Types.newParameterizedType(List::class.java, T::class.java)).fromJson(jsonString)!!
+//}
+
 
 // fungsinya mengubah object ke string json T (Bisa apa saja/kata kunci untuk object yang kita panggil) biasanya digunakan pada saat method post
 inline fun<reified T> T.serialized(): String {

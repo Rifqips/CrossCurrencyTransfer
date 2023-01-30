@@ -18,8 +18,10 @@ import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.auth.login.
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityLoginBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin.PinActivity
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.register.RegisterActivity
+import dagger.hilt.android.AndroidEntryPoint
 
 class LoginActivity : AppCompatActivity(), LoginView {
+
     var password = "hidePassword"
     private lateinit var binding: ActivityLoginBinding
     private val presenterLogin = LoginPresenter(LoginApi())
@@ -28,9 +30,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        presenterLogin.onAttach(this)
         postLogin()
 
-        presenterLogin.onAttach(this)
 
         binding.etEmail.doOnTextChanged { text, start, before, count ->
             presenterLogin.validateEmail(binding.etEmail.text.toString())

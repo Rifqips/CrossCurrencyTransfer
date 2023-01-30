@@ -3,16 +3,14 @@ package com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.history
 import android.util.Log
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.PrivateData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.history.HistorySchemeItem
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.ResponseStatus
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.*
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.NetworkTransaksiClient
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.deserializeJson
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.mapFailedResponse
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.serialized
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
+import org.json.JSONStringer
 import java.io.IOException
 
 class HistoryApi {
@@ -85,3 +83,5 @@ class HistoryApi {
     }
 
 }
+//val history : List<HistorySchemeItem> =
+//    MoshiExtension.moshi.parseList(jsonString = "")

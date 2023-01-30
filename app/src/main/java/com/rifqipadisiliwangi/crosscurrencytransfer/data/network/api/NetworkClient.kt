@@ -51,7 +51,6 @@ class NetworkClient {
                 .url("$BASE_URL$endpoint")
             if (jsonBody != null)
                 request.method(method.name, jsonBody.toRequestBody())
-
             return request.build()
         }
 
