@@ -1,35 +1,29 @@
 package com.rifqipadisiliwangi.crosscurrencytransfer.features.home.fragment.history
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreUser
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.history.HistorySchemeItem
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeResponse
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.history.HistoryApi
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.history.ListScheme
-import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.pin.PinApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.room.DataTransaksiRoom
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.room.TransaksiDatabase
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.utility.LoadingDialog
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.FragmentHistoryBinding
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.history.HistoryAdapter
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin.PinPresenter
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.pin.PinView
-import com.rifqipadisiliwangi.crosscurrencytransfer.features.auth.verifikasi.HistoryPresenter
+import com.rifqipadisiliwangi.crosscurrencytransfer.features.adapters.history.HistoryAdapterMvvm
+import com.rifqipadisiliwangi.crosscurrencytransfer.viewmodel.ViewModelHistory
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class HistoryFragment : Fragment(), HistoryView.View {
+class HistoryFragment : Fragment() {
 
     private lateinit var binding : FragmentHistoryBinding
-    private val adapter: HistoryAdapter by lazy { HistoryAdapter() }
-    private val recipeLiveData = MutableLiveData<List<HistorySchemeItem>>()
-    private lateinit var presenter: HistoryPresenter
 
-    lateinit var dataStoreUser : DataStoreUser
-    var namaUser = ""
+    var TransaksiDB : TransaksiDatabase? = null
+    lateinit var adapterNote : HistoryAdapterMvvm
+    lateinit var viewModel: ViewModelHistory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,45 +36,38 @@ class HistoryFragment : Fragment(), HistoryView.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = HistoryPresenter(this@HistoryFragment, HistoryApi()).apply {
-            onAttach()
+        historyVm()
+        TransaksiDB = TransaksiDatabase.getInstance(requireActivity())
+
+        viewModel = ViewModelProvider(this).get(ViewModelHistory::class.java)
+        viewModel.getAllNoteObservers().observe(requireActivity(),{
+            adapterNote.setNoteData(it as ArrayList<DataTransaksiRoom>)
+        })
+    }
+
+    fun historyVm(){
+
+        val loading = LoadingDialog(requireActivity())
+        loading.startLoading()
+        val handler = Handler()
+        handler.postDelayed(object : java.lang.Runnable {
+            override fun run() {
+                loading.isDismiss()
+            }
+        },500)
+        adapterNote = HistoryAdapterMvvm(ArrayList())
+        binding.rvHistory.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvHistory.adapter = adapterNote
+    }
+
+    fun getAllNote(){
+        GlobalScope.launch {
+            var data = TransaksiDB?.noteDao()?.getDataTransaksi()
+            run{
+                adapterNote = HistoryAdapterMvvm(data!!)
+                binding.rvHistory.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                binding.rvHistory.adapter = adapterNote
+            }
         }
-
-        binding.rvHistory.apply {
-            adapter = this@HistoryFragment.adapter
-            layoutManager = LinearLayoutManager(requireActivity())
-        }
-
-        Log.e("Data Ditemukan:", adapter.toString())
-
-        recipeLiveData.observe(viewLifecycleOwner){
-            adapter.submitList(it)
-        }
-
-    }
-    override fun onLoading() {
-        Toast.makeText(context, "onLoading", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onFinishedLoading() {
-        Toast.makeText(context, "onFinishedLoading", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onErrorHistory(code: Int, message: String) {
-        Toast.makeText(context, "$message", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onSuccessHistory(user: ListScheme) {
-        Toast.makeText(context, "onSuccessHistory", Toast.LENGTH_SHORT).show()
-        Log.d("sukses-gethistory","$user")
-    }
-
-    override fun onError(message: String) {
-        Toast.makeText(context, "$message", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onSuccessGetHistory(history: List<HistorySchemeItem>) {
-//        adapter.submitList(history)
-        recipeLiveData.value = history
     }
 }

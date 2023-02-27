@@ -168,7 +168,7 @@ class BankInternationalActivity : AppCompatActivity(), AdapterView.OnItemSelecte
             adapter = aa
             setSelection(0, false)
             onItemSelectedListener = this@BankInternationalActivity
-            prompt = "Bank Amerika"
+            prompt = "Bank Indonesia"
             gravity = Gravity.CENTER
         }
 

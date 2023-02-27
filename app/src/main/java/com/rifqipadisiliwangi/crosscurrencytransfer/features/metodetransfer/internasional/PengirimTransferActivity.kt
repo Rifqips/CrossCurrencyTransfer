@@ -6,18 +6,27 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.datastore.DataStoreTransaksi
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.model.transaksi.TransactionSchemeResponse
 import com.rifqipadisiliwangi.crosscurrencytransfer.data.network.api.transaksi.TranskasiApi
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.room.DataTransaksiRoom
+import com.rifqipadisiliwangi.crosscurrencytransfer.data.room.TransaksiDatabase
 import com.rifqipadisiliwangi.crosscurrencytransfer.databinding.ActivityPengirimTransferBinding
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiPresenter
 import com.rifqipadisiliwangi.crosscurrencytransfer.features.metodetransfer.TransaksiView
+import com.rifqipadisiliwangi.crosscurrencytransfer.viewmodel.ViewModelTransaksi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 
 class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
 
     private lateinit var binding : ActivityPengirimTransferBinding
+
     private lateinit var dataTransaksi : DataStoreTransaksi
+    var dbNote : TransaksiDatabase? = null
+
     var digit_on_screen = StringBuilder()
 
     var transaksiTotal = ""
@@ -35,16 +44,31 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
         setContentView(binding.root)
         initializeButtons()
         getDataStore()
-        postRegister()
+        postTransfer()
         presenter.onAttach(this)
+        dbNote = TransaksiDatabase.getInstance(this)
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, PembayaranTransferActivity::class.java))
         }
 
     }
-    private fun postRegister(){
+
+    fun addTransfer(){
+        GlobalScope.async {
+            val transaksi = transaksiTotal
+            val metode = metodePembayaran
+            val bank = pilihBank
+            val noRek = noRekeningTransaksi
+            val penerima = namaPenerima
+            dbNote!!.noteDao().insertTransaksi(DataTransaksiRoom(0,bank, penerima, noRek, metode,transaksi ))
+        }
+        Toast.makeText(this,"Succses Transfer Room",Toast.LENGTH_SHORT).show()
+    }
+    private fun postTransfer(){
         binding.btnSend.setOnClickListener {
+            userTransfer()
+            addTransfer()
             presenter.transaksiUser(
                 codeSwift,
                 noRekeningTransaksi,
@@ -53,6 +77,28 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
             )
         }
     }
+    fun userTransfer(){
+            addUser(pilihBank, namaPenerima, noRekeningTransaksi, metodePembayaran, transaksiTotal)
+            startActivity(Intent(this, SuksesTransferActivity::class.java))
+            Toast.makeText(this,"Succses Transfer",Toast.LENGTH_SHORT).show()
+    }
+
+    private fun addUser(
+        jenisBank: String,
+        namaPenerima: String,
+        noRekening: String,
+        tipeTransaksi: String,
+        total: String
+    ){
+        val viewModel = ViewModelProvider(this)[ViewModelTransaksi::class.java]
+        viewModel.callPostTransaksi(jenisBank, namaPenerima, noRekening, tipeTransaksi, total)
+        viewModel.postLiveDataTransaksi().observe(this){
+            if (it != null){
+                Toast.makeText(this,"Succses Transfer", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     override fun onLoading() {
         binding.progressBarPengirim.isVisible
@@ -71,7 +117,7 @@ class PengirimTransferActivity : AppCompatActivity(), TransaksiView {
     }
 
     override fun onSuccessTransaction(transaksi: TransactionSchemeResponse) {
-        startActivity(Intent(this, SuksesTransferActivity::class.java))
+//        startActivity(Intent(this, SuksesTransferActivity::class.java))
         Toast.makeText(this,"onSuccessTransaksi",Toast.LENGTH_SHORT).show()
     }
 

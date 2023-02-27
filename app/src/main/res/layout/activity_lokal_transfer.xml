@@ -247,6 +247,7 @@
             android:text="@string/string_idr"
             android:fontFamily="@font/dm_sans_bold"
             android:textSize="18sp"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="24dp"
             android:textColor="@color/green"
             android:layout_marginVertical="10dp"

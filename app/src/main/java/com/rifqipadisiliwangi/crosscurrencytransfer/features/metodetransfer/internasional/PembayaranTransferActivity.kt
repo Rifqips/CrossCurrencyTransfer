@@ -89,9 +89,8 @@ class PembayaranTransferActivity : AppCompatActivity(), AdapterView.OnItemSelect
             adapter = aa
             setSelection(0, false)
             onItemSelectedListener = this@PembayaranTransferActivity
-            prompt = "Bank Amerika"
+            prompt = "Bank Indonesia"
             gravity = Gravity.CENTER
-
 
         }
 

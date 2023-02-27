@@ -254,6 +254,20 @@
             app:layout_constraintStart_toStartOf="@+id/constraintNota"
             app:layout_constraintEnd_toEndOf="@+id/constraintNota"/>
 
+        <TextView
+            android:id="@+id/tvTotalIdr"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:gravity="center"
+            android:text="@string/string_idr"
+            android:fontFamily="@font/dm_sans_bold"
+            android:textSize="16sp"
+            android:layout_marginStart="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/warna_verifikasi_font"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleTotal"
+            app:layout_constraintStart_toEndOf="@id/tvTotal"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
